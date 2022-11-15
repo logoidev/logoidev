@@ -13,9 +13,9 @@ We help create experiences that can be enjoyed by people from around the world, 
 
 #### Glad to connect online:  
 
-[Email](mailto:hi@logoi.dev) [LinkedIn](https://www.linkedin.com/company/logoidev/) [GitHub](https://github.com/logoidev)  
+[Email](mailto:hi@logoi.dev)  
+[LinkedIn](https://www.linkedin.com/company/logoidev/) [GitHub](https://github.com/logoidev) [Twitter](https://twitter.com/logoidev)  
 [YouTube](https://youtube.com/@logoidev) [TikTok](https://tiktok.com/@logoidev)  [Twitch](https://twitch.tv/logoidev)  
-[Twitter](https://twitter.com/logoidev)  [Telegram](https://t.me/logoidev)  [Instagram](https://www.instagram.com/logoidev)  
-[Facebook](https://facebook.com/logoidev)  
+[Telegram](https://t.me/logoidev)  [Instagram](https://www.instagram.com/logoidev) [Facebook](https://facebook.com/logoidev)  
   
 G
