@@ -1,6 +1,8 @@
 <a href="https://logoi.dev?source=ghb">
-    <img width="333" alt="Logo Banner" src="/images/banner.png" />
-</a>
+    <img width="333" alt="Logo Banner" src="/images/banner-transparent.png" />
+</a>  
+<br />
+<br />
 
 We are a web design agency specialising in Software Engineering, UI/UX and AR/VR/XR applications.  
 We create metaobjects - things that exist in the metaverse.  
