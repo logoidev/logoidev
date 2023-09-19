@@ -1,0 +1,43 @@
+{
+	"short_name": "Logoi",
+	"name": "logoi.dev",
+	"description": "Development & Digital Design",
+	"icons": [
+		{
+			"src": "/images/logoi.svg",
+			"type": "image/svg+xml",
+			"sizes": "512x512"
+		},
+		{
+			"src": "/images/logoi-128.png",
+			"type": "image/png",
+			"sizes": "128x128"
+		},
+		{
+			"src": "/images/logoi-256.png",
+			"type": "image/png",
+			"sizes": "256x256"
+		},
+		{
+			"src": "/images/logoi-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"id": "/?source=pwa",
+	"start_url": "/?source=pwa",
+	"background_color": "#fff",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#fff",
+	"shortcuts": [
+		{
+			"name": "GitHub",
+			"short_name": "GitHub",
+			"description": "View our GitHub page",
+			"url": "/social/github",
+			"icons": [{ "src": "/images/social/github.svg", "sizes": "256x256" }]
+		}
+	],
+	"screenshots": []
+}

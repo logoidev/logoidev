@@ -1,0 +1,15 @@
+/* HTML default + color-name.com/aluminum.color */
+:root {
+	--black: #000;
+	--white: #fff;
+	--light-grey: #eee;
+	--red: red;
+
+	/* Supported metals (from enum) */
+	--gold: gold;
+	--silver: silver;
+	--bronze: #cd7f32;
+	--titanium: #d9dad9;
+	--aluminum: #d9dad9;
+	--copper: #b87333;
+}

@@ -1,0 +1,12 @@
+@font-face {
+	font-family: 'e-Ukraine';
+	src: url('/fonts/e-ukraine/e-Ukraine-Regular.woff2') format('woff2');
+	src: url('/fonts/e-ukraine/e-Ukraine-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'e-Ukraine';
+	font-weight: bold;
+	src: url('/fonts/e-ukraine/e-Ukraine-Bold.woff2') format('woff2');
+	src: url('/fonts/e-ukraine/e-Ukraine-Bold.woff') format('woff');
+}

@@ -1,38 +1,14 @@
-# create-svelte
+<a href="https://logoi.dev?source=ghb">
+    <img width="333" alt="Logo Banner" src="/static/images/banners/banner.png" />
+</a>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+We are a web design agency specialising in Software Engineering, UI/UX and AR/VR/XR applications.
+We create metaobjects - things that exist in the metaverse.
+We help people interact with a new layer of reality, full of creative freedom and full contol of the privacy.
+We help create experiences that can be enjoyed by people from around the world, individually and collectively.
 
-## Creating a project
+<a href="https://logoi.dev?source=ghqr">
+    <img width="333" alt="QR logo" src="/static/images/qr.svg" />
+</a>
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+[Email](mailto:hi@logoi.dev)  [Twitter](https://twitter.com/logoidev)  [Telegram](https://t.me/logoidev)  [YouTube](https://youtube.com/@logoidev)  [Instagram](https://www.instagram.com/logoidev)  [Facebook](https://facebook.com/logoidev)  
