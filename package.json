@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "vite build && yarn react:build",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -15,10 +15,11 @@
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
 		"react:build": "cd ./react && yarn build && cd ../ && yarn react:copy",
-		"react:copy":"cp -R ./react/dist/ ./static/react",
+		"react:copy": "cp -R ./react/dist/ ./static/react",
 		"react:rebuild": "yarn react:build && yarn dev"
 	},
 	"dependencies": {
+		"@sveltejs/adapter-static": "^2.0.3",
 		"canvg": "^4.0.1",
 		"nanoid": "^5.0.1",
 		"qrcode": "^1.5.3"
