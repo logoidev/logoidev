@@ -14,6 +14,15 @@
 	});
 </script>
 
+<svelte:head>
+	<script
+		type="module"
+		src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"
+	></script>
+	<script type="module" src="/react/index.js"></script>
+</svelte:head>
+
+<link rel="stylesheet" href="/react/index.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
 <link

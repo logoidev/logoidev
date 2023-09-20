@@ -37,6 +37,15 @@
 			computing and custom R&D.
 		</p>
 
+		<div class="w-32">
+			<!-- <spline-viewer url="https://prod.spline.design/V3tfz6c0XrYQ3Mwb/scene.splinecode"
+			></spline-viewer> -->
+		</div>
+
+		{#if window.location.hash === '#react'}
+			<div id="react-root"></div>
+		{/if}
+
 		<Services />
 
 		<LinkButton class="bg-slate-50 mt-6" href={CALENDAR_LINK} size="lg" text="Book a meeting" />
