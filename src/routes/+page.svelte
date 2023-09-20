@@ -11,7 +11,7 @@
 	import MapLink from '../components/MapLink.svelte';
 	import LinkButton from '../components/LinkButton/LinkButton.svelte';
 	import Copyright from '../components/Copyright.svelte';
-	import AcademyLink from '../components/AcademyLink.svelte';
+	// import AcademyLink from '../components/AcademyLink.svelte';
 
 	import { CALENDAR_LINK, getIndexUrl } from '../shared/routes';
 	import { SOCIALS } from '../data/socials';
@@ -36,15 +36,6 @@
 			We are a digital design agency specialising in web development, user interface design, spatial
 			computing and custom R&D.
 		</p>
-
-		<div class="w-32">
-			<!-- <spline-viewer url="https://prod.spline.design/V3tfz6c0XrYQ3Mwb/scene.splinecode"
-			></spline-viewer> -->
-		</div>
-
-		{#if window.location.hash === '#react'}
-			<div id="react-root"></div>
-		{/if}
 
 		<Services />
 

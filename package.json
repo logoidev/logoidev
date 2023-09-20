@@ -15,7 +15,8 @@
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
 		"react:build": "cd ./react && yarn build && cd ../ && yarn react:copy",
-		"react:copy":"cp -R ./react/dist/ ./static/react"
+		"react:copy":"cp -R ./react/dist/ ./static/react",
+		"react:rebuild": "yarn react:build && yarn dev"
 	},
 	"dependencies": {
 		"canvg": "^4.0.1",

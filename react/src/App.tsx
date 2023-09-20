@@ -1,38 +1,26 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import { Canvas } from '@react-three/fiber'
+import { PresentationControls } from '@react-three/drei'
+import Level from './components/Level'
+import Cactus from './components/Cactus'
+import Pyramid from './components/Pyramid'
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    console.log('React app initialised');
-  }, [])
-
+export default function App() {
   return (
-    <div className='w-screen h-screen flex flex-col justify-center items-center absolute bg-white top-0 left-0 z-[1]'>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="flex flex-col gap-2 m-4">
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className='w-screen h-screen'>
+      <Canvas flat dpr={[1, 2]} camera={{ fov: 25, position: [0, 0, 8] }}>
+        <color attach="background" args={['#e0b7ff']} />
+        <ambientLight />
+        <PresentationControls snap global zoom={0.8} rotation={[0, -Math.PI / 4, 0]} polar={[0, Math.PI / 4]} azimuth={[-Math.PI / 4, Math.PI / 4]}>
+          <group position-y={-0.75} dispose={null}>
+            <Level />
+
+
+            <Cactus />
+
+            <Pyramid />
+          </group>
+        </PresentationControls>
+      </Canvas>
     </div>
   )
 }
-
-export default App

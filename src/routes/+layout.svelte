@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	import '../app.css';
 	import '../shared/fonts/index';
@@ -10,16 +11,14 @@
 	onMount(() => {
 		if (!loaded) {
 			loaded = true;
+			// @ts-ignore
+			window.IS_SVELTE = true;
 		}
 	});
 </script>
 
 <svelte:head>
-	<script
-		type="module"
-		src="https://unpkg.com/@splinetool/viewer@0.9.455/build/spline-viewer.js"
-	></script>
-	<script type="module" src="/react/index.js"></script>
+	<script defer type="module" src="/react/index.js"></script>
 </svelte:head>
 
 <link rel="stylesheet" href="/react/index.css" />
@@ -29,6 +28,10 @@
 	href="https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap"
 	rel="stylesheet"
 />
+
+{#if browser && window.location.hash === '#react'}
+	<div id="react-root"></div>
+{/if}
 
 {#if loaded}
 	<slot />
