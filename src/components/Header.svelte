@@ -3,6 +3,7 @@
 	import Spinner from './Spinner.svelte';
 
 	export let withTitle = true;
+	export let title = 'Design & Development';
 	export let greek = false;
 	export let noLink = false;
 	export let loading = false;
@@ -11,7 +12,7 @@
 </script>
 
 {#if withTitle}
-	<span class="text-3xl text-center mt-4">Design & Development</span>
+	<span class="text-3xl text-center mt-4">{title}</span>
 {/if}
 
 <div class="w-2/3 max-w-sm flex justify-center">

@@ -7,4 +7,5 @@ export type IconName =
 	| 'triangle'
 	| 'museum'
 	| 'pin'
-	| 'globe';
+	| 'globe'
+	| 'blog';
