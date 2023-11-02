@@ -1,9 +1,6 @@
 import type { UserData } from '../types/user';
+import { ORIGIN } from './constants';
 
-const ORIGIN = 'https://logoi.dev';
+export const getIndexUrl = (hash?: string) => (hash ? `${ORIGIN}#${hash}` : ORIGIN);
 
-export const CALENDAR_LINK = 'https://cal.com/logoi';
-
-export const getIndexUrl = () => ORIGIN;
-
-export const getUserUrl = (user: UserData) => `${ORIGIN}/${user.id}`;
+export const getUserUrl = (user: UserData) => `${ORIGIN}#${user.id}`;

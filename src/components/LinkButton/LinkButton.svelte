@@ -8,8 +8,8 @@
 	export let href: string;
 	export let text: string;
 
-	const linkClass = [
-		'text-xl inline-block my-4 border-2 py-2 px-4 rounded border-black hover:bg-slate-200',
+	$: linkClass = [
+		'text-xl inline-block border-2 py-2 px-4 rounded border-black hover:bg-slate-200',
 		size === 'sm' && `text-sm px-2 py-1`,
 		size === 'md' && `text-xl px-3 py-1`,
 		size === 'lg' && `text-2xl`,

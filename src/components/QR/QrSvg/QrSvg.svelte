@@ -17,13 +17,12 @@
 	let svgElement: SVGElement;
 	let widthPx = 0;
 
-	onMount(async () => {
+	$: {
 		url = normaliseQrLocalhostUrl(url);
 		qrData = getQrData(url);
 
 		if (onPngDataUrl) {
-			const pngDataUrl = await svgToPng(svgElement);
-			onPngDataUrl(pngDataUrl);
+			svgToPng(svgElement).then(onPngDataUrl);
 		}
 
 		const size = qrData?.data?.length ?? 0;
@@ -31,7 +30,7 @@
 		const sizePercentage = Math.ceil((qrData.padding / size) * 100);
 
 		onButtonSizeUpdate(`${sizePercentage}%`);
-	});
+	}
 </script>
 
 <svg

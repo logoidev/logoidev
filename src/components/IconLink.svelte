@@ -7,6 +7,7 @@
 	export let href = '';
 	export let iconName: IconName;
 	export let type: 'link' | 'button' = 'link';
+	export let target = '__blank';
 	export let onClick = noop;
 	export let scale = 1;
 
@@ -19,7 +20,7 @@
 	const elementProps = isLink
 		? {
 				href,
-				target: '__blank',
+				target,
 				rel: 'noreferrer'
 		  }
 		: {};
