@@ -6,7 +6,6 @@
 	import EmailButton from 'src/components/EmailButton.svelte';
 	import { INTRO_EMAIL } from 'src/data/emails';
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
-	import CodeOnGithub from 'src/components/CodeOnGithub.svelte';
 	export let id: string;
 	$: post = posts.find((p) => p.id === id)!;
 
@@ -56,8 +55,6 @@
 			<span>or</span>
 			<BookMeeting text="👋" size="sm" />
 		</div>
-
-		<CodeOnGithub path={`${post.id}.svelte`} />
 	</div>
 {:else}
 	<div class="text-center">Most likely wrong post id specified as a parameter</div>
