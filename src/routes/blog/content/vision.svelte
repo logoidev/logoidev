@@ -6,14 +6,14 @@
 	</p>
 
 	<p>
-		My name is <i>Vlad</i> and I am a software engineer - it’s quite a technical and demanding profession,
+		My name is <i class="underline">Vlad</i> and I am a software engineer - it’s quite a technical and demanding profession,
 		and I’d like to think I’m reasonably good at it, and, most importantly, I’m very lucky to actually
 		enjoy it. I am convinced that we need more engineers to be motivated to perfect their craft and be
 		ethically good and moral in the use of their skills.
 	</p>
 
 	<p>
-		Together with my brother <i>Andrew</i> and our friend <i>Adam</i> we're looking to explore new ways
+		Together with my brother <i class="underline">Andrew</i> and our <i>new</i> friend <i class="underline">Adam</i> we're looking to explore new ways
 		to learn, educate, and use technology to inspire, wow, and uplift people beyond utilitarian convenience
 		of technology.
 	</p>
@@ -142,7 +142,7 @@
 	<p>
 		It is comical how true it is. Usually, it indicates that the code was initially poorly written,
 		or has grown in complexity over time so that is now hard to understand, but it <i>works</i> and
-		it's <b>important</b> - so mess with it at your own peril. Same with culture - we must know what
+		it's <b class="underline">important</b> - so mess with it at your own peril. Same with culture - we must know what
 		is true, solid, and working, and protect it at all costs.
 	</p>
 
