@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import Spinner from './Spinner.svelte';
 
 	let className = '';
 	export { className as class };

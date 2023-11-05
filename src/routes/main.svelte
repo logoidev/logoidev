@@ -9,9 +9,7 @@
 	import Socials from '../components/Socials/Socials.svelte';
 	import ToggleQr from '../components/ToggleQR.svelte';
 	import MapLink from '../components/MapLink.svelte';
-
 	import Copyright from '../components/Copyright.svelte';
-	// import AcademyLink from '../components/AcademyLink.svelte';
 
 	import { getIndexUrl } from '../shared/routes';
 	import { SOCIALS } from '../data/socials';
@@ -68,8 +66,6 @@
 			<IconLink href="#blog" target="" title="Blog" iconName="blog" scale={1.2} class="mt-0" />
 
 			<Socials withToggle socials={SOCIALS} />
-
-			<!-- <AcademyLink /> -->
 
 			<MapLink />
 
