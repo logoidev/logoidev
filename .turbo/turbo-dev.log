@@ -1,0 +1,14 @@
+
+
+  VITE v4.4.11  ready in 549 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+5:56:29 PM [vite-plugin-svelte] /src/components/Services.svelte:17:0 A11y: <div> with click, keydown handlers must have an ARIA role
+5:56:29 PM [vite-plugin-svelte] /src/components/IconLink.svelte:25:0 A11y: <svelte:element> with click handler must have an ARIA role
+5:56:29 PM [vite-plugin-svelte] /src/components/Socials/SocialLinkElement.svelte:40:1 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+5:56:29 PM [vite-plugin-svelte] /src/components/Socials/SocialLinkElement.svelte:40:1 A11y: <div> with click handler must have an ARIA role
+5:56:29 PM [vite-plugin-svelte] /src/components/Services.svelte:17:0 A11y: <div> with click, keydown handlers must have an ARIA role
+5:56:30 PM [vite-plugin-svelte] /src/components/IconLink.svelte:25:0 A11y: <svelte:element> with click handler must have an ARIA role
+5:56:30 PM [vite-plugin-svelte] /src/components/Socials/SocialLinkElement.svelte:40:1 A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+5:56:30 PM [vite-plugin-svelte] /src/components/Socials/SocialLinkElement.svelte:40:1 A11y: <div> with click handler must have an ARIA role
