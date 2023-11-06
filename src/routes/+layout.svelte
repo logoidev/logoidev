@@ -5,6 +5,7 @@
 	import '../app.css';
 	import '../shared/fonts/index';
 	import Spinner from '../components/Spinner.svelte';
+	import AnalyticsScripts from 'src/components/AnalyticsScripts.svelte';
 
 	let loaded = false;
 
@@ -40,3 +41,5 @@
 		<Spinner />
 	</div>
 {/if}
+
+<AnalyticsScripts />

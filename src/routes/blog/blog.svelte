@@ -14,6 +14,7 @@
 
 	import Post from './post.svelte';
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
+	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
 
 	let route = 'blog';
 	let rounded = true;
@@ -27,6 +28,10 @@
 		window.addEventListener('hashchange', updateRoute);
 	});
 </script>
+
+<svelte:head>
+	<title>Logoi Development - Blog</title>
+</svelte:head>
 
 {#if route === 'blog'}
 	<div class="flex flex-col justify-between min-h-screen">
@@ -42,7 +47,10 @@
 				<ul class="flex flex-col gap-2 text-center">
 					{#each posts as post}
 						<li class="text-2xl font-serif relative">
-							<a href={`#blog/${post.id}`}>
+							<a
+								href={`#blog/${post.id}`}
+								on:click={() => trackAnalyticsEvent('blog:post-navigation', { post_id: post.id })}
+							>
 								<span>{post.title}</span>
 								<ReadEstimate estimate={post.estimate} /></a
 							>

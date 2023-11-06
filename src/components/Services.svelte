@@ -1,12 +1,16 @@
 <script lang="ts">
-	import { classArrayToInline } from '../shared/utils';
+	import { clsx } from 'clsx';
 	import Pyramid from './Pyramid.svelte';
 	import { getSvgParams } from './SVG/SVG.utils';
+	import { trackAnalyticsEvent } from './AnalyticsScripts.svelte';
 
 	const SERVICES = ['Web', 'AR/VR/XR', 'Development', 'Spatial Computing', 'Software Engineering'];
 
 	let isShown: null | boolean = null;
-	const toggleShown = () => (isShown = !isShown);
+	const toggleShown = () => {
+		isShown = !isShown;
+		trackAnalyticsEvent('pyramid:toggle', { shown: isShown });
+	};
 
 	let isGolden = false;
 	const onCapClick = (e: MouseEvent) => {
@@ -20,15 +24,15 @@
 </script>
 
 <div
-	class={classArrayToInline([
-		'button relative mt-12 mb-6 flex items-center justify-center',
+	role="presentation"
+	class={clsx('button relative mt-12 mb-6 flex items-center justify-center', [
 		isShown ? 'shown' : 'h-8',
 		isGolden ? 'golden' : ''
 	])}
 	on:click={toggleShown}
 	on:keydown={toggleShown}
 >
-	<button class={classArrayToInline(['cap absolute h-full w-8'])} on:click={onCapClick}>
+	<button class="cap absolute h-full w-8" on:click={onCapClick}>
 		<svg {...svgParams}>
 			<path d="M222.5 0L444.635 273H0.364487L222.5 0Z" />
 		</svg>
@@ -49,7 +53,7 @@
 	</div>
 
 	{#if isShown !== null}
-		<ul class={classArrayToInline([`absolute mt-3 text-3xl text-center`, isShown ? 'shown' : ''])}>
+		<ul class={clsx('absolute mt-3 text-3xl text-center', { shown: isShown })}>
 			{#each SERVICES as service}
 				<li class="text-xl my-px">{service}</li>
 			{/each}
