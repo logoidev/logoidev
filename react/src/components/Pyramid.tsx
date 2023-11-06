@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-// @ts-nocheck 
+// @ts-nocheck
 import { useEffect } from 'react';
 import { useGLTF, useMatcapTexture } from '@react-three/drei';
 import { useSpring, a } from '@react-spring/three';
