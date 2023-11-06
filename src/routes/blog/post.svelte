@@ -56,12 +56,17 @@
 		<div class="flex flex-col items-center mt-12 gap-2">
 			<LinkButton
 				href={`https://github.com/logoidev/logoidev/discussions/${post.gh_discussion_id}`}
-				text={'Comment and discuss on GitHub'}
+				text="Discuss on GitHub"
+				title="Public discussion where all commenters are welcome"
 			/>
 			<span>or</span>
-			<EmailButton email={INTRO_EMAIL} subject="Vision - Logoi Development" />
+			<EmailButton
+				email={INTRO_EMAIL}
+				subject="Vision - Logoi Development"
+				title="Email us with comments privately"
+			/>
 			<span>or</span>
-			<BookMeeting text="👋" size="sm" />
+			<BookMeeting text="👋" size="sm" title="Schedule a call" />
 		</div>
 	</div>
 {:else}

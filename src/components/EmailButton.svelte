@@ -10,6 +10,7 @@
 	export let body = '';
 	export let text = '';
 	export let size: ButtonSize = 'md';
+	export let title = '';
 
 	const getComponent = (key: string, value: string | number | boolean) =>
 		`${key}=${encodeURIComponent(value)}`;
@@ -24,4 +25,4 @@
 		.join('');
 </script>
 
-<LinkButton class={className} href={mailto} text={text || email} {size} />
+<LinkButton class={className} href={mailto} text={text || email} {size} {title} />
