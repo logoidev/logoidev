@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-// @ts-nocheck 
+// @ts-nocheck
 import { useEffect } from 'react';
 import { useGLTF, useMatcapTexture } from '@react-three/drei';
 import { useSpring, a } from '@react-spring/three';
@@ -22,7 +22,7 @@ export default function Pyramid() {
 		};
 		rotate();
 		return () => void clearTimeout(timeout);
-	}, []);
+	}, [api]);
 	return (
 		<a.mesh geometry={nodes.Pyramid.geometry} position={[-0.8, 1.33, 0.25]} {...spring}>
 			<meshMatcapMaterial matcap={matcap} />

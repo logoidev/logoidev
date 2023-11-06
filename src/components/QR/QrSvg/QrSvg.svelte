@@ -1,8 +1,5 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
-	import { getIndexUrl } from 'src/shared/routes';
 	import { noopWithParam } from 'src/utils/lodash';
-	import { onMount } from 'svelte';
 	import { getQrData, normaliseQrLocalhostUrl, svgToPng, type QrDataResult } from './QrSvg.utils';
 
 	import QrSvgRect from './QrSvgRect.svelte';

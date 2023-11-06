@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { classArrayToInline } from 'src/shared/utils';
+	import { clsx } from 'clsx';
 	import type { SocialLink } from '../../types/social-link';
 
 	import IconLink from '../IconLink.svelte';
@@ -33,12 +33,10 @@
 			<ul class="text-2xl flex flex-wrap items-stretch justify-between max-w-md mx-10 my-2 px-1">
 				{#each socials as social, index}
 					<SocialLinkElement
-						class={classArrayToInline([
-							'social-link-element',
-							index === socials.length - 1 && socials.length % 2 === 1
-								? 'social-link-element-last-odd-child'
-								: ''
-						])}
+						class={clsx('social-link-element', {
+							'social-link-element-last-odd-child':
+								index === socials.length - 1 && socials.length % 2 === 1
+						})}
 						{social}
 					/>
 				{/each}

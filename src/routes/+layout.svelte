@@ -5,12 +5,14 @@
 	import '../app.css';
 	import '../shared/fonts/index';
 	import Spinner from '../components/Spinner.svelte';
+	import AnalyticsScripts from 'src/components/AnalyticsScripts.svelte';
 
 	let loaded = false;
 
 	onMount(() => {
 		if (!loaded) {
 			loaded = true;
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			window.IS_SVELTE = true;
 		}
@@ -40,3 +42,5 @@
 		<Spinner />
 	</div>
 {/if}
+
+<AnalyticsScripts />

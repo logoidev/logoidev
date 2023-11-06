@@ -10,8 +10,8 @@
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write .",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
 		"react:build": "cd ./react && yarn build && cd ../ && yarn react:copy",
@@ -22,6 +22,7 @@
 	"dependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
 		"canvg": "^4.0.1",
+		"clsx": "^2.0.0",
 		"nanoid": "^5.0.2",
 		"qrcode": "^1.5.3"
 	},

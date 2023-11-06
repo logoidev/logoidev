@@ -52,6 +52,11 @@
 		downloadLinkElement.download = `${fileName}.png`;
 		downloadLinkElement.click();
 	};
+
+	const onClick = async () => {
+		const imgDataUrl = await svgToPng(svgElement);
+		downloadLink(imgDataUrl, id);
+	};
 </script>
 
 <div>
@@ -62,16 +67,16 @@
 			{/each}
 			{#if withImage}
 				<image
+					role="button"
+					tabindex="0"
 					x="110"
 					y="110"
 					width="100"
 					height="100"
 					href="/favicon.svg"
 					rx="80"
-					on:click={async () => {
-						const imgDataUrl = await svgToPng(svgElement);
-						downloadLink(imgDataUrl, id);
-					}}
+					on:click={onClick}
+					on:keydown={onClick}
 				/>
 			{/if}
 		</svg>

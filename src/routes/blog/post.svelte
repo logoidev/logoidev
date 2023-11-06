@@ -26,6 +26,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{post.title} - Logoi Development Blog</title>
+</svelte:head>
+
 {#if post}
 	<div>
 		<div class="flex flex-col justify-center items-center gap-2 mb-4 relative">

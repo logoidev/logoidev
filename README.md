@@ -11,4 +11,4 @@ We help create experiences that can be enjoyed by people from around the world, 
     <img width="333" alt="QR logo" src="/static/images/qr.svg" />
 </a>
 
-[Email](mailto:hi@logoi.dev)  [Twitter](https://twitter.com/logoidev)  [Telegram](https://t.me/logoidev)  [YouTube](https://youtube.com/@logoidev)  [Instagram](https://www.instagram.com/logoidev)  [Facebook](https://facebook.com/logoidev)  
+[Email](mailto:hi@logoi.dev) [Twitter](https://twitter.com/logoidev) [Telegram](https://t.me/logoidev) [YouTube](https://youtube.com/@logoidev) [Instagram](https://www.instagram.com/logoidev) [Facebook](https://facebook.com/logoidev)

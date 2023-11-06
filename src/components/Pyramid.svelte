@@ -1,16 +1,15 @@
 <script lang="ts">
-	import { classArrayToInline } from '../shared/utils';
+	import { clsx } from 'clsx';
 
 	export let isGolden = false;
 	export let isReverse = true;
 </script>
 
 <div
-	class={classArrayToInline([
-		'wrapper black absolute',
-		isGolden ? 'golden' : '',
-		isReverse ? 'reverse' : ''
-	])}
+	class={clsx('wrapper black absolute', {
+		golden: isGolden,
+		reverse: isReverse
+	})}
 >
 	<div class="container">
 		<div class="side left" />
