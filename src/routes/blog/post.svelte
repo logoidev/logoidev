@@ -6,6 +6,8 @@
 	import EmailButton from 'src/components/EmailButton.svelte';
 	import { INTRO_EMAIL } from 'src/data/emails';
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
+	import CodeOnGithub from 'src/components/CodeOnGithub.svelte';
+	import LinkButton from 'src/components/LinkButton/LinkButton.svelte';
 	export let id: string;
 	$: post = posts.find((p) => p.id === id)!;
 
@@ -35,7 +37,8 @@
 
 		{#if Post}
 			<div class="sm:w-3/4 mx-auto">
-				<svelte:component this={Post} />
+				<svelte:component this={Post} id={post.id} />
+				<CodeOnGithub path={`routes/blog/content/${post.id}.svelte`} />
 			</div>
 		{:else}
 			<div class="text-center">
@@ -51,6 +54,11 @@
 		</div>
 
 		<div class="flex flex-col items-center mt-12 gap-2">
+			<LinkButton
+				href={`https://github.com/logoidev/logoidev/discussions/${post.gh_discussion_id}`}
+				text={'Comment and discuss on GitHub'}
+			/>
+			<span>or</span>
 			<EmailButton email={INTRO_EMAIL} subject="Vision - Logoi Development" />
 			<span>or</span>
 			<BookMeeting text="👋" size="sm" />
