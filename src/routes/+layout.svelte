@@ -12,6 +12,7 @@
 	onMount(() => {
 		if (!loaded) {
 			loaded = true;
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			window.IS_SVELTE = true;
 		}

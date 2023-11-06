@@ -11,6 +11,7 @@
 </script>
 
 <script>
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-nocheck
 	import { page } from '$app/stores';
 	import { env } from '$env/dynamic/public';
@@ -20,6 +21,7 @@
 		if (browser) {
 			window.dataLayer = window.dataLayer || [];
 
+			// eslint-disable-next-line svelte/no-inner-declarations
 			function gtag() {
 				window.dataLayer.push(arguments);
 			}

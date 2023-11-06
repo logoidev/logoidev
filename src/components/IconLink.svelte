@@ -34,6 +34,8 @@
 
 <svelte:element
 	this={element}
+	role="button"
+	tabindex="0"
 	{...elementProps}
 	{title}
 	class={`text-xl inline-block my-2 p-2 rounded hover:bg-slate-200 text-center w-fit ${className}`}

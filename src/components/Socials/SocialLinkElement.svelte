@@ -18,7 +18,7 @@
 		}
 	};
 
-	const onQrModalBackdropClick = (event: MouseEvent) => {
+	const onQrModalBackdropClick = (event: MouseEvent | KeyboardEvent) => {
 		const eventTarget = event.target as HTMLElement;
 		const isImageClicked = eventTarget.tagName === 'IMG';
 		if (!isImageClicked) {
@@ -43,8 +43,11 @@
 
 {#if fullSocial.qrImgUrl && isQrModalOpen}
 	<div
+		role="link"
+		tabindex="0"
 		class="fixed top-0 left-0 z-10 w-full h-full flex justify-center items-center bg-black bg-opacity-75"
 		on:click={onQrModalBackdropClick}
+		on:keydown={onQrModalBackdropClick}
 	>
 		<div class="w-72">
 			<a href={fullSocial.url} target="__blank" title={`Open ${fullSocial.name} social link`}>

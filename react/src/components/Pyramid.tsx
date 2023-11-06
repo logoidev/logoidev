@@ -22,7 +22,7 @@ export default function Pyramid() {
 		};
 		rotate();
 		return () => void clearTimeout(timeout);
-	}, []);
+	}, [api]);
 	return (
 		<a.mesh geometry={nodes.Pyramid.geometry} position={[-0.8, 1.33, 0.25]} {...spring}>
 			<meshMatcapMaterial matcap={matcap} />
