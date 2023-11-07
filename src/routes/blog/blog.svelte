@@ -58,7 +58,7 @@
 					{/each}
 				</ul>
 			{:else}
-				<Post id="vision" />
+				<Post id={post.id} />
 			{/if}
 		</div>
 

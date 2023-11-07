@@ -11,6 +11,8 @@
 	export let id: string;
 	$: post = posts.find((p) => p.id === id)!;
 
+	console.log('ID', id);
+
 	let Post: typeof SvelteComponent | null = null;
 
 	onMount(async () => {
