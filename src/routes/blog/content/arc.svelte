@@ -19,11 +19,11 @@
 		- <i>The Alliance for Responsible Citizenship</i> and their first conference. The videos of the
 		conference are
 		<a href="https://www.youtube.com/@arc_forum/videos" class="underline"
-			>freely availble on YouTube</a
+			>freely available on YouTube</a
 		>
 		and I would suggest you watch at least
 		<a href="https://www.youtube.com/watch?v=84kKxtZI0l0" class="underline"
-			>this talk by Dr. Peterson</a
+			> this talk by Dr. Peterson</a
 		>
 		and my absolute favorite of the bunch -
 		<a href="https://www.youtube.com/watch?v=_1MICwdQtfU" class="underline"
@@ -35,7 +35,7 @@
 		ARC also publishes <a
 			href="https://www.arc-research.org/research-papers"
 			class="italic underline">research papers</a
-		> and is generally a breath of fresh air among the appocalyptic fearmongerers on social and mainsream
+		> and is generally a breath of fresh air among the apocalyptic fearmongers on social and mainstream
 		media.
 	</p>
 
@@ -50,7 +50,7 @@
 	<p>
 		There are <a href="https://www.arcforum.com/survey" class="underline">only 6 questions</a>, and
 		I would suggest you answer them before you read my take, or you can do so after and hopefully
-		correct, expand or argue with my thoughts.
+		correct, expand, or argue with my thoughts.
 	</p>
 
 	<div class="flex justify-center"><Separator bottom={4} top={4} /></div>
@@ -104,7 +104,7 @@
 	<section class="flex flex-col">
 		<b>Question 4: Free Enterprise and Good Governance</b>
 		<i class="my-2">
-			How do we govern our corporate, social and political organizations so that we promote free
+			How do we govern our corporate, social, and political organizations so that we promote free
 			exchange and abundance while protecting ourselves against the ever-present danger of cronyism
 			and corruption?
 		</i>
@@ -112,7 +112,7 @@
 			The market of ideas needs to be as free and as allowing as the financial markets. I don't
 			think we are yet capable of inventing a wealth distribution system better than capitalism. It
 			needs to be cleaned from monopolies and corporate lobbying but must encourage enterprise and
-			scientific endeavours. The issue of monetary corruption and theft can be solved by employing
+			scientific endeavors. The issue of monetary corruption and theft can be solved by employing
 			cryptographically proven and open ledgers for public purchases made by the government,
 			especially for large sums of money. Taxation can be automated and rethought in the process of
 			adopting digital currency in government and large business institutions.
@@ -123,7 +123,7 @@
 		<b>Question 5: Energy and Resources</b>
 		<i class="my-2">
 			How do we provide the energy and other resources upon which all economies depend in a manner
-			that is inexpensive, reliable, safe and efficient, including in the developing world?
+			that is inexpensive, reliable, safe, and efficient, including in the developing world?
 		</i>
 		<p>
 			Nuclear power is the cleanest and safest resource out there. We must invest in the development
