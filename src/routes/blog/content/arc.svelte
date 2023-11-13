@@ -22,9 +22,9 @@
 			>freely available on YouTube</a
 		>
 		and I would suggest you watch at least
-		<a href="https://www.youtube.com/watch?v=84kKxtZI0l0" class="underline"
-			> this talk by Dr. Peterson</a
-		>
+		<a href="https://www.youtube.com/watch?v=84kKxtZI0l0" class="underline">
+			this talk by Dr. Peterson
+		</a>
 		and my absolute favorite of the bunch -
 		<a href="https://www.youtube.com/watch?v=_1MICwdQtfU" class="underline"
 			>Konstantin Kisin’s speech</a
@@ -68,9 +68,15 @@
 		<i class="my-2">Can we find a unifying story that will guide us as we make our way forward?</i>
 		<p>
 			Yes, I am sure of that. There are very few foundational stories we have, those stories that
-			bind reality and order - out of those the story of Jesus is essential, Jesus is the atlas
-			holding the world on his cross and our duty is to help people hear about our story and live to
-			experience the wonders it brings now and can bring in the future!
+			bind reality and order. Reality and social order is built on beliefs in stories. Story of the
+			constitution, human rights, stories on how we ought to behave in the world. Of course
+			religious stories are at the core, but we have many more - folklore, fairy tales, works of
+			Homer, Shakespeare. All of these stories are about us and we know so little. I'm ashamed to
+			admit that I haven't read them either. How can we then hope for the same type of art and
+			inspiration if we do not even reach out for them. Out of all the story of Jesus is essential,
+			Jesus is the atlas holding the world on his cross and our duty is to help people hear about
+			our story and live to experience the wonders it brings now and can bring in the future! Truth
+			can only be built on truth.
 		</p>
 	</section>
 

@@ -18,7 +18,8 @@
 		"react:copy": "cp -R ./react/dist/ ./static/react",
 		"react:rebuild": "yarn react:build && yarn dev",
 		"postinstall": "cd ./react && yarn",
-		"ci": "yarn format && yarn lint && yarn check"
+		"ci": "yarn format && yarn lint && yarn check",
+		"prepare": "husky install"
 	},
 	"dependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
@@ -46,6 +47,7 @@
 		"tslib": "^2.6.2",
 		"typescript": "^5.2.2",
 		"vite": "^4.5.0",
-		"vitest": "^0.34.6"
+		"vitest": "^0.34.6",
+		"husky": "^8.0.0"
 	}
 }

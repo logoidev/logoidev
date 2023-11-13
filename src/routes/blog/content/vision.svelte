@@ -6,16 +6,17 @@
 	</p>
 
 	<p>
-		My name is <i class="underline">Vlad</i> and I am a software engineer - it’s quite a technical and demanding profession,
-		and I’d like to think I’m reasonably good at it, and, most importantly, I’m very lucky to actually
-		enjoy it. I am convinced that we need more engineers to be motivated to perfect their craft and be
-		ethically good and moral in the use of their skills.
+		My name is <a href="#v" class="underline italic">Vlad</a> and I am a software engineer - it’s quite
+		a technical and demanding profession, and I’d like to think I’m reasonably good at it, and, most
+		importantly, I’m very lucky to actually enjoy it. I am convinced that we need more engineers to be
+		motivated to perfect their craft and be ethically good and moral in the use of their skills.
 	</p>
 
 	<p>
-		Together with my brother <i class="underline">Andrew</i> and our <i>new</i> friend <i class="underline">Adam</i> we're looking to explore new ways
-		to learn, educate, and use technology to inspire, wow, and uplift people beyond utilitarian convenience
-		of technology.
+		Together with my brother <a href="#ap" class="underline italic">Andrew</a> and our <i>new</i>
+		friend
+		<a href="#ai" class="underline italic">Adam</a> we're looking to explore new ways to learn, educate,
+		and use technology to inspire, wow, and uplift people beyond utilitarian convenience of technology.
 	</p>
 
 	<p>
@@ -28,19 +29,19 @@
 	<p>
 		As an engineer in this modern technological world, I've been granted quite a bit of power and
 		ability, yet I felt empty and directionless. Building digital products and startups is extremely
-		fun and fulfilling, and yes - it does pay well, but what is next? Will the fruits of my labor
-		be valuable not just for me but after I'm gone? I'd love to think there is a path to answer
-		these questions positively. Time and time again I remember the words spoken to my favorite super-hero
+		fun and fulfilling, and yes - it does pay well, but what is next? Will the fruits of my labor be
+		valuable not just for me but after I'm gone? I'd love to think there is a path to answer these
+		questions positively. Time and time again I remember the words spoken to my favorite super-hero
 		by his dying <i>father</i>... Yet we seem to be running away from responsibility, or what could
 		be worse, taking on responsibility that is not ours and often failing at that as well.
 	</p>
 
 	<p>
 		The world right now is in a very dangerous and unstable state. Confusion, panic, anxiety,
-		overwhelming amounts of information, aimlessness, radicalization, normophobia, and inability to distinguish
-		what is true is at the core — and technology seems to make it all even worse. Yet I am convinced
-		it doesn't necessarily have to. <i>"Making the world a better place"</i> is somewhat of a joke in the
-		tech community, but I hope there are enough of us there who take it seriously.
+		overwhelming amounts of information, aimlessness, radicalization, normophobia, and inability to
+		distinguish what is true is at the core — and technology seems to make it all even worse. Yet I
+		am convinced it doesn't necessarily have to. <i>"Making the world a better place"</i> is somewhat
+		of a joke in the tech community, but I hope there are enough of us there who take it seriously.
 	</p>
 
 	<p>
@@ -58,16 +59,16 @@
 		unfulfilling if you take it seriously, and I’d say we have taken it way too seriously, to our
 		own detriment. How can you not learn anything from the horrors of twisted rationalism of Marxist
 		ideology? Or those of fascism. I’m convinced that the scientific and rational truth is not the
-		the only type of truth the order is built upon, and quite arguably the unknowable and unprovable is
-		far more important than science.
+		the only type of truth the order is built upon, and quite arguably the unknowable and unprovable
+		is far more important than science.
 	</p>
 
 	<p>
-		My favorite work of art is the Sistine Chapel — I dream of one day seeing it with my own eyes and
-		show it to my son. But how was it made? Is it built on pure science and engineering? Definitely
-		that is a big part — it had been beautifully designed by some brilliant architects of the
-		Renaissance age, and built by the hands of the people whose names are unknown to most. But what
-		of the works of art decorating the walls? They are known worldwide and made by the most
+		My favorite work of art is the Sistine Chapel — I dream of one day seeing it with my own eyes
+		and show it to my son. But how was it made? Is it built on pure science and engineering?
+		Definitely that is a big part — it had been beautifully designed by some brilliant architects of
+		the Renaissance age, and built by the hands of the people whose names are unknown to most. But
+		what of the works of art decorating the walls? They are known worldwide and made by the most
 		brilliant artists whom we have never surpassed. It's much more than layers of paint on the walls
 		— at least we all act like it is, and travel great distances for a chance to see it.
 	</p>
@@ -142,8 +143,8 @@
 	<p>
 		It is comical how true it is. Usually, it indicates that the code was initially poorly written,
 		or has grown in complexity over time so that is now hard to understand, but it <i>works</i> and
-		it's <b class="underline">important</b> - so mess with it at your own peril. Same with culture - we must know what
-		is true, solid, and working, and protect it at all costs.
+		it's <b class="underline">important</b> - so mess with it at your own peril. Same with culture -
+		we must know what is true, solid, and working, and protect it at all costs.
 	</p>
 
 	<p>
@@ -167,8 +168,8 @@
 		nuclear energy. But
 		<i>techne</i> can also be used to bring great sorrow — due to malevolence, corruption, inaction or
 		even by mistake and untruthful craft. As a Ukrainian, Chernobyl is a story engraved in my soul, showing
-		the true dangers of science, technology, and engineering gone horribly wrong. So let's try to be more
-		careful and truthful, both in our work and with each other.
+		the true dangers of science, technology, and engineering gone horribly wrong. So let's try to be
+		more careful and truthful, both in our work and with each other.
 	</p>
 
 	<p>
@@ -179,8 +180,8 @@
 
 	<p>
 		We really hope you are interested in helping us learn and find ways to apply and unite these
-		interests, and we welcome any feedback, advice, ideas, criticism, and all new acquaintances along
-		the way.
+		interests, and we welcome any feedback, advice, ideas, criticism, and all new acquaintances
+		along the way.
 	</p>
 	<br />
 	<div class="text-center">
