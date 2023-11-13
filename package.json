@@ -17,7 +17,8 @@
 		"react:build": "cd ./react && yarn build && cd ../ && yarn react:copy",
 		"react:copy": "cp -R ./react/dist/ ./static/react",
 		"react:rebuild": "yarn react:build && yarn dev",
-		"postinstall": "cd ./react && yarn"
+		"postinstall": "cd ./react && yarn",
+		"ci": "yarn format && yarn lint && yarn check"
 	},
 	"dependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",

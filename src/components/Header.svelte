@@ -21,6 +21,7 @@
 	{:else if noLink}
 		<Image src={bannerUrl} />
 	{:else}
+		<!-- svelte-ignore a11y-invalid-attribute -->
 		<a href="#">
 			<Image src={bannerUrl} />
 		</a>
