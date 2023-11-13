@@ -3,10 +3,11 @@
 	import { getRandomIntInRange } from 'src/utils/math';
 	import type { UserData } from '../types/user';
 	import Image from './Image.svelte';
+	import clsx from 'clsx';
 
 	export let userData: UserData;
-	export let noTitle = false;
 	export let noLastName = false;
+	export let clickableLink = true;
 
 	let currentMemojiIndex = userData.memojiCount && getRandomIntInRange(1, userData.memojiCount);
 	let avatarImageUrl = getMemojiAvatarUrl(currentMemojiIndex, userData.id);
@@ -32,16 +33,16 @@
 		</div>
 	{/if}
 
-	<div class="mb-4 text-center text-lg" title={userData.first_name}>
+	<a
+		href={clickableLink ? `#${userData.id}` : null}
+		class={clsx('mb-4 text-center text-lg', {
+			'underline decoration-from-font': clickableLink
+		})}
+		title={userData.first_name}
+	>
 		<span>{userData.first_name}</span>
 		{#if !noLastName}
 			<span>{userData.last_name}</span>
 		{/if}
-	</div>
-
-	{#if !noTitle}
-		{#each userData.titles as title}
-			<div class="text-xl">{title}</div>
-		{/each}
-	{/if}
+	</a>
 </div>

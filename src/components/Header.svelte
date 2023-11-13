@@ -21,7 +21,7 @@
 	{:else if noLink}
 		<Image src={bannerUrl} />
 	{:else}
-		<a href="/">
+		<a href="#">
 			<Image src={bannerUrl} />
 		</a>
 	{/if}
