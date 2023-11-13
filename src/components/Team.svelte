@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { USERS } from '../data/users';
-	import NameAvatarTitle from './NameAvatarTitle.svelte';
+	import NameAvatar from './NameAvatar.svelte';
 </script>
 
 <div>
@@ -10,7 +10,7 @@
 			<li class="justify">
 				<!-- TODO: Does not work with GitHub pages - hash or move away from GH -->
 				<!-- <a href={`/${user.id}`}> -->
-				<NameAvatarTitle {userData} noTitle noLastName />
+				<NameAvatar {userData} noLastName />
 				<!-- </a> -->
 			</li>
 		{/each}

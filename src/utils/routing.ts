@@ -1,8 +1,10 @@
 import Blog from 'src/routes/blog/blog.svelte';
 import Main from 'src/routes/main.svelte';
+import User from 'src/routes/[slug]/user.svelte';
 
 const routes = {
-	blog: Blog
+	blog: Blog,
+	user: User
 };
 export type Route = keyof typeof routes;
 

@@ -29,7 +29,7 @@ export const USERS: Array<UserData> = [
 		last_name: 'Kolbaia',
 		memojiCount: 10,
 		email: 'v@logoi.dev',
-		titles: ['President and CTO'],
+		titles: ['Founder & President'],
 		level: Level.S,
 		// TODO: [6] Rename field to "patterns", add ability to trigger different actions
 		password: [0, 1, 2, 0, 1, 2],
@@ -65,7 +65,7 @@ export const USERS: Array<UserData> = [
 			{
 				type: 'stack',
 				alt: 'StackOverflow Logo',
-				url: 'https://stackoverflow.com/users/6426334/v-kay'
+				url: 'https://stackoverflow.com/users/6426334/vlad-kolbaia'
 			}
 			// {
 			// 	type: 'cssbattle',

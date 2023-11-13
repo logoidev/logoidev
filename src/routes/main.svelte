@@ -18,6 +18,8 @@
 	import { getRoute, type Route } from 'src/utils/routing';
 	import Blog from './blog/blog.svelte';
 	import BookMeeting from 'src/components/BookMeeting.svelte';
+	import User from './[slug]/user.svelte';
+	import { UserIds } from 'src/types/user';
 
 	let isUnlocked = false;
 	let isNewBannerLoading = false;
@@ -38,6 +40,8 @@
 
 {#if route === 'blog'}
 	<Blog />
+{:else if Object.values(UserIds).includes(route)}
+	<User />
 {:else}
 	<div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-4">
 		<div class="flex flex-col justify-center items-center h-screen">
