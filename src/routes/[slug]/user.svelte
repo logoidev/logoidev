@@ -52,16 +52,16 @@
 			{/each}
 		</ul>
 
-		{#if userData.calendar_link}
-			<LinkButton href={userData.calendar_link} size="lg" text="Book a meeting" />
-			<span class="text-xl my-2">or</span>
-		{/if}
-
 		<EmailButton
 			size="md"
 			email={userData.email}
 			subject={`Logoi Development - reaching out to ${userData.first_name}`}
 		/>
+
+		{#if userData.calendar_link}
+			<span class="text-xl my-2">or</span>
+			<LinkButton href={userData.calendar_link} size="lg" text="👋" />
+		{/if}
 
 		<br />
 		<Socials socials={userData.socials} />
