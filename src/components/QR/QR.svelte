@@ -1,4 +1,5 @@
 <script lang="ts">
+	import clsx from 'clsx';
 	import { stylesArrayToInline } from '../../shared/utils';
 
 	import Image from '../Image.svelte';
@@ -41,6 +42,7 @@
 			<button
 				id="text"
 				on:click={onCenterClick}
+				class="pointer-events-none"
 				style={stylesArrayToInline([
 					`font-size: ${textFontSizePx}px`,
 					`height: calc(${textFontSizePx}px + ${textOffset})`

@@ -18,7 +18,7 @@ export interface UserData {
 	hourly_rate_usd: number;
 	level: Level;
 	email: string;
-	calendar_link: string;
+	calendar_link?: string;
 	socials: Array<SocialLink>;
 	payments: Array<SocialLink>;
 	has_resume: boolean;

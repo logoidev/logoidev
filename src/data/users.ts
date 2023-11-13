@@ -9,11 +9,10 @@ export const USERS: Array<UserData> = [
 		last_name: 'Iglesia',
 		memojiCount: 10,
 		email: 'ai@logoi.dev',
-		titles: ['Executive Assistant'],
+		titles: ['Assistant & Editor'],
 		level: Level.S,
 		has_resume: false,
 		hourly_rate_usd: 0,
-		calendar_link: 'https://cal.com/logoi-ai',
 		socials: [
 			{
 				type: 'telegram',
@@ -28,7 +27,7 @@ export const USERS: Array<UserData> = [
 		first_name: 'Vlad',
 		last_name: 'Kolbaia',
 		memojiCount: 10,
-		email: 'v@logoi.dev',
+		email: 'vlad@logoi.dev',
 		titles: ['Founder & President'],
 		level: Level.S,
 		// TODO: [6] Rename field to "patterns", add ability to trigger different actions
@@ -97,22 +96,21 @@ export const USERS: Array<UserData> = [
 		email: 'ap@logoi.dev',
 		hourly_rate_usd: 0,
 		has_resume: false,
-		calendar_link: 'https://cal.com/logoi-ap',
 		socials: [
 			{
 				type: 'linkedin',
 				name: 'LinkedIn',
 				url: 'https://www.linkedin.com/in/andrewprokhorenko/'
 			},
-			{
-				type: 'twitter',
-				url: 'https://twitter.com/logoi_ap'
-			},
-			{
-				type: 'snap',
-				url: 'https://t.snapchat.com/DybHESuH',
-				qrImgUrl: '/users/ap/qr-snap.webp'
-			},
+			// {
+			// 	type: 'twitter',
+			// 	url: 'https://twitter.com/logoi_ap'
+			// },
+			// {
+			// 	type: 'snap',
+			// 	url: 'https://t.snapchat.com/DybHESuH',
+			// 	qrImgUrl: '/users/ap/qr-snap.webp'
+			// },
 			{
 				type: 'telegram',
 				url: 'https://t.me/AndrewProkhorenko',
@@ -122,12 +120,12 @@ export const USERS: Array<UserData> = [
 				type: 'github',
 				name: 'GitHub',
 				url: 'https://github.com/AndrewProkhorenko'
-			},
-			{
-				type: 'stack',
-				alt: 'StackOverflow Logo',
-				url: 'https://stackoverflow.com/users/20585039/andrew'
 			}
+			// {
+			// 	type: 'stack',
+			// 	alt: 'StackOverflow Logo',
+			// 	url: 'https://stackoverflow.com/users/20585039/andrew'
+			// }
 		],
 		payments: []
 	}
