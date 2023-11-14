@@ -4,7 +4,7 @@
 
 <article class="flex flex-col gap-4 text-xl indent-4">
 	<p>
-		In the <a href="#blog/vision" class="underline">previous post</a> I've touched on the topic of directionless,
+		In the <a href="#blog/vision" class="underline">previous post</a> I've touched on the topic of directionlessness,
 		confusion and lack of inspiration. I like to think of myself as an optimistic person, but even I
 		at times feel hopeless with everything that's going on in the world. I share a belief that it is
 		caused by the lack of a unifying positive goal and a great story of how to get there.
@@ -43,14 +43,16 @@
 		Developing the habit of consistent writing is quite difficult for me, but I did answer <a
 			href="https://www.arcforum.com/survey"
 			class="underline bold">ARC's questions</a
-		> and they were kind enough to send them to my email. Since the writing was done, I decided it is
-		a good idea to publish my answers to these 6 important questions.
+		>
+		and they were kind enough to send them to my email. Since the writing was done, I decided it is a
+		good idea to publish my answers to these
+		<a href="https://www.arcforum.com/survey" class="underline">6 important questions</a> (with minor
+		editing).
 	</p>
 
 	<p>
-		There are <a href="https://www.arcforum.com/survey" class="underline">only 6 questions</a>, and
-		I would suggest you answer them before you read my take, or you can do so after and hopefully
-		correct, expand, or argue with my thoughts.
+		I would suggest that you answer them before you read my take, or you can do so after and
+		hopefully correct, expand, or argue with my thoughts.
 	</p>
 
 	<div class="flex justify-center"><Separator bottom={4} top={4} /></div>
@@ -69,14 +71,16 @@
 		<p>
 			Yes, I am sure of that. There are very few foundational stories we have, those stories that
 			bind reality and order. Reality and social order are built on beliefs in stories. Story of the
-			constitution, human rights, and stories on how we ought to behave in the world. Of course
-			religious stories are at the core, but we have many more - folklore, fairy tales, works of
-			Homer, Shakespeare. All of these stories are about us and we know so little of them. How can
-			we then hope for the same type of art and inspiration if we do not even reach out to these
-			stories. And out of all, I've come to believe that the story of Jesus is essential, and He is
-			the atlas holding the world on his cross, and our duty is to help people hear about this
-			story, reflect on it, and recognize themselves in it. Only then we can live to experience the
-			wonders that this living story brings and play a good part in it.
+			constitution, human rights, and stories on how we ought to behave in the world, shake hands,
+			and clean our teeth. Of course religious stories are at the core, but we have many more -
+			folklore, fairy tales, works of Homer, Shakespeare. All of these stories are about us and we
+			know so little of them. How can we then hope for the same type of art and inspiration if we do
+			not even reach out to these stories. And out of all, I've come to believe that the story of
+			Jesus is objectively essential for the Western Civilization, and can most definitely say He is
+			the atlas holding the world on his cross. Our duty is to help people hear about this story,
+			reflect on it, recognize themselves in it and see how most everything around us stems from it.
+			Only then we can live to experience the wonders that this <i>living</i> story brings and maybe
+			play a good part in it.
 		</p>
 	</section>
 
@@ -87,10 +91,12 @@
 		</i>
 		<p>
 			Our institutions of cooperative play and learning need to be better, they need to involve more
-			hands-on things, smaller in-person classrooms (mentorships perfectly) and online
-			streaming/recording for free on all possible video platforms to minimize the threat of
-			censorship. We need to teach that choices AND inaction both have consequences and show the
-			full spectrum of these consequences.
+			hands-on things, smaller in-person classrooms, mentorships and apprenticeships. Of course it
+			is quite difficult logistically and not very scalable, but you could and <i>should</i> diversify
+			into online media. Make streaming/recording available for free or at least reasonably priced and
+			accessible, on all possible video platforms to minimize the threat of censorship. We need to teach
+			that choices AND inaction both have consequences and show the full spectrum of these consequences.
+			We need to show that there are things worth sacrificing the immediate pleasures.
 		</p>
 	</section>
 
@@ -103,7 +109,9 @@
 		<p>
 			Like layers of the tree, it must come from the good and aligned individual and slowly spread
 			to people in the closest proximity to "infect" as many people with the unified story of our
-			collective lives.
+			collective lives. Family is the most close and intimate part and I am convinced that having
+			your family in order is far more important than the "outside". Only then you can slowly invite
+			more people into your lives in hopes of them becoming friends and later family.
 		</p>
 	</section>
 
@@ -117,11 +125,13 @@
 		<p>
 			The market of ideas needs to be as free and as allowing as the financial markets. I don't
 			think we are yet capable of inventing a wealth distribution system better than capitalism. It
-			needs to be cleaned from monopolies and corporate lobbying but must encourage enterprise and
+			needs to be guarded from monopolies and corporate lobbying, and must encourage enterprise, and
 			scientific endeavors. The issue of monetary corruption and theft can be solved by employing
 			cryptographically proven and open ledgers for public purchases made by the government,
 			especially for large sums of money. Taxation can be automated and rethought in the process of
-			adopting digital currency in government and large business institutions.
+			adopting digital currency in government and large business institutions. Crypto-backed cash
+			must stay at all cost and sufficient exchange mechanisms must be in place, but the fiat
+			moneyprinting needs to be controlled.
 		</p>
 	</section>
 
@@ -134,14 +144,17 @@
 		<p>
 			Nuclear power is the cleanest and safest resource out there. We must invest in the development
 			of cheap electricity - the nuclear waste issue needs to be solved by designating a special
-			globally approved waste site with quotas and reliable disposal funds. We must also keep
-			relying on traditional mineral energy sources like coal and oil, but for production facilities
-			or to utilize in remote places for mining of the crypto coin that I suggested in the previous
-			question - virtually allowing to transmit the value of the consumed sources over the internet.
-			This will allow development in the more remote places as well like the north (which is also
-			very helpful for cooling the mining equipment). Countries like Canada and Russia will benefit
-			greatly, but other countries, have plenty of access to cold, as well as international
-			territories in Antarctica. Energy bound in icebergs and frozen lakes could be accessed.
+			globally approved waste site with quotas and reliable disposal funds. Nuclear waste is also
+			much easier to contain. We must also keep relying on traditional mineral energy sources like
+			coal, oil, but for production facilities or to utilize in remote places for mining of the
+			crypto coin that I suggested in the previous question - virtually allowing to transmit the
+			value of the consumed sources over the internet. This will allow development in the more
+			remote places as well like the north (which is also very helpful for cooling the mining
+			equipment). Northern countries like Canada, Russia and Denmark, will benefit greatly, but even
+			other countries have plenty of access to cold, as well as international territories in
+			Antarctica. Energy bound in icebergs and frozen lakes could be accessed. We should rely on
+			natural gas for heating or as a backup in case of spikes or volatility of the renewable power
+			grid.
 		</p>
 	</section>
 
@@ -153,10 +166,12 @@
 		<p>
 			Environments are reflections of society, when people are poor and insecure they do not think
 			about how ecologically friendly is the plastic straw in their drinks. Only lifting people out
-			of poverty can yield these results as humans have an undying tendency to improve their
-			immediate environments. When they get used to comfort inside their rooms, houses, and
-			neighborhoods will they start to expand their spheres of influence and order and self-govern
-			and self-police other members of communities who do not respect the new rules.
+			of poverty can yield substantive results as humans have an undying tendency to improve their
+			immediate environments and habitats. When people get used to the comfort inside our rooms,
+			houses, and neighborhoods, only then will they start to expand their spheres of influence and
+			order, self-govern and self-police other members of communities who do not respect the new
+			rules of co-habitation. Enforcing these norms and rules top down is not going to work, it
+			needs to be nurtured from within.
 		</p>
 	</section>
 
