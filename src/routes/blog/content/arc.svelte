@@ -68,15 +68,15 @@
 		<i class="my-2">Can we find a unifying story that will guide us as we make our way forward?</i>
 		<p>
 			Yes, I am sure of that. There are very few foundational stories we have, those stories that
-			bind reality and order. Reality and social order is built on beliefs in stories. Story of the
-			constitution, human rights, stories on how we ought to behave in the world. Of course
+			bind reality and order. Reality and social order are built on beliefs in stories. Story of the
+			constitution, human rights, and stories on how we ought to behave in the world. Of course
 			religious stories are at the core, but we have many more - folklore, fairy tales, works of
-			Homer, Shakespeare. All of these stories are about us and we know so little. I'm ashamed to
-			admit that I haven't read them either. How can we then hope for the same type of art and
-			inspiration if we do not even reach out for them. Out of all the story of Jesus is essential,
-			Jesus is the atlas holding the world on his cross and our duty is to help people hear about
-			our story and live to experience the wonders it brings now and can bring in the future! Truth
-			can only be built on truth.
+			Homer, Shakespeare. All of these stories are about us and we know so little of them. How can
+			we then hope for the same type of art and inspiration if we do not even reach out to these
+			stories. And out of all, I've come to believe that the story of Jesus is essential, and He is
+			the atlas holding the world on his cross, and our duty is to help people hear about this
+			story, reflect on it, and recognize themselves in it. Only then we can live to experience the
+			wonders that this living story brings and play a good part in it.
 		</p>
 	</section>
 
@@ -164,6 +164,6 @@
 	<div class="text-center">
 		<p>Best of fortune,</p>
 
-		<p class="text-2xl font-serif">V</p>
+		<a href="#v" title="Vlad Kolbaia" class="text-2xl font-serif">V</a>
 	</div>
 </article>
