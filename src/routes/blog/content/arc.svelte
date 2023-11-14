@@ -143,18 +143,19 @@
 		</i>
 		<p>
 			Nuclear power is the cleanest and safest resource out there. We must invest in the development
-			of cheap electricity - the nuclear waste issue needs to be solved by designating a special
-			globally approved waste site with quotas and reliable disposal funds. Nuclear waste is also
-			much easier to contain. We must also keep relying on traditional mineral energy sources like
-			coal, oil, but for production facilities or to utilize in remote places for mining of the
-			crypto coin that I suggested in the previous question - virtually allowing to transmit the
-			value of the consumed sources over the internet. This will allow development in the more
-			remote places as well like the north (which is also very helpful for cooling the mining
-			equipment). Northern countries like Canada, Russia and Denmark, will benefit greatly, but even
-			other countries have plenty of access to cold, as well as international territories in
-			Antarctica. Energy bound in icebergs and frozen lakes could be accessed. We should rely on
-			natural gas for heating or as a backup in case of spikes or volatility of the renewable power
-			grid.
+			of cheap electricity - even tho the nuclear waste is much easier to contain, the disposal
+			issue needs to be solved by designating a special globally approved waste sites with quotas
+			and reliable disposal funds. We must also keep relying on traditional mineral energy sources
+			like coal, oil and gas, but try to limit it to production facilities or to utilize in remote
+			places for mining of the crypto coin that I suggested in the previous question - virtually
+			allowing to transmit the value of the consumed resources over the internet. This will allow
+			development in the more remote places as well like the north (which is also very helpful for
+			the cooling of the mining equipment). Northern countries like Canada, Russia and Denmark, will
+			benefit greatly, but even other countries have plenty of access to cold, as well as
+			international territories in Antarctica. Energy bound in icebergs and frozen lakes could be
+			partially accessed. We should rely on natural gas for consumer use, heating or as a backup in
+			case of spikes or volatility of the renewable power grid. All-electric 0-carbon renewable
+			paradise is impractical, foolish and frankly impossible.
 		</p>
 	</section>
 
@@ -167,11 +168,11 @@
 			Environments are reflections of society, when people are poor and insecure they do not think
 			about how ecologically friendly is the plastic straw in their drinks. Only lifting people out
 			of poverty can yield substantive results as humans have an undying tendency to improve their
-			immediate environments and habitats. When people get used to the comfort inside our rooms,
-			houses, and neighborhoods, only then will they start to expand their spheres of influence and
-			order, self-govern and self-police other members of communities who do not respect the new
-			rules of co-habitation. Enforcing these norms and rules top down is not going to work, it
-			needs to be nurtured from within.
+			immediate environments and habitats. Education is the next or more often adjacent step. When
+			people get used to the comfort inside our rooms, houses, and neighborhoods, only then will
+			they start to expand their spheres of influence and order, self-govern and self-police other
+			members of communities who do not respect the new rules of co-habitation. Enforcing these
+			norms and rules top down is not going to work, it needs to be nurtured from within.
 		</p>
 	</section>
 
