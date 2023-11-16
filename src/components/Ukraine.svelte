@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { Storage } from '../utils/storage';
 
-	const U24_LINK = 'https://u24.gov.ua/';
+	const DONATION_LINK = 'https://crisisrelief.un.org/t/ukraine';
 
 	let storage: Storage<boolean>;
 	let isShown = false;
@@ -17,7 +17,7 @@
 {#if isShown}
 	<a
 		title="Support Ukraine"
-		href={U24_LINK}
+		href={DONATION_LINK}
 		target="_blank"
 		rel="noreferrer"
 		on:click={() => {
