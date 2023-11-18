@@ -15,6 +15,7 @@
 	import Post from './post.svelte';
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
 	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
+	import BlogMeta from 'src/components/BlogMeta.svelte';
 
 	let route = 'blog';
 	let rounded = true;
@@ -29,9 +30,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Logoi Development - Blog</title>
-</svelte:head>
+<BlogMeta />
 
 {#if route === 'blog'}
 	<div class="flex flex-col justify-between min-h-screen">

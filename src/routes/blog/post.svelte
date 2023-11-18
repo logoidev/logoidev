@@ -8,6 +8,7 @@
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
 	import CodeOnGithub from 'src/components/CodeOnGithub.svelte';
 	import LinkButton from 'src/components/LinkButton/LinkButton.svelte';
+	import BlogMeta from 'src/components/BlogMeta.svelte';
 	export let id: string;
 	$: post = posts.find((p) => p.id === id)!;
 
@@ -28,9 +29,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{post.title} - Logoi Development Blog</title>
-</svelte:head>
+<BlogMeta title={post.title} type="article" url={`/#blog/${post.id}`} previewImageUrl="" />
 
 {#if post}
 	<div>
