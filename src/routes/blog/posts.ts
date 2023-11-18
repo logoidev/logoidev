@@ -12,5 +12,12 @@ export const posts = [
 		published: '2023-11-06T19:11:11.00Z',
 		estimate: 5,
 		gh_discussion_id: 25
+	},
+	{
+		id: 'yazan',
+		title: 'Enacting Yazan',
+		published: '2023-11-18T15:00:00.00Z',
+		estimate: 5,
+		gh_discussion_id: 25
 	}
 ];
