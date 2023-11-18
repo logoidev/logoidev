@@ -9,19 +9,19 @@
 <article class="flex flex-col gap-4 text-xl indent-4">
 	<p>
 		Recently I had a fascinating conversation with a friend - <i>Murad</i>. I am very thankful to
-		him for providing encouragement to move to Canada and for emotional support he gave my wife
+		him for providing encouragement to move to Canada and for the emotional support he gave my wife
 		while we were trying to reunite our family in Ukraine. He is a lifelong student of history, and
-		is assiting the professor in History 101 at University of Waterloo. That’s why in particular I
-		was hoping to discuss with him the current state of the world, conflict and most of all
-		understand his views on Muslim faith and historicity of Mohammed, the Quran, and most of all -
-		Jesus of Nazareth. We discussed much more, it was long and very meaningful dialogue that I now
+		is assisting the professor in History 101 at the University of Waterloo. That’s why in particular I
+		was hoping to discuss with him the current state of the world, conflict, and most of all
+		understand his views on the Muslim faith and the historicity of Mohammed, the Quran, and most of all -
+		Jesus of Nazareth. We discussed much more, it was a long and very meaningful dialogue that I now
 		realize could have been a great podcast. I’ll have to think about these topics for a bit longer,
 		but I do want to note one story in particular.
 	</p>
 
 	<p>
-		Naturally topic of faith and cosmology came up - I shared my Christian view of the creation and
-		being, while he explained his. As Muslim faith is dominant in Azerbaijan - his home country, I
+		Naturally topic of faith and cosmology came up - I shared my Christian view of creation and
+		being, while he explained his. As the Muslim faith is dominant in Azerbaijan - his home country, I
 		assumed Murad was Muslim as well, but I assumed wrong. He shed a lot of light on Islam for me
 		though, and in particular that Islam and Christianity are not incompatible, but something of a
 		<i>“fork”</i> (a term frequently used in programming) - a story sharing the origin but divergent
@@ -68,9 +68,9 @@
 		What Murad shared with me is his religion and cosmology he believes in. He said that he is
 		Tangrian. It’s a worldview native to the nomadic tribes that lived in the territory of modern
 		day Azerbaijan and a culture he feels connected to, much like I want to attach myself to Kyivan
-		Rus'. As a modern day Ukrainian living in Canada I have very little to do with Kyivan Rus’ but I
-		feel like the culture that is the core of my identity was rooted there, and in particular began
-		the day of the Baptism in year 988.
+		Rus'. As a modern-day Ukrainian living in Canada, I have very little to do with Kyivan Rus’ but I
+		feel like the culture that is the core of my identity was rooted there, and in particular, began
+		the day of the Baptism in the year 988.
 	</p>
 
 	<BlogImage
@@ -80,9 +80,9 @@
 	/>
 
 	<p>
-		Tengrians believe that life is in eternal movement of souls and spirits and has no beginnings
+		Tengrians believe that life is an eternal movement of souls and spirits and has no beginnings
 		and no end. The god is often symbolized by the image of a horse moving so fast that you cannot
-		see its legs. In the saddle there’s often a symbol you can also see as a part of the flag of
+		see its legs. In the saddle, there’s often a symbol you can also see as a part of the flag of
 		Mongolia.
 	</p>
 
@@ -103,7 +103,7 @@
 
 	<p>
 		It is depicted as a chalice holding the spirit. It is believed that bodily life begins when the
-		body is filled by many such spirits at birth that unite into one soul, creating the unique
+		body is filled by many such spirits at birth that unite into one soul, creating a unique
 		recipe of the individual, but it does not begin there as spirits are eternal - they simply enter
 		this brief state of “fulfillment” until the body is dead and the spirits are poured back to
 		where they came from, hopefully filing other new souls with their pieces. The god - Tengri, a
@@ -121,13 +121,13 @@
 		Tengri is viewed as the creator of this movement (something similar to
 		<a class="italic underline" target="_blank" href="https://en.wikipedia.org/wiki/Unmoved_mover">
 			Aristotle's prime mover
-		</a>) but who is indifferent to the world and its fate, he does not cast judgement and
-		everything that is permissible is just that - permissible. The morality is subjective in this
-		case. There is however practical recognition that this movement is generally positive and the
+		</a>) but who is indifferent to the world and its fate, he does not cast judgment and
+		everything that is permissible is just that - permissible. Morality is subjective in this
+		case. There is, however, practical recognition that this movement is generally positive, and the
 		movement is forward. What constitutes forward is not fully explained, but at least it’s not
-		movement back. All life is recognized as valuable and human life is among those. It is customary
+		movement back. All life is recognized as valuable, and human life is among those. It is customary
 		when saying farewell to say something roughly translating to <i>“stay alive”</i>, so being alive
-		is considered good and being dead is not.
+		is considered good, and being dead is not.
 	</p>
 
 	<p>
@@ -138,16 +138,16 @@
 	<p>
 		The first one is <b>Shaman</b> - he is something like a ritual master, usually helpful in childbirth
 		and delivery, but is also a healer and a communicator with spirits. Because shaman has a strong connection
-		with spirits he would usually live on the edge of the cities and does not have a family of his own.
+		with spirits, he would usually live on the edge of the cities and does not have a family of his own.
 		It’s a very practical role and has very little to do with the dances and tambourines commonly depicted.
 		Shamans do not provide spiritual guidance or preach, they also do not pronounce prayers as prayer
-		itself is not needed for an indifferent god. Analog to the prayer is meditation that is aimed at
+		itself is not needed for an indifferent god. Analog to the prayer is meditation which is aimed at
 		recognizing the beauty of the moment and slowing down the perception of this movement.
 	</p>
 
 	<p>
 		The second important role is the <b>Ozan</b>. Ozans are bards and storytellers, they travel and
-		share stories of life and represent and support the nature of exchange of ideas, knowledge and
+		share stories of life and represent and support the nature of the exchange of ideas, knowledge and
 		propagation of culture. The means of this function is mostly oral.
 	</p>
 
@@ -159,23 +159,23 @@
 	</p>
 
 	<p>
-		Those are the <u>core functions</u> that requires the cosmology to work and produce a
-		functioning society, free of judgement of God and burdens of absolute truth. We are just
-		passengers temporarily occupying a vessel in the process that never ends. It’s a very optimistic
-		worldview and quite a huge contrast of the
+		Those are the <u>core functions</u> that require the cosmology to work and produce a
+		functioning society, free of the judgment of God and burdens of absolute truth. We are just
+		passengers temporarily occupying a vessel in a process that never ends. It’s a very optimistic
+		worldview and quite a huge contrast between the
 		<a class="underline italic" target="_blank" href="https://en.wikipedia.org/wiki/Eschatology"
 			>Last Judgment</a
-		> - the time when this supposed movement will end. In fact the existence of heaven for tengrians
-		is already kind of a proof that souls are eternal, the only question we seemed to differ is that
-		if we keep our memories and identities in this spirit heaven after death or do not, and also about
-		the nature of such environment.
+		> - the time when this supposed movement will end. In fact the existence of heaven for Tengrians
+		is already kind of proof that souls are eternal, the only question we seemed to differ on is that
+		if we keep our memories and identities in this spirit heaven after death or not, and also about
+		the nature of such an environment.
 	</p>
 
 	<p>
 		While there’s supposedly no hierarchy of spirits, Tengri is recognized as “bigger” or more
 		important than the rest and a primary creator, so there <b>is</b> a hierarchy really. Now the
-		most controversial and dangerous question arose - what description of god fits at the top?
-		Naturally I asked if my friend would be offended if I said that our God (in the form of Old
+		the most controversial and dangerous question arose - what description of god fits at the top?
+		Naturally, I asked if my friend would be offended if I said that our God (in the form of Old
 		Testament <b>YHWH</b>) created Tengri and this cosmic movement and then left and didn’t
 		interfere since - a view held by many known as
 		<a class="italic underline" href="https://en.wikipedia.org/wiki/Deism" target="_blank">Deism.</a
@@ -193,7 +193,7 @@
 	></BlogImage>
 
 	<p>
-		I still chose to believe in a loving and quite attached and interfering God, God who judges,
+		I still chose to believe in a loving and quite attached and interfering God, a God who judges,
 		redeems, and ultimately cares about every single human being and wants a good relationship with
 		us.
 	</p>
@@ -206,8 +206,8 @@
 
 	<p>
 		It was a fascinating dialogue and a fantastic story of a worldview of people who used to live
-		very differently from us. I feel certain resonance with this story - as an immigrant in charge
-		of a big family I’m factually a part of a nomadic tribe and do not have a permanent home. I do
+		very differently from us. I feel a certain resonance with this story - as an immigrant in charge
+		of a big family, I’m factually a part of a nomadic tribe and do not have a permanent home. I do
 		not yet know if we will stay here in Canada or will have to find a new place, what will I get to
 		keep or what will I have to leave behind in this eternal movement, but ultimately I’m reminded
 		of the <i>Job 1:21</i>
