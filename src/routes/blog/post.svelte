@@ -9,10 +9,12 @@
 	import CodeOnGithub from 'src/components/CodeOnGithub.svelte';
 	import LinkButton from 'src/components/LinkButton/LinkButton.svelte';
 	import BlogMeta from 'src/components/BlogMeta.svelte';
+	import { estimateMinutesToRead } from 'src/utils/estimate-time-to-read';
+
 	export let id: string;
 	$: post = posts.find((p) => p.id === id)!;
 
-	console.log('ID', id);
+	let minutesToRead = 0;
 
 	let Post: typeof SvelteComponent | null = null;
 
@@ -26,6 +28,11 @@
 		} else {
 			window.location.hash = '#blog';
 		}
+
+		setTimeout(() => {
+			const articleText = document.querySelector('article')?.textContent || '';
+			minutesToRead = estimateMinutesToRead(articleText);
+		}, 0);
 	});
 </script>
 
@@ -36,7 +43,9 @@
 		<div class="flex flex-col justify-center items-center gap-2 mb-4 relative">
 			<h2 class="text-3xl font-serif text-center">{post.title}</h2>
 
-			<ReadEstimate estimate={post.estimate} />
+			{#if minutesToRead}
+				<ReadEstimate estimate={minutesToRead} />
+			{/if}
 			<Separator />
 		</div>
 

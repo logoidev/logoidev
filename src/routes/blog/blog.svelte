@@ -56,7 +56,7 @@
 									>#{idx + 1}</span
 								>
 								<span>{post.title}</span>
-								<ReadEstimate estimate={post.estimate} />
+								<ReadEstimate estimate={post.minutesToRead} />
 							</a>
 						</li>
 					{/each}
