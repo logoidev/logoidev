@@ -20,6 +20,7 @@
 	import BookMeeting from 'src/components/BookMeeting.svelte';
 	import User from './[slug]/user.svelte';
 	import { UserIds } from 'src/types/user';
+	import Payment from 'src/components/Payment/Payment.svelte';
 
 	let isUnlocked = false;
 	let isNewBannerLoading = false;
@@ -83,6 +84,8 @@
 					onCenterClick={() => (rounded = !rounded)}
 					onUnlock={() => (isUnlocked = true)}
 				/>
+			{:else}
+				<Payment />
 			{/if}
 
 			<Copyright />
