@@ -2,7 +2,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
 import path from 'path';
 
-// import 'dotenv/config';
+import 'dotenv/config';
 
 export default defineConfig({
 	plugins: [sveltekit()],
