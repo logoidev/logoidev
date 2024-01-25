@@ -3,7 +3,7 @@
 	import type Stripe from 'stripe';
 	import { Elements, PaymentElement } from 'svelte-stripe';
 	import { onMount } from 'svelte';
-	import { PUBLIC_STRIPE_KEY } from '$env/static/public';
+	import { PUBLIC_STRIPE_KEY, PUBLIC_GOOGLE_MEASUREMENT_ID } from '$env/static/public';
 	import EmailButton from '../EmailButton.svelte';
 
 	type StripeElements = unknown;
@@ -18,6 +18,9 @@
 	let amount = 1;
 	let donatedAmount = 0;
 	let thankYouShown = false;
+
+	console.log('Stripe key', PUBLIC_STRIPE_KEY);
+	console.log('GA ID', PUBLIC_GOOGLE_MEASUREMENT_ID);
 
 	const getErrorMessage = (error: unknown, fallback = 'Unknown Error') => {
 		if (error instanceof Error) {
