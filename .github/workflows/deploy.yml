@@ -5,6 +5,10 @@ on:
     branches: 'main'
 
 jobs:
+  env:
+    PUBLIC_GOOGLE_MEASUREMENT_ID: ${{ vars.PUBLIC_GOOGLE_MEASUREMENT_ID }}
+    PUBLIC_STRIPE_KEY: ${{ vars.PUBLIC_STRIPE_KEY }}
+    SECRET_STRIPE_KEY: ${{ secrets.SECRET_STRIPE_KEY }}
   build:
     runs-on: ubuntu-latest
     steps:
