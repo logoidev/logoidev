@@ -9,7 +9,6 @@ export const createPaymentIntent = async (amount: number) => {
 		currency: 'usd',
 		// specify what payment methods are allowed
 		// can be card, sepa_debit, ideal, etc...
-		payment_method_types: ['card'],
 		automatic_payment_methods: {
 			enabled: true
 		}

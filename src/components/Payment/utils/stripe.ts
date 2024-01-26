@@ -1,4 +1,4 @@
-import Stripe from 'stripe';
+import { loadStripe } from '@stripe/stripe-js';
 import { PUBLIC_STRIPE_KEY } from '$env/static/public';
 
-export const stripe = new Stripe(PUBLIC_STRIPE_KEY);
+export const getStripe = () => loadStripe(PUBLIC_STRIPE_KEY);

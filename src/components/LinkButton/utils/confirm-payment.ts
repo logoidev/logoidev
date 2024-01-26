@@ -3,8 +3,8 @@ import { stripe } from './stripe';
 export const confirmPayment = () => {
 	const result = await stripe.confirmPayment({
 		elements,
-		// specify redirect: 'if_required' or a `return_url`
-		redirect: 'if_required'
+		redirect: 'if_required' // always for Apple Pay
+		// confirm: true
 	});
 	console.log('Confirm payment', result);
 };
