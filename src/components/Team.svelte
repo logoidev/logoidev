@@ -8,10 +8,7 @@
 	<ul title="Team" class="text-2xl flex items-stretch max-w-md my-4 justify-between">
 		{#each USERS as userData}
 			<li class="justify">
-				<!-- TODO: Does not work with GitHub pages - hash or move away from GH -->
-				<!-- <a href={`/${user.id}`}> -->
 				<NameAvatar {userData} noLastName />
-				<!-- </a> -->
 			</li>
 		{/each}
 	</ul>
