@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Separator from 'src/components/Separator.svelte';
 
-	import { type SvelteComponent, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import BookMeeting from 'src/components/BookMeeting.svelte';
 	import EmailButton from 'src/components/EmailButton.svelte';
 	import { INTRO_EMAIL } from 'src/data/emails';
