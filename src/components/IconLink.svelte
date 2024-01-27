@@ -22,7 +22,7 @@
 				href,
 				target,
 				rel: 'noreferrer'
-		  }
+			}
 		: {};
 
 	const getIconPath = (isDynamic: boolean) => {

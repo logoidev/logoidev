@@ -1,7 +1,7 @@
 <script lang="ts">
 	export let title: string = '';
 	export let type: 'website' | 'article' = 'website';
-	export let url = 'https://logoi.dev/#blog';
+	export let url = 'https://logoi.dev/blog';
 	export let previewImageUrl = '/images/blog.svg';
 	$: fullTitle = title ? `${title} - Logoi Blog` : 'Logoi - Blog';
 </script>

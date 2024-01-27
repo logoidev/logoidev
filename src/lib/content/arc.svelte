@@ -4,7 +4,7 @@
 
 <article class="flex flex-col gap-4 text-xl indent-4">
 	<p>
-		In the <a href="#blog/vision" class="underline">previous post</a> I've touched on the topic of directionlessness,
+		In the <a href="/blog/vision" class="underline">previous post</a> I've touched on the topic of directionlessness,
 		confusion and lack of inspiration. I like to think of myself as an optimistic person, but even I
 		at times feel hopeless with everything that's going on in the world. I share a belief that it is
 		caused by the lack of a unifying positive goal and a great story of how to get there.

@@ -8,7 +8,7 @@
 	export let noLink = false;
 	export let loading = false;
 
-	$: bannerUrl = greek ? './images/banners/logos-greek.svg' : './images/logo-big.svg';
+	$: bannerUrl = greek ? '/images/banners/logos-greek.svg' : '/images/logo-big.svg';
 </script>
 
 {#if withTitle}
@@ -21,8 +21,7 @@
 	{:else if noLink}
 		<Image src={bannerUrl} />
 	{:else}
-		<!-- svelte-ignore a11y-invalid-attribute -->
-		<a href="#">
+		<a href="/">
 			<Image src={bannerUrl} />
 		</a>
 	{/if}

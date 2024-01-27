@@ -33,7 +33,7 @@ export const USERS: Array<UserData> = [
 		// TODO: [6] Rename field to "patterns", add ability to trigger different actions
 		password: [0, 1, 2, 0, 1, 2],
 		unlockImage: '/users/v/unlock.png',
-		has_resume: true,
+		has_resume: false,
 		hourly_rate_usd: 75,
 		calendar_link: 'https://cal.com/logoi-v',
 		socials: [
@@ -133,6 +133,8 @@ export const USERS: Array<UserData> = [
 
 const getInitials = (user: UserData) =>
 	String(user.first_name.at(0)) + String(user.last_name.at(0));
+
+export const getUserById = (userId: string) => USERS.find((u) => u.id === userId);
 
 export const USERS_GROUPED_BY_LEVEL = groupBy<UserData>(USERS, 'level');
 

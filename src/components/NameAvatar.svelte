@@ -34,7 +34,7 @@
 	{/if}
 
 	<a
-		href={clickableLink ? `#${userData.id}` : null}
+		href={clickableLink ? `/${userData.id}` : null}
 		class={clsx('mb-4 text-center text-lg', {
 			'underline decoration-from-font': clickableLink
 		})}

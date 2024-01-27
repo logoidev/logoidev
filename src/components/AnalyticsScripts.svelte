@@ -14,7 +14,7 @@
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-nocheck
 	import { page } from '$app/stores';
-	import { env } from '$env/dynamic/public';
+	import { env } from '$env/static/public';
 	import { browser } from '$app/environment';
 
 	$: {

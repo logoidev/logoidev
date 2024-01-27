@@ -31,7 +31,7 @@
 	rel="stylesheet"
 />
 
-{#if browser && window.location.hash === '#react'}
+{#if browser && window.location.hash === '/quest'}
 	<div id="react-root"></div>
 {/if}
 

@@ -1,4 +1,12 @@
-export const posts = [
+export type Post = {
+	id: string;
+	title: string;
+	published: string;
+	minutesToRead: number;
+	gh_discussion_id: number;
+};
+
+export const posts: Array<Post> = [
 	{
 		id: 'vision',
 		title: 'Logoi and our Vision',
