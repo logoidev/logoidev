@@ -1,4 +1,4 @@
-import { json, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 
 import { getPostById, getBlogPostComponent, type PostId } from '$lib/posts';
 import { MANIFEST } from 'src/shared/constants.js';
