@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { invertBytes, stringToBytes } from 'src/utils/binary';
-	import { nanoid } from 'src/utils/nanoid';
+	import { createId } from 'src/utils/id';
 
 	import BinaryLine from './BinaryLine.svelte';
 	import { svgToPng } from '../SVG/canvg';
@@ -41,7 +41,7 @@
 
 	let id = window.location.hash?.slice(1);
 	if (!id) {
-		id = makeId(COIN, nanoid());
+		id = makeId(COIN, createId());
 		window.location.hash = id;
 	}
 

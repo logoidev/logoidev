@@ -1,37 +1,30 @@
 <script lang="ts">
-	import { nanoid } from 'src/utils/nanoid';
-
 	import Header from '../../../components/Header.svelte';
-	// import Copyright from '../../../components/Copyright.svelte';
+	import Copyright from '../../../components/Copyright.svelte';
 	import RoundCodeWithParams from '../../../components/RoundCode/RoundCodeWithParams.svelte';
-	// import RoundQR from '../../../components/QR/RoundQR/RoundQR.svelte';
-	import { Storage } from 'src/utils/storage';
+	import RoundQR from '../../../components/QR/RoundQR/RoundQR.svelte';
+
 	import type { Coin } from './types';
 
-	const COIN = 'LGI';
+	export let data: Coin | null;
 
-	const makeId = (prefix: string, id: string) => `${prefix}:${id}`;
+	const coin = data;
 
-	const wallet = new Storage<Record<string, Coin>>('logoi_wallet');
-
-	let id = window.location.hash?.slice(1);
-	if (!id) {
-		id = makeId(COIN, nanoid());
-		window.location.hash = id;
-		if (wallet.value) {
-			wallet.value[id] = { id, type: 'LGI', amount: 0, color: 'white' };
-		}
+	$: {
+		console.log('Log', coin);
 	}
 </script>
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif h-screen mt-12">
 	<Header />
 
-	<RoundCodeWithParams {id} />
+	{#if coin}
+		<RoundCodeWithParams id={coin.id} />
+	{/if}
 
 	<br />
 
-	<!-- <RoundQR /> -->
+	<RoundQR />
 
-	<!-- <Copyright /> -->
+	<Copyright />
 </div>

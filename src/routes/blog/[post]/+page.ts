@@ -1,19 +1,21 @@
-import { redirect } from '@sveltejs/kit';
-import { posts } from '../posts.js';
+import { json, redirect } from '@sveltejs/kit';
 
-export async function load({ params: { post: postId = '' } }) {
-	const post = posts.find(({ id }) => id === postId);
+import { getPostById, getBlogPostComponent, type PostId } from '$lib/posts';
+import { MANIFEST } from 'src/shared/constants.js';
 
+export async function load({ params: { post: postId } }) {
+	if (postId === MANIFEST) {
+		return null;
+	}
+
+	const post = getPostById(postId as PostId);
 	if (!post) {
 		redirect(302, '/');
 	}
 
-	const res = await import(`$lib/posts/${post.id}.svelte`);
-	console.log('Res', res);
-
 	try {
-		// const imported = await import(/* @vite-ignore */ `$lib/posts/${post.id}.svelte`);
-		// post.Content = imported.defaut;
+		const res = await getBlogPostComponent(post.id);
+		post.Content = res.default;
 	} catch (e) {
 		console.log('Could not load post', e);
 	}

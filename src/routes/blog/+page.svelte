@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Image from 'src/components/Image.svelte';
 
 	import Socials from 'src/components/Socials/Socials.svelte';
@@ -7,7 +7,7 @@
 	import Copyright from 'src/components/Copyright.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
-	import { posts } from './posts';
+	import { posts } from '$lib/posts';
 
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
 	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';

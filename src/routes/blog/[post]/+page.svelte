@@ -10,7 +10,7 @@
 	import LinkButton from 'src/components/LinkButton/LinkButton.svelte';
 	import BlogMeta from 'src/components/BlogMeta.svelte';
 	import { estimateMinutesToRead } from 'src/utils/estimate-time-to-read';
-	import type { Post } from '../posts.js';
+	import type { Post } from '$lib/posts';
 	import Socials from 'src/components/Socials/Socials.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes.js';
@@ -19,21 +19,18 @@
 
 	import Image from 'src/components/Image.svelte';
 
-	export let data;
+	export let data: Post | null;
 
-	const post: Post = data;
+	console.log('Post', data);
+
+	const post = data!;
 
 	let minutesToRead = 0;
 	let rounded = true;
-	let mounted = false;
 
-	console.log('D', data);
-
-	onMount(async () => {
-		setTimeout(() => {
-			const articleText = document.querySelector('article')?.textContent || '';
-			minutesToRead = estimateMinutesToRead(articleText);
-		}, 0);
+	onMount(() => {
+		const articleText = document.querySelector('article')?.textContent || '';
+		minutesToRead = estimateMinutesToRead(articleText);
 	});
 </script>
 
@@ -57,10 +54,10 @@
 	</div>
 
 	<div class="sm:w-3/4 mx-auto">
-		{#if mounted}
-			<!-- <svelte:component this={Post} id={post.id} /> -->
-		{/if}
-		<CodeOnGithub path={`routes/blog/[post]/content/${post.id}.svelte`} />
+		{#key post.id}
+			<svelte:component this={post.Content} />
+		{/key}
+		<CodeOnGithub path={`lib/posts/${post.id}.svelte`} />
 	</div>
 
 	<div class="flex flex-col justify-center items-center gap-2 mt-4">

@@ -6,3 +6,5 @@ export type Coin = {
 	amount: number;
 	color: 'white' | 'black';
 };
+
+export type CoinMap = Record<string, Coin>;
