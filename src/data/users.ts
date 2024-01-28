@@ -92,7 +92,7 @@ export const USERS: Array<UserData> = [
 		last_name: 'Prokhorenko',
 		memojiCount: 10,
 		level: Level.D,
-		titles: ['Apprentice Software Engineer'],
+		titles: ['Apprentice Engineer'],
 		email: 'ap@logoi.dev',
 		hourly_rate_usd: 0,
 		has_resume: false,

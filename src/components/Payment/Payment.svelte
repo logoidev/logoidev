@@ -10,6 +10,9 @@
 	import Spinner from '../Spinner.svelte';
 
 	export let destination: PaymentDestination = 'main';
+	export let to = 'Logoi';
+	export let give = false;
+	const reward = $$props.$$slots.reward;
 
 	type StripeElements = unknown;
 
@@ -113,7 +116,7 @@
 
 <div class="flex justify-center font-sans">
 	<form on:submit|preventDefault={submit} class="flex flex-col gap-4 text-center">
-		<p class="flex justify-center mt-4 text-lg">Give to Logoi</p>
+		<p class="flex justify-center mt-4 text-lg">Give to {to}</p>
 		{#if !stripe}
 			<div>Stipe not initialised</div>
 		{:else if !paymentIntentId}
@@ -122,6 +125,10 @@
 			<div>
 				<div class="text-green-700">Thank you! ❤️</div>
 				<div class="text-gray-500 mt-2">${donatedAmount} received</div>
+
+				{#if reward}
+					<slot name="reward" />
+				{/if}
 			</div>
 		{:else if thankYouShown}
 			<div class="flex flex-col gap-2">
@@ -131,7 +138,7 @@
 				<div>Please email us though! We have a gift for you.</div>
 
 				<div class="mt-2">
-					<EmailButton email="vlad@logoi.dev" subject="Want to give more" />
+					<EmailButton email="vlad@logoi.dev" subject={`Want to give more to ${to}`} />
 				</div>
 			</div>
 		{:else}
@@ -156,7 +163,7 @@
 
 		{#if !success && !thankYouShown}
 			<button disabled={processing} class="border rounded px-4 py-2 disabled:text-gray-700"
-				>{processing ? '...' : `Pay $${amount}`}</button
+				>{processing ? '...' : `${give ? 'Give' : 'Pay'} $${amount}`}</button
 			>
 
 			{#if isCustomAmountShown}

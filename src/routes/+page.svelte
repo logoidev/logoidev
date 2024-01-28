@@ -28,8 +28,8 @@
 		<Header noLink greek={isUnlocked} loading={isNewBannerLoading} />
 
 		<p class="text-xl max-w-md text-center px-10 my-4">
-			We are a digital design collective trying to infuse liberal arts, philosophy and beauty with
-			the most advanced technology
+			We are a digital design collective<br />working on joining liberal arts with <br /> the most advanced
+			technology
 		</p>
 
 		<Services />

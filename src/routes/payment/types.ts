@@ -1,4 +1,4 @@
-export type PaymentDestination = 'main' | 'coin';
+export type PaymentDestination = 'main' | 'coin' | 'ukraine';
 
 export type CreatePaymentIntentBody = {
 	amount: number;

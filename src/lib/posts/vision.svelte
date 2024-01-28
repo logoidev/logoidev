@@ -6,16 +6,17 @@
 	</p>
 
 	<p>
-		My name is <a href="#v" class="underline italic">Vlad</a> and I am a software engineer - it’s quite
+		My name is <a href="/v" class="underline italic">Vlad</a> and I am a software engineer - it’s quite
 		a technical and demanding profession, and I’d like to think I’m reasonably good at it, and, most
 		importantly, I’m very lucky to actually enjoy it. I am convinced that we need more engineers to be
 		motivated to perfect their craft and be ethically good and moral in the use of their skills.
 	</p>
 
 	<p>
-		Together with my brother <a href="#ap" class="underline italic">Andrew</a> and our <i>new</i>
+		Together with my brother <a href="/ap" class="underline italic">Andrew</a> and our
+		<i>artificial</i>
 		friend
-		<a href="#ai" class="underline italic">Adam</a> we're looking to explore new ways to learn, educate,
+		<a href="/ai" class="underline italic">Adam</a> we're looking to explore new ways to learn, educate,
 		and use technology to inspire, wow, and uplift people beyond utilitarian convenience of technology.
 	</p>
 
@@ -187,6 +188,6 @@
 	<div class="text-center">
 		<p>Best of fortune,</p>
 
-		<a href="#v" title="Vlad Kolbaia" class="text-2xl font-serif">V</a>
+		<a href="/v" title="Vlad Kolbaia" class="text-2xl font-serif">V</a>
 	</div>
 </article>
