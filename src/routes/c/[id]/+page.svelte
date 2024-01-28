@@ -97,8 +97,10 @@
 					break;
 				case error.POSITION_UNAVAILABLE:
 					gpsError = 'Could not get your location, please try again later';
+					break;
 				case error.TIMEOUT:
 					gpsError = 'GPS connection timed out, please try again later';
+					break;
 				default:
 					gpsError = 'Unexpected issues while getting your location';
 					break;
