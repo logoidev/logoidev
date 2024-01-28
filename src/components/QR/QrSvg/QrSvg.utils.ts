@@ -147,8 +147,8 @@ export const svgToPng = async (svg: SVGElement, size = 256) => {
 
 export const normaliseQrLocalhostUrl = (url: string) => {
 	if (url.includes('localhost')) {
-		const path = '/' + (url.split('/').pop() || '');
-		return getIndexUrl() + path;
+		const trailing = url.split('/').slice(3).join('/');
+		return getIndexUrl() + '/' + trailing;
 	}
 	return url;
 };

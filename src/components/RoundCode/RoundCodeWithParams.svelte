@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { dev } from '$app/environment';
+	// import { dev } from '$app/environment';
 
 	import RoundCode from './RoundCode.svelte';
 
 	export let id: string;
+	export let counter: number = 0;
 
 	let bytes = 36;
 	let size = 320;
@@ -13,16 +14,23 @@
 	let originX = 160;
 	let originY = 0;
 
-	let areParamsAvailable = dev;
+	let areParamsAvailable = false;
 	let areParamsShown = false;
 </script>
 
-<div class="text-center">
-	<input class="text-center" bind:value={id} />
-	<br />
-	{#if areParamsAvailable}
-		<button on:click={() => (areParamsShown = !areParamsShown)}>Params</button>
-	{/if}
+<div class="text-center mt-4 max-h-[330px]">
+	<RoundCode
+		coinId={id}
+		{counter}
+		{bytes}
+		{size}
+		{angle}
+		{translateX}
+		{translateY}
+		{originX}
+		{originY}
+	/>
+
 	{#if areParamsShown}
 		<div>
 			<div>
@@ -112,7 +120,8 @@
 		</div>
 	{/if}
 	<br />
+	{#if areParamsAvailable}
+		<button on:click={() => (areParamsShown = !areParamsShown)}>Params</button>
+	{/if}
 	<br />
-
-	<RoundCode {bytes} {size} {angle} {translateX} {translateY} {originX} {originY} />
 </div>

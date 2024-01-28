@@ -8,11 +8,15 @@
 	import { getStripe } from './utils/stripe';
 	import type Stripe from 'stripe';
 	import Spinner from '../Spinner.svelte';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	export let destination: PaymentDestination = 'main';
 	export let to = 'Logoi';
+	export let cta = '';
 	export let give = false;
-	const reward = $$props.$$slots.reward;
+	const reward = $$props.$$slots?.reward;
 
 	type StripeElements = unknown;
 
@@ -84,9 +88,11 @@
 			console.error(error);
 		} else {
 			success = true;
-			console.log('Success', { result });
-
 			donatedAmount = result.paymentIntent.amount / 100;
+			dispatch('success', {
+				result,
+				amount: donatedAmount
+			});
 		}
 		processing = false;
 	};
@@ -116,7 +122,7 @@
 
 <div class="flex justify-center font-sans">
 	<form on:submit|preventDefault={submit} class="flex flex-col gap-4 text-center">
-		<p class="flex justify-center mt-4 text-lg">Give to {to}</p>
+		<p class="flex justify-center mt-4 text-lg">{cta || `Give to ${to}`}</p>
 		{#if !stripe}
 			<div>Stipe not initialised</div>
 		{:else if !paymentIntentId}

@@ -4,6 +4,7 @@
 	import { normaliseQrLocalhostUrl } from '../QrSvg/QrSvg.utils';
 	import QR from '../QR.svelte';
 	import SideBits from './SideBits.svelte';
+	import clsx from 'clsx';
 
 	const url = normaliseQrLocalhostUrl(window.location.href);
 
@@ -15,8 +16,13 @@
 
 <br />
 
-<div>
-	<div class="outer-circle" style={withBorder ? 'box-shadow: 0 0 0 4px black' : ''}>
+<div class="max-h-[330px]">
+	<div
+		class="outer-circle"
+		style={clsx({
+			'box-shadow: 0 0 0 4px black': withBorder
+		})}
+	>
 		<div class="qr-center">
 			<QR class="m-1" {url} rounded />
 		</div>

@@ -1,5 +1,5 @@
-import { redirect } from '@sveltejs/kit';
-import { createCoin, type Coin, type CoinType } from 'src/../db/src/entity/coin';
+import { json } from '@sveltejs/kit';
+import { createCoin, type Coin, type CoinType } from 'src/db/entity/coin';
 import { createId } from 'src/utils/id';
 
 const defaultCoinProperties: Omit<Coin, 'id'> = {
@@ -19,8 +19,8 @@ const createCoinData = (
 	...overwrite
 });
 
-export const load = async () => {
+export const GET = async () => {
 	const coinData = createCoinData();
 	const coin = await createCoin(coinData);
-	redirect(302, `/c/${coin.id}`);
+	return json({ ...coin });
 };

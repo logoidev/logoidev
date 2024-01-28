@@ -1,30 +1,76 @@
 <script lang="ts">
-	// import Header from '../../../components/Header.svelte';
-	// import Copyright from '../../../components/Copyright.svelte';
-	// import RoundCodeWithParams from '../../../components/RoundCode/RoundCodeWithParams.svelte';
-	// import RoundQR from '../../../components/QR/RoundQR/RoundQR.svelte';
+	import { goto } from '$app/navigation';
+	import Header from 'src/components/Header.svelte';
+	import Copyright from 'src/components/Copyright.svelte';
+	import RoundCodeWithParams from 'src/components/RoundCode/RoundCodeWithParams.svelte';
+	import RoundQR from 'src/components/QR/RoundQR/RoundQR.svelte';
 
-	import type { Coin } from '../types';
+	import type { Coin } from 'src/db/entity/coin';
+	import { page } from '$app/stores';
+	import Payment from 'src/components/Payment/Payment.svelte';
 
-	export let data: Coin | null;
+	import Socials from 'src/components/Socials/Socials.svelte';
+	import clsx from 'clsx';
 
-	const coin = data;
+	let coinId = $page.params.id;
+	let coin: Coin | null = null;
+	let flippedToFront = true;
+	let isTopUpShown = false;
 
-	$: {
-		console.log('Log', coin);
-	}
+	const fetchCoin = async (id: string) => {
+		const response = await fetch(`/c/${id}`);
+		const json = await response.json();
+		return json as Coin | null;
+	};
+
+	const increaseAmount = async ({
+		detail: { amount: donated }
+	}: {
+		detail: { amount: number };
+	}) => {
+		const amount = coin ? coin.amount + donated : donated;
+		const response = await fetch(`/c/${coin!.id}`, {
+			method: 'POST',
+			body: JSON.stringify({ amount })
+		});
+		coin = await response.json();
+	};
+
+	fetchCoin(coinId).then((c) => {
+		if (c) {
+			coin = c;
+		} else {
+			goto('/');
+		}
+	});
 </script>
 
-<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif h-screen mt-12">
-	<!-- <Header />
+<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif h-screen mt-6">
+	<Header />
 
 	{#if coin}
-		<RoundCodeWithParams id={coin.id} />
+		{#if flippedToFront}
+			<RoundCodeWithParams id={coin.id} counter={coin.amount} />
+		{:else}
+			<RoundQR />
+		{/if}
+
+		<button
+			class="absolute right-[25%] top-[540px] text-2xl"
+			on:click={() => (flippedToFront = !flippedToFront)}>🔄</button
+		>
 	{/if}
 
-	<br />
+	{#if isTopUpShown}
+		<Payment cta="💵 Add value" on:success={increaseAmount} />
+	{:else}
+		<button
+			class={clsx('text-xl', { 'mt-4': !flippedToFront })}
+			on:click={() => (isTopUpShown = true)}>💵 Add $1</button
+		>
+	{/if}
 
-	<RoundQR />
+	<Socials />
 
-	<Copyright /> -->
+	<Copyright />
 </div>

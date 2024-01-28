@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { invertBytes, stringToBytes } from 'src/utils/binary';
-	import { createId } from 'src/utils/id';
 
 	import BinaryLine from './BinaryLine.svelte';
 	import { svgToPng } from '../SVG/canvg';
 
+	export let coinId: string;
+	export let counter = 0;
 	export let bytes = 36;
 	export let size = 320;
 	export let angle = 360 / bytes;
@@ -12,7 +13,6 @@
 	export let translateY = 160;
 	export let originX = 160;
 	export let originY = 0;
-	export let withImage = true;
 
 	let svgElement: SVGElement;
 	let downloadLinkElement: HTMLAnchorElement;
@@ -36,16 +36,7 @@
 		return combinedByteStrings.slice(0, bytes);
 	};
 
-	const makeId = (prefix: string, id: string) => `${prefix}:${id}`;
-	const COIN = 'LGI';
-
-	let id = window.location.hash?.slice(1);
-	if (!id) {
-		id = makeId(COIN, createId());
-		window.location.hash = id;
-	}
-
-	let byteStrings = getCombinedByteStrings(id);
+	let byteStrings = getCombinedByteStrings(coinId);
 
 	const downloadLink = (base64dataUrl: string, fileName: string) => {
 		downloadLinkElement.href = base64dataUrl;
@@ -55,32 +46,36 @@
 
 	const onClick = async () => {
 		const imgDataUrl = await svgToPng(svgElement);
-		downloadLink(imgDataUrl, id);
+		downloadLink(imgDataUrl, coinId);
 	};
 </script>
 
 <div>
-	{#key angle + translateX + translateY + originX + originY}
-		<svg bind:this={svgElement} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-			{#each byteStrings as byte, index}
-				<BinaryLine {byte} {index} {angle} {translateX} {translateY} {originX} {originY} />
-			{/each}
-			{#if withImage}
-				<image
-					role="button"
-					tabindex="0"
-					x="110"
-					y="110"
-					width="100"
-					height="100"
-					href="/favicon.svg"
-					rx="80"
-					on:click={onClick}
-					on:keydown={onClick}
-				/>
-			{/if}
-		</svg>
-	{/key}
-
+	<div class="relative">
+		{#key angle + translateX + translateY + originX + originY}
+			<svg bind:this={svgElement} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+				{#each byteStrings as byte, index}
+					<BinaryLine {byte} {index} {angle} {translateX} {translateY} {originX} {originY} />
+				{/each}
+				{#if counter}
+					<text x={150} y={164} class="text-5xl" font-size="20rem">{counter}</text>
+				{:else}
+					<image
+						role="button"
+						tabindex="0"
+						x="110"
+						y="110"
+						width="100"
+						height="100"
+						href="/favicon.svg"
+						rx="80"
+						on:click={onClick}
+						on:keydown={onClick}
+					/>
+					<div role="presentation" on:click={onClick} on:keydown={onClick}>{counter}</div>
+				{/if}
+			</svg>
+		{/key}
+	</div>
 	<a class="absolute hidden" bind:this={downloadLinkElement} href="0" download>Download</a>
 </div>

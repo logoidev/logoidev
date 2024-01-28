@@ -21,3 +21,19 @@ export const findAllCoins = async () => {
 	const coins = await AppDataSource.manager.find(Coin);
 	return coins;
 };
+
+export const findCoinById = async (id: string) => {
+	await initialiseDb();
+	const coin = await AppDataSource.manager.findOne(Coin, { where: { id } });
+	return coin;
+};
+
+export const updateCoinById = async (id: string, data: Partial<Coin>) => {
+	await initialiseDb();
+	const coin = await findCoinById(id);
+	for (const key of Object.keys(data)) {
+		coin[key] = data[key];
+	}
+	await AppDataSource.manager.save(coin);
+	return coin;
+};

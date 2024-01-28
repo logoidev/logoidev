@@ -304,6 +304,6 @@
 	<div class="text-center">
 		<p>Stay alive people,</p>
 
-		<a href="#v" title="Vlad Kolbaia" class="text-2xl font-serif">V</a>
+		<a href="/v" title="Vlad Kolbaia" class="text-2xl font-serif">V</a>
 	</div>
 </article>
