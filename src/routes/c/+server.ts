@@ -1,40 +1,55 @@
 import { json } from '@sveltejs/kit';
-import { AppDataSource } from 'src/db/data-source';
 import { CoinModel, createCoin } from 'src/db/entity/coin';
-import { LocationModel } from 'src/db/entity/location';
+import { LocationModel, createLocation } from 'src/db/entity/location';
 import { createId } from 'src/utils/id';
-import { getRandomIntInRange } from 'src/utils/math';
-import { enhanceCoinWithLocationData } from './[id]/locations/locations.utils';
+
+const locations: Array<LocationModel> = [
+	{
+		latitude: 42.35828799608816,
+		longitude: -71.09420396931398,
+		balance: 100,
+		name: 'MIT Chapel',
+		accuracy: 0,
+		id: 0,
+		timestamp: 0,
+		type: 'christian',
+		coin_id: '',
+		step_index: 0
+	},
+	{
+		latitude: 42.366907740875504,
+		longitude: -71.10513514102031,
+		id: 1,
+		balance: 0,
+		step_index: 1,
+		coin_id: '',
+		name: 'St. Mary Orthodox Church',
+		accuracy: 0,
+		timestamp: 0,
+		type: 'christian'
+	}
+];
+
+const createLocationsForCoin = async (coin_id: string) =>
+	Promise.all(
+		locations.map((location) => {
+			return createLocation({
+				...location,
+				coin_id
+			});
+		})
+	);
 
 export const GET = async () => {
-	const color = 'white';
-	const type = color === 'white' ? 'christian' : 'secular';
-	const initialLocations = await AppDataSource.manager.find(LocationModel, {
-		where: { type, initial: 1 }
-	});
-	const initialRandomIndex = getRandomIntInRange(0, initialLocations.length - 1);
-	const initialLocation = initialLocations[initialRandomIndex];
-
-	const finalLocations = await AppDataSource.manager.find(LocationModel, {
-		where: { type, initial: 0 }
-	});
-
-	const finalRandomIndex = getRandomIntInRange(0, finalLocations.length - 1);
-	const finalLocation = finalLocations[finalRandomIndex];
-
 	const coinData: CoinModel = {
 		id: createId('LGI'),
-		initial_location_id: initialLocation.id,
-		user_location_id: 0,
-		final_location_id: finalLocation.id
+		color: 'white',
+		step_index: 0
 	};
 
 	const coin = await createCoin(coinData);
 
-	coinData.initial_location = initialLocation;
-	coinData.final_locaiton = finalLocation;
+	await createLocationsForCoin(coin.id);
 
-	const coinExtended = await enhanceCoinWithLocationData(coin, true);
-
-	return json({ ...coinExtended });
+	return json({ ...coin });
 };

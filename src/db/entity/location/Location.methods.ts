@@ -13,7 +13,6 @@ export const createLocation = async (locationModel: LocationModel) => {
 		}
 	}
 
-	console.log('Saving', location);
 	await AppDataSource.manager.save(location);
 	return location;
 };

@@ -3,16 +3,19 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class LocationModel {
 	@PrimaryGeneratedColumn()
-	id: number;
+	id?: number;
 
 	@Column('varchar', { nullable: true, default: null })
 	name: string;
 
 	@Column('varchar', { nullable: true, default: null })
-	type: 'christian' | 'secular' | 'user-path';
+	coin_id: string;
 
-	@Column('int', { nullable: true, default: null })
-	initial: 0 | 1;
+	@Column('varchar', { nullable: true, default: null })
+	type: 'christian' | 'secular' | 'coin-path';
+
+	@Column('int', { default: 0, nullable: false })
+	step_index: number;
 
 	@Column('float')
 	latitude: number;

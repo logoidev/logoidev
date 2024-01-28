@@ -14,32 +14,29 @@
 	import clsx from 'clsx';
 	import MapLink from 'src/components/MapLink.svelte';
 
-	type Coin = CoinModel & {
-		initial_location: LocationModel;
-		user_location?: LocationModel;
-		final_location: LocationModel;
-		next_destination?: LocationModel;
-		distance_meters?: number;
-		be_closer?: boolean;
-		redeemed?: boolean;
-	};
-
 	let coinId = $page.params.id;
-	let coin: Coin | null = null;
+	let coin: CoinModel | null = null;
 	let flippedToFront = true;
 	let isTopUpShown = false;
 	let locating = false;
 	let showImThere = true;
 	let gpsError = '';
+	let error: '' | 'come_closer' = '';
+	let distance: number;
+	let destination: LocationModel;
+	let redeemed = false;
 
-	$: destination = coin?.next_destination;
+	$: {
+		console.log('C', coin);
+		console.log('B', error, distance, destination, redeemed);
+	}
 
 	const fetchCoin = async (id: string) => {
 		const response = await fetch(`/c/${id}`);
-		const json = await response.json();
+		const result = await response.json();
 
-		if (json) {
-			coin = json as Coin | null;
+		if (result) {
+			coin = result.coin;
 		} else {
 			goto('/');
 		}
@@ -62,12 +59,28 @@
 		return updateCoin({ balance });
 	};
 
-	const fetchSyncLocation = async (loc: Partial<LocationModel & { here?: boolean }>) => {
+	type ApiResponse = {
+		coin: CoinModel;
+		distance: number;
+		destination: LocationModel;
+		error: '' | 'come_closer';
+		redeemed: boolean;
+	};
+	const applyApiResult = (result: ApiResponse) => {
+		coin = result.coin;
+		distance = result.distance;
+		destination = result.destination;
+		error = result.error;
+		redeemed = result.redeemed;
+	};
+
+	const updateCoinLocation = async (loc: Partial<LocationModel & { here?: boolean }>) => {
 		const response = await fetch(`/c/${coinId}/locations`, {
 			method: 'POST',
 			body: JSON.stringify(loc)
 		});
-		coin = await response.json();
+		const result = await response.json();
+		applyApiResult(result);
 	};
 
 	const updateUserLocation = async (here = false) => {
@@ -78,8 +91,7 @@
 			const { coords, timestamp } = await new Promise<GeolocationPosition>((resolve, reject) =>
 				navigator.geolocation.getCurrentPosition(resolve, reject)
 			);
-			await fetchSyncLocation({
-				here,
+			await updateCoinLocation({
 				accuracy: coords.accuracy,
 				latitude: coords.latitude,
 				longitude: coords.longitude,
@@ -142,9 +154,9 @@
 		<div class="text-2xl mt-6 flex items-center">
 			<button class="text-2xl relative -left-32 -top-16" on:click={flipColor}> 🌗 </button>
 			<button
-				on:click={() => (coin?.stage !== 'initial' ? (isTopUpShown = true) : updateUserLocation())}
+				on:click={() => (coin?.step_index !== 0 ? (isTopUpShown = true) : updateUserLocation())}
 			>
-				{coin?.color === 'white' ? (coin.stage !== 'initial' ? '⬆️' : '⬇️') : '⬆️'}
+				{coin?.color === 'white' ? (coin?.step_index !== 0 ? '⬆️' : '⬇️') : '⬆️'}
 			</button>
 			<button
 				class="text-2xl relative left-32 -top-16"
@@ -156,11 +168,11 @@
 
 		<button
 			class="text-2xl border rounded px-4 py-2 flex items-center gap-1 mt-5"
-			on:click={() => (coin?.stage !== 'initial' ? (isTopUpShown = true) : updateUserLocation())}
+			on:click={() => (coin?.step_index !== 0 ? (isTopUpShown = true) : updateUserLocation())}
 		>
 			<p class={clsx(locating && 'animate-bounce')}>{locating ? '📍' : '💵'}</p>
 			<span>
-				{coin?.color === 'white' ? (coin.stage === 'initial' ? 'Get' : 'Give') : 'Pay'} $1
+				{coin?.color === 'white' ? (coin.step_index === 0 ? 'Get' : 'Give') : 'Pay'} $1
 			</span>
 		</button>
 
@@ -174,8 +186,8 @@
 			<p>You need to get to</p>
 			<div class="text-lg">{destination.name}</div>
 			<p>Click the icon below and return<br /> to this page once you're there</p>
-			{#if coin?.distance_meters}
-				<p class="text-sm">{`~ ${coin.distance_meters}m away`}</p>
+			{#if distance}
+				<p class="text-sm">{`~ ${distance}m away`}</p>
 			{/if}
 			<MapLink
 				title={destination.name}
@@ -185,19 +197,19 @@
 			>
 
 			{#if showImThere}
-				{#if !coin?.redeemed}
+				{#if !redeemed}
 					<button on:click={() => updateUserLocation(true)} class="border rounded px-4 py-2">
 						✅ I'm here
 					</button>
 				{/if}
 
-				{#if coin?.be_closer}
+				{#if error === 'come_closer'}
 					<div class="text-lg mt-2">
 						Doesn't seem like it, you should <br />
 						be within 10 meters of the bulding<br />
 						go closer and try again!<br />
 					</div>
-				{:else if coin?.redeemed}
+				{:else if redeemed}
 					<div>Great job!</div>
 					<div>You are now encouraged to come inside!</div>
 					<div>The balance of the coin will be donated to the building.</div>
