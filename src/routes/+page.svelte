@@ -34,7 +34,7 @@
 
 		<Services />
 
-		<BookMeeting />
+		<BookMeeting text="Claim your coin 🪙" href="/c" target={undefined} />
 	</div>
 	<div class="flex flex-col justify-center items-center">
 		<Separator widthPercentage={40} />

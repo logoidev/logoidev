@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
-export class Coin {
+export class CoinModel {
 	@PrimaryColumn('varchar')
 	id: string;
 
@@ -21,4 +21,4 @@ export class Coin {
 	createdFor: 'v';
 }
 
-export type CoinType = Coin['type'];
+export type CoinType = CoinModel['type'];
