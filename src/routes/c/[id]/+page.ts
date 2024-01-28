@@ -1,22 +1,17 @@
+import { browser } from '$app/environment';
 import { redirect } from '@sveltejs/kit';
-import { createCoin, getCoinById } from 'src/utils/db';
-import type { Coin } from './types.js';
-import { MANIFEST } from 'src/shared/constants.js';
+import { getCoinById } from 'src/utils/db';
 
 export const load = async ({ params: { id: coinId } }) => {
-	let coin: Coin | null;
+	console.log('Requesting coin', coinId);
 
-	if (coinId === MANIFEST) {
-		coin = null;
-	} else if (coinId === '$') {
-		coin = createCoin();
-	} else {
-		coin = getCoinById(coinId);
-	}
+	const coin = getCoinById(coinId);
 
-	if (!coin) {
+	if (!coin && !browser) {
 		redirect(302, '/');
 	}
+
+	console.log('Got coin', coin);
 
 	return coin;
 };

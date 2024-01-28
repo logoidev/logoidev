@@ -1,4 +1,4 @@
-import type { Coin, CoinMap } from 'src/routes/c/[id]/types';
+import type { Coin, CoinMap, CoinType } from 'src/routes/c/types';
 import { createId, validateId } from 'src/utils/id';
 
 export type StorageType = 'in-memory' | 'local';
@@ -6,7 +6,10 @@ export type StorageType = 'in-memory' | 'local';
 export const defaultCoinProperties: Omit<Coin, 'id'> = {
 	type: 'LGI',
 	amount: 0,
-	color: 'white'
+	color: 'white',
+	version: 1,
+	issued_for: 'v',
+	issued_at: null
 };
 
 export const getCoinByIdShared = (id: string, storage: CoinMap): Coin | null => {
@@ -17,7 +20,8 @@ export const getCoinByIdShared = (id: string, storage: CoinMap): Coin | null => 
 };
 
 export const createCoinShared = (
-	coinId = createId(),
+	type: CoinType = 'LGI',
+	coinId = createId(type),
 	storage: CoinMap,
 	overwrite?: Partial<typeof defaultCoinProperties>
 ) => {
@@ -26,10 +30,11 @@ export const createCoinShared = (
 		return null;
 	}
 
-	const coin = {
+	const coin: Coin = {
 		id: coinId,
 		...defaultCoinProperties,
-		...overwrite
+		...overwrite,
+		issued_at: new Date()
 	};
 
 	if (!validateId(coin.id)) {

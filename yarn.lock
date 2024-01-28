@@ -516,6 +516,11 @@
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
+"@vavite/node-loader@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@vavite/node-loader/-/node-loader-4.0.2.tgz#fb4be44d99338769db29b8d3d8542dd432077b54"
+  integrity sha512-8bPk16xYLThZEMWdFTuyD80WBzZ6pEQrqyylohlUG5WzHe7eJ1oDdqlRDikpMq2V6tKcd4dw148wZkrpFSVVWA==
+
 "@vitest/expect@1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@vitest/expect/-/expect-1.2.2.tgz#39ea22e849bbf404b7e5272786551aa99e2663d0"

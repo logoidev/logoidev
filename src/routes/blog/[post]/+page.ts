@@ -1,13 +1,8 @@
 import { redirect } from '@sveltejs/kit';
 
 import { getPostById, getBlogPostComponent, type PostId } from '$lib/posts';
-import { MANIFEST } from 'src/shared/constants.js';
 
 export async function load({ params: { post: postId } }) {
-	if (postId === MANIFEST) {
-		return null;
-	}
-
 	const post = getPostById(postId as PostId);
 	if (!post) {
 		redirect(302, '/');
