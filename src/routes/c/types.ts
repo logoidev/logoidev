@@ -6,8 +6,7 @@ export type Coin = {
 	amount: number;
 	color: 'white' | 'black';
 	version: number;
-	issued_for: 'v';
-	issued_at: null | Date;
+	issuedFor: 'v';
 };
 
 export type CoinMap = Record<string, Coin>;

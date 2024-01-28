@@ -3,8 +3,10 @@
 	"version": "0.0.1",
 	"type": "module",
 	"private": true,
+	"license": "GPL-3.0-only",
 	"scripts": {
 		"dev": "vite dev --host",
+		"dev:db": "cd ./db && yarn dev",
 		"dev:debug": "vavite-loader vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -18,7 +20,6 @@
 		"react:build": "cd ./react && yarn build && cd ../ && yarn react:copy",
 		"react:copy": "cp -R ./react/dist/ ./static/react",
 		"react:rebuild": "yarn react:build && yarn dev",
-		"postinstall": "cd ./react && yarn",
 		"ci": "yarn format && yarn lint && yarn check",
 		"prepare": "husky install"
 	},
@@ -27,6 +28,7 @@
 		"clsx": "^2.1.0",
 		"nanoid": "^5.0.4",
 		"qrcode": "^1.5.3",
+		"sqlite": "^5.1.1",
 		"stripe": "^14.14.0",
 		"svelte-stripe": "^1.1.3"
 	},
