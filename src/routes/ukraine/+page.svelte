@@ -13,7 +13,6 @@
 	import IconLink from 'src/components/IconLink.svelte';
 
 	import Payment from 'src/components/Payment/Payment.svelte';
-	import Payments from 'src/components/Payments.svelte';
 
 	const referrer = 'logoi';
 	const SRC_EXTERNAL = `?src_external=${referrer}`;
