@@ -11,7 +11,7 @@ export const getNextCoinDestination = async (coin: CoinModel) => {
 		}
 	});
 	const destination = all.filter((a) => a.type !== 'coin-path');
-	console.log(destination);
+
 	return destination[0];
 };
 
@@ -19,22 +19,18 @@ export const getAdditionalCoinData = async (coin: CoinModel, lastCoinLocation: L
 	const destination = await getNextCoinDestination(coin);
 
 	let distance = -1;
-	if (lastCoinLocation) {
+	if (destination && lastCoinLocation) {
 		distance = getDistanceBetweenLocations(lastCoinLocation, destination);
 	}
 
-	let error = '';
+	let error: '' | 'come_closer' = '';
 	const redeemed = false;
 
 	// TOOD: Remove
 	// distance = 15;
 
 	if (distance >= 20) {
-		error = 'come_closer;';
-	} else if (distance !== -1) {
-		coin = (await updateCoinById(coin.id, {
-			step_index: coin.step_index + 1
-		}))!;
+		error = 'come_closer';
 	}
 
 	return { destination, distance, coin, redeemed, error };

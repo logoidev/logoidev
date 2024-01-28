@@ -18,9 +18,12 @@ export const GET = async ({ params: { id: coinId } }) => {
 	const lastCoinLocationsSorted = lastCoinLocations.sort(
 		(a: LocationModel, b: LocationModel) => a.timestamp - b.timestamp
 	);
+	console.log(lastCoinLocations);
 
 	const lastCoinLocation = lastCoinLocationsSorted.pop();
+
 	const response = await getAdditionalCoinData(coin, lastCoinLocation);
+	console.log('RETURN', response);
 
 	return json(response);
 };

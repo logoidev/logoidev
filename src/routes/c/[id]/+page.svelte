@@ -25,6 +25,7 @@
 	let distance: number;
 	let destination: LocationModel;
 	let redeemed = false;
+	let iAmHereClicked = false;
 
 	$: {
 		console.log('C', coin);
@@ -83,7 +84,7 @@
 		applyApiResult(result);
 	};
 
-	const updateUserLocation = async (here = false) => {
+	const updateUserLocation = async () => {
 		try {
 			locating = true;
 
@@ -196,17 +197,35 @@
 				>Get there</MapLink
 			>
 
+			<a
+				class="mb-4"
+				title="Coming soon to Niantic"
+				href="https://nianticlabs.com/src_external=logoi"
+			>
+				<img
+					class="w-[6.5rem] border rounded px-4 py-2"
+					alt="Soon on Niantic"
+					src="/images/external-logos/niantic.png"
+				/>
+			</a>
+
 			{#if showImThere}
 				{#if !redeemed}
-					<button on:click={() => updateUserLocation(true)} class="border rounded px-4 py-2">
+					<button
+						on:click={() => {
+							updateUserLocation();
+							iAmHereClicked = true;
+						}}
+						class="border rounded px-4 py-2"
+					>
 						✅ I'm here
 					</button>
 				{/if}
 
-				{#if error === 'come_closer'}
+				{#if iAmHereClicked && !locating && error === 'come_closer'}
 					<div class="text-lg mt-2">
 						Doesn't seem like it, you should <br />
-						be within 10 meters of the bulding<br />
+						be within 20 meters of the bulding<br />
 						go closer and try again!<br />
 					</div>
 				{:else if redeemed}

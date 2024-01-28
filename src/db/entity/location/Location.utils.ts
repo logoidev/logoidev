@@ -22,5 +22,5 @@ export const getDistanceBetweenLocations = (a: LocationModel, b: LocationModel) 
 	const a1 = locationToCoordinate(a);
 	const b1 = locationToCoordinate(b);
 	const distance = getDistance(a1, b1);
-	return distance * 1.2;
+	return Math.floor(distance * 1.2);
 };

@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
 
 import { LocationModel, createLocation } from 'src/db/entity/location';
-import { findCoinById } from 'src/db/entity/coin';
+import { findCoinById, updateCoinById } from 'src/db/entity/coin';
 import { getAdditionalCoinData } from '../helpers.js';
 
 export const POST = async ({ request, params: { id: coinId } }) => {
@@ -18,7 +18,15 @@ export const POST = async ({ request, params: { id: coinId } }) => {
 		coin_id: coinId
 	});
 
-	const response = getAdditionalCoinData(coin, currentCoinLocation);
+	const response = await getAdditionalCoinData(coin, currentCoinLocation);
+
+	console.log('GPS res', response);
+
+	if (response.error !== 'come_closer') {
+		response.coin = (await updateCoinById(coin.id, {
+			step_index: coin.step_index + 1
+		}))!;
+	}
 
 	return json(response);
 };
