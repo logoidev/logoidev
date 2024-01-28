@@ -12,19 +12,34 @@
 
 	import Socials from 'src/components/Socials/Socials.svelte';
 	import clsx from 'clsx';
+	import MapLink from 'src/components/MapLink.svelte';
+
+	type Coin = CoinModel & {
+		initial_location: LocationModel;
+		user_location?: LocationModel;
+		final_location: LocationModel;
+		next_destination?: LocationModel;
+		distance_meters?: number;
+		be_closer?: boolean;
+		redeemed?: boolean;
+	};
 
 	let coinId = $page.params.id;
-	let coin: CoinModel | null = null;
+	let coin: Coin | null = null;
 	let flippedToFront = true;
 	let isTopUpShown = false;
 	let locating = false;
+	let showImThere = true;
+	let gpsError = '';
+
+	$: destination = coin?.next_destination;
 
 	const fetchCoin = async (id: string) => {
 		const response = await fetch(`/c/${id}`);
 		const json = await response.json();
 
 		if (json) {
-			coin = json as CoinModel | null;
+			coin = json as Coin | null;
 		} else {
 			goto('/');
 		}
@@ -43,22 +58,19 @@
 	}: {
 		detail: { amount: number };
 	}) => {
-		const amount = coin ? coin.amount + donated : donated;
-		return updateCoin({ amount });
+		const balance = coin ? coin.balance! + donated : donated;
+		return updateCoin({ balance });
 	};
 
-	const fetchSyncLocation = async (loc: Partial<LocationModel>) => {
-		console.log('Saving loc', loc);
+	const fetchSyncLocation = async (loc: Partial<LocationModel & { here?: boolean }>) => {
 		const response = await fetch(`/c/${coinId}/locations`, {
 			method: 'POST',
 			body: JSON.stringify(loc)
 		});
-		const location = await response.json();
-		console.log('Saved location to DB', location);
-		return location;
+		coin = await response.json();
 	};
 
-	const updateUserLocation = async () => {
+	const updateUserLocation = async (here = false) => {
 		try {
 			locating = true;
 
@@ -66,27 +78,37 @@
 			const { coords, timestamp } = await new Promise<GeolocationPosition>((resolve, reject) =>
 				navigator.geolocation.getCurrentPosition(resolve, reject)
 			);
-			const location: Pick<
-				LocationModel,
-				'accuracy' | 'latitude' | 'longitude' | 'timestamp' | 'stage'
-			> = {
+			await fetchSyncLocation({
+				here,
 				accuracy: coords.accuracy,
-				latitude: coords.accuracy,
+				latitude: coords.latitude,
 				longitude: coords.longitude,
-				timestamp,
-				stage: 'initial'
-			};
-			await fetchSyncLocation(location);
-			isTopUpShown = true;
-		} catch (error) {
-			console.log('E', error);
+				timestamp
+			});
+
+			if (coin?.color !== 'white') {
+				isTopUpShown = true;
+			}
+			// @ts-expect-error - same
+		} catch (error: GeolocationPositionError) {
+			switch (error.code) {
+				case error.PERMISSION_DENIED:
+					gpsError = 'We need GPS acces for this experience to work';
+					break;
+				case error.POSITION_UNAVAILABLE:
+					gpsError = 'Could not get your location, please try again later';
+				case error.TIMEOUT:
+					gpsError = 'GPS connection timed out, please try again later';
+				default:
+					gpsError = 'Unexpected issues while getting your location';
+					break;
+			}
 		} finally {
 			locating = false;
 		}
 	};
 
-	// @ts-expect-error - Don't want to extend window right now
-	window.flipColor = () => {
+	const flipColor = () => {
 		const color = coin!.color === 'white' ? 'black' : 'white';
 		return updateCoin({ color });
 	};
@@ -94,7 +116,7 @@
 	fetchCoin(coinId).catch((e) => console.error(e));
 </script>
 
-<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif h-screen mt-6">
+<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mt-6">
 	<Header />
 
 	{#if coin}
@@ -105,7 +127,7 @@
 			})}
 		>
 			{#if flippedToFront}
-				<RoundCodeWithParams id={coin.id} counter={coin.amount} />
+				<RoundCodeWithParams id={coin.id} counter={coin.balance} />
 			{:else}
 				<RoundQR />
 			{/if}
@@ -115,18 +137,76 @@
 	{#if isTopUpShown}
 		<Payment cta="💵 Add value" on:success={increaseAmount} />
 	{:else}
-		<div class="flex items-center">
-			<button class={'text-xl flex items-center gap-1'} on:click={updateUserLocation}>
-				<p class={clsx(locating && 'animate-bounce')}>{locating ? '📍' : '💵'}</p>
-				<span>Add $1</span>
+		<div class="text-2xl mt-6 flex items-center">
+			<button class="text-2xl relative -left-32 -top-16" on:click={flipColor}> 🌗 </button>
+			<button
+				on:click={() => (coin?.stage !== 'initial' ? (isTopUpShown = true) : updateUserLocation())}
+			>
+				{coin?.color === 'white' ? (coin.stage !== 'initial' ? '⬆️' : '⬇️') : '⬆️'}
 			</button>
-			<button class="text-2xl relative left-12" on:click={() => (flippedToFront = !flippedToFront)}>
+			<button
+				class="text-2xl relative left-32 -top-16"
+				on:click={() => (flippedToFront = !flippedToFront)}
+			>
 				🔄
 			</button>
+		</div>
+
+		<button
+			class="text-2xl border rounded px-4 py-2 flex items-center gap-1 mt-5"
+			on:click={() => (coin?.stage !== 'initial' ? (isTopUpShown = true) : updateUserLocation())}
+		>
+			<p class={clsx(locating && 'animate-bounce')}>{locating ? '📍' : '💵'}</p>
+			<span>
+				{coin?.color === 'white' ? (coin.stage === 'initial' ? 'Get' : 'Give') : 'Pay'} $1
+			</span>
+		</button>
+
+		{#if gpsError}
+			<div class="mt-2 text-lg">{gpsError}</div>
+		{/if}
+	{/if}
+
+	{#if destination}
+		<div class="bg-white flex flex-col items-center text-center mt-4">
+			<p>You need to get to</p>
+			<div class="text-lg">{destination.name}</div>
+			<p>Click the icon below and return<br /> to this page once you're there</p>
+			{#if coin?.distance_meters}
+				<p class="text-sm">{`~ ${coin.distance_meters}m away`}</p>
+			{/if}
+			<MapLink
+				title={destination.name}
+				on:click={() => (showImThere = true)}
+				url={`https://www.google.com/maps/search/?api=1&query=${destination.latitude},${destination.longitude}`}
+				>Get there</MapLink
+			>
+
+			{#if showImThere}
+				{#if !coin?.redeemed}
+					<button on:click={() => updateUserLocation(true)} class="border rounded px-4 py-2">
+						✅ I'm here
+					</button>
+				{/if}
+
+				{#if coin?.be_closer}
+					<div class="text-lg mt-2">
+						Doesn't seem like it, you should <br />
+						be within 10 meters of the bulding<br />
+						go closer and try again!<br />
+					</div>
+				{:else if coin?.redeemed}
+					<div>Great job!</div>
+					<div>You are now encouraged to come inside!</div>
+					<div>The balance of the coin will be donated to the building.</div>
+					<div>Thank you! ❤️</div>
+				{/if}
+			{/if}
 		</div>
 	{/if}
 
 	<Socials />
 
-	<Copyright fixed={!isTopUpShown} />
+	<div class="mt-8" />
+	<Copyright />
 </div>

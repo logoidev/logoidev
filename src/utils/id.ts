@@ -1,5 +1,5 @@
 import { customAlphabet } from 'nanoid';
-import type { CoinType } from 'src/routes/c/types';
+import type { CoinType } from 'src/db/entity/coin';
 
 const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

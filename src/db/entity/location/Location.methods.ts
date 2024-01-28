@@ -1,18 +1,18 @@
 import { initialiseDb } from '../..';
 import { AppDataSource } from '../../data-source';
-import { LocationModel } from './Locaiton.model';
+import { LocationModel } from './Location.model';
 
 export const createLocation = async (locationModel: LocationModel) => {
 	await initialiseDb();
 
 	const location = new LocationModel();
-	location.id = locationModel.id;
-	location.coinId = locationModel.coinId;
-	location.stage = locationModel.stage;
-	location.accuracy = locationModel.accuracy;
-	location.latitude = locationModel.latitude;
-	location.longitude = locationModel.latitude;
-	location.timestamp = locationModel.timestamp;
+
+	for (const key of Object.keys(locationModel)) {
+		if (key !== 'id') {
+			location[key] = locationModel[key];
+		}
+	}
+
 	console.log('Saving', location);
 	await AppDataSource.manager.save(location);
 	return location;
@@ -24,18 +24,14 @@ export const findAllLocations = async () => {
 	return locations;
 };
 
-export const findLocationsByCoinId = async (coinId: string) => {
-	const locations = await findAllLocations();
-	return locations.find((l) => l.coinId === coinId);
+export const findLocationByCoinId = async (id: number) => {
+	const location = await AppDataSource.manager.findOne(LocationModel, { where: { id } });
+	return location;
 };
 
-export const findLocationById = async (id: string) => {
-	return AppDataSource.manager.findOne(LocationModel, { where: { id } });
-};
-
-export const updateLocationById = async (id: string, data: Partial<LocationModel>) => {
+export const updateLocationById = async (id: number, data: Partial<LocationModel>) => {
 	await initialiseDb();
-	const location = await findLocationById(id);
+	const location = await AppDataSource.manager.find(LocationModel, { where: { id } });
 	for (const key of Object.keys(data)) {
 		if (key !== 'id') {
 			location[key] = data[key];

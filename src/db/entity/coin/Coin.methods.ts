@@ -6,13 +6,13 @@ export const createCoin = async (coinData: CoinModel) => {
 	await initialiseDb();
 
 	const coin = new CoinModel();
-	coin.id = coinData.id;
-	coin.amount = coinData.amount;
-	coin.color = coinData.color;
-	coin.createdFor = coinData.createdFor;
-	coin.type = coinData.type;
-	coin.version = coinData.version;
+
+	for (const key of Object.keys(coinData)) {
+		coin[key] = coinData[key];
+	}
+
 	await AppDataSource.manager.save(coin);
+
 	return coin;
 };
 

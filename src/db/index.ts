@@ -1,11 +1,13 @@
 import { AppDataSource } from './data-source';
+import { populateDb } from './scripts/populate-db';
 
 let isInitialised = false;
 
 export const initialiseDb = async () => {
-	if (!isInitialised) {
+	if (!isInitialised && !AppDataSource.manager.connection.isInitialized) {
 		await AppDataSource.initialize();
 		isInitialised = true;
+		await populateDb();
 	}
 };
 

@@ -1,20 +1,31 @@
 import { json } from '@sveltejs/kit';
 
-import { LocationModel, createLocation, findAllLocations } from 'src/db/entity/location';
-
-export const GET = async ({ params: { id: coinId } }) => {
-	const locations = await findAllLocations();
-
-	const related = locations.filter((l) => l.coinId === coinId);
-
-	return json(related);
-};
+import { LocationModel, createLocation } from 'src/db/entity/location';
+import { updateCoinById } from 'src/db/entity/coin';
+import { enhanceCoinWithLocationData } from './locations.utils.js';
 
 export const POST = async ({ request, params: { id: coinId } }) => {
-	const body: LocationModel = await request.json();
-	const location = await createLocation({
-		...body,
-		coinId
+	const { here, ...body }: LocationModel & { here?: boolean } = await request.json();
+
+	body.type = 'user-path';
+	const userLocation = await createLocation(body);
+
+	const coin = await updateCoinById(coinId, {
+		user_location_id: userLocation.id,
+		stage: 'en-route'
 	});
-	return json({ ...location });
+
+	if (!coin) {
+		return json(null);
+	}
+
+	const coinExtended = await enhanceCoinWithLocationData(coin);
+
+	if (here && coinExtended.distance_meters >= 10) {
+		coinExtended.be_closer = true;
+	}
+
+	console.log('HERE', coinExtended, here);
+
+	return json({ ...coinExtended });
 };

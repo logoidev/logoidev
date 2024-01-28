@@ -1,2 +1,2 @@
-export * from './Locaiton.model';
+export * from './Location.model';
 export * from './Location.methods';
