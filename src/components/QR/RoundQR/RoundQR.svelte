@@ -14,8 +14,6 @@
 	const bits = getByteStrings(40, 0.5).join('').split('').map(Number);
 </script>
 
-<br />
-
 <div class="max-h-[330px]">
 	<div
 		class="outer-circle"

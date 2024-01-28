@@ -20,7 +20,20 @@
 	const fetchCoin = async (id: string) => {
 		const response = await fetch(`/c/${id}`);
 		const json = await response.json();
-		return json as Coin | null;
+
+		if (json) {
+			coin = json as Coin | null;
+		} else {
+			goto('/');
+		}
+	};
+
+	const updateCoin = async (body: Partial<Coin>) => {
+		const response = await fetch(`/c/${coin!.id}`, {
+			method: 'POST',
+			body: JSON.stringify(body)
+		});
+		coin = await response.json();
 	};
 
 	const increaseAmount = async ({
@@ -29,48 +42,46 @@
 		detail: { amount: number };
 	}) => {
 		const amount = coin ? coin.amount + donated : donated;
-		const response = await fetch(`/c/${coin!.id}`, {
-			method: 'POST',
-			body: JSON.stringify({ amount })
-		});
-		coin = await response.json();
+		return updateCoin({ amount });
 	};
 
-	fetchCoin(coinId).then((c) => {
-		if (c) {
-			coin = c;
-		} else {
-			goto('/');
-		}
-	});
+	// @ts-expect-error - Don't want to extend window right now
+	window.flipColor = () => {
+		const color = coin!.color === 'white' ? 'black' : 'white';
+		return updateCoin({ color });
+	};
+
+	fetchCoin(coinId).catch((e) => console.error(e));
 </script>
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif h-screen mt-6">
 	<Header />
 
 	{#if coin}
-		{#if flippedToFront}
-			<RoundCodeWithParams id={coin.id} counter={coin.amount} />
-		{:else}
-			<RoundQR />
-		{/if}
-
-		<button
-			class="absolute right-[25%] top-[540px] text-2xl"
-			on:click={() => (flippedToFront = !flippedToFront)}>🔄</button
+		<div
+			class={clsx('p-4 aspect-square', {
+				'grayscale invert bg-white rounded-full': coin.color === 'black',
+				'!pb-2': flippedToFront
+			})}
 		>
+			{#if flippedToFront}
+				<RoundCodeWithParams id={coin.id} counter={coin.amount} />
+			{:else}
+				<RoundQR />
+			{/if}
+		</div>
 	{/if}
 
 	{#if isTopUpShown}
 		<Payment cta="💵 Add value" on:success={increaseAmount} />
 	{:else}
-		<button
-			class={clsx('text-xl', { 'mt-4': !flippedToFront })}
-			on:click={() => (isTopUpShown = true)}>💵 Add $1</button
-		>
+		<div class="flex gap-2">
+			<button class={clsx('text-xl')} on:click={() => (isTopUpShown = true)}>💵 Add $1</button
+			><button class="text-2xl" on:click={() => (flippedToFront = !flippedToFront)}>🔄</button>
+		</div>
 	{/if}
 
 	<Socials />
 
-	<Copyright />
+	<Copyright fixed={!isTopUpShown} />
 </div>

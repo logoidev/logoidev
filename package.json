@@ -7,7 +7,6 @@
 	"scripts": {
 		"dev": "vite dev --host",
 		"dev:db": "cd ./db && yarn dev",
-		"dev:debug": "vavite-loader vite dev --host",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
@@ -43,7 +42,6 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@typescript-eslint/eslint-plugin": "^6.19.1",
 		"@typescript-eslint/parser": "^6.19.1",
-		"@vavite/node-loader": "^4.0.2",
 		"autoprefixer": "^10.4.17",
 		"dotenv": "^16.4.1",
 		"eslint": "^8.56.0",

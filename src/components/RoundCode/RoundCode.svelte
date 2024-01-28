@@ -50,32 +50,30 @@
 	};
 </script>
 
-<div>
-	<div class="relative">
-		{#key angle + translateX + translateY + originX + originY}
-			<svg bind:this={svgElement} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
-				{#each byteStrings as byte, index}
-					<BinaryLine {byte} {index} {angle} {translateX} {translateY} {originX} {originY} />
-				{/each}
-				{#if counter}
-					<text x={150} y={164} class="text-5xl" font-size="20rem">{counter}</text>
-				{:else}
-					<image
-						role="button"
-						tabindex="0"
-						x="110"
-						y="110"
-						width="100"
-						height="100"
-						href="/favicon.svg"
-						rx="80"
-						on:click={onClick}
-						on:keydown={onClick}
-					/>
-					<div role="presentation" on:click={onClick} on:keydown={onClick}>{counter}</div>
-				{/if}
-			</svg>
-		{/key}
-	</div>
-	<a class="absolute hidden" bind:this={downloadLinkElement} href="0" download>Download</a>
+<div class="relative top-1.5">
+	{#key angle + translateX + translateY + originX + originY}
+		<svg bind:this={svgElement} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+			{#each byteStrings as byte, index}
+				<BinaryLine {byte} {index} {angle} {translateX} {translateY} {originX} {originY} />
+			{/each}
+			{#if counter}
+				<text x={150} y={164} class="text-5xl" font-size="20rem">{counter}</text>
+			{:else}
+				<image
+					role="button"
+					tabindex="0"
+					x="110"
+					y="110"
+					width="100"
+					height="100"
+					href="/favicon.svg"
+					rx="80"
+					on:click={onClick}
+					on:keydown={onClick}
+				/>
+				<div role="presentation" on:click={onClick} on:keydown={onClick}>{counter}</div>
+			{/if}
+		</svg>
+	{/key}
 </div>
+<a class="absolute hidden" bind:this={downloadLinkElement} href="0" download>Download</a>

@@ -18,7 +18,7 @@
 	let areParamsShown = false;
 </script>
 
-<div class="text-center mt-4 max-h-[330px]">
+<div class="text-center">
 	<RoundCode
 		coinId={id}
 		{counter}
@@ -32,7 +32,7 @@
 	/>
 
 	{#if areParamsShown}
-		<div>
+		<div class="absolute -left-32">
 			<div>
 				<input
 					type="range"
@@ -119,9 +119,8 @@
 			</div>
 		</div>
 	{/if}
-	<br />
+
 	{#if areParamsAvailable}
 		<button on:click={() => (areParamsShown = !areParamsShown)}>Params</button>
 	{/if}
-	<br />
 </div>
