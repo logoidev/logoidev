@@ -20,20 +20,22 @@ export const POST = async ({ request, params: { id: coinId } }) => {
 		coin_id: coinId
 	});
 
-	const response = await getAdditionalCoinData(coin, currentCoinLocation, { gps: true });
+	const { reached, response } = await getAdditionalCoinData(coin, currentCoinLocation);
 
-	if (response.reached) {
+	if (reached) {
 		const updated = await updateCoinById(coin.id, {
 			step_index: coin.step_index + 1,
-			next_location_id: undefined
+			next_location_id: undefined,
+			balance: coin?.balance ? coin.balance + 1 : 1
 		});
 		if (!updated) {
 			console.log('Coin disappeared after destination reached');
 		} else {
 			coin = updated;
+			response.coin = coin;
 		}
 
-		const destination = await getNextCoinDestination(coin, true);
+		const destination = await getNextCoinDestination(coin);
 
 		if (destination) {
 			response.destination = destination;

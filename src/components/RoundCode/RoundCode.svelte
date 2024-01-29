@@ -69,6 +69,7 @@
 					height="100"
 					href="/favicon.svg"
 					rx="80"
+					fill={color}
 					on:click={onClick}
 					on:keydown={onClick}
 				/>

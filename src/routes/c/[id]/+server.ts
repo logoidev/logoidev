@@ -26,7 +26,7 @@ export const GET = async ({ params: { id: coinId } }) => {
 	}
 
 	const lastCoinLocation = await getLastCoinLocation(coin.id);
-	const response = await getAdditionalCoinData(coin, lastCoinLocation);
+	const { response } = await getAdditionalCoinData(coin, lastCoinLocation);
 
 	log(`[log response - /c/${coinId}]`, response);
 

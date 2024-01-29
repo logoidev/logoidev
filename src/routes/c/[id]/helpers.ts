@@ -5,8 +5,8 @@ import { getDistanceBetweenLocations } from 'src/db/entity/location/Location.uti
 import { DISABLE_DISTANCE_CHECK, DISTANCE_LIMIT_M } from 'src/shared/constants';
 import { getRandomIntInRange } from 'src/utils/math';
 
-export const getNextCoinDestination = async (coin: CoinModel, gps = false) => {
-	if (!coin.next_location_id && gps) {
+export const getNextCoinDestination = async (coin: CoinModel) => {
+	if (!coin.next_location_id) {
 		const all = await AppDataSource.manager.find(LocationModel, {
 			where: {
 				coin_id: coin.id,
@@ -18,7 +18,7 @@ export const getNextCoinDestination = async (coin: CoinModel, gps = false) => {
 		// TODO: Move filtering to the SQL part
 		const destinations = all
 			.filter((l) => l.type !== 'coin-path')
-			.filter((l) => (coin.step_index === 0 ? l.is_first : !l.is_first));
+			.filter((l) => (coin.step_index === 1 ? l.is_first : !l.is_first));
 
 		const index = getRandomIntInRange(0, destinations.length - 1);
 		const randomLocation = destinations[index];
@@ -29,23 +29,17 @@ export const getNextCoinDestination = async (coin: CoinModel, gps = false) => {
 		} else {
 			return null;
 		}
-	} else if (coin.next_location_id) {
+	}
+	{
 		const savedDestination = await findLocationById(coin.next_location_id);
 		return savedDestination;
-	} else {
-		console.log('Could not find the next location');
-		return null;
 	}
 };
 
-export const getAdditionalCoinData = async (
-	coin: CoinModel,
-	lastCoinLocation?: LocationModel,
-	{ gps = false } = {}
-) => {
-	const destination = await getNextCoinDestination(coin, gps);
+export const getAdditionalCoinData = async (coin: CoinModel, lastCoinLocation?: LocationModel) => {
+	const destination = await getNextCoinDestination(coin);
 
-	let distance = -1;
+	let distance = 0;
 	if (destination && lastCoinLocation) {
 		distance = getDistanceBetweenLocations(lastCoinLocation, destination);
 	}
@@ -59,5 +53,5 @@ export const getAdditionalCoinData = async (
 		reached = true;
 	}
 
-	return { coin, destination, distance, reached, error };
+	return { reached, response: { coin, destination, distance, error } };
 };

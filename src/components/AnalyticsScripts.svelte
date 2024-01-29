@@ -1,12 +1,16 @@
 <script context="module" lang="ts">
+	import { browser } from '$app/environment';
+
 	export const trackAnalyticsEvent = (
 		event: string,
 		{ eventName = 'event', ...extra }: Record<string, string | number | boolean> = {}
 	) => {
-		window.gtag(eventName, event, {
-			...extra,
-			page_title: document.title
-		});
+		if (browser) {
+			window.gtag(eventName, event, {
+				...extra,
+				page_title: document.title
+			});
+		}
 	};
 </script>
 
@@ -15,7 +19,6 @@
 	// @ts-nocheck
 	import { page } from '$app/stores';
 	import { env } from '$env/dynamic/public';
-	import { browser } from '$app/environment';
 
 	$: {
 		if (browser) {

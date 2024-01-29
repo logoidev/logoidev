@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295 295" width="295" height="295"
+    preserveAspectRatio="xMidYMid meet"
+    style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);">
+    <defs>
+        <clipPath id="__lottie_element_2">
+            <rect width="1035" height="295" x="0" y="0"></rect>
+        </clipPath>
+        <filter id="__lottie_element_5" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%"
+            height="100%">
+            <feComponentTransfer in="SourceGraphic">
+                <feFuncA type="table" tableValues="1.0 0.0"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+        <mask id="__lottie_element_4" mask-type="alpha">
+            <g filter="url(#__lottie_element_5)">
+                <rect width="300" height="295" x="0" y="0" opacity="0"></rect>
+                <g
+                    transform="matrix(0.5463913083076477,0,0,0.9700000286102295,791.1025390625,8.424995422363281)"
+                    opacity="1" style="display: block;">
+                    <rect width="300" height="295"></rect>
+                </g>
+            </g>
+        </mask>
+        <clipPath id="__lottie_element_12">
+            <path d="M0,0 L1035,0 L1035,295 L0,295z"></path>
+        </clipPath>
+        <filter id="__lottie_element_17" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%"
+            height="100%">
+            <feComponentTransfer in="SourceGraphic">
+                <feFuncA type="table" tableValues="1.0 0.0"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+        <mask id="__lottie_element_16" mask-type="alpha">
+            <g filter="url(#__lottie_element_17)">
+                <rect width="1035" height="295" x="0" y="0" opacity="0"></rect>
+                <g transform="matrix(0.06086999922990799,0,0,1,14.999786376953125,-262.5)"
+                    opacity="1" style="display: block;">
+                    <rect width="1035" height="295"></rect>
+                </g>
+            </g>
+        </mask>
+        <filter id="__lottie_element_24" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%"
+            height="100%">
+            <feComponentTransfer in="SourceGraphic">
+                <feFuncA type="table" tableValues="1.0 0.0"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+        <mask id="__lottie_element_23" mask-type="alpha">
+            <g filter="url(#__lottie_element_24)">
+                <rect width="1035" height="295" x="0" y="0" opacity="0"></rect>
+                <g transform="matrix(0.061000000685453415,0,0,1,83.9324951171875,209.5)" opacity="1"
+                    style="display: block;">
+                    <rect width="1035" height="295"></rect>
+                </g>
+            </g>
+        </mask>
+        <filter id="__lottie_element_31" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%"
+            height="100%">
+            <feComponentTransfer in="SourceGraphic">
+                <feFuncA type="table" tableValues="1.0 0.0"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+        <mask id="__lottie_element_30" mask-type="alpha">
+            <g filter="url(#__lottie_element_31)">
+                <rect width="1035" height="295" x="0" y="0" opacity="0"></rect>
+                <g transform="matrix(0.061000000685453415,0,0,1,157.9324951171875,-262.5)"
+                    opacity="1" style="display: block;">
+                    <rect width="1035" height="295"></rect>
+                </g>
+            </g>
+        </mask>
+        <filter id="__lottie_element_38" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%"
+            height="100%">
+            <feComponentTransfer in="SourceGraphic">
+                <feFuncA type="table" tableValues="1.0 0.0"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+        <mask id="__lottie_element_37" mask-type="alpha">
+            <g filter="url(#__lottie_element_38)">
+                <rect width="1035" height="295" x="0" y="0" opacity="0"></rect>
+                <g transform="matrix(0.061000000685453415,0,0,1,230.9324951171875,260.5)"
+                    opacity="1" style="display: block;">
+                    <rect width="1035" height="295"></rect>
+                </g>
+            </g>
+        </mask>
+        <filter id="__lottie_element_45" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%"
+            height="100%">
+            <feComponentTransfer in="SourceGraphic">
+                <feFuncA type="table" tableValues="1.0 0.0"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+        <mask id="__lottie_element_44" mask-type="alpha">
+            <g filter="url(#__lottie_element_45)">
+                <rect width="1035" height="295" x="0" y="0" opacity="0"></rect>
+                <g
+                    transform="matrix(0.061000000685453415,0,0,0.6406800150871277,300.9324951171875,265.99969482421875)"
+                    opacity="1" style="display: block;">
+                    <rect width="1035" height="295"></rect>
+                </g>
+            </g>
+        </mask>
+        <filter id="__lottie_element_52" filterUnits="objectBoundingBox" x="0%" y="0%" width="100%"
+            height="100%">
+            <feComponentTransfer in="SourceGraphic">
+                <feFuncA type="table" tableValues="1.0 0.0"></feFuncA>
+            </feComponentTransfer>
+        </filter>
+        <mask id="__lottie_element_51" mask-type="alpha">
+            <g filter="url(#__lottie_element_52)">
+                <rect width="1035" height="295" x="0" y="0" opacity="0"></rect>
+                <g
+                    transform="matrix(0.006150000263005495,0,0,0.21356001496315002,427.3661804199219,29.999805450439453)"
+                    opacity="1" style="display: block;">
+                    <rect width="1035" height="295"></rect>
+                </g>
+            </g>
+        </mask>
+    </defs>
+    <g clip-path="url(#__lottie_element_2)">
+        <g transform="matrix(1,0,0,1,517.5,147.5)" opacity="1" style="display: block;">
+            <g opacity="1" transform="matrix(1,0,0,1,32.5,3.121000051498413)">
+                <path fill="transparent" fill-opacity="1"
+                    d=" M628,-216.62100219726562 C628,-216.62100219726562 628,216.62100219726562 628,216.62100219726562 C628,216.62100219726562 -628,216.62100219726562 -628,216.62100219726562 C-628,216.62100219726562 -628,-216.62100219726562 -628,-216.62100219726562 C-628,-216.62100219726562 628,-216.62100219726562 628,-216.62100219726562z"></path>
+            </g>
+        </g>
+        <g clip-path="url(#__lottie_element_12)"
+            transform="matrix(0.756600022315979,0,0,0.756600022315979,5.744461536407471,39.9015007019043)"
+            opacity="1" style="display: block;">
+            <g mask="url(#__lottie_element_51)" style="display: block;">
+                <g
+                    transform="matrix(0.30000001192092896,0,0,0.30000001192092896,308.42498779296875,39.42499923706055)"
+                    opacity="1">
+                    <g opacity="1" transform="matrix(1,0,0,1,200.25,80.25)">
+                        <path fill="rgb(117,0,20)" fill-opacity="1"
+                            d=" M-200,80 C-200,80 200,80 200,80 C200,80 200,-80 200,-80 C200,-80 -200,-80 -200,-80 C-200,-80 -200,80 -200,80z"></path>
+                    </g>
+                </g>
+            </g>
+            <g mask="url(#__lottie_element_44)" style="display: block;">
+                <g
+                    transform="matrix(0.30000001192092896,0,0,0.30000001192092896,308.42498779296875,111.42499542236328)"
+                    opacity="1">
+                    <g opacity="1" transform="matrix(1,0,0,1,80.25,240.25)">
+                        <path fill="rgb(117,0,20)" fill-opacity="1"
+                            d=" M-80,240 C-80,240 80,240 80,240 C80,240 80,-240 80,-240 C80,-240 -80,-240 -80,-240 C-80,-240 -80,240 -80,240z"></path>
+                    </g>
+                </g>
+            </g>
+            <g mask="url(#__lottie_element_37)" style="display: block;">
+                <g
+                    transform="matrix(0.30000001192092896,0,0,0.30000001192092896,236.4250030517578,39.42499542236328)"
+                    opacity="1">
+                    <g opacity="1" transform="matrix(1,0,0,1,80.25,360.25)">
+                        <path fill="rgb(117,0,20)" fill-opacity="1"
+                            d=" M-80,360 C-80,360 80,360 80,360 C80,360 80,-120 80,-120 C80,-120 -80,-120 -80,-120 C-80,-120 -80,360 -80,360z M-80,-360 C-80,-360 80,-360 80,-360 C80,-360 80,-200 80,-200 C80,-200 -80,-200 -80,-200 C-80,-200 -80,-360 -80,-360z"></path>
+                    </g>
+                </g>
+            </g>
+            <g mask="url(#__lottie_element_30)" style="display: block;">
+                <g
+                    transform="matrix(0.30000001192092896,0,0,0.30000001192092896,164.4250030517578,39.42499542236328)"
+                    opacity="1">
+                    <g opacity="1" transform="matrix(1,0,0,1,80.25,360.25)">
+                        <path fill="rgb(117,0,20)" fill-opacity="1"
+                            d=" M-80,360 C-80,360 80,360 80,360 C80,360 80,-360 80,-360 C80,-360 -80,-360 -80,-360 C-80,-360 -80,360 -80,360z"></path>
+                    </g>
+                </g>
+            </g>
+            <g mask="url(#__lottie_element_23)" style="display: block;">
+                <g
+                    transform="matrix(0.30000001192092896,0,0,0.30000001192092896,92.42500305175781,39.42499542236328)"
+                    opacity="1">
+                    <g opacity="1" transform="matrix(1,0,0,1,80.25,280.25)">
+                        <path fill="rgb(117,0,20)" fill-opacity="1"
+                            d=" M-80,280 C-80,280 80,280 80,280 C80,280 80,-280 80,-280 C80,-280 -80,-280 -80,-280 C-80,-280 -80,280 -80,280z"></path>
+                    </g>
+                </g>
+            </g>
+            <g mask="url(#__lottie_element_16)" style="display: block;">
+                <g
+                    transform="matrix(0.30000001192092896,0,0,0.30000001192092896,20.424999237060547,39.42499542236328)"
+                    opacity="1">
+                    <g opacity="1" transform="matrix(1,0,0,1,80.25,360.25)">
+                        <path fill="rgb(117,0,20)" fill-opacity="1"
+                            d=" M-80,360 C-80,360 80,360 80,360 C80,360 80,-360 80,-360 C80,-360 -80,-360 -80,-360 C-80,-360 -80,360 -80,360z"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

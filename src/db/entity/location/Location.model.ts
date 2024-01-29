@@ -8,20 +8,20 @@ export class LocationModel {
 	@Column('varchar', { nullable: true, default: null })
 	name: string;
 
-	@Column('varchar', { nullable: true, default: '' })
-	hint: string;
+	@Column('varchar', { nullable: true, default: undefined })
+	hint?: string;
 
 	@Column('varchar', { nullable: true, default: null })
 	coin_id: string;
 
-	@Column('varchar', { nullable: true, default: null })
-	type: 'christian' | 'secular' | 'coin-path';
+	@Column('varchar', { nullable: true, default: 'christian' })
+	type?: 'christian' | 'secular' | 'coin-path';
 
 	@Column('bool', { nullable: true, default: false })
-	is_first: boolean;
+	is_first?: boolean;
 
 	@Column('int', { default: 0, nullable: false })
-	step_index: number;
+	step_index?: number;
 
 	@Column('float')
 	latitude: number;
@@ -30,11 +30,11 @@ export class LocationModel {
 	longitude: number;
 
 	@Column('float', { default: 0 })
-	accuracy: number;
+	accuracy?: number;
 
 	@Column('float', { nullable: true, default: null })
-	timestamp: number;
+	timestamp?: number;
 
 	@Column('int', { default: 0 })
-	balance: number;
+	balance?: number;
 }

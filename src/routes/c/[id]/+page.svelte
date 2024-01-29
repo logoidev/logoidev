@@ -30,7 +30,7 @@
 	let iAmHereClicked = false;
 	let rewardWanted = true;
 	// TODO: This in theory is not needed and trips could be infinite
-	$: redeemed = coin?.step_index && coin?.step_index >= 2;
+	$: redeemed = coin?.step_index && coin?.step_index >= 3;
 
 	$: {
 		// console.log('Debug', { coin, error, distance, destination, redeemed });
@@ -71,8 +71,8 @@
 		destination: LocationModel;
 		error: '' | 'come_closer';
 	};
+
 	const applyApiResult = (result: ApiResponse) => {
-		console.log('Res', result);
 		coin = result.coin;
 		distance = result.distance;
 		destination = result.destination;
@@ -159,7 +159,7 @@
 	<Header />
 
 	{#if coin}
-		<div class="mt-4 text-center">
+		<div class="my-4 text-center">
 			<div>This is a unique coin and it's yours.</div>
 			<div>It will lead you to a special place</div>
 			<div>
@@ -280,6 +280,7 @@
 					<div>You are now encouraged to come inside!</div>
 					<div>The balance of the coin will be donated to the building.</div>
 					<div>But you can keep the coin, it's now golden ⭐</div>
+					<br />
 					<div>Thank you! ❤️</div>
 				{/if}
 			{/if}
@@ -299,6 +300,43 @@
 				class="w-[6.5rem] rounded px-4 py-2"
 				alt="Soon on Niantic"
 				src="/images/external-logos/niantic.png"
+			/>
+		</a>
+	</div>
+
+	<div class="flex flex-col items-center mt-20">
+		<p class="opacity-60 font-sans text-sm">Built in collaboration with:</p>
+		<br />
+		<div class="flex flex-row justify-center items-center gap-8 relative left-4">
+			<a title="MIT Media Lab" href="https://www.media.mit.edu/">
+				<img class="w-[8rem] -ml-8 rounded" alt="MIT" src="/images/external-logos/mit.svg" />
+			</a>
+
+			<a title="Orthodox Church in America" href="https://www.oca.org/">
+				<img
+					class="h-[8rem] rounded"
+					alt="Orthodox Church in America"
+					src="/images/external-logos/oca.png"
+				/>
+			</a>
+
+			<a title="Reality Hack" href="https://www.mitrealityhack.com/">
+				<img
+					class="w-[8rem] rounded"
+					alt="MIT Reality Hack 2024"
+					src="/images/external-logos/realityhack.png"
+				/>
+			</a>
+		</div>
+
+		<div class="mt-8 opacity-60 font-sans text-sm">
+			And a beautiful City of Boston that inspired us
+		</div>
+		<a class="mt-8" title="City of Boston" href="https://www.boston.gov/">
+			<img
+				class="w-[8rem] rounded"
+				alt="MIT Reality Hack 2024"
+				src="/images/external-logos/boston.png"
 			/>
 		</a>
 	</div>
