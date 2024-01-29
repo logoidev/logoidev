@@ -2,7 +2,6 @@
 	import Image from 'src/components/Image.svelte';
 
 	import Socials from 'src/components/Socials/Socials.svelte';
-	import { SOCIALS } from 'src/data/socials';
 
 	import Copyright from 'src/components/Copyright.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';

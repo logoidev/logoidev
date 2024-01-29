@@ -14,7 +14,7 @@ const LOCATION_DEFAULTS: LocationOptional = {
 	timestamp: 0,
 	type: 'christian',
 	coin_id: '',
-	step_index: 0
+	step_index: 1
 };
 
 const makeLocationWithDefaults = (location: Location) =>

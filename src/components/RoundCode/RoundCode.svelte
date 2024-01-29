@@ -13,6 +13,7 @@
 	export let translateY = 160;
 	export let originX = 160;
 	export let originY = 0;
+	export let color = 'black';
 
 	let svgElement: SVGElement;
 	let downloadLinkElement: HTMLAnchorElement;
@@ -54,7 +55,7 @@
 	{#key angle + translateX + translateY + originX + originY}
 		<svg bind:this={svgElement} width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
 			{#each byteStrings as byte, index}
-				<BinaryLine {byte} {index} {angle} {translateX} {translateY} {originX} {originY} />
+				<BinaryLine {byte} {index} {angle} {translateX} {translateY} {originX} {originY} {color} />
 			{/each}
 			{#if counter}
 				<text x={150} y={164} class="text-5xl" font-size="20rem">{counter}</text>

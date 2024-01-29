@@ -5,6 +5,7 @@
 
 	export let id: string;
 	export let counter: number = 0;
+	export let color = 'black';
 
 	let bytes = 36;
 	let size = 320;
@@ -29,6 +30,7 @@
 		{translateY}
 		{originX}
 		{originY}
+		{color}
 	/>
 
 	{#if areParamsShown}

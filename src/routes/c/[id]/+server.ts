@@ -4,6 +4,7 @@ import { findCoinById, updateCoinById } from 'src/db/entity/coin';
 import { getAdditionalCoinData } from './helpers';
 import { LocationModel } from 'src/db/entity/location';
 import { AppDataSource } from 'src/db/data-source';
+import { log } from 'src/utils/log';
 
 const getLastCoinLocation = async (coinId: string) => {
 	const lastCoinLocations = await AppDataSource.manager.find(LocationModel, {
@@ -20,14 +21,14 @@ export const GET = async ({ params: { id: coinId } }) => {
 	const coin = await findCoinById(coinId);
 
 	if (!coin) {
-		console.log(`[log response - /c/${coinId}] - not found`);
+		log(`[log response - /c/${coinId}] - not found`);
 		return json(null);
 	}
 
 	const lastCoinLocation = await getLastCoinLocation(coin.id);
 	const response = await getAdditionalCoinData(coin, lastCoinLocation);
 
-	console.log(`[log response - /c/${coinId}]`, response);
+	log(`[log response - /c/${coinId}]`, response);
 
 	return json({ ...response });
 };

@@ -10,6 +10,7 @@
 	export let translateY: number;
 	export let originX: number;
 	export let originY: number;
+	export let color = 'black';
 
 	const rects = getRectsPxFromByteString(byte);
 
@@ -27,7 +28,7 @@
 			width={rect.widthPx}
 			height={sizePx}
 			rx={Math.round(sizePx / 2)}
-			fill="black"
+			fill={color}
 		/>
 	{/each}
 </g>

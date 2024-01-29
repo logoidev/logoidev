@@ -10,7 +10,6 @@
 	import Copyright from '../components/Copyright.svelte';
 
 	import { getIndexUrl } from '../shared/routes';
-	import { SOCIALS } from '../data/socials';
 	import { INTRO_EMAIL } from '../data/emails';
 	import IconLink from 'src/components/IconLink.svelte';
 

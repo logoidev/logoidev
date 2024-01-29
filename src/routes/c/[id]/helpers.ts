@@ -2,6 +2,7 @@ import { AppDataSource } from 'src/db/data-source';
 import { updateCoinById, type CoinModel } from 'src/db/entity/coin';
 import { LocationModel, findLocationById } from 'src/db/entity/location';
 import { getDistanceBetweenLocations } from 'src/db/entity/location/Location.utils';
+import { DISABLE_DISTANCE_CHECK, DISTANCE_LIMIT_M } from 'src/shared/constants';
 import { getRandomIntInRange } from 'src/utils/math';
 
 export const getNextCoinDestination = async (coin: CoinModel, gps = false) => {
@@ -14,13 +15,20 @@ export const getNextCoinDestination = async (coin: CoinModel, gps = false) => {
 			}
 		});
 
-		const destination = all.filter((a) => a.type !== 'coin-path');
-		const index = getRandomIntInRange(0, destination.length - 1);
-		const randomLocation = destination[index];
+		// TODO: Move filtering to the SQL part
+		const destinations = all
+			.filter((l) => l.type !== 'coin-path')
+			.filter((l) => (coin.step_index === 0 ? l.is_first : !l.is_first));
 
-		await updateCoinById(coin.id, { next_location_id: randomLocation.id });
+		const index = getRandomIntInRange(0, destinations.length - 1);
+		const randomLocation = destinations[index];
 
-		return randomLocation;
+		if (randomLocation) {
+			await updateCoinById(coin.id, { next_location_id: randomLocation.id });
+			return randomLocation;
+		} else {
+			return null;
+		}
 	} else if (coin.next_location_id) {
 		const savedDestination = await findLocationById(coin.next_location_id);
 		return savedDestination;
@@ -43,14 +51,13 @@ export const getAdditionalCoinData = async (
 	}
 
 	let error: '' | 'come_closer' = '';
-	const redeemed = false;
+	let reached = false;
 
-	// TOOD: Remove
-	// distance = 15;
-
-	if (distance >= 20) {
+	if (!DISABLE_DISTANCE_CHECK && distance >= DISTANCE_LIMIT_M) {
 		error = 'come_closer';
+	} else {
+		reached = true;
 	}
 
-	return { coin: { ...coin }, destination: { ...destination }, distance, redeemed, error };
+	return { coin, destination, distance, reached, error };
 };

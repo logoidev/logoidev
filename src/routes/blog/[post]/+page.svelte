@@ -15,7 +15,6 @@
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes.js';
 	import Copyright from 'src/components/Copyright.svelte';
-	import { SOCIALS } from 'src/data/socials.js';
 
 	import Image from 'src/components/Image.svelte';
 
