@@ -45,7 +45,7 @@
 
 		<IconLink href="blog" target="" title="Blog" iconName="blog" scale={1.2} class="mt-0" />
 
-		<Socials withToggle socials={SOCIALS} />
+		<Socials withToggle />
 
 		<MapLink />
 

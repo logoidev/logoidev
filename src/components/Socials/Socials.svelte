@@ -5,8 +5,9 @@
 	import IconLink from '../IconLink.svelte';
 	import Separator from '../Separator.svelte';
 	import SocialLinkElement from './SocialLinkElement.svelte';
+	import { SOCIALS } from 'src/data/socials';
 
-	export let socials: Array<SocialLink> = [];
+	export let socials: Array<SocialLink> = SOCIALS;
 	export let withSeparators = true;
 	export let withToggle = false;
 

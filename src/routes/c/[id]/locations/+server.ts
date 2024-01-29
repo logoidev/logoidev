@@ -9,6 +9,7 @@ export const POST = async ({ request, params: { id: coinId } }) => {
 
 	const coin = await findCoinById(coinId);
 	if (!coin) {
+		console.log(`[log response - /c/${coinId}/locations] - not found`);
 		return json(null);
 	}
 
@@ -18,15 +19,15 @@ export const POST = async ({ request, params: { id: coinId } }) => {
 		coin_id: coinId
 	});
 
-	const response = await getAdditionalCoinData(coin, currentCoinLocation);
-
-	console.log('GPS res', response);
+	const response = await getAdditionalCoinData(coin, currentCoinLocation, { gps: true });
 
 	if (response.error !== 'come_closer') {
 		response.coin = (await updateCoinById(coin.id, {
 			step_index: coin.step_index + 1
 		}))!;
 	}
+
+	console.log(`[log response - /c/${coinId}/locations]`, response);
 
 	return json(response);
 };

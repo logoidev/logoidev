@@ -23,7 +23,7 @@ export const findAllLocations = async () => {
 	return locations;
 };
 
-export const findLocationByCoinId = async (id: number) => {
+export const findLocationById = async (id: number) => {
 	const location = await AppDataSource.manager.findOne(LocationModel, { where: { id } });
 	return location;
 };

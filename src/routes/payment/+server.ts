@@ -53,8 +53,6 @@ export const POST = async (event) => {
 export const PUT = async (event) => {
 	const body: UpdatePaymentIntentBody = await event.request.json();
 
-	console.log('Got update request', body);
-
 	const response: CreatePaymentIntentResponse = {
 		paymentIntentId: body.paymentIntentId
 	};

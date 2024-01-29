@@ -28,8 +28,7 @@
 	let iAmHereClicked = false;
 
 	$: {
-		console.log('C', coin);
-		console.log('B', error, distance, destination, redeemed);
+		console.log('Debug', { coin, error, distance, destination, redeemed });
 	}
 
 	const fetchCoin = async (id: string) => {
@@ -37,7 +36,7 @@
 		const result = await response.json();
 
 		if (result) {
-			coin = result.coin;
+			applyApiResult(result);
 		} else {
 			goto('/');
 		}
@@ -68,6 +67,7 @@
 		redeemed: boolean;
 	};
 	const applyApiResult = (result: ApiResponse) => {
+		console.log('Res', result);
 		coin = result.coin;
 		distance = result.distance;
 		destination = result.destination;
@@ -197,18 +197,6 @@
 				>Get there</MapLink
 			>
 
-			<a
-				class="mb-4"
-				title="Coming soon to Niantic"
-				href="https://nianticlabs.com/src_external=logoi"
-			>
-				<img
-					class="w-[6.5rem] border rounded px-4 py-2"
-					alt="Soon on Niantic"
-					src="/images/external-logos/niantic.png"
-				/>
-			</a>
-
 			{#if showImThere}
 				{#if !redeemed}
 					<button
@@ -238,8 +226,21 @@
 		</div>
 	{/if}
 
-	<Socials />
+	<a
+		class="mt-8 cursor-not-allowed opacity-75 border-dashed border rounded border-[#ef4b25]"
+		target="_blank"
+		title="Please contact for pre-alpha"
+		href="https://nianticlabs.com/src_external=logoi"
+	>
+		<img
+			class="w-[6.5rem] rounded px-4 py-2"
+			alt="Soon on Niantic"
+			src="/images/external-logos/niantic.png"
+		/>
+	</a>
 
 	<div class="mt-8" />
+	<Socials withToggle />
+
 	<Copyright />
 </div>

@@ -19,6 +19,9 @@ export class CoinModel {
 
 	@Column('int', { default: 0, nullable: false })
 	step_index: number;
+
+	@Column('int', { default: null, nullable: true })
+	next_location_id?: number;
 }
 
 export type CoinType = CoinModel['type'];

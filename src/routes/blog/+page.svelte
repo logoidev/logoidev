@@ -48,7 +48,7 @@
 	</div>
 
 	<div class="flex flex-col justify-center items-center font-serif">
-		<Socials withToggle socials={SOCIALS} />
+		<Socials withToggle />
 
 		<ToggleQr
 			animated

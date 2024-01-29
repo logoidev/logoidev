@@ -8,13 +8,16 @@ export class LocationModel {
 	@Column('varchar', { nullable: true, default: null })
 	name: string;
 
+	@Column('varchar', { nullable: true, default: '' })
+	hint: string;
+
 	@Column('varchar', { nullable: true, default: null })
 	coin_id: string;
 
 	@Column('varchar', { nullable: true, default: null })
 	type: 'christian' | 'secular' | 'coin-path';
 
-	@Column('bool', { nullable: false })
+	@Column('bool', { nullable: true, default: false })
 	is_first: boolean;
 
 	@Column('int', { default: 0, nullable: false })
