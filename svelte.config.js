@@ -11,6 +11,24 @@ export default {
 	kit: {
 		adapter: adapter({
 			// https://kit.svelte.dev/docs/adapter-vercel#deployment-configuration
+			prerender: {
+				enabled: false
+			},
+			ssr: {
+				noExternal: [
+					'@types/qrcode',
+					'canvg',
+					'clsx',
+					'nanoid',
+					'qrcode',
+					'reflect-metadata',
+					'sqlite',
+					'sqlite3',
+					'stripe',
+					'svelte-stripe',
+					'typeorm'
+				]
+			}
 		}),
 		alias: {
 			'src/*': './src/*'
