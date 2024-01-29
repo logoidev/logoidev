@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
 import Stripe from 'stripe';
 import { SECRET_STRIPE_KEY } from '$env/static/private';
+
 // TODO: Setup Apple Pay after getting Canadian Driver's License
 // import { dev } from '$app/environment';
 

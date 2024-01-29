@@ -10,6 +10,7 @@ const locations: Array<LocationModel> = [
 		balance: 100,
 		name: 'MIT Chapel',
 		accuracy: 0,
+		is_first: true,
 		id: 0,
 		timestamp: 0,
 		type: 'christian',
@@ -21,6 +22,7 @@ const locations: Array<LocationModel> = [
 		longitude: -71.10513514102031,
 		id: 1,
 		balance: 0,
+		is_first: false,
 		step_index: 1,
 		coin_id: '',
 		name: 'St. Mary Orthodox Church',
@@ -47,9 +49,11 @@ export const GET = async () => {
 		step_index: 0
 	};
 
-	const coin = await createCoin(coinData);
-
-	await createLocationsForCoin(coin.id);
-
-	return json({ ...coin });
+	try {
+		const coin = await createCoin(coinData);
+		await createLocationsForCoin(coin.id);
+		return json({ ...coin });
+	} catch (error) {
+		return json({ ...coinData });
+	}
 };

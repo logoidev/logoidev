@@ -14,6 +14,9 @@ export class LocationModel {
 	@Column('varchar', { nullable: true, default: null })
 	type: 'christian' | 'secular' | 'coin-path';
 
+	@Column('bool', { nullable: false })
+	is_first: boolean;
+
 	@Column('int', { default: 0, nullable: false })
 	step_index: number;
 
