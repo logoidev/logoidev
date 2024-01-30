@@ -19,13 +19,15 @@
 	const UN_DONATION_LINK = 'https://crisisrelief.un.org/t/ukraine' + SRC_EXTERNAL;
 	const U24_DONATION_LINK = 'https://u24.gov.ua/donate' + SRC_EXTERNAL;
 
-	const warStarted = new Date('02-24-2022').getTime();
+	const warStartedIso = '2022-02-24T00:00:00-02:00';
+	const warStarted = new Date(warStartedIso).getTime();
 	const now = new Date().getTime();
+	const warDurationMs = now - warStarted;
+	let elapsedSeconds = 0;
 
 	let isDirectDonation = false;
 
-	const warDurationMs = now - warStarted;
-	let elapsedSeconds = 0;
+	console.log('V', warStarted, now, warDurationMs);
 
 	setInterval(() => elapsedSeconds++, 1000);
 
