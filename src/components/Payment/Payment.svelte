@@ -16,6 +16,7 @@
 	export let to = 'Logoi';
 	export let cta = '';
 	export let give = false;
+	export let coinId: string | null = null;
 	const reward = $$props.$$slots?.reward;
 
 	type StripeElements = unknown;
@@ -52,7 +53,7 @@
 				// });
 				// console.log('Payment Method:', paymentMethod);
 
-				paymentIntentId = await createPaymentIntent({ amount, destination });
+				paymentIntentId = await createPaymentIntent({ amount, destination, coinId });
 			}
 		} catch (e) {
 			console.error(e);

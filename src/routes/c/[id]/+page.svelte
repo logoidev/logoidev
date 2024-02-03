@@ -193,7 +193,7 @@
 	{/if}
 
 	{#if isTopUpShown}
-		<Payment cta="💵 Add value" on:success={increaseAmount} />
+		<Payment destination="coin" cta="💵 Add value" {coinId} on:success={increaseAmount} />
 	{:else}
 		<div class="text-2xl mt-6 flex items-center">
 			<button class="text-2xl relative -left-32 -top-16" on:click={flipColor}> 🌗 </button>
