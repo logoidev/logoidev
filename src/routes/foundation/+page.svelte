@@ -122,9 +122,11 @@
 		<Copyright startYear={2024} companyName="Logoi Foundation" />
 
 		<div class="fixed left-3 bottom-1.5 bg-white py-1 px-2 rounded bg-opacity-75">
-			<span class="cursor-pointer" role="presentation" on:click={updateEmoji}
-				>{`Made with ${emoji} by `}</span
-			><a class="underline" href={`${ORIGIN}?src_external=foundation`}>Logoi Development</a>
+			<span class="cursor-pointer" role="presentation" on:click={updateEmoji}>
+				<span class="bg-[#eff1f2] font-mono black rounded px-1.5 py-0.5">{'<made />'}</span
+				>{` with ${emoji} by `}
+			</span>
+			<a class="underline" href={`${ORIGIN}?src_external=foundation`}>Logoi Development</a>
 		</div>
 	</div>
 </div>
