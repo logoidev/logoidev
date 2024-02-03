@@ -59,7 +59,7 @@
 	$: emoji = EMOJIS[emojiIndex];
 
 	const updateEmoji = () => {
-		emojiIndex = getRandomIntInRange(0, EMOJIS.length);
+		emojiIndex = getRandomIntInRange(0, EMOJIS.length - 1);
 	};
 
 	updateEmoji();
