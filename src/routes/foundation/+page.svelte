@@ -65,8 +65,8 @@
 	updateEmoji();
 </script>
 
-<div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-4">
-	<div class="flex flex-col justify-center items-center h-screen">
+<div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-8">
+	<div class="flex flex-col justify-center items-center min-h-screen">
 		{#if isUnlocked}
 			<EmailButton
 				class="my-1 h-4 w-4 !p-0 rounded-full text-transparent bg-[#FFD700] hover:bg-blue-500"
@@ -99,7 +99,7 @@
 			<ToggleQr
 				animated
 				{rounded}
-				url={getIndexUrl('/foundation')}
+				url={getIndexUrl('foundation')}
 				imageSrc="/images/qr.svg"
 				password={[0, 1, 2]}
 				onCenterClick={() => (rounded = !rounded)}

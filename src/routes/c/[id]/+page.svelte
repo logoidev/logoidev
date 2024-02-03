@@ -15,7 +15,7 @@
 	import MapLink from 'src/components/MapLink.svelte';
 	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
 	import Spinner from 'src/components/Spinner.svelte';
-	import { DISTANCE_LIMIT_M } from 'src/shared/constants';
+	import { DISTANCE_LIMIT_M, ORIGIN_FOUNDATION } from 'src/shared/constants';
 
 	let coinId = $page.params.id;
 	let coin: CoinModel | null = null;
@@ -147,7 +147,11 @@
 		} else {
 			trackAnalyticsEvent('Star clicked');
 			const button = document.getElementById('cta');
-			button?.scrollIntoView();
+			button?.scrollIntoView({
+				behavior: 'auto',
+				block: 'center',
+				inline: 'center'
+			});
 			button?.focus();
 		}
 	};
@@ -309,12 +313,12 @@
 		<br />
 		<div class="flex flex-row justify-center items-center gap-8 relative left-4">
 			<a title="MIT Media Lab" href="https://www.media.mit.edu/">
-				<img class="w-[8rem] -ml-8 rounded" alt="MIT" src="/images/external-logos/mit.svg" />
+				<img class="w-[6rem] -ml-8 rounded" alt="MIT" src="/images/external-logos/mit.svg" />
 			</a>
 
 			<a title="Orthodox Church in America" href="https://www.oca.org/">
 				<img
-					class="h-[8rem] rounded"
+					class="h-[6rem] rounded"
 					alt="Orthodox Church in America"
 					src="/images/external-logos/oca.png"
 				/>
@@ -322,7 +326,7 @@
 
 			<a title="Reality Hack" href="https://www.mitrealityhack.com/">
 				<img
-					class="w-[8rem] rounded"
+					class="w-[6rem] rounded"
 					alt="MIT Reality Hack 2024"
 					src="/images/external-logos/realityhack.png"
 				/>
@@ -334,10 +338,16 @@
 		</div>
 		<a class="mt-8" title="City of Boston" href="https://www.boston.gov/">
 			<img
-				class="w-[8rem] rounded"
-				alt="MIT Reality Hack 2024"
+				class="w-[6rem] rounded"
+				alt="City of Boston Emblem"
 				src="/images/external-logos/boston.png"
 			/>
+		</a>
+
+		<div class="my-8 opacity-60 font-sans text-sm">Donations powered by</div>
+		<a class="flex flex-col" href={`${ORIGIN_FOUNDATION}?src_external=development`}>
+			<img class="h-16" alt="Logoi Foundation Logo" src="/images/logoi-foundation.svg" />
+			<span class={`text-sm text-center mt-4 font-trajan`}>Foundation</span>
 		</a>
 	</div>
 
