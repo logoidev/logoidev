@@ -5,7 +5,8 @@ export default {
 		fontFamily: {
 			sans: ['ui-sans-serif', 'system-ui'],
 			serif: ['ui-serif'],
-			mono: ['ui-monospace', 'SFMono-Regular']
+			mono: ['ui-monospace', 'SFMono-Regular'],
+			trajan: ['"Trajan Pro"', 'ui-serif']
 		},
 		extend: {}
 	},

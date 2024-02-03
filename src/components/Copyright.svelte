@@ -8,12 +8,14 @@
 	export let withLink = false;
 	export let fixed: boolean = false;
 
-	const COPYRIGHT_SYMBOL = '©';
-	const message = `${COPYRIGHT_SYMBOL} ${COMPANY_LEGAL_NAME}`;
+	export let companyName = COMPANY_LEGAL_NAME;
+	export let startYear = 2022;
+	export let endYear = new Date().getFullYear();
 
-	const START_YEAR = 2022;
-	const END_YEAR = new Date().getFullYear();
-	const year = START_YEAR === END_YEAR ? START_YEAR : `${START_YEAR} - ${END_YEAR}`;
+	const COPYRIGHT_SYMBOL = '©';
+	const message = `${COPYRIGHT_SYMBOL} ${companyName}`;
+
+	const year = startYear === endYear ? startYear : `${startYear} - ${endYear}`;
 </script>
 
 <Ukraine />

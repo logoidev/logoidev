@@ -1,4 +1,4 @@
-import { Level } from '../components/StarsRating/types';
+import { Level } from 'src/components/StarsRating/types';
 import { groupBy } from '../utils/lodash';
 import { type UserData, UserIds } from '../types/user';
 

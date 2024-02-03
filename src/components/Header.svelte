@@ -14,7 +14,7 @@
 
 <div class="flex flex-col items-center" style={`scale: ${scale}`}>
 	{#if withTitle}
-		<span class={`text-3xl text-center mt-4`}>{title}</span>
+		<span class={`text-2xl text-center mt-4 font-trajan`}>{title}</span>
 	{/if}
 
 	<div class={`w-2/3 max-w-sm flex justify-center scale-${scale}`}>

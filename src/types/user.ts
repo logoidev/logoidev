@@ -1,6 +1,6 @@
 import type { IntRange } from 'src/utils/types';
-import type { QrPasswordNumber } from '../components/QR/QrButtons.types';
-import type { Level } from '../components/StarsRating/types';
+import type { QrPasswordNumber } from 'src/components/QR/QrButtons.types';
+import type { Level } from 'src/components/StarsRating/types';
 import type { SocialLink } from './social-link';
 
 export enum UserIds {

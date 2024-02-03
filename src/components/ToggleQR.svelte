@@ -19,8 +19,7 @@
 	export let onUnlock = noop;
 	export let onCenterClick = noop;
 	export let onPngDataUrl = noopWithParam<string | null>;
-
-	let isUnlocked = false;
+	export let isUnlocked = false;
 	let qrCodeSource = isUnlocked ? unlockImageSrc : imageSrc;
 
 	let qrWrapperElement: HTMLDivElement;

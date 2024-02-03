@@ -1,5 +1,5 @@
 <script>
-	import Image from '../components/Image.svelte';
+	import Image from 'src/components/Image.svelte';
 	import { page } from '$app/stores';
 </script>
 
