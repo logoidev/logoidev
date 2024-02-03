@@ -9,7 +9,7 @@
 
 	import { getRandomIntInRange } from 'src/utils/math';
 	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
-	import { ORIGIN } from 'src/shared/constants';
+	import { ORIGIN, ORIGIN_FOUNDATION } from 'src/shared/constants';
 
 	let isUnlocked = false;
 	let rounded = Boolean(getRandomIntInRange(0, 1));
@@ -64,6 +64,19 @@
 
 	updateEmoji();
 </script>
+
+<svelte:head>
+	<title>Logoi Foundation</title>
+	<meta
+		name="description"
+		content="We are a non-profit organisation dedicated to helping people get better access to digital
+		technology and information"
+	/>
+	<meta property="og:title" content="Logoi Foundation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={ORIGIN_FOUNDATION} />
+	<meta property="og:image" content="/images/logoi-foundation.svg" />
+</svelte:head>
 
 <div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-8">
 	<div class="flex flex-col justify-center items-center min-h-screen">
