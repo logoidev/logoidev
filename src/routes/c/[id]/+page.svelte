@@ -16,6 +16,7 @@
 	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
 	import Spinner from 'src/components/Spinner.svelte';
 	import { DISTANCE_LIMIT_M, ORIGIN_FOUNDATION } from 'src/shared/constants';
+	import { getErrorMessage } from 'src/utils/get-error-messge';
 
 	let coinId = $page.params.id;
 	let coin: CoinModel | null = null;
@@ -24,11 +25,12 @@
 	let locating = false;
 	let showImThere = true;
 	let gpsError = '';
-	let error: '' | 'come_closer' = '';
+	let error: string | '' | 'come_closer' = '';
 	let distance: number;
 	let destination: LocationModel;
 	let iAmHereClicked = false;
 	let rewardWanted = true;
+	let isFetchingCoin = false;
 	// TODO: This in theory is not needed and trips could be infinite
 	$: redeemed = coin?.step_index && coin?.step_index >= 3;
 
@@ -37,13 +39,21 @@
 	}
 
 	const fetchCoin = async (id: string) => {
-		const response = await fetch(`/c/${id}`);
-		const result = await response.json();
+		isFetchingCoin = true;
+		try {
+			const response = await fetch(`/c/${id}`);
+			const result = await response.json();
 
-		if (result) {
-			applyApiResult(result);
-		} else {
-			goto('/');
+			if (result) {
+				applyApiResult(result);
+			} else {
+				goto('/');
+			}
+		} catch (e) {
+			console.error(e);
+			error = getErrorMessage(error);
+		} finally {
+			isFetchingCoin = false;
 		}
 	};
 
@@ -156,20 +166,44 @@
 		}
 	};
 
+	const openGoogleMaps = () => {
+		const mapLink = document.getElementById('logoi-icon-pin');
+		mapLink?.click();
+	};
+
+	const formatMeters = (meters: number) => {
+		let metric = 'm';
+		let value = meters;
+
+		if (value >= 1000) {
+			value = Math.ceil(value / 1000);
+			metric = 'km';
+		}
+
+		return `${value}${metric}`;
+	};
+
 	fetchCoin(coinId).catch((e) => console.error(e));
 </script>
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mt-6">
 	<Header />
 
-	{#if coin}
+	{#if isFetchingCoin}
+		<div class="mt-4">Getting something special for you...</div>
+		<div
+			class="flex items-center justify-center mt-6 w-60 h-60 border border-gray-200 bg-gray-100 animate-pulse rounded-full"
+		>
+			<Spinner />
+		</div>
+	{:else if coin}
 		<div class="my-4 text-center">
 			<div>This is a unique coin and it's yours.</div>
 			<div>It will lead you to a special place</div>
 			<div>
-				And there's a <button class={clsx(rewardWanted && 'underline')} on:click={onRewardClicked}
-					>{rewardWanted ? 'reward' : '⭐'}</button
-				> at the end
+				And there's a <button class={clsx(rewardWanted && 'underline')} on:click={onRewardClicked}>
+					{rewardWanted ? 'reward' : '⭐'}
+				</button> at the end
 			</div>
 			<div>It's worth it!</div>
 		</div>
@@ -192,7 +226,7 @@
 		</div>
 	{/if}
 
-	{#if isTopUpShown}
+	{#if coin && isTopUpShown}
 		<Payment destination="coin" cta="💵 Add value" {coinId} on:success={increaseAmount} />
 	{:else}
 		<div class="text-2xl mt-6 flex items-center">
@@ -213,44 +247,51 @@
 			</button>
 		</div>
 
-		<button
-			id="cta"
-			disabled={locating}
-			class={clsx(
-				'text-2xl border rounded px-4 py-2 flex items-center gap-1 mt-5 focus:border-blue-500'
-			)}
-			on:click={() => (coin?.step_index !== 0 ? (isTopUpShown = true) : updateUserLocation())}
-		>
-			<p class={clsx(locating && 'animate-bounce')}>{locating ? '📍' : '💵'}</p>
-			<span>
-				{coin?.color === 'white' ? (coin.step_index === 0 ? 'Get' : 'Give') : 'Pay'} $1
-			</span>
-		</button>
+		{#if !isFetchingCoin && coin}
+			<button
+				id="cta"
+				disabled={locating}
+				class={clsx(
+					'text-2xl border rounded px-4 py-2 flex items-center gap-1 mt-5 focus:border-blue-500'
+				)}
+				on:click={() => (coin?.step_index !== 0 ? (isTopUpShown = true) : updateUserLocation())}
+			>
+				<p class={clsx(locating && 'animate-bounce')}>{locating ? '📍' : '💵'}</p>
+				<span>
+					{coin?.color === 'white' ? (coin.step_index === 0 ? 'Get' : 'Give') : 'Pay'} $1
+				</span>
+			</button>
 
-		{#if gpsError}
-			<div class="mt-2 text-lg">{gpsError}</div>
+			{#if gpsError}
+				<div class="mt-2 text-lg">{gpsError}</div>
+			{/if}
 		{/if}
 	{/if}
 
 	{#if destination}
 		<div class="bg-white flex flex-col items-center text-center mt-4">
 			<p>{redeemed ? 'You went to' : 'You need to get to'}</p>
-			<div class="text-lg">{destination.name}</div>
+			<button class="text-xl" on:click={openGoogleMaps}>
+				{destination.name}
+			</button>
 			{#if !redeemed}
 				<p>Click the icon below and return<br /> to this page once you're there</p>
 				{#if distance}
-					<p class="text-sm">{`~ ${distance}m away`}</p>
+					<p class="text-sm">{`~ ${formatMeters(distance)} away`}</p>
 				{/if}
 			{/if}
+
+			<button class="mt-6" on:click={openGoogleMaps}> Navigate </button>
 			<MapLink
 				title={destination.name}
+				url={`https://www.google.com/maps/search/?api=1&query=${destination.latitude},${destination.longitude}`}
 				on:click={() => {
 					showImThere = true;
 					trackAnalyticsEvent('Map link clicked');
 				}}
-				url={`https://www.google.com/maps/search/?api=1&query=${destination.latitude},${destination.longitude}`}
-				>Get there</MapLink
 			>
+				Get there
+			</MapLink>
 
 			{#if showImThere}
 				{#if !redeemed}
@@ -291,7 +332,7 @@
 		</div>
 	{/if}
 
-	<div class="flex flex-col items-center mt-12">
+	<div class="flex flex-col items-center mt-32">
 		<p class="opacity-60 font-sans text-sm">There's an early alpha build of this</p>
 		<p class="opacity-60 font-sans text-sm">project using AR navigation</p>
 		<a
@@ -308,7 +349,7 @@
 		</a>
 	</div>
 
-	<div class="flex flex-col items-center mt-20">
+	<div class="flex flex-col items-center mt-16">
 		<p class="opacity-60 font-sans text-sm">Built in collaboration with:</p>
 		<br />
 		<div class="flex flex-row justify-center items-center gap-8 relative left-4">

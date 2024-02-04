@@ -34,6 +34,7 @@
 
 <svelte:element
 	this={element}
+	id={`logoi-icon-${iconName}`}
 	role="button"
 	tabindex="0"
 	{...elementProps}
