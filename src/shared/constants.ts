@@ -2,7 +2,7 @@ import { dev } from '$app/environment';
 
 export const ORIGIN = dev ? 'http://localhost:5173' : 'https://logoi.dev';
 
-export const ORIGIN_FOUNDATION = dev ? `${ORIGIN}/foundation` : 'https://logoi.fun';
+export const ORIGIN_FOUNDATION = dev ? `${ORIGIN}/foundation` : 'https://logoi.foundation';
 
 export const CALENDAR_LINK = 'https://cal.com/logoi-v';
 
