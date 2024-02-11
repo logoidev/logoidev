@@ -332,14 +332,14 @@
 					<div>Great job!</div>
 					<div>You are now encouraged to come inside!</div>
 					<div>The balance of the coin will be donated to the building.</div>
-					<div>But you can keep the coin, it's now golden ⭐</div>
+					<div>But you can keep the coin, it's now {secular ? 'silver 🪙' : 'golden ⭐'}</div>
 					<br />
 					<div>Thank you! ❤️</div>
 				{/if}
 
 				{#if coin?.claim_receipt_url}
 					<div class="mt-4 border border-[gold] rounded px-4 py-2">
-						<p>The value of the coin has been donated to the church</p>
+						<p>The value of the coin has been donated to the {secular ? 'location' : 'church'}</p>
 						<a class="underline text-blue-500" target="_blank" href={coin.claim_receipt_url}>
 							View donation receipt
 						</a>
