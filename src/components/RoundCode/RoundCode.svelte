@@ -58,7 +58,7 @@
 				<BinaryLine {byte} {index} {angle} {translateX} {translateY} {originX} {originY} {color} />
 			{/each}
 			{#if counter}
-				<text x={150} y={164} class="text-5xl" font-size="20rem">{counter}</text>
+				<text x={150} y={164} class="coin-counter !p-0 text-5xl" font-size="20rem">{counter}</text>
 			{:else}
 				<image
 					role="button"

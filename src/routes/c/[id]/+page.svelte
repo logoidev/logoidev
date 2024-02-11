@@ -33,10 +33,13 @@
 	let isFetchingCoin = false;
 	// TODO: This in theory is not needed and trips could be infinite
 	$: redeemed = coin?.step_index && coin?.step_index >= 3;
+	// TODO: This needs not to be based on color
+	$: secular = coin?.color === 'black';
+	$: coinColor = coin?.color ?? 'white';
 
-	$: {
-		// console.log('Debug', { coin, error, distance, destination, redeemed });
-	}
+	// $: {
+	// 	console.log('Debug', { coin, coinColor, error, distance, destination, redeemed });
+	// }
 
 	const fetchCoin = async (id: string) => {
 		isFetchingCoin = true;
@@ -119,9 +122,10 @@
 				timestamp
 			});
 
-			if (coin?.color !== 'white') {
-				isTopUpShown = true;
-			}
+			// if (secular) {
+			// 	isTopUpShown = true;
+			// }
+
 			// @ts-expect-error - same
 		} catch (error: GeolocationPositionError) {
 			trackAnalyticsEvent('Location point updated', error);
@@ -146,8 +150,7 @@
 
 	const flipColor = () => {
 		trackAnalyticsEvent('Flip color');
-		const color = coin!.color === 'white' ? 'black' : 'white';
-		return updateCoin({ color });
+		coinColor = coinColor === 'white' ? 'black' : 'white';
 	};
 
 	const onRewardClicked = () => {
@@ -209,9 +212,10 @@
 		</div>
 		<div
 			class={clsx('p-4 aspect-square ', {
-				'grayscale invert bg-white rounded-full': coin.color === 'black',
+				'grayscale invert bg-white rounded-full': coinColor === 'black',
+				'bg-[#700000]': redeemed && coinColor === 'black' && flippedToFront,
 				'!pb-2': flippedToFront,
-				'': redeemed
+				redeemed
 			})}
 		>
 			{#if flippedToFront}
@@ -234,7 +238,7 @@
 			<button
 				on:click={() => (coin?.step_index !== 0 ? (isTopUpShown = true) : updateUserLocation())}
 			>
-				{coin?.color === 'white' ? (coin?.step_index !== 0 ? '⬆️' : '⬇️') : '⬆️'}
+				{secular ? '⬆️' : coin?.step_index !== 0 ? '⬆️' : '⬇️'}
 			</button>
 			<button
 				class="text-2xl relative left-32 -top-16"
@@ -258,7 +262,7 @@
 			>
 				<p class={clsx(locating && 'animate-bounce')}>{locating ? '📍' : '💵'}</p>
 				<span>
-					{coin?.color === 'white' ? (coin.step_index === 0 ? 'Get' : 'Give') : 'Pay'} $1
+					{secular ? 'Pay' : coin.step_index === 0 ? 'Get' : 'Give'} $1
 				</span>
 			</button>
 
@@ -397,3 +401,9 @@
 
 	<Copyright />
 </div>
+
+<style>
+	.redeemed.grayscale.invert :global(.coin-counter) {
+		fill: white !important;
+	}
+</style>
