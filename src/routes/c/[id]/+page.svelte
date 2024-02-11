@@ -15,7 +15,11 @@
 	import MapLink from 'src/components/MapLink.svelte';
 	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
 	import Spinner from 'src/components/Spinner.svelte';
-	import { DISTANCE_LIMIT_M, ORIGIN_FOUNDATION } from 'src/shared/constants';
+	import {
+		DISTANCE_LIMIT_M,
+		ENABLE_CLAIM_RECEIPT_FORM,
+		ORIGIN_FOUNDATION
+	} from 'src/shared/constants';
 	import { getErrorMessage } from 'src/utils/get-error-messge';
 
 	let coinId = $page.params.id;
@@ -37,9 +41,9 @@
 	$: secular = coin?.color === 'black';
 	$: coinColor = coin?.color ?? 'white';
 
-	// $: {
-	// 	console.log('Debug', { coin, coinColor, error, distance, destination, redeemed });
-	// }
+	$: {
+		console.log('Debug', { coin, coinColor, error, distance, destination, redeemed });
+	}
 
 	const fetchCoin = async (id: string) => {
 		isFetchingCoin = true;
@@ -262,7 +266,7 @@
 			>
 				<p class={clsx(locating && 'animate-bounce')}>{locating ? '📍' : '💵'}</p>
 				<span>
-					{secular ? 'Pay' : coin.step_index === 0 ? 'Get' : 'Give'} $1
+					{secular && coin.step_index === 0 ? 'Pay' : coin.step_index === 0 ? 'Get' : 'Give'} $1
 				</span>
 			</button>
 
@@ -332,6 +336,15 @@
 					<br />
 					<div>Thank you! ❤️</div>
 				{/if}
+
+				{#if coin?.claim_receipt_url}
+					<div class="mt-4 border border-[gold] rounded px-4 py-2">
+						<p>The value of the coin has been donated to the church</p>
+						<a class="underline text-blue-500" target="_blank" href={coin.claim_receipt_url}>
+							View donation receipt
+						</a>
+					</div>
+				{/if}
 			{/if}
 		</div>
 	{/if}
@@ -400,6 +413,28 @@
 	<Socials withToggle />
 
 	<Copyright />
+
+	{#if ENABLE_CLAIM_RECEIPT_FORM}
+		<form
+			class="shadow p-2 m-2"
+			on:submit={(e) => {
+				e.preventDefault();
+				// @ts-expect-error - TODO: Move this away from inline later
+				const input = e.target.elements['claim_receipt_url'];
+				const claim_receipt_url = input.value;
+				updateCoin({ claim_receipt_url });
+			}}
+		>
+			<input
+				class="border px-2 py-1 rounded"
+				type="url"
+				required
+				name="claim_receipt_url"
+				value={coin?.claim_receipt_url}
+			/>
+			<button>Update</button>
+		</form>
+	{/if}
 </div>
 
 <style>

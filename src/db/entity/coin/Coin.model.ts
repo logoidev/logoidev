@@ -22,6 +22,9 @@ export class CoinModel {
 
 	@Column('int', { default: null, nullable: true })
 	next_location_id?: number;
+
+	@Column('varchar', { nullable: true, default: undefined })
+	claim_receipt_url?: string;
 }
 
 export type CoinType = CoinModel['type'];
