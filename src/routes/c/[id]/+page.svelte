@@ -213,7 +213,7 @@
 		<div
 			class={clsx('p-4 aspect-square ', {
 				'grayscale invert bg-white rounded-full': coinColor === 'black',
-				'bg-[#700000]': redeemed && coinColor === 'black' && flippedToFront,
+				'!bg-[#700000]': redeemed && coinColor === 'black' && flippedToFront,
 				'!pb-2': flippedToFront,
 				redeemed
 			})}
