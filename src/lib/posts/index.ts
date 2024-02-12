@@ -19,6 +19,13 @@ export const posts = [
 		published: '2023-11-18T15:00:00.00Z',
 		minutesToRead: 7,
 		gh_discussion_id: 32
+	},
+	{
+		id: 'logoi',
+		title: 'Logoi - the guiding locus of Value',
+		published: '2024-02-11T18:00:00.00Z',
+		minutesToRead: 3,
+		gh_discussion_id: 35
 	}
 ] as const;
 
@@ -42,5 +49,7 @@ export const getBlogPostComponent = (id: PostId) => {
 			return import('$lib/posts/arc.svelte');
 		case 'yazan':
 			return import('$lib/posts/yazan.svelte');
+		case 'logoi':
+			return import('$lib/posts/logoi.svelte');
 	}
 };

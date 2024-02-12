@@ -52,7 +52,7 @@
 		<Separator />
 	</div>
 
-	<div class="sm:w-3/4 mx-8">
+	<div class="sm:w-3/4 sm:mx-auto mx-8">
 		{#key post.id}
 			<svelte:component this={post.Content} />
 		{/key}
@@ -75,7 +75,7 @@
 		<span>or</span>
 		<EmailButton
 			email={INTRO_EMAIL}
-			subject="Vision - Logoi Development"
+			subject={`Logoi Blog - "${post.title}"`}
 			title="Email us with comments privately"
 		/>
 		<span>or</span>

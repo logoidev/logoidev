@@ -17,7 +17,7 @@
 	let isLink = type === 'link';
 	let element = isLink ? 'a' : 'button';
 
-	const elementProps = isLink
+	$: elementProps = isLink
 		? {
 				href,
 				target,
