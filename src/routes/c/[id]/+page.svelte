@@ -135,7 +135,7 @@
 			trackAnalyticsEvent('Location point updated', error);
 			switch (error.code) {
 				case error.PERMISSION_DENIED:
-					gpsError = 'We need GPS acces for this experience to work';
+					gpsError = 'Please allow location access for this feature to work';
 					break;
 				case error.POSITION_UNAVAILABLE:
 					gpsError = 'Could not get your location, please try again later';
