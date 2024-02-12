@@ -107,7 +107,11 @@
 			link="https://en.wikipedia.org/wiki/Sagrada_Fam%C3%ADlia"
 			src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Sagrada_Familia_%28July_2022%29_08.jpg/2560px-Sagrada_Familia_%28July_2022%29_08.jpg"
 		/>
-		<p>Sagrada Familia is another example of a project</p>
+		<p>
+			Sagrada Familia is another example of a project spanning centuries, Gaudí's vision still not
+			fully realised. Yet, the project survived countless political regimes, wars and many
+			generations of builders, patrons and visitors.
+		</p>
 	{:else}
 		<BlogImage
 			hide={hideImages}
