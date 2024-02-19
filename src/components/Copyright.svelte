@@ -7,6 +7,7 @@
 	export let referrer: LinkReferrer = 'copyright';
 	export let withLink = false;
 	export let fixed: boolean = false;
+	export let coinId = '';
 
 	export let companyName = COMPANY_LEGAL_NAME;
 	export let startYear = 2022;
@@ -28,7 +29,7 @@
 >
 	<Spacer />
 	{#if withLink}
-		<a class="underline" href={getFullMainUrl(referrer)}>{message}</a>
+		<a class="underline" href={getFullMainUrl(referrer, coinId)}>{message}</a>
 	{:else}
 		<span>{message}</span>
 	{/if}

@@ -7,6 +7,9 @@
 	import QrSvg from './QrSvg/QrSvg.svelte';
 	// import LogoSmallSrc from '@logoi/design/images/logos/logo.svg';
 	import { noop, noopWithParam } from 'src/utils/lodash';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	let className = '';
 	export { className as class };
@@ -24,7 +27,7 @@
 	export let onUnlock = noop;
 	export let onError = noop;
 	export let onLocked = noop;
-	export let onCenterClick = noop;
+
 	export let onPngDataUrl = noopWithParam<string | null>;
 	export let password: QrPassword = [];
 
@@ -32,11 +35,16 @@
 	const onButtonSizeUpdate = (newQrButtonWidth: string) => {
 		buttonsSizeCss = newQrButtonWidth;
 	};
+
+	const onCenterClick = () => {
+		console.log('Click');
+		dispatch('click');
+	};
 </script>
 
 <div class={`relative m-2 ${className}`}>
 	<QrSvg {url} {rounded} {onPngDataUrl} {sizePx} {onButtonSizeUpdate} />
-	<div class="absolute w-full h-full top-0 left-0 flex justify-center items-center">
+	<div class="absolute w-full h-full top-0 left-0 flex justify-center items-center z-30">
 		{#if text}
 			<button
 				id="text"
@@ -50,7 +58,7 @@
 				{text}
 			</button>
 		{:else}
-			<button id="image" class="w-1/4" on:click={onCenterClick}>
+			<button id="image" class="w-1/4 cursor-pointer" on:click={onCenterClick}>
 				<Image src={img} alt="QR image" />
 			</button>
 		{/if}

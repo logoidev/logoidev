@@ -5,6 +5,9 @@
 	import QR from '../QR.svelte';
 	import SideBits from './SideBits.svelte';
 	import clsx from 'clsx';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	const url = normaliseQrLocalhostUrl(window.location.href);
 
@@ -22,7 +25,7 @@
 		})}
 	>
 		<div class="qr-center">
-			<QR class="m-1" {url} rounded />
+			<QR class="m-1" {url} rounded on:click={() => dispatch('click')} />
 		</div>
 
 		<div class="bit-group">
