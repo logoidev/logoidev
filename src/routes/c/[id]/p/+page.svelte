@@ -100,8 +100,9 @@
 	{/if}
 
 	<div class="flex flex-col mt-4 text-center">
-		Date: {new Date().toISOString()}
-		<a href={$page.url.pathname}>{`${ORIGIN}${$page.url.pathname}`}</a>
+		<span>Now: {new Date().toISOString()}</span>
+		<span>Created: {coin?.created_at || null}</span>
+		<a href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
 		<Copyright withLink referrer="coin" coinId={coin?.id} />
 	</div>
 </div>

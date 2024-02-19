@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class CoinModel {
@@ -25,6 +25,16 @@ export class CoinModel {
 
 	@Column('varchar', { nullable: true, default: undefined })
 	claim_receipt_url?: string;
+
+	@CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP(6)' })
+	created_at: Date;
+
+	@UpdateDateColumn({
+		type: 'timestamp',
+		default: () => 'CURRENT_TIMESTAMP(6)',
+		onUpdate: 'CURRENT_TIMESTAMP(6)'
+	})
+	updated_at: Date;
 }
 
 export type CoinType = CoinModel['type'];
