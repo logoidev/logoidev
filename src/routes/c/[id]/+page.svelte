@@ -35,6 +35,7 @@
 	let iAmHereClicked = false;
 	let rewardWanted = true;
 	let isFetchingCoin = false;
+	let moreInfo = false;
 	// TODO: This in theory is not needed and trips could be infinite
 	$: redeemed = coin?.step_index && coin?.step_index >= 3;
 	// TODO: This needs not to be based on color
@@ -349,65 +350,77 @@
 		</div>
 	{/if}
 
-	<div class="flex flex-col items-center mt-32">
-		<p class="opacity-60 font-sans text-sm">There's an early alpha build of this</p>
-		<p class="opacity-60 font-sans text-sm">project using AR navigation</p>
-		<a
-			class="mt-4 cursor-pointer opacity-75 border-dashed border rounded border-[#ef4b25]"
-			target="_blank"
-			title="Please contact for pre-alpha"
-			href="mailto:vlad@logoi.dev?subject=Logoi - Requesting alpha acess to Niantic 8th Wall demo"
-		>
-			<img
-				class="w-[6.5rem] rounded px-4 py-2"
-				alt="Soon on Niantic"
-				src="/images/external-logos/niantic.png"
-			/>
-		</a>
-	</div>
+	{#if moreInfo}
+		<div class="flex flex-col items-center mt-32">
+			<a class="underline mb-8" href="/blog/logoi">Read an article explaining what Logoi</a>
 
-	<div class="flex flex-col items-center mt-16">
-		<p class="opacity-60 font-sans text-sm">Built in collaboration with:</p>
-		<br />
-		<div class="flex flex-row justify-center items-center gap-8 relative left-4">
-			<a title="MIT Media Lab" href="https://www.media.mit.edu/">
-				<img class="w-[6rem] -ml-8 rounded" alt="MIT" src="/images/external-logos/mit.svg" />
-			</a>
-
-			<a title="Orthodox Church in America" href="https://www.oca.org/">
+			<a class="mb-8 border border-1 py-2 px-4 rounded" href={`/c/${coinId}/p`}>Print</a>
+			<p class="opacity-60 font-sans text-sm">There's an early alpha build of this</p>
+			<p class="opacity-60 font-sans text-sm">project using AR navigation</p>
+			<a
+				class="mt-4 cursor-pointer opacity-75 border-dashed border rounded border-[#ef4b25]"
+				target="_blank"
+				title="Please contact for pre-alpha"
+				href="mailto:vlad@logoi.dev?subject=Logoi - Requesting alpha acess to Niantic 8th Wall demo"
+			>
 				<img
-					class="h-[6rem] rounded"
-					alt="Orthodox Church in America"
-					src="/images/external-logos/oca.png"
+					class="w-[6.5rem] rounded px-4 py-2"
+					alt="Soon on Niantic"
+					src="/images/external-logos/niantic.png"
 				/>
 			</a>
+		</div>
 
-			<a title="Reality Hack" href="https://www.mitrealityhack.com/">
+		<div class="flex flex-col items-center mt-16">
+			<p class="opacity-60 font-sans text-sm">Initial version built in collaboration with:</p>
+			<br />
+			<div class="flex flex-row justify-center items-center gap-8 relative left-4">
+				<a title="MIT Media Lab" href="https://www.media.mit.edu/">
+					<img class="w-[6rem] -ml-8 rounded" alt="MIT" src="/images/external-logos/mit.svg" />
+				</a>
+
+				<a title="Orthodox Church in America" href="https://www.oca.org/">
+					<img
+						class="h-[6rem] rounded"
+						alt="Orthodox Church in America"
+						src="/images/external-logos/oca.png"
+					/>
+				</a>
+
+				<a title="Reality Hack" href="https://www.mitrealityhack.com/">
+					<img
+						class="w-[6rem] rounded"
+						alt="MIT Reality Hack 2024"
+						src="/images/external-logos/realityhack.png"
+					/>
+				</a>
+			</div>
+
+			<div class="mt-8 opacity-60 font-sans text-sm">
+				And a beautiful City of Boston that inspired us
+			</div>
+			<a class="mt-8" title="City of Boston" href="https://www.boston.gov/">
 				<img
 					class="w-[6rem] rounded"
-					alt="MIT Reality Hack 2024"
-					src="/images/external-logos/realityhack.png"
+					alt="City of Boston Emblem"
+					src="/images/external-logos/boston.png"
 				/>
 			</a>
-		</div>
 
-		<div class="mt-8 opacity-60 font-sans text-sm">
-			And a beautiful City of Boston that inspired us
+			<div class="my-8 opacity-60 font-sans text-sm">Donations powered by</div>
+			<a class="flex flex-col" href={`${ORIGIN_FOUNDATION}?src_external=development`}>
+				<img class="h-16" alt="Logoi Foundation Logo" src="/images/logoi-foundation.svg" />
+				<span class={`text-sm text-center mt-4 font-trajan`}>Foundation</span>
+			</a>
 		</div>
-		<a class="mt-8" title="City of Boston" href="https://www.boston.gov/">
-			<img
-				class="w-[6rem] rounded"
-				alt="City of Boston Emblem"
-				src="/images/external-logos/boston.png"
-			/>
-		</a>
-
-		<div class="my-8 opacity-60 font-sans text-sm">Donations powered by</div>
-		<a class="flex flex-col" href={`${ORIGIN_FOUNDATION}?src_external=development`}>
-			<img class="h-16" alt="Logoi Foundation Logo" src="/images/logoi-foundation.svg" />
-			<span class={`text-sm text-center mt-4 font-trajan`}>Foundation</span>
-		</a>
-	</div>
+	{:else}
+		<button
+			class="text-xl font-serif mt-32 opacity-75 underline"
+			on:click={() => (moreInfo = true)}
+		>
+			More info
+		</button>
+	{/if}
 
 	<div class="mt-8" />
 	<Socials withToggle />

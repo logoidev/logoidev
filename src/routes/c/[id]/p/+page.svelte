@@ -89,11 +89,7 @@
 				redeemed
 			})}
 		>
-			<RoundCodeWithParams
-				id={coin.id}
-				counter={coin.balance}
-				color={redeemed ? 'gold' : 'black'}
-			/>
+			<RoundCodeWithParams id={coin.id} counter={0} color={redeemed ? 'gold' : 'black'} />
 
 			<RoundQR on:click={() => (showControls = !showControls)} />
 		</div>
