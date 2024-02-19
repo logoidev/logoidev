@@ -84,16 +84,18 @@
 	fetchCoin(coinId).catch((e) => console.error(e));
 </script>
 
-<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif my-4">
-	<div class="flex flex-col mt-6 text-center">
+<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mb-4">
+	<div class="flex flex-col mt-2 text-center">
 		{#if withLogo}
 			<Header />
 		{/if}
-		<a class="text-lg" href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
+		<a class="text-lg mt-1" href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
 		{#if !isFetchingCoin}
-			<span>Created: {created}</span>
-			<span>Now: {now}</span>
-			<span>{timezone}</span>
+			<div class="flex flex-col text-sm">
+				<span>Created: {created}</span>
+				<span>Now: {now}</span>
+				<span>{timezone}</span>
+			</div>
 		{/if}
 		<a class="mt-2" href={`mailto:hi@logoi.dev?subject=Help with coin&body=Coin ID: ${coin?.id}`}>
 			hi@logoi.dev
