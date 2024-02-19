@@ -3,7 +3,6 @@
 
 	import Image from './Image.svelte';
 	import QR from './QR/QR.svelte';
-	import { noop, noopWithParam } from 'src/utils/lodash';
 	import type { QrPasswordNumber } from './QR/QrButtons.types';
 	import { createEventDispatcher } from 'svelte';
 
