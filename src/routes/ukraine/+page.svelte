@@ -158,7 +158,7 @@
 			<ToggleQr
 				animated
 				{rounded}
-				url={getIndexUrl('ukraine')}
+				url={getIndexUrl('/ukraine')}
 				imageSrc="/images/qr.svg"
 				password={[0, 1, 2]}
 				on:click={() => (rounded = !rounded)}

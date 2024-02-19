@@ -9,7 +9,8 @@
 
 	const dispatch = createEventDispatcher();
 
-	const url = normaliseQrLocalhostUrl(window.location.href);
+	export let route = window.location.href;
+	const url = normaliseQrLocalhostUrl(route);
 
 	export let withBorder = true;
 

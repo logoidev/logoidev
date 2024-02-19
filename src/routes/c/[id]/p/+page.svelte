@@ -12,7 +12,6 @@
 	import Spinner from 'src/components/Spinner.svelte';
 
 	import { getErrorMessage } from 'src/utils/get-error-messge';
-	import { ORIGIN } from 'src/shared/constants';
 	import Header from 'src/components/Header.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
@@ -22,7 +21,7 @@
 	let error: string | '' | 'come_closer' = '';
 	let distance: number;
 	let destination: LocationModel;
-	let showControls = false;
+	let showControls = true;
 	let isVertical = true;
 	let withLogo = true;
 	let withTime = false;
@@ -30,6 +29,9 @@
 	let withScissors = true;
 	let isCoin = true;
 	let rounded = true;
+	let showCoin = true;
+	let showQrCoin = true;
+	let showQrCode = false;
 
 	$: timeFormatMethod = withTime ? ('toLocaleString' as const) : ('toLocaleDateString' as const);
 	$: created = new Date(coin?.created_at ?? '')[timeFormatMethod]?.();
@@ -48,6 +50,8 @@
 	// TODO: This needs not to be based on color
 
 	$: coinColor = coin?.color ?? 'white';
+	$: coinUrl = coin?.id ? getIndexUrl(`/c/${coin.id}`) : null;
+	$: marginMultiplier = ([showCoin, showQrCoin, showQrCode].filter(Boolean).length + 3) * 1;
 
 	$: {
 		console.log('Debug', { coin, coinColor, error, distance, destination, redeemed });
@@ -98,7 +102,7 @@
 		{#if withLogo}
 			<Header />
 		{/if}
-		<a class="text-lg mt-1" href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
+		<a class="text-lg mt-1" href={coinUrl}>{coinUrl}</a>
 		{#if !isFetchingCoin}
 			<div class="flex flex-col text-sm">
 				<span>Created: {created}</span>
@@ -122,82 +126,86 @@
 		>
 			<Spinner />
 		</div>
-	{:else if isCoin && coin}
+	{:else if coin}
 		<div
+			class={clsx(
+				'p-4 flex items-center gap-6 *:gap-8 mt-4',
+				isVertical ? 'flex-col' : 'flex-row',
+				{
+					'grayscale invert bg-white rounded-full': coinColor === 'black',
+					'!bg-[#700000]': redeemed && coinColor === 'black',
+					redeemed
+				}
+			)}
 			style={[
 				`transform: scale(${1 + (scale - 5) / 10})`,
 				isCoin
 					? isVertical
-						? `margin: ${Math.max(2.3 * (scale - 5), -15)}rem 0`
-						: `margin: ${Math.max(1 * (scale - 5), -15)}rem 0`
+						? `margin-top: ${Math.max(2.3 * (scale - marginMultiplier), -15)}rem`
+						: `margin-top: ${Math.max(1 * (scale - marginMultiplier), -15)}rem`
 					: ''
 			]
 				.filter(Boolean)
 				.join(';')}
-			class={clsx('p-4 flex gap-8 mt-4', isVertical ? 'flex-col' : 'flex-row', {
-				'grayscale invert bg-white rounded-full': coinColor === 'black',
-				'!bg-[#700000]': redeemed && coinColor === 'black',
-				redeemed
-			})}
 		>
-			<RoundCodeWithParams
-				id={coin.id}
-				counter={0}
-				color={redeemed ? 'gold' : 'black'}
-				{withBorder}
-			/>
+			{#if showCoin}
+				<RoundCodeWithParams
+					id={coin.id}
+					counter={0}
+					color={redeemed ? 'gold' : 'black'}
+					{withBorder}
+				/>
+			{/if}
 
-			<RoundQR {withBorder} on:click={() => (showControls = !showControls)} />
-		</div>
-	{:else}
-		<div
-			class="flex justify-center"
-			style={[
-				//
-				`transform: scale(${1 + (scale + 3) / 10})`,
-				`margin: ${Math.max(0.8 * scale + 3, -15)}rem 0`
-			].join(';')}
-		>
-			<ToggleQr
-				shown
-				withToggle={false}
-				{rounded}
-				textOffset="1rem"
-				password={[2, 2, 2]}
-				on:unlock={() => (showControls = true)}
-				on:click={() => (rounded = !rounded)}
-				url={getIndexUrl(`/c/${coin?.id}/p`)}
-			/>
+			{#if showQrCoin}
+				<RoundQR
+					{withBorder}
+					route={getIndexUrl(`/c/${coin?.id}`)}
+					on:click={() => (showControls = !showControls)}
+				/>
+			{/if}
+
+			{#if showQrCode}
+				<div
+					class="flex justify-center"
+					style={[
+						`transform: scale(${1 + (scale + 7) / 10})`,
+						`margin-top: ${marginMultiplier}rem`
+					].join(';')}
+				>
+					<ToggleQr
+						shown
+						withToggle={false}
+						{rounded}
+						textOffset="1rem"
+						password={[2, 2, 2]}
+						on:unlock={() => (showControls = true)}
+						on:click={() => (rounded = !rounded)}
+						url={coinUrl}
+					/>
+				</div>
+			{/if}
 		</div>
 	{/if}
 
 	{#if showControls}
 		<div class="text-3xl fixed right-2 bottom-2">
 			<div class="flex justify-center items-center gap-2">
-				<button
-					on:click={() => {
-						isCoin = !isCoin;
-						scale = 1;
-					}}>{isCoin ? '👾' : '🪙'}</button
-				>
-				<button on:click={() => (withScissors = !withScissors)}>✄</button>
-				<button on:click={() => (withTime = !withTime)}> T </button>
+				<button on:click={() => (showCoin = !showCoin)}>🪙</button>
+				<button on:click={() => (showQrCoin = !showQrCoin)}>{showQrCoin ? '⚫' : '⚪'}</button>
+				<button on:click={() => (showQrCode = !showQrCode)}>👾</button>
+				<button on:click={() => (withScissors = !withScissors)}>✂️</button>
+				<button on:click={() => (withTime = !withTime)}>🕐</button>
 				<button class={isCoin ? '' : 'hidden'} on:click={() => (withBorder = !withBorder)}>
-					B
+					🔘
 				</button>
 				<button class={isCoin ? '' : 'hidden'} on:click={() => (isVertical = !isVertical)}>
-					{isVertical ? 'H' : 'V'}
+					{isVertical ? '➡️' : '⬇️'}
 				</button>
-				<button on:click={() => (withLogo = !withLogo)}> L </button>
-				<div class="flex flex-row items-center gap-2">
-					<button class="rounded border px-2.5 py-1" on:click={() => (scale > -3 ? scale-- : null)}>
-						-
-					</button>
-					<button class="rounded border px-2.5 py-1" on:click={() => (scale < 5 ? scale++ : null)}>
-						+
-					</button>
-					<button class="ml-4" on:click={() => (showControls = false)}>✕</button>
-				</div>
+				<button on:click={() => (withLogo = !withLogo)}>©</button>
+				<button on:click={() => (scale > -3 ? scale-- : null)}> ➖ </button>
+				<button on:click={() => (scale < 5 ? scale++ : null)}> ➕ </button>
+				<button class="ml-4" on:click={() => (showControls = false)}>✖️</button>
 			</div>
 		</div>
 	{/if}

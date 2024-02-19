@@ -52,7 +52,7 @@
 		<ToggleQr
 			animated
 			{rounded}
-			url={getIndexUrl('blog')}
+			url={getIndexUrl('/blog')}
 			imageSrc="/images/qr.svg"
 			on:click={() => (rounded = !rounded)}
 		/>
