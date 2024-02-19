@@ -14,6 +14,8 @@
 	import { getErrorMessage } from 'src/utils/get-error-messge';
 	import { ORIGIN } from 'src/shared/constants';
 	import Header from 'src/components/Header.svelte';
+	import ToggleQr from 'src/components/ToggleQR.svelte';
+	import { getIndexUrl } from 'src/shared/routes';
 
 	let coinId = $page.params.id;
 	let coin: CoinModel | null = null;
@@ -26,6 +28,8 @@
 	let withTime = false;
 	let withBorder = true;
 	let withScissors = true;
+	let isCoin = true;
+	let rounded = true;
 
 	$: timeFormatMethod = withTime ? ('toLocaleString' as const) : ('toLocaleDateString' as const);
 	$: created = new Date(coin?.created_at ?? '')[timeFormatMethod]?.();
@@ -118,13 +122,15 @@
 		>
 			<Spinner />
 		</div>
-	{:else if coin}
+	{:else if isCoin && coin}
 		<div
 			style={[
 				`transform: scale(${1 + (scale - 5) / 10})`,
-				isVertical
-					? `margin: ${Math.max(2.3 * (scale - 5), -15)}rem 0`
-					: `margin: ${Math.max(1 * (scale - 5), -15)}rem 0`
+				isCoin
+					? isVertical
+						? `margin: ${Math.max(2.3 * (scale - 5), -15)}rem 0`
+						: `margin: ${Math.max(1 * (scale - 5), -15)}rem 0`
+					: ''
 			]
 				.filter(Boolean)
 				.join(';')}
@@ -143,34 +149,56 @@
 
 			<RoundQR {withBorder} on:click={() => (showControls = !showControls)} />
 		</div>
+	{:else}
+		<div
+			class="flex justify-center"
+			style={[
+				//
+				`transform: scale(${1 + (scale + 3) / 10})`,
+				`margin: ${Math.max(0.8 * scale + 3, -15)}rem 0`
+			].join(';')}
+		>
+			<ToggleQr
+				shown
+				withToggle={false}
+				{rounded}
+				textOffset="1rem"
+				password={[2, 2, 2]}
+				on:unlock={() => (showControls = true)}
+				on:click={() => (rounded = !rounded)}
+				url={getIndexUrl(`/c/${coin?.id}/p`)}
+			/>
+		</div>
+	{/if}
 
-		{#if showControls}
-			<div class="text-3xl fixed right-2 bottom-2">
-				<div class="flex justify-center items-center gap-2">
-					<button on:click={() => (withScissors = !withScissors)}>✄</button>
-					<button on:click={() => (withBorder = !withBorder)}> B </button>
-					<button on:click={() => (withTime = !withTime)}> T </button>
-					<button on:click={() => (isVertical = !isVertical)}>
-						{isVertical ? 'H' : 'V'}
+	{#if showControls}
+		<div class="text-3xl fixed right-2 bottom-2">
+			<div class="flex justify-center items-center gap-2">
+				<button
+					on:click={() => {
+						isCoin = !isCoin;
+						scale = 1;
+					}}>{isCoin ? '👾' : '🪙'}</button
+				>
+				<button on:click={() => (withScissors = !withScissors)}>✄</button>
+				<button on:click={() => (withTime = !withTime)}> T </button>
+				<button class={isCoin ? '' : 'hidden'} on:click={() => (withBorder = !withBorder)}>
+					B
+				</button>
+				<button class={isCoin ? '' : 'hidden'} on:click={() => (isVertical = !isVertical)}>
+					{isVertical ? 'H' : 'V'}
+				</button>
+				<button on:click={() => (withLogo = !withLogo)}> L </button>
+				<div class="flex flex-row items-center gap-2">
+					<button class="rounded border px-2.5 py-1" on:click={() => (scale > -3 ? scale-- : null)}>
+						-
 					</button>
-					<button on:click={() => (withLogo = !withLogo)}> L </button>
-					<div class="flex flex-row items-center gap-2">
-						<button
-							class="rounded border px-2.5 py-1"
-							on:click={() => (scale > -3 ? scale-- : null)}
-						>
-							-
-						</button>
-						<button
-							class="rounded border px-2.5 py-1"
-							on:click={() => (scale < 5 ? scale++ : null)}
-						>
-							+
-						</button>
-					</div>
+					<button class="rounded border px-2.5 py-1" on:click={() => (scale < 5 ? scale++ : null)}>
+						+
+					</button>
 				</div>
 			</div>
-		{/if}
+		</div>
 	{/if}
 </div>
 
