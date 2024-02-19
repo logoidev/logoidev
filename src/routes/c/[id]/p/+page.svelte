@@ -196,6 +196,7 @@
 					<button class="rounded border px-2.5 py-1" on:click={() => (scale < 5 ? scale++ : null)}>
 						+
 					</button>
+					<button class="ml-4" on:click={() => (showControls = false)}>✕</button>
 				</div>
 			</div>
 		</div>
