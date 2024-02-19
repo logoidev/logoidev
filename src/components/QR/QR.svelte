@@ -36,20 +36,16 @@
 		buttonsSizeCss = newQrButtonWidth;
 	};
 
-	const onCenterClick = () => {
-		console.log('Click');
-		dispatch('click');
-	};
+	const onCenterClick = () => dispatch('click');
 </script>
 
 <div class={`relative m-2 ${className}`}>
-	<QrSvg {url} {rounded} {onPngDataUrl} {sizePx} {onButtonSizeUpdate} />
-	<div class="absolute w-full h-full top-0 left-0 flex justify-center items-center z-30">
+	<div class="absolute w-full h-full top-0 left-0 flex justify-center items-center">
 		{#if text}
 			<button
 				id="text"
 				on:click={onCenterClick}
-				class="pointer-events-none"
+				class="cursor-pointer"
 				style={stylesArrayToInline([
 					`font-size: ${textFontSizePx}px`,
 					`height: calc(${textFontSizePx}px + ${textOffset})`
@@ -63,6 +59,7 @@
 			</button>
 		{/if}
 	</div>
+	<QrSvg {url} {rounded} {onPngDataUrl} {sizePx} {onButtonSizeUpdate} />
 	<QrButtons
 		{password}
 		{onUnlock}

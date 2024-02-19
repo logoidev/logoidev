@@ -89,7 +89,7 @@
 			{rounded}
 			url={getIndexUrl(post ? `blog/${post.id}` : 'blog')}
 			imageSrc="/images/qr.svg"
-			onCenterClick={() => (rounded = !rounded)}
+			on:click={() => (rounded = !rounded)}
 		/>
 
 		<Copyright />

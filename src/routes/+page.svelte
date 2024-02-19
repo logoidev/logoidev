@@ -71,7 +71,7 @@
 					url={getIndexUrl()}
 					imageSrc="/images/qr.svg"
 					password={[0, 1, 2]}
-					onCenterClick={() => (rounded = !rounded)}
+					on:click={() => (rounded = !rounded)}
 					onUnlock={() => (isUnlocked = true)}
 				/>
 			{:else}

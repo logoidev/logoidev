@@ -5,6 +5,9 @@
 	import QR from './QR/QR.svelte';
 	import { noop, noopWithParam } from 'src/utils/lodash';
 	import type { QrPasswordNumber } from './QR/QrButtons.types';
+	import { createEventDispatcher } from 'svelte';
+
+	const dispatch = createEventDispatcher();
 
 	export let shown = false;
 	export let url: string;
@@ -17,9 +20,10 @@
 	export let animated = false;
 	export let password = [] as Array<QrPasswordNumber>;
 	export let onUnlock = noop;
-	export let onCenterClick = noop;
 	export let onPngDataUrl = noopWithParam<string | null>;
 	export let isUnlocked = false;
+	export let withToggle = true;
+
 	let qrCodeSource = isUnlocked ? unlockImageSrc : imageSrc;
 
 	let qrWrapperElement: HTMLDivElement;
@@ -40,14 +44,16 @@
 	onMount(() => (isQrShown = shown));
 </script>
 
-<button
-	bind:this={buttonElement}
-	title={isQrShown ? 'Hide' : 'Show'}
-	class="text-xl flex items-center justify-between w-max m-4 border-2 p-2 rounded border-black hover:bg-slate-200"
-	on:click={onToggleQrShown}
->
-	<Image class="w-8" src="/images/qr-small.svg" />
-</button>
+{#if withToggle}
+	<button
+		bind:this={buttonElement}
+		title={isQrShown ? 'Hide' : 'Show'}
+		class="text-xl flex items-center justify-between w-max m-4 border-2 p-2 rounded border-black hover:bg-slate-200"
+		on:click={onToggleQrShown}
+	>
+		<Image class="w-8" src="/images/qr-small.svg" />
+	</button>
+{/if}
 
 {#if isQrShown}
 	<div bind:this={qrWrapperElement} class="w-2/3 max-w-xs flex justify-center relative">
@@ -62,8 +68,8 @@
 				{textOffset}
 				{rounded}
 				{animated}
-				{onCenterClick}
 				{onPngDataUrl}
+				on:click={() => dispatch('click')}
 				onUnlock={() => {
 					isUnlocked = true;
 					password = [];

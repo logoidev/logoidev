@@ -161,7 +161,7 @@
 				url={getIndexUrl('ukraine')}
 				imageSrc="/images/qr.svg"
 				password={[0, 1, 2]}
-				onCenterClick={() => (rounded = !rounded)}
+				on:click={() => (rounded = !rounded)}
 				onUnlock={() => (isUnlocked = true)}
 			/>
 		{/if}

@@ -17,6 +17,7 @@
 	export let data;
 	const userData: UserData = data;
 	let qrPngDataUrl: string | null = null;
+	let rounded = true;
 </script>
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif h-screen mt-12">
@@ -53,13 +54,14 @@
 		<MapLink />
 
 		<ToggleQr
-			rounded
+			{rounded}
 			textOffset="1rem"
 			shown={!userData.socials.length}
 			text={userData.id.toUpperCase()}
 			unlockImageSrc={userData.unlockImage}
 			onPngDataUrl={(dataUrl) => (qrPngDataUrl = dataUrl)}
-			onCenterClick={async () => {
+			on:click={async () => {
+				rounded = !rounded;
 				if (qrPngDataUrl) {
 					const blob = await (await fetch(qrPngDataUrl)).blob();
 					const fileURL = URL.createObjectURL(blob);
