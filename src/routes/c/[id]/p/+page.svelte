@@ -20,6 +20,7 @@
 	let distance: number;
 	let destination: LocationModel;
 	let showControls = false;
+	let isVertical = true;
 
 	let isFetchingCoin = false;
 	let scale = 1;
@@ -78,8 +79,15 @@
 		</div>
 	{:else if coin}
 		<div
-			style={`transform: scale(${1 + (scale - 4) / 10});margin: ${Math.max(2.5 * (scale - 4), -10)}rem 0;`}
-			class={clsx('p-4 flex flex-col gap-8', {
+			style={[
+				`transform: scale(${1 + (scale - 4) / 10})`,
+				isVertical
+					? `margin: ${Math.max(2.5 * (scale - 4), -10)}rem 0`
+					: `margin: ${Math.max(1 * (scale - 4), -10)}rem 0`
+			]
+				.filter(Boolean)
+				.join(';')}
+			class={clsx('p-4 flex gap-8', isVertical ? 'flex-col' : 'flex-row', {
 				'grayscale invert bg-white rounded-full': coinColor === 'black',
 				'!bg-[#700000]': redeemed && coinColor === 'black',
 				redeemed
@@ -91,17 +99,26 @@
 		</div>
 
 		{#if showControls}
-			<div class="text-3xl fixed right-0 bottom-0">
-				<button on:click={() => scale--}>-</button>
-				<span>{scale}</span>
-				<button on:click={() => scale++}>+</button>
+			<div class="text-3xl fixed right-2 bottom-2">
+				<div class="flex justify-center items-center gap-2">
+					<button on:click={() => (isVertical = !isVertical)}>
+						{isVertical ? 'H' : 'V'}
+					</button>
+					<div class="flex flex-row items-center gap-2">
+						<button class="rounded border px-2.5 py-1" on:click={() => scale--}>-</button>
+						<span>{scale}</span>
+						<button class="rounded border px-2.5 py-1" on:click={() => scale++}>+</button>
+					</div>
+				</div>
 			</div>
 		{/if}
 	{/if}
 
 	<div class="flex flex-col mt-4 text-center">
-		<span>Now: {new Date().toISOString()}</span>
-		<span>Created: {coin?.created_at || null}</span>
+		{#if !isFetchingCoin}
+			<span>Now: {new Date().toISOString()}</span>
+			<span>Created: {coin?.created_at || null}</span>
+		{/if}
 		<a href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
 		<Copyright withLink referrer="coin" coinId={coin?.id} />
 	</div>

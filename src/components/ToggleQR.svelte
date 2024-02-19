@@ -19,8 +19,7 @@
 	export let rounded = false;
 	export let animated = false;
 	export let password = [] as Array<QrPasswordNumber>;
-	export let onUnlock = noop;
-	export let onPngDataUrl = noopWithParam<string | null>;
+
 	export let isUnlocked = false;
 	export let withToggle = true;
 
@@ -68,12 +67,12 @@
 				{textOffset}
 				{rounded}
 				{animated}
-				{onPngDataUrl}
+				onPngDataUrl={(data) => dispatch('png-data-url', data)}
 				on:click={() => dispatch('click')}
-				onUnlock={() => {
+				on:unlock={() => {
 					isUnlocked = true;
 					password = [];
-					onUnlock();
+					dispatch('unlock');
 				}}
 				onError={() => (isUnlocked = false)}
 			/>{/if}

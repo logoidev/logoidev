@@ -25,7 +25,7 @@
 		})}
 	>
 		<div class="qr-center">
-			<QR class="m-1" {url} rounded on:click={() => dispatch('click')} />
+			<QR class="m-1 absolute z-30" {url} rounded on:click={() => dispatch('click')} />
 		</div>
 
 		<div class="bit-group">

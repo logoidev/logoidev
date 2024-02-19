@@ -1,4 +1,5 @@
 <script lang="ts">
+	import clsx from 'clsx';
 	import { stylesArrayToInline } from '../../shared/utils';
 
 	import Image from '../Image.svelte';
@@ -24,7 +25,6 @@
 	// TODO: Replace with SVG
 	export let img = '/images/logoi-256.png';
 
-	export let onUnlock = noop;
 	export let onError = noop;
 	export let onLocked = noop;
 
@@ -36,10 +36,14 @@
 		buttonsSizeCss = newQrButtonWidth;
 	};
 
-	const onCenterClick = () => dispatch('click');
+	const onCenterClick = () => {
+		console.log('Center click');
+		dispatch('click');
+	};
+	const onUnlock = () => dispatch('unlock');
 </script>
 
-<div class={`relative m-2 ${className}`}>
+<div class={clsx('relative m-2', className)}>
 	<div class="absolute w-full h-full top-0 left-0 flex justify-center items-center">
 		{#if text}
 			<button

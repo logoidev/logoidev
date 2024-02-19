@@ -20,7 +20,7 @@
 			textOffset="1rem"
 			text={userData.id.toUpperCase()}
 			unlockImageSrc={userData.unlockImage}
-			onPngDataUrl={(dataUrl) => (qrPngDataUrl = dataUrl)}
+			on:png-data-url={(dataUrl) => (qrPngDataUrl = dataUrl)}
 			on:click={async () => {
 				rounded = !rounded;
 				if (qrPngDataUrl) {

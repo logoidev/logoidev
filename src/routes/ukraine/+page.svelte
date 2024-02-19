@@ -162,7 +162,7 @@
 				imageSrc="/images/qr.svg"
 				password={[0, 1, 2]}
 				on:click={() => (rounded = !rounded)}
-				onUnlock={() => (isUnlocked = true)}
+				on:unlock={() => (isUnlocked = true)}
 			/>
 		{/if}
 
