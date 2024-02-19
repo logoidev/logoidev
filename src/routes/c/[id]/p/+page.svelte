@@ -22,7 +22,7 @@
 	let showControls = false;
 
 	let isFetchingCoin = false;
-	let scale = -2;
+	let scale = 0;
 	// TODO: This in theory is not needed and trips could be infinite
 	$: redeemed = coin?.step_index && coin?.step_index >= 3;
 	// TODO: This needs not to be based on color
