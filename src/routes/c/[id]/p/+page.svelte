@@ -78,7 +78,7 @@
 		</div>
 	{:else if coin}
 		<div
-			style={`transform: scale(${1 + (scale - 3) / 10});margin: ${Math.max(2.5 * (scale - 3), -10)}rem 0;`}
+			style={`transform: scale(${1 + (scale - 4) / 10});margin: ${Math.max(2.5 * (scale - 4), -10)}rem 0;`}
 			class={clsx('p-4 flex flex-col gap-8', {
 				'grayscale invert bg-white rounded-full': coinColor === 'black',
 				'!bg-[#700000]': redeemed && coinColor === 'black',
