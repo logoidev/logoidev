@@ -23,6 +23,17 @@
 	let showControls = false;
 	let isVertical = true;
 	let withLogo = true;
+	let withTime = false;
+
+	$: timeFormatMethod = withTime ? ('toLocaleString' as const) : ('toLocaleDateString' as const);
+	$: created = new Date(coin?.created_at ?? '')[timeFormatMethod]?.();
+	$: now = new Date()[timeFormatMethod]?.();
+
+	if (created === now) {
+		withTime = true;
+	}
+
+	const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 	let isFetchingCoin = false;
 	let scale = 1;
@@ -72,17 +83,20 @@
 	fetchCoin(coinId).catch((e) => console.error(e));
 </script>
 
-<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mt-4">
-	<div class="flex flex-col mt-4 text-center">
+<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif my-4">
+	<div class="flex flex-col mt-6 text-center">
 		{#if withLogo}
 			<Header />
 		{/if}
+		<a class="text-lg" href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
 		{#if !isFetchingCoin}
-			<span>Now: {new Date().toISOString()}</span>
-			<span>Created: {coin?.created_at || null}</span>
+			<span>Created: {created}</span>
+			<span>Now: {now}</span>
+			<span>{timezone}</span>
 		{/if}
-		<a href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
-		<a class="mt-2" href={`${ORIGIN}/c/${coinId}`}>hi@logoi.dev</a>
+		<a class="mt-2" href={`mailto:hi@logoi.dev?subject=Help with coin&body=Coin ID: ${coin?.id}`}>
+			hi@logoi.dev
+		</a>
 		<Copyright class="!-mt-2" withLink referrer="coin" coinId={coin?.id} />
 	</div>
 
@@ -97,12 +111,12 @@
 			style={[
 				`transform: scale(${1 + (scale - 5) / 10})`,
 				isVertical
-					? `margin: ${Math.max(2.5 * (scale - 5), -15)}rem 0`
+					? `margin: ${Math.max(2.3 * (scale - 5), -15)}rem 0`
 					: `margin: ${Math.max(1 * (scale - 5), -15)}rem 0`
 			]
 				.filter(Boolean)
 				.join(';')}
-			class={clsx('p-4 flex gap-8', isVertical ? 'flex-col' : 'flex-row', {
+			class={clsx('p-4 flex gap-8 mt-4', isVertical ? 'flex-col' : 'flex-row', {
 				'grayscale invert bg-white rounded-full': coinColor === 'black',
 				'!bg-[#700000]': redeemed && coinColor === 'black',
 				redeemed
@@ -116,6 +130,7 @@
 		{#if showControls}
 			<div class="text-3xl fixed right-2 bottom-2">
 				<div class="flex justify-center items-center gap-2">
+					<button on:click={() => (withTime = !withTime)}> T </button>
 					<button on:click={() => (isVertical = !isVertical)}>
 						{isVertical ? 'H' : 'V'}
 					</button>
