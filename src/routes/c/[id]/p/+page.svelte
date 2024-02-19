@@ -24,6 +24,7 @@
 	let isVertical = true;
 	let withLogo = true;
 	let withTime = false;
+	let withBorder = true;
 
 	$: timeFormatMethod = withTime ? ('toLocaleString' as const) : ('toLocaleDateString' as const);
 	$: created = new Date(coin?.created_at ?? '')[timeFormatMethod]?.();
@@ -122,14 +123,20 @@
 				redeemed
 			})}
 		>
-			<RoundCodeWithParams id={coin.id} counter={0} color={redeemed ? 'gold' : 'black'} />
+			<RoundCodeWithParams
+				id={coin.id}
+				counter={0}
+				color={redeemed ? 'gold' : 'black'}
+				{withBorder}
+			/>
 
-			<RoundQR on:click={() => (showControls = !showControls)} />
+			<RoundQR {withBorder} on:click={() => (showControls = !showControls)} />
 		</div>
 
 		{#if showControls}
 			<div class="text-3xl fixed right-2 bottom-2">
 				<div class="flex justify-center items-center gap-2">
+					<button on:click={() => (withBorder = !withBorder)}> B </button>
 					<button on:click={() => (withTime = !withTime)}> T </button>
 					<button on:click={() => (isVertical = !isVertical)}>
 						{isVertical ? 'H' : 'V'}

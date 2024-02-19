@@ -11,7 +11,7 @@
 
 	const url = normaliseQrLocalhostUrl(window.location.href);
 
-	const withBorder = true;
+	export let withBorder = true;
 
 	// TODO: Make not random but be able to store information (e.g. curve correction)
 	const bits = getByteStrings(40, 0.5).join('').split('').map(Number);
