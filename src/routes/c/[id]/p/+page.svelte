@@ -25,6 +25,7 @@
 	let withLogo = true;
 	let withTime = false;
 	let withBorder = true;
+	let withScissors = true;
 
 	$: timeFormatMethod = withTime ? ('toLocaleString' as const) : ('toLocaleDateString' as const);
 	$: created = new Date(coin?.created_at ?? '')[timeFormatMethod]?.();
@@ -85,7 +86,11 @@
 </script>
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mb-4">
-	<div class="flex flex-col mt-2 text-center">
+	<div
+		class={clsx('flex flex-col mt-2 text-center relative', {
+			'border-b-2 border-dashed mb-4': withScissors
+		})}
+	>
 		{#if withLogo}
 			<Header />
 		{/if}
@@ -101,6 +106,10 @@
 			hi@logoi.dev
 		</a>
 		<Copyright class="!-mt-2" withLink referrer="coin" coinId={coin?.id} />
+
+		{#if withScissors}
+			<div class="absolute left-0 -bottom-4 text-gray-400 text-lg">✄</div>
+		{/if}
 	</div>
 
 	{#if isFetchingCoin}
@@ -138,6 +147,7 @@
 		{#if showControls}
 			<div class="text-3xl fixed right-2 bottom-2">
 				<div class="flex justify-center items-center gap-2">
+					<button on:click={() => (withScissors = !withScissors)}>✄</button>
 					<button on:click={() => (withBorder = !withBorder)}> B </button>
 					<button on:click={() => (withTime = !withTime)}> T </button>
 					<button on:click={() => (isVertical = !isVertical)}>
