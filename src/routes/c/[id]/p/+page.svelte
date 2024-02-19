@@ -22,16 +22,12 @@
 	let showControls = false;
 
 	let isFetchingCoin = false;
-	let scale = 0;
+	let scale = 1;
 	// TODO: This in theory is not needed and trips could be infinite
 	$: redeemed = coin?.step_index && coin?.step_index >= 3;
 	// TODO: This needs not to be based on color
 
 	$: coinColor = coin?.color ?? 'white';
-
-	$: {
-		document.body.style.zoom = `${100 + 10 * scale}%`;
-	}
 
 	$: {
 		console.log('Debug', { coin, coinColor, error, distance, destination, redeemed });
@@ -73,7 +69,7 @@
 	fetchCoin(coinId).catch((e) => console.error(e));
 </script>
 
-<div class="flex flex-col gap-4 touch-manipulation items-center min-w-fit font-serif mt-6">
+<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mt-4">
 	{#if isFetchingCoin}
 		<div
 			class="flex items-center justify-center mt-6 w-60 h-60 border border-gray-200 bg-gray-100 animate-pulse rounded-full"
@@ -82,7 +78,7 @@
 		</div>
 	{:else if coin}
 		<div
-			style={`transform: scale(${1 + scale / 10});margin: ${2.5 * scale}rem 0;`}
+			style={`transform: scale(${1 + (scale - 3) / 10});margin: ${Math.max(2.5 * (scale - 3), -10)}rem 0;`}
 			class={clsx('p-4 flex flex-col gap-8', {
 				'grayscale invert bg-white rounded-full': coinColor === 'black',
 				'!bg-[#700000]': redeemed && coinColor === 'black',
@@ -95,7 +91,7 @@
 		</div>
 
 		{#if showControls}
-			<div class="text-3xl fixed left-0 bottom-0">
+			<div class="text-3xl fixed right-0 bottom-0">
 				<button on:click={() => scale--}>-</button>
 				<span>{scale}</span>
 				<button on:click={() => scale++}>+</button>
@@ -103,7 +99,7 @@
 		{/if}
 	{/if}
 
-	<div class="flex flex-col mt-5 text-center">
+	<div class="flex flex-col mt-4 text-center">
 		Date: {new Date().toISOString()}
 		<a href={$page.url.pathname}>{`${ORIGIN}${$page.url.pathname}`}</a>
 		<Copyright withLink referrer="coin" coinId={coin?.id} />
