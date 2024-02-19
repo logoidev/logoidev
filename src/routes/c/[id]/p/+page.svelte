@@ -13,6 +13,7 @@
 
 	import { getErrorMessage } from 'src/utils/get-error-messge';
 	import { ORIGIN } from 'src/shared/constants';
+	import Header from 'src/components/Header.svelte';
 
 	let coinId = $page.params.id;
 	let coin: CoinModel | null = null;
@@ -21,6 +22,7 @@
 	let destination: LocationModel;
 	let showControls = false;
 	let isVertical = true;
+	let withLogo = true;
 
 	let isFetchingCoin = false;
 	let scale = 1;
@@ -71,6 +73,19 @@
 </script>
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mt-4">
+	<div class="flex flex-col mt-4 text-center">
+		{#if withLogo}
+			<Header />
+		{/if}
+		{#if !isFetchingCoin}
+			<span>Now: {new Date().toISOString()}</span>
+			<span>Created: {coin?.created_at || null}</span>
+		{/if}
+		<a href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
+		<a class="mt-2" href={`${ORIGIN}/c/${coinId}`}>hi@logoi.dev</a>
+		<Copyright class="!-mt-2" withLink referrer="coin" coinId={coin?.id} />
+	</div>
+
 	{#if isFetchingCoin}
 		<div
 			class="flex items-center justify-center mt-6 w-60 h-60 border border-gray-200 bg-gray-100 animate-pulse rounded-full"
@@ -80,10 +95,10 @@
 	{:else if coin}
 		<div
 			style={[
-				`transform: scale(${1 + (scale - 4) / 10})`,
+				`transform: scale(${1 + (scale - 5) / 10})`,
 				isVertical
-					? `margin: ${Math.max(2.5 * (scale - 4), -10)}rem 0`
-					: `margin: ${Math.max(1 * (scale - 4), -10)}rem 0`
+					? `margin: ${Math.max(2.5 * (scale - 5), -15)}rem 0`
+					: `margin: ${Math.max(1 * (scale - 5), -15)}rem 0`
 			]
 				.filter(Boolean)
 				.join(';')}
@@ -104,24 +119,25 @@
 					<button on:click={() => (isVertical = !isVertical)}>
 						{isVertical ? 'H' : 'V'}
 					</button>
+					<button on:click={() => (withLogo = !withLogo)}> L </button>
 					<div class="flex flex-row items-center gap-2">
-						<button class="rounded border px-2.5 py-1" on:click={() => scale--}>-</button>
-						<span>{scale}</span>
-						<button class="rounded border px-2.5 py-1" on:click={() => scale++}>+</button>
+						<button
+							class="rounded border px-2.5 py-1"
+							on:click={() => (scale > -3 ? scale-- : null)}
+						>
+							-
+						</button>
+						<button
+							class="rounded border px-2.5 py-1"
+							on:click={() => (scale < 5 ? scale++ : null)}
+						>
+							+
+						</button>
 					</div>
 				</div>
 			</div>
 		{/if}
 	{/if}
-
-	<div class="flex flex-col mt-4 text-center">
-		{#if !isFetchingCoin}
-			<span>Now: {new Date().toISOString()}</span>
-			<span>Created: {coin?.created_at || null}</span>
-		{/if}
-		<a href={`${ORIGIN}/c/${coinId}`}>{`${ORIGIN}/c/${coinId}`}</a>
-		<Copyright withLink referrer="coin" coinId={coin?.id} />
-	</div>
 </div>
 
 <style>

@@ -4,6 +4,9 @@
 	import Spacer from './Spacer.svelte';
 	import Ukraine from './Ukraine.svelte';
 
+	let className = '';
+	export { className as class };
+
 	export let referrer: LinkReferrer = 'copyright';
 	export let withLink = false;
 	export let fixed: boolean = false;
@@ -22,9 +25,13 @@
 <Ukraine />
 
 <div
-	class={clsx('flex flex-col justify-center items-center text-sm', {
-		'absolute bottom-0': fixed
-	})}
+	class={clsx(
+		'flex flex-col justify-center items-center text-sm',
+		{
+			'absolute bottom-0': fixed
+		},
+		className
+	)}
 	title="All rights reserved"
 >
 	<Spacer />
