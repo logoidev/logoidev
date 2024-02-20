@@ -113,7 +113,7 @@
 		<a class="mt-2" href={`mailto:hi@logoi.dev?subject=Help with coin&body=Coin ID: ${coin?.id}`}>
 			hi@logoi.dev
 		</a>
-		<Copyright class="!-mt-2" withLink referrer="coin" coinId={coin?.id} />
+		<Copyright class="!-my-3 scale-75" withLink referrer="coin" coinId={coin?.id} />
 
 		{#if withScissors}
 			<div class="absolute left-0 -bottom-4 text-gray-400 text-lg">✄</div>
