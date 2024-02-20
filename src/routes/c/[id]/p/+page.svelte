@@ -128,21 +128,17 @@
 		</div>
 	{:else if coin}
 		<div
-			class={clsx(
-				'p-4 flex items-center gap-6 *:gap-8 mt-4',
-				isVertical ? 'flex-col' : 'flex-row',
-				{
-					'grayscale invert bg-white rounded-full': coinColor === 'black',
-					'!bg-[#700000]': redeemed && coinColor === 'black',
-					redeemed
-				}
-			)}
+			class={clsx('p-4 flex items-center *:gap-8 mt-4', isVertical ? 'flex-col' : 'flex-row', {
+				'grayscale invert bg-white rounded-full': coinColor === 'black',
+				'!bg-[#700000]': redeemed && coinColor === 'black',
+				redeemed
+			})}
 			style={[
 				`transform: scale(${1 + (scale - 5) / 10})`,
 				isCoin
 					? isVertical
-						? `margin-top: ${Math.max(2.3 * (scale - marginMultiplier), -15)}rem`
-						: `margin-top: ${Math.max(1 * (scale - marginMultiplier), -15)}rem`
+						? `margin-top: ${Math.max(Math.round(2.3 * (scale - marginMultiplier)), -15)}rem`
+						: `margin-top: ${Math.max(Math.round(1 * (scale - marginMultiplier)), -15)}rem`
 					: ''
 			]
 				.filter(Boolean)
@@ -150,6 +146,7 @@
 		>
 			{#if showCoin}
 				<RoundCodeWithParams
+					class="mb-4"
 					id={coin.id}
 					counter={0}
 					color={redeemed ? 'gold' : 'black'}
@@ -159,6 +156,7 @@
 
 			{#if showQrCoin}
 				<RoundQR
+					class="my-2"
 					{withBorder}
 					route={getIndexUrl(`/c/${coin?.id}`)}
 					on:click={() => (showControls = !showControls)}

@@ -9,6 +9,9 @@
 
 	const dispatch = createEventDispatcher();
 
+	let className = '';
+	export { className as class };
+
 	export let route = window.location.href;
 	const url = normaliseQrLocalhostUrl(route);
 
@@ -18,7 +21,7 @@
 	const bits = getByteStrings(40, 0.5).join('').split('').map(Number);
 </script>
 
-<div class="max-h-[330px]">
+<div class={clsx('max-h-[330px]', className)}>
 	<div
 		class="outer-circle"
 		style={clsx({

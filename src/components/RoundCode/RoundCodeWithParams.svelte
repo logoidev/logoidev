@@ -3,6 +3,9 @@
 
 	import RoundCode from './RoundCode.svelte';
 
+	let className = '';
+	export { className as class };
+
 	export let id: string;
 	export let counter: number = 0;
 	export let color = 'black';
@@ -21,7 +24,7 @@
 </script>
 
 <div
-	class={clsx('text-center rounded-full p-1')}
+	class={clsx('text-center rounded-full p-1', className)}
 	style={[withBorder && 'box-shadow: 0 0 0 4px black'].filter(Boolean).join(';')}
 >
 	<RoundCode
