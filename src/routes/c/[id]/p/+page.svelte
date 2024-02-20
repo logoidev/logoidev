@@ -21,12 +21,12 @@
 	let error: string | '' | 'come_closer' = '';
 	let distance: number;
 	let destination: LocationModel;
-	let showControls = true;
+	let showControls = false;
 	let isVertical = true;
 	let withLogo = true;
 	let withTime = false;
 	let withBorder = true;
-	let withScissors = true;
+	let withScissors = false;
 	let isCoin = true;
 	let rounded = true;
 	let showCoin = true;
@@ -51,7 +51,8 @@
 
 	$: coinColor = coin?.color ?? 'white';
 	$: coinUrl = coin?.id ? getIndexUrl(`/c/${coin.id}`) : null;
-	$: marginMultiplier = ([showCoin, showQrCoin, showQrCode].filter(Boolean).length + 3) * 1;
+	$: activeCount = [showCoin, showQrCoin, showQrCode].filter(Boolean).length;
+	$: marginMultiplier = (activeCount + 3) * 1;
 
 	$: {
 		console.log('Debug', { coin, coinColor, error, distance, destination, redeemed });
@@ -128,9 +129,13 @@
 		</div>
 	{:else if coin}
 		<div
-			class={clsx('p-4 flex items-center *:gap-8 mt-4', isVertical ? 'flex-col' : 'flex-row', {
+			class={clsx('p-4 flex items-center *:gap-8', {
 				'grayscale invert bg-white rounded-full': coinColor === 'black',
 				'!bg-[#700000]': redeemed && coinColor === 'black',
+				'flex-col': isVertical,
+				'flex-row': !isVertical,
+				'!-mt-14': activeCount === 1,
+				'mt-2': activeCount !== 1,
 				redeemed
 			})}
 			style={[
@@ -144,6 +149,28 @@
 				.filter(Boolean)
 				.join(';')}
 		>
+			{#if showQrCode}
+				<div
+					class="flex justify-center"
+					style={[
+						`transform: scale(${1 + (scale + 7) / 10})`,
+						`margin-bottom: ${marginMultiplier + 1}rem`,
+						`margin-top: ${marginMultiplier - 1}rem`
+					].join(';')}
+				>
+					<ToggleQr
+						shown
+						withToggle={false}
+						{rounded}
+						textOffset="1rem"
+						password={[2, 2, 2]}
+						on:unlock={() => (showControls = true)}
+						on:click={() => (rounded = !rounded)}
+						url={coinUrl}
+					/>
+				</div>
+			{/if}
+
 			{#if showCoin}
 				<RoundCodeWithParams
 					class="mb-4"
@@ -162,36 +189,15 @@
 					on:click={() => (showControls = !showControls)}
 				/>
 			{/if}
-
-			{#if showQrCode}
-				<div
-					class="flex justify-center"
-					style={[
-						`transform: scale(${1 + (scale + 7) / 10})`,
-						`margin-top: ${marginMultiplier}rem`
-					].join(';')}
-				>
-					<ToggleQr
-						shown
-						withToggle={false}
-						{rounded}
-						textOffset="1rem"
-						password={[2, 2, 2]}
-						on:unlock={() => (showControls = true)}
-						on:click={() => (rounded = !rounded)}
-						url={coinUrl}
-					/>
-				</div>
-			{/if}
 		</div>
 	{/if}
 
 	{#if showControls}
 		<div class="text-3xl fixed right-2 bottom-2">
 			<div class="flex justify-center items-center gap-2">
+				<button on:click={() => (showQrCode = !showQrCode)}>👾</button>
 				<button on:click={() => (showCoin = !showCoin)}>🪙</button>
 				<button on:click={() => (showQrCoin = !showQrCoin)}>{showQrCoin ? '⚫' : '⚪'}</button>
-				<button on:click={() => (showQrCode = !showQrCode)}>👾</button>
 				<button on:click={() => (withScissors = !withScissors)}>✂️</button>
 				<button on:click={() => (withTime = !withTime)}>🕐</button>
 				<button class={isCoin ? '' : 'hidden'} on:click={() => (withBorder = !withBorder)}>
