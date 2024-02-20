@@ -123,14 +123,15 @@
 
 	{#if isFetchingCoin}
 		<div
-			class="flex items-center justify-center mt-6 w-60 h-60 border border-gray-200 bg-gray-100 animate-pulse rounded-full"
+			class="flex items-center justify-center mt-6 w-60 h-60 border border-gray-200 bg-gray-100 animate-pulse"
 		>
 			<Spinner />
 		</div>
-	{:else if coin}
+	{:else if coin && activeCount}
 		<div
 			class={clsx('p-4 flex items-center *:gap-8', {
-				'grayscale invert bg-white rounded-full': coinColor === 'black',
+				'grayscale invert bg-white rounded-xl py-4 px-8': coinColor === 'black',
+				'!pt-10': coinColor === 'black' && showQrCode && activeCount === 1,
 				'!bg-[#700000]': redeemed && coinColor === 'black',
 				'flex-col': isVertical,
 				'flex-row': !isVertical,
@@ -198,6 +199,9 @@
 				<button on:click={() => (showQrCode = !showQrCode)}>👾</button>
 				<button on:click={() => (showCoin = !showCoin)}>🪙</button>
 				<button on:click={() => (showQrCoin = !showQrCoin)}>{showQrCoin ? '⚫' : '⚪'}</button>
+				<button on:click={() => (coinColor = coinColor === 'black' ? 'white' : 'black')}>
+					🌗
+				</button>
 				<button on:click={() => (withScissors = !withScissors)}>✂️</button>
 				<button on:click={() => (withTime = !withTime)}>🕐</button>
 				<button class={isCoin ? '' : 'hidden'} on:click={() => (withBorder = !withBorder)}>
