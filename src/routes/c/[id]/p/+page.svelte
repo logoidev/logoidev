@@ -123,7 +123,7 @@
 
 	{#if isFetchingCoin}
 		<div
-			class="flex items-center justify-center mt-6 w-60 h-60 border border-gray-200 bg-gray-100 animate-pulse"
+			class="flex items-center justify-center mt-6 w-60 h-60 border border-gray-200 bg-gray-100 animate-pulse rounded-full"
 		>
 			<Spinner />
 		</div>
@@ -167,7 +167,7 @@
 						password={[2, 2, 2]}
 						on:unlock={() => (showControls = true)}
 						on:click={() => (rounded = !rounded)}
-						url={coinUrl}
+						url={coinUrl || ''}
 					/>
 				</div>
 			{/if}
@@ -195,7 +195,7 @@
 
 	{#if showControls}
 		<div class="text-3xl fixed right-2 bottom-2">
-			<div class="flex justify-center items-center gap-2">
+			<div class="flex flex-wrap justify-center items-center gap-2">
 				<button on:click={() => (showQrCode = !showQrCode)}>👾</button>
 				<button on:click={() => (showCoin = !showCoin)}>🪙</button>
 				<button on:click={() => (showQrCoin = !showQrCoin)}>{showQrCoin ? '⚫' : '⚪'}</button>
