@@ -5,8 +5,12 @@
 	import QR from './QR/QR.svelte';
 	import type { QrPasswordNumber } from './QR/QrButtons.types';
 	import { createEventDispatcher } from 'svelte';
+	import clsx from 'clsx';
 
 	const dispatch = createEventDispatcher();
+
+	let className = '';
+	export { className as class };
 
 	export let shown = false;
 	export let url: string;
@@ -54,7 +58,10 @@
 {/if}
 
 {#if isQrShown}
-	<div bind:this={qrWrapperElement} class="w-2/3 max-w-xs flex justify-center relative">
+	<div
+		bind:this={qrWrapperElement}
+		class={clsx('w-2/3 max-w-xs flex justify-center relative rounded-lg', className)}
+	>
 		{#if isUnlocked && qrCodeSource}
 			<Image class="mt-4" src={qrCodeSource} />
 		{:else}

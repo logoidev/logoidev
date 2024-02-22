@@ -15,19 +15,22 @@
 	import Header from 'src/components/Header.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
+	import { dev } from '$app/environment';
 
 	let coinId = $page.params.id;
 	let coin: CoinModel | null = null;
 	let error: string | '' | 'come_closer' = '';
 	let distance: number;
 	let destination: LocationModel;
-	let showControls = false;
+	let showControls = dev;
 	let isVertical = true;
 	let withLogo = true;
+	let withCoinUrl = true;
+	let withTimestamps = true;
 	let withTime = false;
-	let withBorder = true;
+	let withCopyright = true;
 	let withScissors = false;
-	let isCoin = true;
+	let withBorder = true;
 	let rounded = true;
 	let showCoin = true;
 	let showQrCoin = true;
@@ -36,6 +39,9 @@
 	$: timeFormatMethod = withTime ? ('toLocaleString' as const) : ('toLocaleDateString' as const);
 	$: created = new Date(coin?.created_at ?? '')[timeFormatMethod]?.();
 	$: now = new Date()[timeFormatMethod]?.();
+	let emailIndex = 1;
+	const CONTACT_EMAILS = ['', 'hi@logoi.dev', 'vlad@logoi.dev'];
+	$: email = CONTACT_EMAILS[emailIndex];
 
 	if (created === now) {
 		withTime = true;
@@ -50,7 +56,9 @@
 	// TODO: This needs not to be based on color
 
 	$: coinColor = coin?.color ?? 'white';
-	$: coinUrl = coin?.id ? getIndexUrl(`/c/${coin.id}`) : null;
+	$: coinUrl = coin?.id
+		? getIndexUrl(`/c/${coin.id}`)
+		: `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}`;
 	$: activeCount = [showCoin, showQrCoin, showQrCode].filter(Boolean).length;
 	$: marginMultiplier = (activeCount + 3) * 1;
 
@@ -103,18 +111,28 @@
 		{#if withLogo}
 			<Header />
 		{/if}
-		<a class="text-lg mt-1" href={coinUrl}>{coinUrl}</a>
-		{#if !isFetchingCoin}
+
+		{#if withCoinUrl}
+			<a class="text-lg mt-1" href={coinUrl}>{coinUrl}</a>
+		{/if}
+
+		{#if withTimestamps && !isFetchingCoin}
 			<div class="flex flex-col text-sm">
 				<span>Created: {created}</span>
 				<span>Now: {now}</span>
 				<span>{timezone}</span>
 			</div>
 		{/if}
-		<a class="mt-2" href={`mailto:hi@logoi.dev?subject=Help with coin&body=Coin ID: ${coin?.id}`}>
-			hi@logoi.dev
-		</a>
-		<Copyright class="!-my-3 scale-75" withLink referrer="coin" coinId={coin?.id} />
+
+		{#if email}
+			<a class="mt-2" href={`mailto:${email}?subject=Help with coin&body=Coin ID: ${coin?.id}`}>
+				{email}
+			</a>
+		{/if}
+
+		{#if withCopyright}
+			<Copyright class="!-my-3 scale-75" withLink referrer="coin" coinId={coin?.id} />
+		{/if}
 
 		{#if withScissors}
 			<div class="absolute left-0 -bottom-4 text-gray-400 text-lg">✄</div>
@@ -129,30 +147,26 @@
 		</div>
 	{:else if coin && activeCount}
 		<div
-			class={clsx('p-4 flex items-center *:gap-8', {
-				'grayscale invert bg-white rounded-xl py-4 px-8': coinColor === 'black',
-				'!pt-10': coinColor === 'black' && showQrCode && activeCount === 1,
-				'!bg-[#700000]': redeemed && coinColor === 'black',
+			class={clsx('p-4 flex items-center', {
 				'flex-col': isVertical,
 				'flex-row': !isVertical,
 				'!-mt-14': activeCount === 1,
 				'mt-2': activeCount !== 1,
+				'gap-5': !isVertical,
 				redeemed
 			})}
 			style={[
 				`transform: scale(${1 + (scale - 5) / 10})`,
-				isCoin
-					? isVertical
-						? `margin-top: ${Math.max(Math.round(2.3 * (scale - marginMultiplier)), -15)}rem`
-						: `margin-top: ${Math.max(Math.round(1 * (scale - marginMultiplier)), -15)}rem`
-					: ''
+				isVertical
+					? `margin-top: ${Math.max(Math.round(2.3 * (scale - marginMultiplier)), -15)}rem`
+					: `margin-top: ${Math.max(Math.round(1 * (scale - marginMultiplier)), -15)}rem`
 			]
 				.filter(Boolean)
 				.join(';')}
 		>
 			{#if showQrCode}
 				<div
-					class="flex justify-center"
+					class={clsx('flex justify-center')}
 					style={[
 						`transform: scale(${1 + (scale + 7) / 10})`,
 						`margin-bottom: ${marginMultiplier + 1}rem`,
@@ -160,6 +174,9 @@
 					].join(';')}
 				>
 					<ToggleQr
+						class={clsx({
+							'grayscale invert bg-white': coinColor === 'black'
+						})}
 						shown
 						withToggle={false}
 						{rounded}
@@ -174,7 +191,9 @@
 
 			{#if showCoin}
 				<RoundCodeWithParams
-					class="mb-4"
+					class={clsx('mb-4 !p-5 scale-90', {
+						'grayscale invert bg-white': coinColor === 'black'
+					})}
 					id={coin.id}
 					counter={0}
 					color={redeemed ? 'gold' : 'black'}
@@ -184,7 +203,9 @@
 
 			{#if showQrCoin}
 				<RoundQR
-					class="my-2"
+					class={clsx('my-2 rounded-full', {
+						'grayscale invert bg-white border-white': coinColor === 'black'
+					})}
 					{withBorder}
 					route={getIndexUrl(`/c/${coin?.id}`)}
 					on:click={() => (showControls = !showControls)}
@@ -195,25 +216,64 @@
 
 	{#if showControls}
 		<div class="text-3xl fixed right-2 bottom-2">
-			<div class="flex flex-wrap justify-center items-center gap-2">
-				<button on:click={() => (showQrCode = !showQrCode)}>👾</button>
-				<button on:click={() => (showCoin = !showCoin)}>🪙</button>
+			<div class="flex flex-wrap flex-col h-screen justify-end items-center gap-2">
+				<button class={clsx(!withLogo && 'opacity-50')} on:click={() => (withLogo = !withLogo)}>
+					🅖
+				</button>
+				<button
+					class={clsx(!withCoinUrl && 'opacity-50')}
+					on:click={() => (withCoinUrl = !withCoinUrl)}>🔗</button
+				>
+				<button
+					class={clsx(!withTimestamps && 'opacity-50')}
+					on:click={() => (withTimestamps = !withTimestamps)}>⏰</button
+				>
+				{#if withTimestamps}
+					<button class={clsx(!withTime && 'opacity-50')} on:click={() => (withTime = !withTime)}>
+						🕐
+					</button>
+				{/if}
+				<button
+					class={clsx(!emailIndex && 'opacity-50')}
+					on:click={() =>
+						(emailIndex = emailIndex >= CONTACT_EMAILS.length - 1 ? 0 : emailIndex + 1)}
+				>
+					@
+				</button>
+				<button
+					class={clsx(!withCopyright && 'opacity-50')}
+					on:click={() => (withCopyright = !withCopyright)}>©</button
+				>
+				<button
+					class={clsx(!withScissors && 'opacity-50')}
+					on:click={() => (withScissors = !withScissors)}>✂️</button
+				>
+				<button
+					class={clsx(!showQrCode && 'opacity-50')}
+					on:click={() => (showQrCode = !showQrCode)}>👾</button
+				>
+				<button class={clsx(!showCoin && 'opacity-50')} on:click={() => (showCoin = !showCoin)}>
+					🪙
+				</button>
 				<button on:click={() => (showQrCoin = !showQrCoin)}>{showQrCoin ? '⚫' : '⚪'}</button>
 				<button on:click={() => (coinColor = coinColor === 'black' ? 'white' : 'black')}>
 					🌗
 				</button>
-				<button on:click={() => (withScissors = !withScissors)}>✂️</button>
-				<button on:click={() => (withTime = !withTime)}>🕐</button>
-				<button class={isCoin ? '' : 'hidden'} on:click={() => (withBorder = !withBorder)}>
-					🔘
-				</button>
-				<button class={isCoin ? '' : 'hidden'} on:click={() => (isVertical = !isVertical)}>
+				{#if showCoin || showQrCoin}
+					<button
+						class={clsx(!withBorder && 'opacity-50')}
+						on:click={() => (withBorder = !withBorder)}
+					>
+						🔘
+					</button>
+				{/if}
+				<button on:click={() => (isVertical = !isVertical)}>
 					{isVertical ? '➡️' : '⬇️'}
 				</button>
-				<button on:click={() => (withLogo = !withLogo)}>©</button>
+
 				<button on:click={() => (scale > -3 ? scale-- : null)}> ➖ </button>
 				<button on:click={() => (scale < 5 ? scale++ : null)}> ➕ </button>
-				<button class="ml-4" on:click={() => (showControls = false)}>✖️</button>
+				<button class="mt-4" on:click={() => (showControls = false)}>✖️</button>
 			</div>
 		</div>
 	{/if}
@@ -222,5 +282,9 @@
 <style>
 	.redeemed.grayscale.invert :global(.coin-counter) {
 		fill: white !important;
+	}
+
+	:global(#image) {
+		scale: 1.5;
 	}
 </style>
