@@ -51,8 +51,8 @@
 		};
 	};
 
-	const warTime = timeToHumanReadable(warDurationMs);
-	$: warDuration = `${warTime.years}y ${warTime.days}d ${warTime.hours}h ${warTime.minutes}m ${warTime.seconds + elapsedSeconds}s`;
+	$: warTime = timeToHumanReadable(warDurationMs + elapsedSeconds * 1000);
+	$: warDuration = `${warTime.years}y ${warTime.days}d ${warTime.hours}h ${warTime.minutes}m ${warTime.seconds}s`;
 
 	let isUnlocked = false;
 	let isNewBannerLoading = false;
@@ -62,6 +62,10 @@
 <div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-4">
 	<div class="flex flex-col justify-center items-center">
 		<Header scale={0.75} greek={isUnlocked} loading={isNewBannerLoading} />
+
+		<blockquote class="italic underline">
+			The glory and freedom of Ukraine has not yet perished...
+		</blockquote>
 
 		<p class="text-xl max-w-md text-center px-10 my-4">
 			We appreciate you taking a step to learn more and possibly help Ukraine.
@@ -86,18 +90,22 @@
 		</div>
 
 		<div class="flex flex-col text-xl gap-4 mt-8 items-center">
-			<a class="flex items-center gap-2" target="_blank" href={UN_DONATION_LINK}>
-				<img class="w-8" alt="UN Logo" src="/images/external-logos/un.svg" />
-				<span>UN Ukraine Humanitarian Fund</span>
-			</a>
-			<a class="flex items-center gap-2" target="_blank" href={U24_DONATION_LINK}>
-				<img class="w-8 rounded" alt="UN Logo" src="/images/external-logos/u24.jpg" />
-				<span>United24 donation platform</span>
-			</a>
-			<button class="flex items-center gap-2" on:click={() => (isDirectDonation = true)}>
+			<button
+				class="flex items-center gap-2 border px-4 py-2 rounded"
+				on:click={() => (isDirectDonation = true)}
+			>
 				<img class="w-8" alt="UN Logo" src="/images/logoi.svg" />
 				<span>Donate $1 directly with Logoi <span title="And get a gift">🌟</span></span>
 			</button>
+
+			<a class="flex items-center gap-2 text-base" target="_blank" href={UN_DONATION_LINK}>
+				<img class="w-6" alt="UN Logo" src="/images/external-logos/un.svg" />
+				<span>UN Ukraine Humanitarian Fund</span>
+			</a>
+			<a class="flex items-center gap-2 text-base" target="_blank" href={U24_DONATION_LINK}>
+				<img class="w-6 rounded" alt="UN Logo" src="/images/external-logos/u24.jpg" />
+				<span>United24 donation platform</span>
+			</a>
 
 			{#if isDirectDonation}
 				<Payment destination="ukraine" give to="Ukraine">
