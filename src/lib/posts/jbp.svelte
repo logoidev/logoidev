@@ -75,7 +75,7 @@
 		</p>
 
 		<p>
-			Yet, looking back, I think your conversation with Johnathan to be an event I can describe only
+			Yet, looking back, I think your conversation with Jonathan to be an event I can describe only
 			as baptism of the Holy Spirit. I felt like you've imparted me with a glimpse of knowledge of
 			something long forgotten - a different type of language.
 		</p>
@@ -83,7 +83,7 @@
 		<p>
 			I'm a software engineer and speek multiple human languages, but this was different - symbolic
 			language was deeper than anything I knew. It was overwhelming, so much so I felt inspired (and
-			desparate) to write this message to Johnathan on Oct 16, 2019.
+			desparate) to write this message to Jonathan on Oct 16, 2019.
 		</p>
 
 		<BlogImage
@@ -99,14 +99,14 @@
 		</p>
 
 		<p>
-			That video, like many others, both from you and Johnathan has slowly led me back the Orthodox
+			That video, like many others, both from you and Jonathan has slowly led me back the Orthodox
 			church and I can't thank you enough. You two made me doubt the rationalistic worldview and
 			turn towards Truth. It literally saved my life and delivered us from the remote small village
 			in the east of Ukraine to now being able to stand in front of you.
 		</p>
 
 		<p>
-			That video, like many others, both from you and Johnathan has slowly led me back to the
+			That video, like many others, both from you and Jonathan has slowly led me back to the
 			Orthodox church and I can't thank you enough.
 		</p>
 
