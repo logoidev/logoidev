@@ -28,20 +28,22 @@
 	<div class="p-8">
 		<ul class="flex flex-col gap-2 text-center">
 			{#each posts as post, idx}
-				<li class="group text-2xl font-serif relative">
-					<a
-						href={`/blog/${post.id}`}
-						on:click={() => trackAnalyticsEvent('blog:post-navigation', { post_id: post.id })}
-					>
-						<span
-							class="text-base opacity-50 group-hover:opacity-95"
-							title={`Published on ${new Date(post.published).toLocaleDateString()}`}
-							>#{idx + 1}</span
+				{#if !post.hidden}
+					<li class="group text-2xl font-serif relative">
+						<a
+							href={`/blog/${post.id}`}
+							on:click={() => trackAnalyticsEvent('blog:post-navigation', { post_id: post.id })}
 						>
-						<span>{post.title}</span>
-						<ReadEstimate estimate={post.minutesToRead} />
-					</a>
-				</li>
+							<span
+								class="text-base opacity-50 group-hover:opacity-95"
+								title={`Published on ${new Date(post.published).toLocaleDateString()}`}
+								>#{idx + 1}</span
+							>
+							<span>{post.title}</span>
+							<ReadEstimate estimate={post.minutesToRead} />
+						</a>
+					</li>
+				{/if}
 			{/each}
 		</ul>
 	</div>

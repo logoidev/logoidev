@@ -20,8 +20,6 @@
 
 	export let data: Post | null;
 
-	console.log('Post', data);
-
 	const post = data!;
 
 	let minutesToRead = 0;
@@ -67,19 +65,22 @@
 	</div>
 
 	<div class="flex flex-col items-center mt-12 gap-2">
-		<LinkButton
-			href={`https://github.com/logoidev/logoidev/discussions/${post.gh_discussion_id}`}
-			text="Discuss on GitHub"
-			title="Public discussion where all commenters are welcome"
-		/>
-		<span>or</span>
-		<EmailButton
-			email={INTRO_EMAIL}
-			subject={`Logoi Blog - "${post.title}"`}
-			title="Email us with comments privately"
-		/>
-		<span>or</span>
-		<BookMeeting text="👋" size="sm" title="Schedule a call" />
+		{#if post.gh_discussion_id}
+			<LinkButton
+				href={`https://github.com/logoidev/logoidev/discussions/${post.gh_discussion_id}`}
+				text="Discuss on GitHub"
+				title="Public discussion where all commenters are welcome"
+			/>
+			<span>or</span>
+
+			<EmailButton
+				email={INTRO_EMAIL}
+				subject={`Logoi Blog - "${post.title}"`}
+				title="Email us with comments privately"
+			/>
+			<span>or</span>
+			<BookMeeting text="👋" size="sm" title="Schedule a call" />
+		{/if}
 	</div>
 	<div class="flex flex-col justify-center items-center font-serif">
 		<Socials withToggle />
