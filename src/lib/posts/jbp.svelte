@@ -27,6 +27,7 @@
 			class="mx-auto flex gap-2"
 			on:submit={(e) => {
 				e.preventDefault();
+				// @ts-expect-error - form input
 				const input = e.target.elements['password'];
 				attempt++;
 				trackAnalyticsEvent('unlock_attempt', { password: input.value, attempt });
