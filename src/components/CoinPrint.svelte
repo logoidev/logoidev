@@ -106,7 +106,7 @@
 			<Header />
 		{/if}
 
-		<CoinInfo {coin} withUrl={withCoinUrl} bind:coinUrl bind:withTime />
+		<CoinInfo {coin} withUrl={withCoinUrl} bind:withTime />
 
 		{#if email}
 			<a class="mt-2" href={`mailto:${email}?subject=Help with coin&body=Coin ID: ${coin?.id}`}>

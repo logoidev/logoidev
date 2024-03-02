@@ -46,7 +46,7 @@
 				name="password"
 			/>
 			<button type="submit" class="px-4 py-2 border border-1 border-gray-600 rounded">
-				Unlock
+				let me in
 			</button>
 		</form>
 	{/if}
