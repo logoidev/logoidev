@@ -41,6 +41,8 @@
 			<Services />
 
 			<BookMeeting text="Claim your coin 🪙" href="/c" target={undefined} />
+
+			<a class="underline mt-5" href="/blog/logoi" target="_blank">Learn more</a>
 		</div>
 		<div class="flex flex-col justify-center items-center">
 			<Separator widthPercentage={40} />

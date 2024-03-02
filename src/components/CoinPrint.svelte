@@ -16,6 +16,7 @@
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
 	import { dev } from '$app/environment';
+	import CoinInfo from './CoinInfo.svelte';
 
 	let coinId = $page.params.id;
 	export let isStatic = false;
@@ -38,18 +39,9 @@
 	let showQrCoin = true;
 	let showQrCode = false;
 
-	$: timeFormatMethod = withTime ? ('toLocaleString' as const) : ('toLocaleDateString' as const);
-	$: created = new Date(coin?.created_at ?? '')[timeFormatMethod]?.();
-	$: now = new Date()[timeFormatMethod]?.();
 	let emailIndex = 1;
 	const CONTACT_EMAILS = ['', 'hi@logoi.dev', 'vlad@logoi.dev'];
 	$: email = CONTACT_EMAILS[emailIndex];
-
-	if (created === now) {
-		withTime = true;
-	}
-
-	const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 	let isFetchingCoin = false;
 	let scale = 1;
@@ -58,14 +50,12 @@
 	// TODO: This needs not to be based on color
 
 	$: coinColor = coin?.color ?? 'white';
-	$: coinUrl = coin?.id
-		? getIndexUrl(`/c/${coin.id}`)
-		: `${window.location.origin}${window.location.pathname.split('/').slice(0, -1).join('/')}`;
+	let coinUrl: string;
 	$: activeCount = [showCoin, showQrCoin, showQrCode].filter(Boolean).length;
 	$: marginMultiplier = (activeCount + 3) * 1;
 
 	$: {
-		console.log('Debug', { coin, coinColor, error, distance, destination, redeemed });
+		console.log('Debug', { coin, coinUrl, coinColor, error, distance, destination, redeemed });
 	}
 
 	const fetchCoin = async (id: string) => {
@@ -116,17 +106,7 @@
 			<Header />
 		{/if}
 
-		{#if withCoinUrl}
-			<a class="text-lg mt-1" href={coinUrl}>{coinUrl}</a>
-		{/if}
-
-		{#if withTimestamps && !isFetchingCoin}
-			<div class="flex flex-col text-sm">
-				<span>Created: {created}</span>
-				<span>Now: {now}</span>
-				<span>{timezone}</span>
-			</div>
-		{/if}
+		<CoinInfo {coin} withUrl={withCoinUrl} bind:coinUrl bind:withTime />
 
 		{#if email}
 			<a class="mt-2" href={`mailto:${email}?subject=Help with coin&body=Coin ID: ${coin?.id}`}>

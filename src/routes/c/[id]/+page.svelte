@@ -21,6 +21,7 @@
 		ORIGIN_FOUNDATION
 	} from 'src/shared/constants';
 	import { getErrorMessage } from 'src/utils/get-error-messge';
+	import CoinInfo from 'src/components/CoinInfo.svelte';
 
 	let coinId = $page.params.id;
 	let coin: CoinModel | null = null;
@@ -352,7 +353,12 @@
 
 	{#if moreInfo}
 		<div class="flex flex-col items-center mt-32">
-			<a class="underline mb-8" href="/blog/logoi">Read an article explaining what Logoi</a>
+			<a class="underline mb-8" href="/blog/logoi" target="_blank"
+				>Read an article explaining Logoi</a
+			>
+
+			<p>{coin?.id}</p>
+			<CoinInfo {coin} withUrl={false} />
 
 			<a class="mb-8 border border-1 py-2 px-4 rounded" href={`/c/${coinId}/p`}>Print</a>
 			<p class="opacity-60 font-sans text-sm">There's an early alpha build of this</p>

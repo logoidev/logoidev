@@ -63,9 +63,15 @@
 	<div class="flex flex-col justify-center items-center">
 		<Header scale={0.75} greek={isUnlocked} loading={isNewBannerLoading} />
 
-		<blockquote class="italic underline">
-			The glory and freedom of Ukraine has not yet perished...
-		</blockquote>
+		{#if Math.round(Math.random())}
+			<blockquote class="italic underline">
+				The glory and freedom of Ukraine has not yet perished...
+			</blockquote>
+		{:else}
+			<blockquote class="italic underline">
+				Our souls and bodies we will lay down for our freedom...
+			</blockquote>
+		{/if}
 
 		<p class="text-xl max-w-md text-center px-10 my-4">
 			We appreciate you taking a step to learn more and possibly help Ukraine.

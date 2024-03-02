@@ -5,6 +5,7 @@ const alphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const ID_LENGTH = 11;
 const COIN_TYPE_LENGTH = 3;
+export const LOGOI_ID_LENGTH = COIN_TYPE_LENGTH + 1 + ID_LENGTH;
 
 const ID_VALIDATION_REGEX = new RegExp(
 	`^([A-Z]){${COIN_TYPE_LENGTH}}:([A-Z]|[0-9]){${ID_LENGTH}}$`

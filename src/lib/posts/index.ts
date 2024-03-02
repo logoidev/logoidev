@@ -34,6 +34,14 @@ export const posts = [
 		minutesToRead: 3,
 		gh_discussion_id: 0,
 		hidden: true
+	},
+	{
+		id: 'jp',
+		title: 'JP',
+		published: '2024-03-02T16:00:00.00Z',
+		minutesToRead: 4,
+		gh_discussion_id: 0,
+		hidden: true
 	}
 ] as const;
 
@@ -61,5 +69,7 @@ export const getBlogPostComponent = (id: PostId) => {
 			return import('$lib/posts/logoi.svelte');
 		case 'jbp':
 			return import('$lib/posts/jbp.svelte');
+		case 'jp':
+			return import('$lib/posts/jp.svelte');
 	}
 };

@@ -52,16 +52,17 @@
 	{/if}
 
 	{#if unlocked}
-		<p class="mx-auto">Hello Mr. Peterson.</p>
+		<p class="mx-auto">Hello Jonathan.</p>
 		<p>
 			My name is Vlad and I'm extremely happy to have met you, both online and, hopefully, in
 			person.
 		</p>
 
 		<p>
-			I started listening to you in 2017 and, like to many other people, you played the part of the
-			wise Father, and I'm extremely grateful for the generosity of your time and to God for giving
-			me the wisdom to listen to your advice.
+			I started listening to you in 2018 and, like to many other people, you played the part of the
+			wise spiritual guide, and I'm extremely grateful for the generosity of your time, and to God
+			for giving me the wisdom to listen to your advice, and be pulled into this world and the
+			Symbolic Language that you and your borther have revealed and restored - at least in me.
 		</p>
 
 		<p>
@@ -70,21 +71,25 @@
 		</p>
 
 		<p>
-			Your lectures, especially the Maps of Meaning, made me reconsider the value of stories and
-			notice the wisdom of the narrative. Then my religious journey continued - The Biblical Series,
-			the Exhodus, and, I'm sure, everything else have in mind.
+			Your art has shown me beauty in patterns, and that my ancestors were truly wise people, and,
+			especially, your commentary on modern culture and the parallels you drew so vividly. You made
+			me believe in Santa again. It made me reconsider the value of stories and notice the wisdom of
+			the narrative. You being at the right side of Jordan is and indicator of his trust, and I want
+			to thank you for being his friend, at the times of trouble and now. I feel like he needs more
+			people like you in his life.
 		</p>
 
 		<p>
-			Yet, looking back, I think your conversation with Jonathan to be an event I can describe only
-			as baptism by the Holy Spirit. I felt like you've imparted me with a glimpse of knowledge of
+			Looking back, I think your conversation with Jordan to be an event I can describe only as
+			baptism by the Holy Spirit. Like Dr. Shaw described as seein a human being on the other side
+			of the screen speaking to me. I felt like you've imparted me with a glimpse of knowledge of
 			something long forgotten - a different type of language.
 		</p>
 
 		<p>
-			I'm a software engineer and speek multiple human languages, but this was different - symbolic
-			language was deeper than anything I knew. It was overwhelming, so much so I felt inspired (and
-			desparate) to write this message to Jonathan on Oct 16, 2019.
+			I'm a software engineer and speek multiple human languages and code, but this was different -
+			symbolic language was deeper than anything I knew. It was overwhelming, so much so I felt
+			inspired (and desparate) to write this message to you on Oct 16, 2019.
 		</p>
 
 		<BlogImage
@@ -100,7 +105,7 @@
 		</p>
 
 		<p>
-			That video, like many others, both from you and Jonathan has slowly led me back the Orthodox
+			That video, like many others, both from you and Jordan has slowly led me back the Orthodox
 			church and I can't thank you enough. You two made me doubt the rationalistic worldview and
 			turn towards Truth. It literally saved my life and delivered us from the remote small village
 			in the east of Ukraine to now being able to stand in front of you.
@@ -120,6 +125,13 @@
 		</p>
 
 		<p>
+			That's why my question to you was deeply important to me as it's the only art I know and it
+			seems very dangerous to engage with this art mindlessly and without a proper orientation. I
+			would love to speak more about many paralels and symbols between software engineering and
+			biblical language.
+		</p>
+
+		<p>
 			I had an unbelievable journey and I there's not a singular person I can thank for my family
 			and I being here, so I attribute it to God and to the protection of St. Michael. May he
 			protect your family as well and I think he truly does.
@@ -132,23 +144,12 @@
 		</p>
 
 		<p>
-			Another topic I feel you are wrestling with is AI. My question on the first day of the
-			conference was aimed at that as because it's the only thing I know how to do it is deeply
-			important to me to understand how to move forward in my creative art - software engineering.
-			In all honesty I was not satisfied with Jonathans answer and would love to know your opinion
-			on this. What you're doing with teaching it the scripture and than layering it with works of
-			our culture like Dante and Milton I think is one of the correct directions that will have to
-			happen in order for AI to become angelic and be our protection.
-		</p>
-
-		<p>
 			I want to make sure I do this responsibly and would love to know your views and advice. Your
 			time and attention is extremely valuable but if you are able, there's a 17 minute video I made
 			to explain who I am, why I'm doing this and what are <a class="underscore" href="/blog/logoi"
 				>Logoi.</a
 			>
 		</p>
-
 		<br />
 
 		<div style="position:relative; width:100%; height:0px; padding-bottom:56.250%">
@@ -166,9 +167,9 @@
 		<br />
 		<p>
 			I completely understand you have many things to pay attention to - I wish you luck in your
-			tour and pray you inspire millions of people just like you did for me. If my message resonated
-			with you or if you have questions about technology, AI, VR, Ukraine and Russia, I'd be happy
-			to give you a personal perspective. My email is <a
+			ventures, the Symbolic World, Symbolic Press and anything else you're inspired to do. If my
+			message resonated with you or if you have questions about technology, AI, VR, Ukraine and
+			Russia, I'd be happy to give you a personal perspective. My email is <a
 				class="underline"
 				href="mailto:vlad@logoi.dev?subject=JBP"
 			>
@@ -177,7 +178,9 @@
 			and I'm also on <a class="underline" href="https://twitter.com/v1adko_" target="_blank">X.</a>
 		</p>
 
-		<p>Thank you for the spirit of courage and generosity you are sharing with so many people,</p>
+		<p>
+			Thank you for the spirit of reenchantment and generosity you are sharing with so many people,
+		</p>
 	{/if}
 
 	<br />
