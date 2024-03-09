@@ -35,27 +35,32 @@ export const USERS: Array<UserData> = [
 		unlockImage: '/users/v/unlock.png',
 		has_resume: false,
 		hourly_rate_usd: 75,
-		calendar_link: 'https://cal.com/logoi-v',
+		calendar_link: 'https://calendly.com/logoi-v',
 		socials: [
 			{
-				type: 'linkedin',
-				name: 'LinkedIn',
-				url: 'https://www.linkedin.com/in/v1adko'
+				type: 'telegram',
+				url: 'https://t.me/logoi_v',
+				qrImgUrl: '/users/v/qr-telegram-v.webp'
 			},
 			{
 				type: 'twitter',
 				url: 'https://twitter.com/v1adko_'
 			},
 			{
-				type: 'snap',
-				url: 'https://t.snapchat.com/fyGYetns',
-				qrImgUrl: '/users/v/qr-snap.webp'
+				type: 'instagram',
+				name: 'Instagram',
+				url: 'https://www.instagram.com/v1adko_'
 			},
 			{
-				type: 'telegram',
-				url: 'https://t.me/logoi_v',
-				qrImgUrl: '/users/v/qr-telegram-v.webp'
+				type: 'linkedin',
+				name: 'LinkedIn',
+				url: 'https://www.linkedin.com/in/v1adko'
 			},
+			// {
+			// 	type: 'snap',
+			// 	url: 'https://t.snapchat.com/fyGYetns',
+			// 	qrImgUrl: '/users/v/qr-snap.webp'
+			// },
 			{
 				type: 'github',
 				url: 'https://github.com/v1adko',
