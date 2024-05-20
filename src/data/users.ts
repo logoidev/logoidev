@@ -1,6 +1,7 @@
 import { Level } from 'src/components/StarsRating/types';
 import { groupBy } from '../utils/lodash';
 import { type UserData, UserIds } from '../types/user';
+import { CALENDAR_LINK } from 'src/shared/constants';
 
 export const USERS: Array<UserData> = [
 	{
@@ -35,7 +36,7 @@ export const USERS: Array<UserData> = [
 		unlockImage: '/users/v/unlock.png',
 		has_resume: false,
 		hourly_rate_usd: 75,
-		calendar_link: 'https://calendly.com/logoi-v',
+		calendar_link: CALENDAR_LINK,
 		socials: [
 			{
 				type: 'telegram',
