@@ -44,10 +44,6 @@ export const USERS: Array<UserData> = [
 				qrImgUrl: '/users/v/qr-telegram-v.webp'
 			},
 			{
-				type: 'twitter',
-				url: 'https://twitter.com/v1adko_'
-			},
-			{
 				type: 'instagram',
 				name: 'Instagram',
 				url: 'https://www.instagram.com/v1adko_'
@@ -57,11 +53,6 @@ export const USERS: Array<UserData> = [
 				name: 'LinkedIn',
 				url: 'https://www.linkedin.com/in/v1adko'
 			},
-			// {
-			// 	type: 'snap',
-			// 	url: 'https://t.snapchat.com/fyGYetns',
-			// 	qrImgUrl: '/users/v/qr-snap.webp'
-			// },
 			{
 				type: 'github',
 				url: 'https://github.com/v1adko',
@@ -72,12 +63,6 @@ export const USERS: Array<UserData> = [
 				alt: 'StackOverflow Logo',
 				url: 'https://stackoverflow.com/users/6426334/vlad-kolbaia'
 			}
-			// {
-			// 	type: 'cssbattle',
-			// 	url: 'https://cssbattle.dev/player/v1adko',
-			// 	name: 'CssBattle',
-			// 	image: `/images/social/cssbattle.jpg`
-			// }
 		],
 		// TODO: Add square
 		payments: [
@@ -108,15 +93,6 @@ export const USERS: Array<UserData> = [
 				name: 'LinkedIn',
 				url: 'https://www.linkedin.com/in/andrewprokhorenko/'
 			},
-			// {
-			// 	type: 'twitter',
-			// 	url: 'https://twitter.com/logoi_ap'
-			// },
-			// {
-			// 	type: 'snap',
-			// 	url: 'https://t.snapchat.com/DybHESuH',
-			// 	qrImgUrl: '/users/ap/qr-snap.webp'
-			// },
 			{
 				type: 'telegram',
 				url: 'https://t.me/AndrewProkhorenko',
@@ -127,11 +103,6 @@ export const USERS: Array<UserData> = [
 				name: 'GitHub',
 				url: 'https://github.com/AndrewProkhorenko'
 			}
-			// {
-			// 	type: 'stack',
-			// 	alt: 'StackOverflow Logo',
-			// 	url: 'https://stackoverflow.com/users/20585039/andrew'
-			// }
 		],
 		payments: []
 	}
