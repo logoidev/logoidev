@@ -39,16 +39,6 @@ export const USERS: Array<UserData> = [
 		calendar_link: CALENDAR_LINK,
 		socials: [
 			{
-				type: 'telegram',
-				url: 'https://t.me/logoi_v',
-				qrImgUrl: '/users/v/qr-telegram-v.webp'
-			},
-			{
-				type: 'instagram',
-				name: 'Instagram',
-				url: 'https://www.instagram.com/v1adko_'
-			},
-			{
 				type: 'linkedin',
 				name: 'LinkedIn',
 				url: 'https://www.linkedin.com/in/v1adko'
@@ -62,7 +52,12 @@ export const USERS: Array<UserData> = [
 				type: 'stack',
 				alt: 'StackOverflow Logo',
 				url: 'https://stackoverflow.com/users/6426334/vlad-kolbaia'
-			}
+			},
+			{
+				type: 'telegram',
+				url: 'https://t.me/logoi_v',
+				qrImgUrl: '/users/v/qr-telegram-v.webp'
+			},
 		],
 		// TODO: Add square
 		payments: [
