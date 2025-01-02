@@ -31,7 +31,7 @@
 				<Separator top={3} />
 			{/if}
 
-			<ul class="text-2xl flex flex-wrap items-stretch justify-between max-w-md mx-10 my-2 px-1">
+			<ul class="text-2xl flex flex-wrap items-center justify-center max-w-md mx-10 my-2 px-1">
 				{#each socials as social, index}
 					<SocialLinkElement
 						class={clsx('social-link-element', {
@@ -63,24 +63,5 @@
 	ul {
 		animation: animate-fade 0.5s ease;
 		height: auto;
-		overflow: hidden;
-	}
-
-	/* TODO: Replace with tailwind notation */
-	@media only screen and (max-width: 495px) {
-		ul :global(.social-link-element) {
-			width: 50%;
-			justify-content: space-around;
-		}
-
-		ul :global(.social-link-element-last-odd-child) {
-			width: 100%;
-		}
-	}
-	@media only screen and (max-width: 360px) {
-		ul {
-			flex-direction: column;
-			align-items: center;
-		}
 	}
 </style>

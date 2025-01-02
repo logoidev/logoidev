@@ -57,7 +57,7 @@ export const USERS: Array<UserData> = [
 				type: 'telegram',
 				url: 'https://t.me/logoi_v',
 				qrImgUrl: '/users/v/qr-telegram-v.webp'
-			},
+			}
 		],
 		// TODO: Add square
 		payments: [

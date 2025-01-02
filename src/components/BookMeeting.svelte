@@ -5,9 +5,9 @@
 
 	export let text = 'Book a meeting';
 	export let size: ButtonSize = 'lg';
-	export let title = 'Schedule a videocall';
+	export let title = '';
 	export let href = CALENDAR_LINK;
 	export let target: '_blank' | undefined = undefined;
 </script>
 
-<LinkButton class="bg-slate-50" {href} {size} {text} {title} {target} />
+<LinkButton class="bg-slate-50" {href} {size} {text} title={title || text} {target} />
