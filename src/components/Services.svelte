@@ -4,7 +4,7 @@
 	import { getSvgParams } from './SVG/SVG.utils';
 	import { trackAnalyticsEvent } from './AnalyticsScripts.svelte';
 
-	const SERVICES = ['Web', 'AR/VR/XR', 'Development', 'Spatial Computing', 'Software Engineering'];
+	const SERVICES = ['Web', 'Design', 'Development', 'Spatial Computing', 'Software Engineering'];
 
 	let isShown: null | boolean = null;
 	const toggleShown = () => {
