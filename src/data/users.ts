@@ -10,7 +10,7 @@ export const USERS: Array<UserData> = [
 		last_name: 'Iglesia',
 		memojiCount: 10,
 		email: 'ai@logoi.dev',
-		titles: ['Assistant & Editor'],
+		titles: ['Creative Technologist'],
 		level: Level.S,
 		has_resume: false,
 		hourly_rate_usd: 0,

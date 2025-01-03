@@ -36,7 +36,8 @@
 			<Header noLink greek={isUnlocked} loading={isNewBannerLoading} />
 
 			<p class="text-xl max-w-md text-center px-10 my-4">
-				We are a digital design collective<br /> joining liberal arts and the most<br /> advanced technology
+				We bring innovation, advanced technology and solid design to serve the Church, empower her
+				people, and glorify God.
 			</p>
 
 			<Services />
