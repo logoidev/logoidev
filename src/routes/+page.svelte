@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Header from 'src/components/Header.svelte';
 	import Services from 'src/components/Services.svelte';
-	import EmailButton from 'src/components/EmailButton.svelte';
 	import Separator from 'src/components/Separator.svelte';
 	import Team from 'src/components/Team.svelte';
 	import Socials from 'src/components/Socials/Socials.svelte';
@@ -11,14 +10,11 @@
 	import Foundation from './foundation/+page.svelte';
 
 	import { getIndexUrl } from '../shared/routes';
-	import { CALENDLAR_MAIN_LINK, INTRO_EMAIL } from '../data/emails';
 	import IconLink from 'src/components/IconLink.svelte';
-
-	import BookMeeting from 'src/components/BookMeeting.svelte';
 
 	import Payment from 'src/components/Payment/Payment.svelte';
 	import { ORIGIN_FOUNDATION } from 'src/shared/constants';
-	import LinkButton from 'src/components/LinkButton/LinkButton.svelte';
+	import Projects from 'src/components/Projects.svelte';
 
 	export let data = { origin: '' };
 	$: IS_FOUNDATION = data.origin === ORIGIN_FOUNDATION;
@@ -37,33 +33,28 @@
 
 			<p class="text-xl max-w-md text-center px-10 my-4">
 				We bring innovation, advanced technology and solid design to serve the Church, empower her
-				people, and glorify God.
+				people and glorify God.
 			</p>
 
 			<Services />
-
-			<BookMeeting text="Claim your coin 🪙" href="/c" target={undefined} />
-
-			<a class="underline mt-5" href="/blog/logoi" target="_blank">Learn more</a>
 		</div>
 		<div class="flex flex-col justify-center items-center">
 			<Separator widthPercentage={40} />
 
 			<Team />
 
-			<LinkButton href={CALENDLAR_MAIN_LINK} text="💬 Set up a call" />
-
-			<span class="mt-4">or email</span>
-
-			<EmailButton
-				class="my-4"
-				email={INTRO_EMAIL}
-				subject={`Logoi Development - contact request`}
-			/>
-
-			<IconLink href="blog" target="" title="Blog" iconName="blog" scale={1.2} class="mt-0" />
+			<Projects />
 
 			<Socials withToggle />
+
+			<IconLink
+				href="blog"
+				target="_blank"
+				title="Go to Blog"
+				iconName="blog"
+				scale={1.2}
+				class="mt-0"
+			/>
 
 			<MapLink />
 
