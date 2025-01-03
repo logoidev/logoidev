@@ -29,6 +29,7 @@
 {:else}
 	<IconLink
 		type="button"
+		text="Team"
 		iconName="developer"
 		title="View team and contacts"
 		scale={1.2}

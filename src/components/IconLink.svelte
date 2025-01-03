@@ -10,6 +10,7 @@
 	export let target = '__blank';
 	export let onClick = noop;
 	export let scale = 1;
+	export let text = '';
 
 	let className = '';
 	export { className as class };
@@ -39,7 +40,7 @@
 	tabindex="0"
 	{...elementProps}
 	{title}
-	class={`text-xl inline-block my-2 p-2 rounded hover:bg-slate-200 text-center w-fit ${className}`}
+	class="text-xl inline-block my-2 p-2 rounded hover:bg-slate-200 text-center w-fit {className} flex items-center justify-center"
 	on:click={onClick}
 >
 	<div
@@ -50,6 +51,9 @@
 			`--dynamic-url: url(${getIconPath(true)})`
 		])}
 	/>
+	{#if text}
+		<span class="ml-1">{text}</span>
+	{/if}
 </svelte:element>
 
 <style>

@@ -19,6 +19,7 @@
 		{#if withToggle && !isOpen}
 			<IconLink
 				type="button"
+				text="Socials"
 				iconName="globe"
 				title="Reveal social links"
 				scale={1.2}
