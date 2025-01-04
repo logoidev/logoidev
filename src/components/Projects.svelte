@@ -1,7 +1,6 @@
 <script>
 	import BookMeeting from './BookMeeting.svelte';
 	import IconLink from './IconLink.svelte';
-	import Separator from './Separator.svelte';
 
 	let isOpen = false;
 </script>
