@@ -10,6 +10,7 @@
 	export let socials: Array<SocialLink> = SOCIALS;
 	export let withSeparators = true;
 	export let withToggle = false;
+	export let withTitle = false;
 
 	let isOpen = !withToggle;
 </script>
@@ -19,7 +20,7 @@
 		{#if withToggle && !isOpen}
 			<IconLink
 				type="button"
-				text="Socials"
+				text={withTitle ? 'Socials' : undefined}
 				iconName="globe"
 				title="Reveal social links"
 				scale={1.2}

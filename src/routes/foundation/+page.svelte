@@ -77,7 +77,7 @@
 </svelte:head>
 
 <div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-8">
-	<div class="flex flex-col justify-center items-center min-h-screen">
+	<div class="flex flex-col justify-center items-center min-h-[100svh]">
 		{#if isUnlocked}
 			<EmailButton
 				class="my-1 h-4 w-4 !p-0 rounded-full text-transparent bg-[#FFD700] hover:bg-blue-500"
@@ -121,8 +121,10 @@
 
 		<div class="fixed left-3 bottom-1.5 bg-white py-1 px-2 rounded bg-opacity-75">
 			<span class="cursor-pointer" role="presentation" on:click={updateEmoji}>
-				<span class="bg-[#eff1f2] font-mono black rounded px-1.5 py-0.5">{'<made />'}</span
-				>{` with ${emoji} by `}
+				<span class="bg-[#eff1f2] font-mono black rounded px-1.5 py-0.5">
+					{'<made />'}
+				</span>
+				{` with ${emoji} by `}
 			</span>
 			<a class="underline" href={`${ORIGIN}?src_external=foundation`}>Logoi Development</a>
 		</div>

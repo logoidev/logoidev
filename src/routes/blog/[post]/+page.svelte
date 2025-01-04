@@ -82,6 +82,7 @@
 			<BookMeeting text="👋" size="sm" title="Schedule a call" />
 		{/if}
 	</div>
+
 	<div class="flex flex-col justify-center items-center font-serif">
 		<Socials withToggle />
 

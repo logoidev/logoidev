@@ -17,7 +17,7 @@
 
 <BlogMeta />
 
-<div class="flex flex-col justify-between min-h-screen">
+<div class="flex flex-col justify-between min-h-[100svh]">
 	<div class="flex justify-center items-center">
 		<a href="/" class="flex flex-col items-center">
 			<span class="text-2xl text-center font-serif mt-4">Design & Development</span>

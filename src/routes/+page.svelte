@@ -28,7 +28,7 @@
 	<Foundation />
 {:else}
 	<div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-4">
-		<div class="flex flex-col justify-center items-center min-h-screen">
+		<div class="flex flex-col justify-center items-center min-h-[100svh]">
 			<Header noLink greek={isUnlocked} loading={isNewBannerLoading} />
 
 			<p class="text-xl max-w-md text-center px-10 my-4">
@@ -45,7 +45,7 @@
 
 			<Projects />
 
-			<Socials withToggle />
+			<Socials withToggle withTitle />
 
 			<IconLink
 				href="blog"
