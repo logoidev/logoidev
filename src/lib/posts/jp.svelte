@@ -1,8 +1,8 @@
 <script lang="ts">
 	import clsx from 'clsx';
-	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
 	import BlogImage from 'src/components/BlogImage.svelte';
 	import ToggleImages from 'src/components/ToggleImages.svelte';
+	import { trackEvent } from '../analytics/posthog';
 
 	let hideImages = false;
 	let password = 'Michael';
@@ -30,7 +30,7 @@
 				// @ts-expect-error - form input
 				const input = e.target.elements['password'];
 				attempt++;
-				trackAnalyticsEvent('unlock_attempt', { password: input.value, attempt });
+				trackEvent('unlock_attempted', { password: input.value, attempt });
 				if (input.value.toLowerCase() === password.toLowerCase()) {
 					isError = false;
 					unlocked = true;
