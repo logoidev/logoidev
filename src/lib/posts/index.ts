@@ -28,6 +28,13 @@ export const posts = [
 		gh_discussion_id: 35
 	},
 	{
+		id: 'symbolic-world',
+		title: 'Symbolic World',
+		published: '2025-01-22T18:00:00.00Z',
+		minutesToRead: 5,
+		gh_discussion_id: 0
+	},
+	{
 		id: 'jbp',
 		title: 'JBP',
 		published: '2024-03-01T04:00:00.00Z',
@@ -67,6 +74,8 @@ export const getBlogPostComponent = (id: PostId) => {
 			return import('$lib/posts/yazan.svelte');
 		case 'logoi':
 			return import('$lib/posts/logoi.svelte');
+		case 'symbolic-world':
+			return import('src/lib/posts/symbolic-world.svelte');
 		case 'jbp':
 			return import('$lib/posts/jbp.svelte');
 		case 'jp':
