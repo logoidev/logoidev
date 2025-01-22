@@ -4,12 +4,15 @@
 	"type": "module",
 	"private": true,
 	"license": "GPL-3.0-only",
+	"engines": {
+		"bun": "1.1.45"
+	},
 	"scripts": {
-		"dev": "vite dev --host",
+		"dev": "bunx --bun vite dev --host",
 		"populate-db": "tsc ./src/scripts/populate-db.ts",
-		"build": "vite build",
-		"preview": "vite preview",
-		"test": "npm run test:integration && npm run test:unit",
+		"build": "bunx --bun vite build",
+		"preview": "bunx --bun vite preview",
+		"test": "bun run test:integration && bun run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"check:types": "tsc --noEmit",
@@ -17,14 +20,11 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-		"react:build": "cd ./react && yarn build && cd ../ && yarn react:copy",
-		"react:copy": "cp -R ./react/dist/ ./static/react",
-		"react:rebuild": "yarn react:build && yarn dev",
-		"ci": "yarn format && yarn lint && yarn check",
-		"prepare": "husky install"
+		"ci": "bun format && bun lint && bun check"
 	},
 	"dependencies": {
 		"@stripe/stripe-js": "5.4.0",
+		"@sveltejs/adapter-vercel": "^5.5.3",
 		"@types/qrcode": "^1.5.5",
 		"@vercel/postgres": "^0.7.2",
 		"canvg": "^4.0.2",
