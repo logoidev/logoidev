@@ -7,6 +7,7 @@
 	"engines": {
 		"pnpm": "9.12.1"
 	},
+	"packageManager": "pnpm@9.12.1",
 	"scripts": {
 		"dev": "vite dev --host",
 		"populate-db": "tsc ./src/scripts/populate-db.ts",
@@ -50,7 +51,6 @@
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.46.1",
-		"husky": "^9.1.7",
 		"postcss": "^8.4.49",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.2",
