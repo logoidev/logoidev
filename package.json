@@ -5,14 +5,14 @@
 	"private": true,
 	"license": "GPL-3.0-only",
 	"engines": {
-		"bun": "1.1.45"
+		"pnpm": "9.12.1"
 	},
 	"scripts": {
-		"dev": "bunx --bun vite dev --host",
+		"dev": "vite dev --host",
 		"populate-db": "tsc ./src/scripts/populate-db.ts",
-		"build": "bunx --bun vite build",
-		"preview": "bunx --bun vite preview",
-		"test": "bun run test:integration && bun run test:unit",
+		"build": "vite build",
+		"preview": "vite preview",
+		"test": "pnpm run test:integration && pnpm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"check:types": "tsc --noEmit",
@@ -20,7 +20,7 @@
 		"format": "prettier --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-		"ci": "bun format && bun lint && bun check"
+		"ci": "pnpm run format && pnpm run lint && pnpm run check"
 	},
 	"dependencies": {
 		"@stripe/stripe-js": "5.4.0",
