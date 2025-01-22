@@ -24,6 +24,7 @@
 	},
 	"dependencies": {
 		"@stripe/stripe-js": "5.4.0",
+		"@sveltejs/adapter-vercel": "^5.5.3",
 		"@types/qrcode": "^1.5.5",
 		"@vercel/postgres": "^0.7.2",
 		"canvg": "^4.0.2",
