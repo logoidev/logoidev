@@ -51,6 +51,7 @@ type PostWithoutId = {
 	published: string;
 	minutesToRead: number;
 	gh_discussion_id: number;
+	hidden?: boolean;
 	Content: ConstructorOfATypedSvelteComponent;
 };
 export type Post = PostWithoutId & { id: PostId };

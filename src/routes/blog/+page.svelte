@@ -6,13 +6,15 @@
 	import Copyright from 'src/components/Copyright.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
-	import { posts } from '$lib/posts';
+	import { posts, type Post } from '$lib/posts';
 
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
 	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
 	import BlogMeta from 'src/components/BlogMeta.svelte';
 
 	let rounded = true;
+
+	let publicPosts = posts.filter((p: Post) => !p.hidden);
 </script>
 
 <BlogMeta />
