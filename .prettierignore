@@ -3,7 +3,6 @@ node_modules
 /build
 /.svelte-kit
 /static
-/react/dist/*
 /package
 .env
 .env.*

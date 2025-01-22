@@ -2,14 +2,14 @@
 	import { clsx } from 'clsx';
 	import Pyramid from './Pyramid.svelte';
 	import { getSvgParams } from './SVG/SVG.utils';
-	import { trackAnalyticsEvent } from './AnalyticsScripts.svelte';
+	import { trackEvent } from 'src/lib/analytics/posthog';
 
 	const SERVICES = ['Web', 'Design', 'Development', 'Spatial Computing', 'Software Engineering'];
 
 	let isShown: null | boolean = null;
 	const toggleShown = () => {
 		isShown = !isShown;
-		trackAnalyticsEvent('pyramid:toggle', { shown: isShown });
+		trackEvent('pyramid_toggled', { shown: isShown });
 	};
 
 	let isGolden = false;

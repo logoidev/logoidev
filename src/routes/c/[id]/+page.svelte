@@ -13,7 +13,6 @@
 	import Socials from 'src/components/Socials/Socials.svelte';
 	import clsx from 'clsx';
 	import MapLink from 'src/components/MapLink.svelte';
-	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
 	import Spinner from 'src/components/Spinner.svelte';
 	import {
 		DISTANCE_LIMIT_M,
@@ -22,6 +21,7 @@
 	} from 'src/shared/constants';
 	import { getErrorMessage } from 'src/utils/get-error-messge';
 	import CoinInfo from 'src/components/CoinInfo.svelte';
+	import { trackEvent } from 'src/lib/analytics/posthog';
 
 	let coinId = $page.params.id;
 	let coin: CoinModel | null = null;
@@ -80,7 +80,7 @@
 		detail: { amount: number };
 	}) => {
 		const balance = coin ? coin.balance! + donated : donated;
-		trackAnalyticsEvent('donation_balance_increased', { donated, coin_id: coinId });
+		trackEvent('donation_balance_increased', { donated, coin_id: coinId });
 		return updateCoin({ balance });
 	};
 
@@ -116,7 +116,7 @@
 				navigator.geolocation.getCurrentPosition(resolve, reject)
 			);
 
-			trackAnalyticsEvent('Location point updated', {
+			trackEvent('location_point_updated', {
 				timestamp,
 				lat: coords.latitude,
 				lon: coords.longitude
@@ -134,7 +134,7 @@
 
 			// @ts-expect-error - same
 		} catch (error: GeolocationPositionError) {
-			trackAnalyticsEvent('Location point updated', error);
+			trackEvent('location_point_updated', error);
 			switch (error.code) {
 				case error.PERMISSION_DENIED:
 					gpsError = 'Please allow location access for this feature to work';
@@ -155,16 +155,16 @@
 	};
 
 	const flipColor = () => {
-		trackAnalyticsEvent('Flip color');
+		trackEvent('color_flipped');
 		coinColor = coinColor === 'white' ? 'black' : 'white';
 	};
 
 	const onRewardClicked = () => {
 		if (rewardWanted) {
 			rewardWanted = false;
-			trackAnalyticsEvent('Reward clicked');
+			trackEvent('reward_clicked');
 		} else {
-			trackAnalyticsEvent('Star clicked');
+			trackEvent('star_clicked');
 			const button = document.getElementById('cta');
 			button?.scrollIntoView({
 				behavior: 'auto',
@@ -249,7 +249,7 @@
 			<button
 				class="text-2xl relative left-32 -top-16"
 				on:click={() => {
-					trackAnalyticsEvent('Coin flipped');
+					trackEvent('coin_flipped');
 					flippedToFront = !flippedToFront;
 				}}
 			>
@@ -297,7 +297,7 @@
 				url={`https://www.google.com/maps/search/?api=1&query=${destination.latitude},${destination.longitude}`}
 				on:click={() => {
 					showImThere = true;
-					trackAnalyticsEvent('Map link clicked');
+					trackEvent('map_link_clicked');
 				}}
 			>
 				Get there

@@ -9,8 +9,8 @@
 	import { posts } from '$lib/posts';
 
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
-	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
 	import BlogMeta from 'src/components/BlogMeta.svelte';
+	import { trackEvent } from 'src/lib/analytics/posthog';
 
 	let rounded = true;
 </script>
@@ -32,7 +32,7 @@
 					<li class="group text-2xl font-serif relative">
 						<a
 							href={`/blog/${post.id}`}
-							on:click={() => trackAnalyticsEvent('blog:post-navigation', { post_id: post.id })}
+							on:click={() => trackEvent('blogpost_clicked', { post_id: post.id })}
 						>
 							<span
 								class="text-base opacity-50 group-hover:opacity-95"

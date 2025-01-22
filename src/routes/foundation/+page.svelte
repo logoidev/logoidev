@@ -8,8 +8,9 @@
 	import { INTRO_EMAIL } from 'src/data/emails';
 
 	import { getRandomIntInRange } from 'src/utils/math';
-	import { trackAnalyticsEvent } from 'src/components/AnalyticsScripts.svelte';
+
 	import { ORIGIN, ORIGIN_FOUNDATION } from 'src/shared/constants';
+	import { trackEvent } from 'src/lib/analytics/posthog';
 
 	let isUnlocked = false;
 	let rounded = Boolean(getRandomIntInRange(0, 1));
@@ -86,7 +87,7 @@
 				subject={`Logoi Foundation - Found gold 🌟`}
 				on:click={() => {
 					console.log('Found gold');
-					trackAnalyticsEvent('found_gold');
+					trackEvent('found_gold');
 				}}
 			/>
 		{/if}
