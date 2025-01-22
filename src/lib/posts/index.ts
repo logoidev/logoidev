@@ -32,7 +32,8 @@ export const posts = [
 		title: 'Symbolic World',
 		published: '2025-01-22T18:00:00.00Z',
 		minutesToRead: 5,
-		gh_discussion_id: 0
+		gh_discussion_id: 0,
+		hidden: true
 	},
 	{
 		id: 'jbp',
