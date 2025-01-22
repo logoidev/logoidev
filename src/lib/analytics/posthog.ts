@@ -18,7 +18,12 @@ export function initializeAnalytics() {
 	}
 }
 
-type TrackingEvent = 'avatar_clicked' | 'pyramid_toggled' | 'unlock_attempted' | 'blogpost_clicked';
+type TrackingEvent =
+	| 'avatar_clicked'
+	| 'pyramid_toggled'
+	| 'unlock_attempted'
+	| 'blogpost_clicked'
+	| 'found_gold';
 
 export function trackEvent(
 	eventName: TrackingEvent,
