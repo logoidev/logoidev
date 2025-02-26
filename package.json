@@ -4,9 +4,6 @@
 	"type": "module",
 	"private": true,
 	"license": "GPL-3.0-only",
-	"engines": {
-		"pnpm": "9.15.4"
-	},
 	"packageManager": "pnpm@9.15.4",
 	"scripts": {
 		"dev": "vite dev --host",
