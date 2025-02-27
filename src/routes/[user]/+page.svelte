@@ -13,6 +13,8 @@
 	import type { UserData } from 'src/types/user';
 
 	import ResumeLink from 'src/components/ResumeLink.svelte';
+	import BlogImage from 'src/components/BlogImage.svelte';
+	import { trackEvent } from 'src/lib/analytics/posthog';
 
 	export let data;
 	const userData: UserData = data;
@@ -33,11 +35,33 @@
 			{/each}
 		</ul>
 
-		<EmailButton
-			size="md"
-			email={userData.email}
-			subject={`Logoi Development - reaching out to ${userData.first_name}`}
-		/>
+		<div class="flex flex-col gap-2 items-center justify-center">
+			{#if userData.chat}
+				<a
+					class="flex gap-2 items-center justify-center border py-3 px-4 rounded border-black"
+					target="_blank"
+					href={userData.chat.link}
+					on:click={() => trackEvent('adam_link_visited')}
+				>
+					{#if userData.chat.image_url}
+						<div class="w-8 h-8">
+							<BlogImage src={userData.chat.image_url} class="mt-0" />
+						</div>
+					{/if}
+
+					<div>Chat with {userData.first_name}</div>
+				</a>
+
+				<span>or</span>
+			{/if}
+
+			<EmailButton
+				class="border-gray-300 border"
+				size="sm"
+				email={userData.email}
+				subject={`Logoi Development - reaching out to ${userData.first_name}`}
+			/>
+		</div>
 
 		{#if userData.calendar_link}
 			<span class="text-xl my-2">or</span>

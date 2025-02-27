@@ -24,4 +24,8 @@ export interface UserData {
 	has_resume: boolean;
 	password?: Array<QrPasswordNumber>;
 	unlockImage?: string;
+	chat?: {
+		link: string;
+		image_url: string;
+	};
 }

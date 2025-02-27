@@ -1,9 +1,7 @@
 <script lang="ts">
-	import { clsx } from 'clsx';
 	import Image from './Image.svelte';
+	import { cn } from 'src/lib/utility/cn';
 
-	let className = '';
-	export { className as class };
 	export let imageClass = '';
 	export let description: string = '';
 	export let hide = false;
@@ -11,10 +9,10 @@
 	export let link = '';
 	export let title = '';
 
-	$: imgClass = clsx('w-full max-w-2xl', imageClass);
+	$: imgClass = cn('w-full max-w-2xl', imageClass);
 </script>
 
-<p class={clsx('flex flex-col items-center gap-2 mt-2', className)}>
+<p class={cn('flex flex-col items-center gap-2 mt-2', $$props.class)}>
 	{#if hide}
 		<button class="text-sm opacity-50 hover:opacity-90" on:click={() => (hide = !hide)}>
 			{title}
