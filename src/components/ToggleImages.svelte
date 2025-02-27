@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { clsx } from 'clsx';
+	import { trackEvent } from 'src/lib/analytics/posthog';
 
 	export let hideImages = false;
 	export let position: 'relative' | 'fixed' = 'fixed';
 
-	const toggleImages = () => (hideImages = !hideImages);
+	const toggleImages = () => {
+		trackEvent('images_toggled', { shown: hideImages });
+		hideImages = !hideImages;
+	};
 </script>
 
 <button

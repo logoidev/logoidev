@@ -33,6 +33,13 @@
 
 <BlogMeta title={post.title} type="article" url={`/blog/${post.id}`} previewImageUrl="" />
 
+<svelte:head>
+	<link
+		rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+	/>
+</svelte:head>
+
 <div>
 	<div class="flex justify-center items-center mb-4">
 		<a href="/blog" class="flex flex-col items-center">

@@ -15,17 +15,17 @@
 <p class={cn('flex flex-col items-center gap-2 mt-2', $$props.class)}>
 	{#if hide}
 		<button class="text-sm opacity-50 hover:opacity-90" on:click={() => (hide = !hide)}>
-			{title}
+			{@html title}
 		</button>
 	{:else}
 		{#if link}
 			<a href={link} target="_blank" class="flex flex-col items-center gap-2">
 				<Image class={imgClass} alt={title} {src} />
-				<span class="text-center italic block underline">{title}</span>
+				<span class="text-center italic block underline">{@html title}</span>
 			</a>
 		{:else}
 			<Image class={imgClass} alt={title} {src} />
-			<span class="text-center italic block">{title}</span>
+			<span class="text-center italic block">{@html title}</span>
 		{/if}
 
 		{#if description}

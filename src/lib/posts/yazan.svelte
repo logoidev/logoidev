@@ -7,13 +7,6 @@
 	let mongoliaImageType: 'flag' | 'emblem' | 'horse' = 'emblem';
 </script>
 
-<svelte:head>
-	<link
-		rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-	/>
-</svelte:head>
-
 <ToggleImages bind:hideImages />
 
 <article class="flex flex-col gap-4 text-xl indent-4">
