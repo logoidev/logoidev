@@ -23,7 +23,8 @@ type TrackingEvent =
 	| 'pyramid_toggled'
 	| 'unlock_attempted'
 	| 'blogpost_clicked'
-	| 'found_gold';
+	| 'found_gold'
+	| 'adam_link_visited';
 
 export function trackEvent(
 	eventName: TrackingEvent,

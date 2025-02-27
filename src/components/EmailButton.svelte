@@ -2,9 +2,6 @@
 	import LinkButton from './LinkButton/LinkButton.svelte';
 	import type { ButtonSize } from './LinkButton/LinkButton.types';
 
-	let className = '';
-	export { className as class };
-
 	export let email: string;
 	export let subject = '';
 	export let body = '';
@@ -25,4 +22,4 @@
 		.join('');
 </script>
 
-<LinkButton class={className} href={mailto} text={text || email} {size} {title} />
+<LinkButton class={$$props.class} href={mailto} text={text || email} {size} {title} />
