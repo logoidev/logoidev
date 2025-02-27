@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
 	import Image from './Image.svelte';
 	import Spinner from './Spinner.svelte';
 
@@ -9,12 +10,19 @@
 	export let loading = false;
 	export let scale = 1;
 
+	const dispatch = createEventDispatcher();
+
 	$: bannerUrl = greek ? '/images/banners/logos-greek.svg' : '/images/logo-big.svg';
 </script>
 
 <div class="flex flex-col items-center" style={`scale: ${scale}`}>
 	{#if withTitle}
-		<span class={`text-2xl text-center mt-4 font-trajan`}>{title}</span>
+		<button
+			class={`text-2xl text-center mt-4 font-trajan`}
+			on:click={() => dispatch('title-click')}
+		>
+			{title}
+		</button>
 	{/if}
 
 	<div class={`w-2/3 max-w-sm flex justify-center scale-${scale}`}>

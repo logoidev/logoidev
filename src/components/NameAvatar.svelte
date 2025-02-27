@@ -7,6 +7,7 @@
 
 	export let userData: UserData;
 	export let noLastName = false;
+	export let noFirstName = false;
 	export let clickableLink = true;
 
 	let currentMemojiIndex = userData.memojiCount && getRandomIntInRange(1, userData.memojiCount);
@@ -33,16 +34,20 @@
 		</div>
 	{/if}
 
-	<a
-		href={clickableLink ? `/${userData.id}` : null}
-		class={clsx('mb-4 text-center text-lg', {
-			'underline decoration-from-font': clickableLink
-		})}
-		title={userData.first_name}
-	>
-		<span>{userData.first_name}</span>
-		{#if !noLastName}
-			<span>{userData.last_name}</span>
-		{/if}
-	</a>
+	{#if !noFirstName || !noLastName}
+		<a
+			href={clickableLink ? `/${userData.id}` : null}
+			class={clsx('mb-4 text-center text-lg', {
+				'underline decoration-from-font': clickableLink
+			})}
+			title={userData.first_name}
+		>
+			{#if !noFirstName}
+				<span>{userData.first_name}</span>
+			{/if}
+			{#if !noLastName}
+				<span>{userData.last_name}</span>
+			{/if}
+		</a>
+	{/if}
 </div>
