@@ -36,6 +36,14 @@ export const posts = [
 		hidden: true
 	},
 	{
+		id: 'jbp-coin',
+		title: 'The Coin',
+		published: '2025-03-01T04:00:00.00Z',
+		minutesToRead: 62,
+		gh_discussion_id: 0,
+		hidden: true
+	},
+	{
 		id: 'jp',
 		title: 'JP',
 		published: '2024-03-02T16:00:00.00Z',
@@ -69,6 +77,8 @@ export const getBlogPostComponent = (id: PostId) => {
 			return import('$lib/posts/logoi.svelte');
 		case 'jbp':
 			return import('$lib/posts/jbp.svelte');
+		case 'jbp-coin':
+			return import('$lib/posts/jbp-coin.svelte');
 		case 'jp':
 			return import('$lib/posts/jp.svelte');
 	}

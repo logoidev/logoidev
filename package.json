@@ -31,6 +31,7 @@
 		"@vercel/postgres": "^0.7.2",
 		"canvg": "^4.0.2",
 		"clsx": "^2.1.1",
+		"marked": "^15.0.7",
 		"nanoid": "^5.0.9",
 		"pg": "^8.13.1",
 		"posthog-js": "^1.207.2",

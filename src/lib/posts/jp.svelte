@@ -59,7 +59,7 @@
 		</p>
 
 		<p>
-			I started listening to you in 2018 and, like to many other people, you played the part of the
+			I started listening to you in 2017 and, like to many other people, you played the part of the
 			wise spiritual guide, and I'm extremely grateful for the generosity of your time, and to God
 			for giving me the wisdom to listen to your advice, and be pulled into this world and the
 			Symbolic Language that you and your borther have revealed and restored - at least in me.
