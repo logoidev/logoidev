@@ -2,14 +2,17 @@
 	import { getIndexUrl } from 'src/shared/routes';
 	import { page } from '$app/stores';
 	import CoinPrint from 'src/components/CoinPrint.svelte';
-	import { LOGOI_ID_LENGTH } from 'src/utils/id';
+	import { COIN_PREFIXES, LOGOI_ID_LENGTH } from 'src/utils/id';
 
 	const path = $page.url.pathname.split('/').slice(0, -1).join('/');
 
-	const coinId = `LGI:${path.toUpperCase().replaceAll('/', '')}COIN000000`.slice(
-		0,
-		LOGOI_ID_LENGTH
-	);
+	function getCoinIdFromPath(path: string) {
+		const url = path.toUpperCase().replaceAll('/', '').replace('BLOG', '');
+		const coinId = `LGI:${COIN_PREFIXES.BLOG}-${url}00000000000`.slice(0, LOGOI_ID_LENGTH);
+		return coinId;
+	}
+
+	const coinId = getCoinIdFromPath(path);
 
 	$: pageUrl = getIndexUrl(path);
 </script>

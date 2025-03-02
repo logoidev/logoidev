@@ -8,7 +8,6 @@
 	import type { LocationModel } from 'src/db/entity/location';
 	import { page } from '$app/stores';
 
-	import clsx from 'clsx';
 	import Spinner from 'src/components/Spinner.svelte';
 
 	import { getErrorMessage } from 'src/utils/get-error-messge';
@@ -17,6 +16,7 @@
 	import { getIndexUrl } from 'src/shared/routes';
 	import { dev } from '$app/environment';
 	import CoinInfo from './CoinInfo.svelte';
+	import { cn } from 'src/lib/utility/cn';
 
 	let coinId = $page.params.id;
 	export let isStatic = false;
@@ -38,6 +38,7 @@
 	let showCoin = true;
 	let showQrCoin = true;
 	let showQrCode = false;
+	let showUrlEdit = true;
 
 	let emailIndex = 1;
 	const CONTACT_EMAILS = ['', 'hi@logoi.dev', 'vlad@logoi.dev'];
@@ -50,7 +51,7 @@
 	// TODO: This needs not to be based on color
 
 	$: coinColor = coin?.color ?? 'white';
-	let coinUrl: string;
+	let coinUrl: string = '';
 	$: activeCount = [showCoin, showQrCoin, showQrCode].filter(Boolean).length;
 	$: marginMultiplier = (activeCount + 3) * 1;
 
@@ -98,7 +99,7 @@
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mb-4">
 	<div
-		class={clsx('flex flex-col mt-2 text-center relative', {
+		class={cn('flex flex-col mt-2 text-center relative', {
 			'border-b-2 border-dashed mb-4': withScissors
 		})}
 	>
@@ -106,7 +107,7 @@
 			<Header />
 		{/if}
 
-		<CoinInfo {coin} withUrl={withCoinUrl} bind:withTime />
+		<CoinInfo {coin} withUrl={withCoinUrl} bind:withTime bind:coinUrl {showUrlEdit} />
 
 		{#if email}
 			<a class="mt-2" href={`mailto:${email}?subject=Help with coin&body=Coin ID: ${coin?.id}`}>
@@ -131,7 +132,7 @@
 		</div>
 	{:else if coin && activeCount}
 		<div
-			class={clsx('p-4 flex items-center', {
+			class={cn('p-4 flex items-center', {
 				'flex-col': isVertical,
 				'flex-row': !isVertical,
 				'!-mt-14': activeCount === 1,
@@ -150,7 +151,7 @@
 		>
 			{#if showQrCode}
 				<div
-					class={clsx('flex justify-center')}
+					class={cn('flex justify-center')}
 					style={[
 						`transform: scale(${1 + (scale + 7) / 10})`,
 						`margin-bottom: ${marginMultiplier + 1}rem`,
@@ -158,7 +159,7 @@
 					].join(';')}
 				>
 					<ToggleQr
-						class={clsx({
+						class={cn({
 							'grayscale invert bg-white': coinColor === 'black'
 						})}
 						shown
@@ -175,7 +176,7 @@
 
 			{#if showCoin}
 				<RoundCodeWithParams
-					class={clsx('mb-4 !p-5 scale-90', {
+					class={cn('mb-4 !p-5 scale-90', {
 						'grayscale invert bg-white': coinColor === 'black'
 					})}
 					id={coin.id}
@@ -186,14 +187,16 @@
 			{/if}
 
 			{#if showQrCoin}
-				<RoundQR
-					class={clsx('my-2 rounded-full', {
-						'grayscale invert bg-white border-white': coinColor === 'black'
-					})}
-					{withBorder}
-					route={coinQrUrl || getIndexUrl(`/c/${coin?.id}`)}
-					on:click={() => (showControls = !showControls)}
-				/>
+				{#key coinUrl}
+					<RoundQR
+						class={cn('my-2 rounded-full', {
+							'grayscale invert bg-white border-white': coinColor === 'black'
+						})}
+						{withBorder}
+						route={(showUrlEdit ? coinUrl : coinQrUrl) || getIndexUrl(`/c/${coin?.id}`)}
+						on:click={() => (showControls = !showControls)}
+					/>
+				{/key}
 			{/if}
 		</div>
 	{/if}
@@ -201,42 +204,45 @@
 	{#if showControls}
 		<div class="text-3xl fixed right-2 bottom-2">
 			<div class="flex flex-wrap flex-col h-screen justify-end items-center gap-2">
-				<button class={clsx(!withLogo && 'opacity-50')} on:click={() => (withLogo = !withLogo)}>
+				<button class={cn(!withLogo && 'opacity-50')} on:click={() => (withLogo = !withLogo)}>
 					🅖
 				</button>
 				<button
-					class={clsx(!withCoinUrl && 'opacity-50')}
+					class={cn(!withCoinUrl && 'opacity-50')}
 					on:click={() => (withCoinUrl = !withCoinUrl)}>🔗</button
 				>
 				<button
-					class={clsx(!withTimestamps && 'opacity-50')}
+					class={cn(!showUrlEdit && 'opacity-50')}
+					on:click={() => (showUrlEdit = !showUrlEdit)}>✏️</button
+				>
+				<button
+					class={cn(!withTimestamps && 'opacity-50')}
 					on:click={() => (withTimestamps = !withTimestamps)}>⏰</button
 				>
 				{#if withTimestamps}
-					<button class={clsx(!withTime && 'opacity-50')} on:click={() => (withTime = !withTime)}>
+					<button class={cn(!withTime && 'opacity-50')} on:click={() => (withTime = !withTime)}>
 						🕐
 					</button>
 				{/if}
 				<button
-					class={clsx(!emailIndex && 'opacity-50')}
+					class={cn(!emailIndex && 'opacity-50')}
 					on:click={() =>
 						(emailIndex = emailIndex >= CONTACT_EMAILS.length - 1 ? 0 : emailIndex + 1)}
 				>
 					@
 				</button>
 				<button
-					class={clsx(!withCopyright && 'opacity-50')}
+					class={cn(!withCopyright && 'opacity-50')}
 					on:click={() => (withCopyright = !withCopyright)}>©</button
 				>
 				<button
-					class={clsx(!withScissors && 'opacity-50')}
+					class={cn(!withScissors && 'opacity-50')}
 					on:click={() => (withScissors = !withScissors)}>✂️</button
 				>
-				<button
-					class={clsx(!showQrCode && 'opacity-50')}
-					on:click={() => (showQrCode = !showQrCode)}>👾</button
+				<button class={cn(!showQrCode && 'opacity-50')} on:click={() => (showQrCode = !showQrCode)}
+					>👾</button
 				>
-				<button class={clsx(!showCoin && 'opacity-50')} on:click={() => (showCoin = !showCoin)}>
+				<button class={cn(!showCoin && 'opacity-50')} on:click={() => (showCoin = !showCoin)}>
 					🪙
 				</button>
 				<button on:click={() => (showQrCoin = !showQrCoin)}>{showQrCoin ? '⚫' : '⚪'}</button>
@@ -245,7 +251,7 @@
 				</button>
 				{#if showCoin || showQrCoin}
 					<button
-						class={clsx(!withBorder && 'opacity-50')}
+						class={cn(!withBorder && 'opacity-50')}
 						on:click={() => (withBorder = !withBorder)}
 					>
 						🔘
