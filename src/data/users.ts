@@ -37,7 +37,7 @@ export const USERS: Array<UserData> = [
 		level: Level.S,
 		// TODO: [6] Rename field to "patterns", add ability to trigger different actions
 		password: [0, 1, 2, 0, 1, 2],
-		unlockImage: '/users/v/unlock.png',
+		unlockImage: '/users/v/unlock.webp',
 		has_resume: false,
 		hourly_rate_usd: 75,
 		calendar_link: CALENDAR_LINK,

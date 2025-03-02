@@ -14,7 +14,8 @@
 
 	export let shown = false;
 	export let url: string;
-	export let imageSrc: string | undefined = undefined;
+	export let qrGraphicSrc: string | undefined = undefined;
+	export let qrGraphicPadding: number | undefined = undefined;
 	export let unlockImageSrc: string | undefined = undefined;
 	export let text = '';
 	export let textFontSizePx: undefined | number = undefined;
@@ -25,8 +26,6 @@
 
 	export let isUnlocked = false;
 	export let withToggle = true;
-
-	let qrCodeSource = isUnlocked ? unlockImageSrc : imageSrc;
 
 	let qrWrapperElement: HTMLDivElement;
 	let buttonElement: HTMLButtonElement;
@@ -62,8 +61,8 @@
 		bind:this={qrWrapperElement}
 		class={clsx('w-2/3 max-w-xs flex justify-center relative rounded-lg', className)}
 	>
-		{#if isUnlocked && qrCodeSource}
-			<Image class="mt-4" src={qrCodeSource} />
+		{#if isUnlocked && unlockImageSrc}
+			<Image class="mt-4" src={unlockImageSrc} />
 		{:else}
 			<QR
 				{password}
@@ -73,6 +72,8 @@
 				{textOffset}
 				{rounded}
 				{animated}
+				img={qrGraphicSrc}
+				centerOffset={qrGraphicPadding}
 				onPngDataUrl={(data) => dispatch('png-data-url', data)}
 				on:click={() => dispatch('click')}
 				on:unlock={() => {
@@ -81,6 +82,7 @@
 					dispatch('unlock');
 				}}
 				onError={() => (isUnlocked = false)}
-			/>{/if}
+			/>
+		{/if}
 	</div>
 {/if}

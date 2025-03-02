@@ -9,6 +9,7 @@
 	export let rounded = false;
 	export let onButtonSizeUpdate = noopWithParam<string>;
 	export let onPngDataUrl = noopWithParam<string | null>;
+	export let centerOffset: number | undefined = undefined;
 
 	let qrData: null | QrDataResult = null;
 	let svgElement: SVGElement;
@@ -16,7 +17,7 @@
 
 	$: {
 		url = normaliseQrLocalhostUrl(url);
-		qrData = getQrData(url);
+		qrData = getQrData(url, centerOffset);
 
 		if (onPngDataUrl) {
 			svgToPng(svgElement).then(onPngDataUrl);
