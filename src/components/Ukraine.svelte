@@ -1,11 +1,20 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Storage } from '../utils/storage';
+	import { page } from '$app/state';
+	import { getPostById, type PostId } from 'src/lib/posts';
 
 	let storage: Storage<boolean>;
 	let isShown = false;
 
+	$: isBlogPage = page.url.pathname.startsWith('/blog');
+	$: slug = isBlogPage ? page.url.pathname.split('/')[2] : null;
+	$: blogPost = getPostById(slug as PostId);
+
 	onMount(() => {
+		if (blogPost?.hidden) {
+			return;
+		}
 		storage = new Storage<boolean>('ukraine_banner_shown');
 		isShown = storage.value === null ? true : storage.value;
 		storage.value = isShown;
