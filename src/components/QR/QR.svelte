@@ -1,19 +1,15 @@
 <script lang="ts">
-	import clsx from 'clsx';
+	import { cn } from 'src/lib/utility/cn';
 	import { stylesArrayToInline } from '../../shared/utils';
 
 	import Image from '../Image.svelte';
 	import QrButtons from './QrButtons.svelte';
 	import type { QrPassword } from './QrButtons.types';
 	import QrSvg from './QrSvg/QrSvg.svelte';
-	// import LogoSmallSrc from '@logoi/design/images/logos/logo.svg';
 	import { noop, noopWithParam } from 'src/utils/lodash';
 	import { createEventDispatcher } from 'svelte';
 
 	const dispatch = createEventDispatcher();
-
-	let className = '';
-	export { className as class };
 
 	export let sizePx = 48;
 	export let rounded = false;
@@ -22,8 +18,10 @@
 	export let text = '';
 	export let textFontSizePx = sizePx;
 	export let textOffset = '0px';
+	export let centerOffset: number | undefined = undefined;
 	// TODO: Replace with SVG
 	export let img = '/images/logoi-256.png';
+	export let imgScale = 1;
 
 	export let onError = noop;
 	export let onLocked = noop;
@@ -36,14 +34,11 @@
 		buttonsSizeCss = newQrButtonWidth;
 	};
 
-	const onCenterClick = () => {
-		console.log('Center click');
-		dispatch('click');
-	};
+	const onCenterClick = () => dispatch('click');
 	const onUnlock = () => dispatch('unlock');
 </script>
 
-<div class={clsx('relative m-2', className)}>
+<div class={cn('relative m-2', $$props.class)}>
 	<div class="absolute w-full h-full top-0 left-0 flex justify-center items-center">
 		{#if text}
 			<button
@@ -57,13 +52,15 @@
 			>
 				{text}
 			</button>
-		{:else}
+		{:else if img}
 			<button id="image" class="w-1/4 cursor-pointer" on:click={onCenterClick}>
-				<Image src={img} alt="QR image" />
+				{#key img}
+					<Image src={img} scale={imgScale} alt="QR image" />
+				{/key}
 			</button>
 		{/if}
 	</div>
-	<QrSvg {url} {rounded} {onPngDataUrl} {sizePx} {onButtonSizeUpdate} />
+	<QrSvg {url} {rounded} {onPngDataUrl} {sizePx} {onButtonSizeUpdate} {centerOffset} />
 	<QrButtons
 		{password}
 		{onUnlock}

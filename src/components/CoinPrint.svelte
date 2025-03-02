@@ -17,11 +17,13 @@
 	import { dev } from '$app/environment';
 	import CoinInfo from './CoinInfo.svelte';
 	import { cn } from 'src/lib/utility/cn';
+	import { LOGOI_ID_LENGTH } from 'src/utils/id';
 
 	let coinId = $page.params.id;
 	export let isStatic = false;
 	export let coin: CoinModel | null = null;
 	export let coinQrUrl: string | null = null;
+	let qrGraphicSrc: string | undefined = undefined;
 	let error: string | '' | 'come_closer' = '';
 	let distance: number;
 	let destination: LocationModel;
@@ -38,7 +40,8 @@
 	let showCoin = true;
 	let showQrCoin = true;
 	let showQrCode = false;
-	let showUrlEdit = true;
+	let showUrlEdit = false;
+	let showUploadImage = false;
 
 	let emailIndex = 1;
 	const CONTACT_EMAILS = ['', 'hi@logoi.dev', 'vlad@logoi.dev'];
@@ -54,6 +57,10 @@
 	let coinUrl: string = '';
 	$: activeCount = [showCoin, showQrCoin, showQrCode].filter(Boolean).length;
 	$: marginMultiplier = (activeCount + 3) * 1;
+
+	let qrGraphicPadding = 2;
+	let qrGraphicScale = 1;
+	let editCoinId: string | null = coin?.id || null;
 
 	$: {
 		console.log('Debug', { coin, coinUrl, coinColor, error, distance, destination, redeemed });
@@ -95,6 +102,19 @@
 	if (!isStatic) {
 		fetchCoin(coinId).catch((e) => console.error(e));
 	}
+
+	const handleFileChange = async (event: Event) => {
+		const target = event.target as HTMLInputElement;
+		if (target.files && target.files.length > 0) {
+			const file = target.files[0];
+			const reader = new FileReader();
+			reader.onload = () => {
+				const base64String = reader.result as string;
+				qrGraphicSrc = base64String;
+			};
+			reader.readAsDataURL(file);
+		}
+	};
 </script>
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mb-4">
@@ -121,6 +141,36 @@
 
 		{#if withScissors}
 			<div class="absolute left-0 -bottom-4 text-gray-400 text-lg">✄</div>
+		{/if}
+
+		{#if showUploadImage}
+			<div class="flex gap-2">
+				<input
+					type="file"
+					name="qrImage"
+					accept="image/png, image/gif, image/jpeg, image/svg+xml"
+					on:change={handleFileChange}
+				/>
+				<button
+					class="border border-gray-400 px-3 py-1 rounded"
+					on:click={() => (qrGraphicSrc = '')}
+				>
+					Clear
+				</button>
+			</div>
+
+			<label for="qrGraphicScale">Image scale: {qrGraphicScale}</label>
+			<input
+				name="qrGraphicScale"
+				type="range"
+				min="0.5"
+				max="2"
+				step="0.05"
+				bind:value={qrGraphicScale}
+			/>
+
+			<label for="qrGraphicPadding">Image clear padding: {qrGraphicPadding}</label>
+			<input name="qrGraphicPadding" type="range" min="-8" max="10" bind:value={qrGraphicPadding} />
 		{/if}
 	</div>
 
@@ -164,6 +214,8 @@
 						})}
 						shown
 						withToggle={false}
+						{qrGraphicSrc}
+						{qrGraphicPadding}
 						{rounded}
 						textOffset="1rem"
 						password={[2, 2, 2]}
@@ -175,11 +227,22 @@
 			{/if}
 
 			{#if showCoin}
+				{#if showUrlEdit}
+					<input
+						name="coinId"
+						bind:value={editCoinId}
+						min="1"
+						max={LOGOI_ID_LENGTH}
+						placeholder="LGI:C-ABCDEFGH"
+						class="border border-gray-400 rounded px-2 py-0.5"
+					/>
+				{/if}
+
 				<RoundCodeWithParams
 					class={cn('mb-4 !p-5 scale-90', {
 						'grayscale invert bg-white': coinColor === 'black'
 					})}
-					id={coin.id}
+					id={editCoinId ?? coin.id}
 					counter={0}
 					color={redeemed ? 'gold' : 'black'}
 					{withBorder}
@@ -193,6 +256,9 @@
 							'grayscale invert bg-white border-white': coinColor === 'black'
 						})}
 						{withBorder}
+						{qrGraphicSrc}
+						{qrGraphicPadding}
+						{qrGraphicScale}
 						route={(showUrlEdit ? coinUrl : coinQrUrl) || getIndexUrl(`/c/${coin?.id}`)}
 						on:click={() => (showControls = !showControls)}
 					/>
@@ -203,7 +269,7 @@
 
 	{#if showControls}
 		<div class="text-3xl fixed right-2 bottom-2">
-			<div class="flex flex-wrap flex-col h-screen justify-end items-center gap-2">
+			<div class="flex flex-wrap-reverse flex-col h-screen justify-end items-center gap-2">
 				<button class={cn(!withLogo && 'opacity-50')} on:click={() => (withLogo = !withLogo)}>
 					🅖
 				</button>
@@ -214,6 +280,10 @@
 				<button
 					class={cn(!showUrlEdit && 'opacity-50')}
 					on:click={() => (showUrlEdit = !showUrlEdit)}>✏️</button
+				>
+				<button
+					class={cn(!showUploadImage && 'opacity-50')}
+					on:click={() => (showUploadImage = !showUploadImage)}>🖼️</button
 				>
 				<button
 					class={cn(!withTimestamps && 'opacity-50')}

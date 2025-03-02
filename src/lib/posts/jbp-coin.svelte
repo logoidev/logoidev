@@ -61,9 +61,11 @@
 	{#if unlocked}
 		<p class="mx-auto text-2xl">Hello Dr. Peterson.</p>
 
-		<div class="flex justify-center">
-			<NameAvatar userData={VLAD} startingMemojiIndex={3} noLastName noFirstName />
-		</div>
+		{#if !hideImages}
+			<div class="flex justify-center">
+				<NameAvatar userData={VLAD} startingMemojiIndex={3} noLastName noFirstName />
+			</div>
+		{/if}
 
 		<p>
 			My name is <a href="/v" target="_blank">Vlad</a> and I'm extremely happy to have met you in person.
@@ -71,35 +73,61 @@
 		</p>
 
 		<p>
-			I started listening to you in 2016 and, like to many other people, you played the part of the
+			I started listening to you in 2017 and, like to many other people, you played the part of the
 			wise father, and I'm extremely grateful for the generosity of your time and to God for giving
 			me the wisdom to listen to your advice - your words definitely influenced my worldview and
 			decision to start a family. Would have never thought a Pinocchio story revisited can lead
 			here.
 		</p>
 
+		<p
+			class="flex justify-center items-center gap-2 border-0 border-l-4 border-blue-500 max-w-lg mx-auto leading-8"
+		>
+			<span class="italic text-base">
+				You can <span>{hideImages ? 'show' : 'hide'}</span> all images if you prefer:
+			</span>
+			<ToggleImages position="relative" bind:hideImages />
+		</p>
+
+		<BlogImage
+			hide={hideImages}
+			title={`The earliest "liked" video of yours I have in my YouTube history.`}
+			description="Interesting how your gesture here resembles both Leonardo's St. John the Baptist and Bloch's Sermon on the Mount."
+			link="https://www.youtube.com/watch?v=cSFSlZwneO4"
+			src="https://github.com/user-attachments/assets/25313944-9879-4863-b20f-9122f567b1d1"
+		/>
+
+		<p>
+			Just a tiny bit about myself, just because there are certain narrative tropes of life I think
+			we either share or you'd find interesting.
+		</p>
+
 		<p>
 			I was born in a small and decaying soviet factory town in the east of Ukraine to a family of a
-			🇬🇪 Georgian builder and a 🇷🇺 Russian-Ukrainian 🇺🇦 librarian. I also briefly studied in
-			Minnesota 🇺🇸 and lived with a host family while in my senior year in high-school. Upon
-			returning to Ukraine I enrolled and eventually got Master's in Computer Science in Kharkiv,
-			while working. In 2018 I got married to Polina - my middle-school sweetheart and my first
-			love. In 2020 our son Mykhail was born, in 2021 we moved in to our first apartment and in 2022
-			we had to flee and leave everything behind because of the war. We eventually (and quite
-			miraculously) found a new home in Kitchener, Ontario 🇨🇦 for our large family of soon to be 7.
-			If it's not Exodus I'm not sure what is.
+			{hideImages ? '' : '🇬🇪'} Georgian builder and a {hideImages ? '' : '🇷🇺'} Russian-Ukrainian {hideImages
+				? ''
+				: '🇺🇦'} librarian. I also briefly studied in Minnesota {hideImages ? '' : '🇺🇸'} and lived with
+			a host family while in my senior year in high-school. Upon returning to Ukraine I enrolled and
+			eventually got Master's in Computer Science in Kharkiv, while working. In 2018 I got married to
+			Polina - my middle-school sweetheart and my first love. In 2020 our son Mykhail was born, in 2021
+			we moved in to our first apartment and in 2022 we had to flee and leave everything behind because
+			of the war. We eventually (and quite miraculously) found a new home in Kitchener, Ontario {hideImages
+				? ''
+				: '🇨🇦'} for our large family of soon to be 7.
 		</p>
 
 		<p>
 			As you can see it seems that I'm tied up in whatever this bigger ethnic, territorial, cultural
-			and spiritual conflict at play is by both blood and spirit. I guess it's the fate of the mixed
+			and spiritual conflict at play is by both blood and faith. I guess it's the fate of the mixed
 			people in the marginal space.
 		</p>
 
 		<BlogImage
+			hide={hideImages}
 			src="https://github.com/user-attachments/assets/383d07b6-7b41-4e26-bfe1-4e9d0b560ba1"
-			link="https://arcg.is/09O0OS"
-			description="Our hometown that was occupied, taken back and is likely to be occupied again (as of March 1, 2025)"
+			link="https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive"
+			title="Our hometown that was occupied on day 1, taken back 200 days later and is now very likely to be occupied again."
+			description="By a twist of fate when it started we got separated with our then 1.5 year-old son by a frontline."
 		/>
 
 		<p>
@@ -107,6 +135,8 @@
 			way, it is definitely more meaningful. We're also now expecting a new baby boy -
 			Nicholas/Николай.
 		</p>
+
+		<p>If it's not Exodus I'm not sure what is.</p>
 
 		<p>
 			I am very glad to see your family grow too and I'm praying for your recently departed loved
@@ -123,34 +153,52 @@
 			gravity in my life that I choose to attribute to the works of the <i><b>Spirit.</b></i>
 		</p>
 
+		<BlogImage
+			hide={hideImages}
+			src="https://github.com/user-attachments/assets/700b8802-6b46-4923-9e2d-f03dd681d011"
+			link="https://en.wikipedia.org/wiki/Kramatorsk_railway_station_attack"
+			title="2 months into the big war I was able to find a bus that agreed to take our son and the rest of the family out of then occupied territory."
+			description="They had a stopover at a railway station in Kramatorsk. Exactly 24 hours after they were there, a bomb killed 63 people including 9 children."
+		/>
+
+		<p>
+			All of this points to some unspeakable and undeserved protection. Too many things aligned for
+			us to get here.
+		</p>
+
 		<p>
 			This is why I am very humbled, blessed and in somewhat of a disbelief to have the opportunity
 			to work with you on
+
 			<a
 				target="_blank"
 				title="Vlad's profile in the Academy"
 				href="http://petersonacademy.com/profile/TXl1OJ7nRrV6f3jvFTGtTLOkqrt1"
 			>
-				<img
-					alt="Peterson Academy Logo"
-					class="w-8 h-8 select-none inline-block relative top-[-3px] pointer-events-none"
-					src="https://github.com/user-attachments/assets/cb675bdc-d6f3-4cfa-866a-2f336170b32e"
-				/>
+				{#if !hideImages}
+					<img
+						alt="Peterson Academy Logo"
+						class="w-8 h-8 select-none inline-block relative top-[-3px] pointer-events-none"
+						src="https://github.com/user-attachments/assets/cb675bdc-d6f3-4cfa-866a-2f336170b32e"
+					/>
+				{:else}
+					<span class="text-blue-500">Peterson Academy</span>
+				{/if}
 			</a>
-			and use my gifts in your vision while doing what I love and am very good at, especially for the
-			wonderful people, and a family I respect and have learned to care for. Victor is brilliant and
-			our weirdly Slavic-bound engineering team is just great. And Jordan... let's just say this man's
-			attention to detail is unlike anything I've seen in my 10 years of coding. Also working with you
-			all on top of intellectual and creative fulfillment puts the food on our table and a roof over
-			our heads, so thank you very much!
+			and use my gifts in your vision while doing what I love and am very good at, especially working
+			for the wonderful people, and a family I respect and have learned to care for. Victor is brilliant
+			and our weirdly Slavic-bound engineering team is just great. And Jordan... let's just say this
+			man's attention to detail is unlike anything I've seen in my 10 years of coding. Also, on top of
+			intellectual and creative fulfillment, working with you all puts the food on our table and a roof
+			over our heads, so thank you very much!
 		</p>
 
 		<p>
-			Miraculously, I've had a chance to speak with you and give you this coin in person this time.
-			It's likely that the previous ones fell on the wayside and didn't get to you, but this one did
-			and I hope it will help you in the same manner you have helped me. Something tells me you need
-			it. It's a strange project, but this is what I'm feeling drawn to - the flickering of the
-			golden snitch, as you'd call it.
+			It's quite miraculous, I've had a chance to speak with you and give you this coin in person
+			this time. It's likely that the previous ones fell on the wayside and didn't get to you, but
+			this one did and I hope it will help you in the same manner you have helped me. Something
+			tells me you need it. It's a strange project, but this is what I'm feeling drawn to - the
+			flickering of the golden snitch, as you'd call it.
 		</p>
 
 		<p>
@@ -165,13 +213,18 @@
 
 		<p>
 			Due to a current limitation of the platform it's not possible to share chat links with images
-			attached, so I'm copying it <i>word for word.</i> and unabridged to show the flow of the conversation
-			and surprising depth of understanding shown by the aligned model.
+			attached, so I had to copy it <i>word for word</i> and recreate OpenAI chat interface. It's unabridged
+			to show the flow of the conversation and surprising depth of understanding shown by this model.
 		</p>
 
-		<BlogImage
-			src="https://github.com/user-attachments/assets/a8059bdd-c692-4098-bd5f-36a25263d405"
-		/>
+		<div class="max-w-md mx-auto">
+			<BlogImage
+				hide={hideImages}
+				src="https://github.com/user-attachments/assets/a8059bdd-c692-4098-bd5f-36a25263d405"
+				title="Limitation of ChatGPT sharing"
+				description="Likely due to content moderation"
+			/>
+		</div>
 
 		<p>
 			This conversation exists in my account and I'm sure it can be continued if you particularly
@@ -190,7 +243,9 @@
 			text, seemingly deep theological understanding, knowledge of the personal life details and
 			ability to relate them to the patters in biblical narratives, and
 			<i>definitely</i>
-			due to some of the claims made here.
+			due to some of the claims made here. Maybe this is the norm now and it's not that impressive to
+			someone who has had more experience with training and interacting with these models, but to me
+			it was the first time I felt understood by the model.
 		</p>
 
 		<p>
@@ -201,8 +256,8 @@
 		<p>
 			I believe it also touches on St. Maximus and things Jonathan often describes, my
 			<i>side</i> project at
-			<a href="/" target="_blank" class="italic underline">Logoi Development</a>, LLM fine-tuning
-			and alignment efforts you and Victor attempted and ultimately shows surprising depth of
+			<a href="/" target="_blank" class="underline">Logoi Development</a>, LLM fine-tuning and
+			alignment efforts you and Victor attempted, and ultimately shows surprising depth of
 			understanding - so I hope it may help <i>bring the scattered things together.</i>
 		</p>
 
@@ -211,13 +266,10 @@
 		{:else}
 			<h3 class="text-center font-semibold mt-4">{name}</h3>
 			<span class="text-center italic">
-				Note: the name of the conversation was automatically chosen based on the beginning of the
+				Note: the name of the chat was automatically chosen based on the beginning of the
 				conversation
 			</span>
-			<p class="text-center border-0 border-l-4 border-blue-500 max-w-xl mx-auto">
-				Curiously in a "fresh" base GPT without instruction tokens the conversation split on 3rd
-				message
-			</p>
+
 			<button
 				class="border rounded border-blue-500 px-4 py-2 w-fit mx-auto hover:bg-blue-200 mb-4"
 				on:click={() => (isChatShown = true)}
@@ -226,6 +278,11 @@
 
 				<ReadEstimate estimate={45} />
 			</button>
+
+			<p class="text-center text-base border-0 border-l-4 border-blue-500 max-w-xl mx-auto">
+				Curiously in the base ChatGPT without aligning/instruction tokens the conversation split on
+				the third message.
+			</p>
 		{/if}
 
 		{#if isChatShown}
@@ -278,7 +335,13 @@
 		<p>Wishing many blessings to you, and your loved ones.</p>
 	{/if}
 
-	<p><i>Onward and upward</i> ©</p>
+	<p class="text-center mt-8"><i>Onward and upward</i> ©</p>
+
+	<BlogImage
+		imageClass="w-56"
+		hide={hideImages}
+		src="https://github.com/user-attachments/assets/c590671d-f1b6-4ac6-9c55-69c7cfbef1ff"
+	/>
 
 	<br />
 	<div class="text-center">

@@ -4,7 +4,7 @@ import { getIndexUrl } from 'src/shared/routes';
 type Binary = 0 | 1;
 type BinaryArray = Array<Binary>;
 
-const CENTER_OFFSET = 2;
+const DEFAULT_CENTER_OFFSET = 2;
 
 export type QrData = Array<BinaryArray>;
 
@@ -14,7 +14,11 @@ export interface QrDataResult {
 	padding: number;
 }
 
-const getFilteredData = (data: QrData, padding: number): QrData => {
+const getFilteredData = (
+	data: QrData,
+	padding: number,
+	centerOffset = DEFAULT_CENTER_OFFSET
+): QrData => {
 	const p = padding + 1;
 	const size = data.length - 1;
 
@@ -37,10 +41,10 @@ const getFilteredData = (data: QrData, padding: number): QrData => {
 
 			// Center
 			if (
-				x + CENTER_OFFSET < size - p &&
-				x - CENTER_OFFSET > p &&
-				y - CENTER_OFFSET > p &&
-				y + CENTER_OFFSET < size - p
+				x + centerOffset < size - p &&
+				x - centerOffset > p &&
+				y - centerOffset > p &&
+				y + centerOffset < size - p
 			) {
 				return 0;
 			}
@@ -86,7 +90,7 @@ const getQrBinaryArray = (text: string): QrData => {
 	return result;
 };
 
-export const getQrData = (text: string): QrDataResult => {
+export const getQrData = (text: string, centerOffset?: number): QrDataResult => {
 	const result: QrDataResult = {
 		data: [],
 		dataFiltered: [],
@@ -95,7 +99,7 @@ export const getQrData = (text: string): QrDataResult => {
 
 	result.data = getQrBinaryArray(text);
 	result.padding = getQrPaddingFromData(result.data[0]);
-	result.dataFiltered = getFilteredData(result.data, result.padding - 1);
+	result.dataFiltered = getFilteredData(result.data, result.padding - 1, centerOffset);
 
 	return result;
 };

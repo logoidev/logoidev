@@ -4,32 +4,41 @@
 	import { normaliseQrLocalhostUrl } from '../QrSvg/QrSvg.utils';
 	import QR from '../QR.svelte';
 	import SideBits from './SideBits.svelte';
-	import clsx from 'clsx';
+
 	import { createEventDispatcher } from 'svelte';
+	import { cn } from 'src/lib/utility/cn';
 
 	const dispatch = createEventDispatcher();
 
-	let className = '';
-	export { className as class };
-
 	export let route = window.location.href;
-	const url = normaliseQrLocalhostUrl(route);
-
+	export let qrGraphicSrc: string | undefined = undefined;
 	export let withBorder = true;
+	export let qrGraphicPadding: number | undefined = undefined;
+	export let qrGraphicScale = 1;
+
+	const url = normaliseQrLocalhostUrl(route);
 
 	// TODO: Make not random but be able to store information (e.g. curve correction)
 	const bits = getByteStrings(40, 0.5).join('').split('').map(Number);
 </script>
 
-<div class={clsx('max-h-[330px]', className)}>
+<div class={cn('max-h-[330px]', $$props.class)}>
 	<div
 		class="outer-circle"
-		style={clsx({
+		style={cn({
 			'box-shadow: 0 0 0 4px black': withBorder
 		})}
 	>
 		<div class="qr-center">
-			<QR class="m-1 absolute z-30" {url} rounded on:click={() => dispatch('click')} />
+			<QR
+				img={qrGraphicSrc}
+				imgScale={qrGraphicScale}
+				class="m-1 relative z-30"
+				{url}
+				rounded
+				on:click={() => dispatch('click')}
+				centerOffset={qrGraphicPadding}
+			/>
 		</div>
 
 		<div class="bit-group">

@@ -1,10 +1,7 @@
 <script lang="ts">
-	import clsx from 'clsx';
+	import { cn } from 'src/lib/utility/cn';
 
 	import RoundCode from './RoundCode.svelte';
-
-	let className = '';
-	export { className as class };
 
 	export let id: string;
 	export let counter: number = 0;
@@ -24,21 +21,23 @@
 </script>
 
 <div
-	class={clsx('text-center rounded-full p-1', className)}
+	class={cn('text-center rounded-full p-1', $$props.class)}
 	style={[withBorder && 'box-shadow: 0 0 0 4px black'].filter(Boolean).join(';')}
 >
-	<RoundCode
-		coinId={id}
-		{counter}
-		{bytes}
-		{size}
-		{angle}
-		{translateX}
-		{translateY}
-		{originX}
-		{originY}
-		{color}
-	/>
+	{#key id}
+		<RoundCode
+			coinId={id}
+			{counter}
+			{bytes}
+			{size}
+			{angle}
+			{translateX}
+			{translateY}
+			{originX}
+			{originY}
+			{color}
+		/>
+	{/key}
 
 	{#if areParamsShown}
 		<div class="absolute -left-32">
