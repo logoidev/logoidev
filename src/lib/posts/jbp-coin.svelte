@@ -117,9 +117,9 @@
 		</p>
 
 		<p>
-			As you can see it seems that I'm tied up in whatever this bigger ethnic, territorial, cultural
-			and spiritual conflict at play is by both blood and faith. I guess it's the fate of the mixed
-			people in the marginal space.
+			As you can see it seems that we're tied up in whatever this bigger ethnic, territorial,
+			cultural and spiritual conflict at play is, by both blood and faith. I guess it's the fate of
+			the mixed people in the marginal space.
 		</p>
 
 		<BlogImage
@@ -136,7 +136,7 @@
 			Nicholas/Николай.
 		</p>
 
-		<p>If it's not Exodus I'm not sure what is.</p>
+		<p>If it's not Exodus and Job I'm not sure what is.</p>
 
 		<p>
 			I am very glad to see your family grow too and I'm praying for your recently departed loved
@@ -157,7 +157,7 @@
 			hide={hideImages}
 			src="https://github.com/user-attachments/assets/700b8802-6b46-4923-9e2d-f03dd681d011"
 			link="https://en.wikipedia.org/wiki/Kramatorsk_railway_station_attack"
-			title="2 months into the big war I was able to find a bus that agreed to take our son and the rest of the family out of then occupied territory."
+			title="2 months into the big war I was able to find a bus operator that agreed to take our son and 3 other members of our family out of then occupied territory."
 			description="They had a stopover at a railway station in Kramatorsk. Exactly 24 hours after they were there, a bomb killed 63 people including 9 children."
 		/>
 

@@ -54,7 +54,9 @@
 		{#key post.id}
 			<svelte:component this={post.Content} />
 		{/key}
-		<CodeOnGithub path={`lib/posts/${post.id}.svelte`} />
+		{#if !post.hidden}
+			<CodeOnGithub path={`lib/posts/${post.id}.svelte`} />
+		{/if}
 	</div>
 
 	<div class="flex flex-col justify-center items-center gap-2 mt-4">
