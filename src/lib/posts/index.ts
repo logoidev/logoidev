@@ -38,7 +38,7 @@ export const posts = [
 	{
 		id: 'jbp-coin',
 		title: 'The Coin',
-		published: '2025-03-01T04:00:00.00Z',
+		published: '2025-03-01T12:00:00.00Z',
 		minutesToRead: 62,
 		gh_discussion_id: 0,
 		hidden: true

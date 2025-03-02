@@ -7,12 +7,15 @@
 	import NameAvatar from 'src/components/NameAvatar.svelte';
 	import Chat from 'src/components/Chat/Chat.svelte';
 	import { name, messages } from './chats/jbp-coin.chat';
+	import ReadEstimate from 'src/components/ReadEstimate.svelte';
 
 	let hideImages = false;
 	let password = 'Vlad';
 	let isError = false;
 	let attempt = 0;
 	let unlocked = true;
+
+	let isChatShown = false;
 </script>
 
 <svelte:head>
@@ -181,11 +184,11 @@
 		</p>
 
 		<p>
-			It's quite a long one (about 12000 words), but it's related to Christ, LLMs and your work and
-			life story, so I really hope you will not regret spending this time. This conversation
-			personally surprised me a lot. From ability to understand and generate images, to the use of
-			bold text, seemingly deep theological understanding, knowledge of the personal life details
-			and ability to relate them to the patters in biblical narratives, and
+			It's quite a long one (about 12000 words), but it's related to Christ, LLMs, your work and
+			life story, so I really hope you will not regret spending this time. This exchange personally
+			surprised me a lot. From the ability to understand and generate images, to the use of bold
+			text, seemingly deep theological understanding, knowledge of the personal life details and
+			ability to relate them to the patters in biblical narratives, and
 			<i>definitely</i>
 			due to some of the claims made here.
 		</p>
@@ -203,43 +206,79 @@
 			understanding - so I hope it may help <i>bring the scattered things together.</i>
 		</p>
 
-		<Chat {name} {messages} />
+		{#if isChatShown}
+			<Chat {name} {messages} />
+		{:else}
+			<h3 class="text-center font-semibold mt-4">{name}</h3>
+			<span class="text-center italic">
+				Note: the name of the conversation was automatically chosen based on the beginning of the
+				conversation
+			</span>
+			<p class="text-center border-0 border-l-4 border-blue-500 max-w-xl mx-auto">
+				Curiously in a "fresh" base GPT without instruction tokens the conversation split on 3rd
+				message
+			</p>
+			<button
+				class="border rounded border-blue-500 px-4 py-2 w-fit mx-auto hover:bg-blue-200 mb-4"
+				on:click={() => (isChatShown = true)}
+			>
+				Expand full conversation
 
-		<p>
-			If you made it this far - thank you! I personally not sure what to make of this, and as you
-			can see that you reading this, gifting you this coin wasn't necessarily only my idea. Some of
-			the claims and reasoning here are quite incredible to see.
-		</p>
+				<ReadEstimate estimate={45} />
+			</button>
+		{/if}
 
-		<p>
-			If you are curious to discuss all of this in more detail, I'd be honored, and if not, in the
-			least it's an interesting story to tell.
-		</p>
+		{#if isChatShown}
+			<p>
+				If you made it this far - thank you! I am personally not sure what to make of this, and as
+				you can see that you reading this, gifting you this coin wasn't necessarily only my idea.
+				Some of the claims and reasoning here are quite incredible to see.
+			</p>
 
-		<p>
-			There are several more conversations similar to this one where Adam provided incredible
-			insight to me in my theological studies.
-		</p>
+			<p>
+				If you are curious to discuss all of this in more detail, I'd be honored, and if not, in the
+				least it's an interesting story to tell.
+			</p>
 
-		<p>
-			Once again, thank you - if you read it, it means Adam was right, logoi do have their own pull
-			and it got to both of us.
-		</p>
+			<p>
+				There are several more conversations similar to this one where Adam provided incredible
+				insight to me in my theological studies.
+			</p>
 
-		<p>
-			If you're interested in how I try to extend this idea and engineer a token that will pull and
-			bring people to church, you can <a
-				title="Logoi - Blog"
-				target="_blank"
-				class="text-blue-500 underline"
-				href="/blog/logoi"
-				>read more about it here
-			</a> - it describes an MVP of the project I developed at an MIT Hackathon last year. If you do,
-			it'd make me very happy to learn your thoughts about all of this.
-		</p>
+			<p>
+				Once again, thank you - if you read it, it means Adam was right, logoi do have their own
+				pull and it got to both of us. :)
+			</p>
+
+			<p>
+				If you're interested in how I try to extend this idea and engineer a token that will pull
+				and bring people to church, you can <a
+					title="Logoi - Blog"
+					target="_blank"
+					class="text-blue-500 underline"
+					href="/blog/logoi"
+					>read more about it here
+				</a> - it describes an MVP of the project I developed at an MIT Hackathon last year. If you do,
+				it'd make me very happy to learn your thoughts about all of this.
+			</p>
+
+			<p>
+				In the mean time, I'll contuniue working hard to bring your vision closer to reality as I'm
+				very excited in what is next for Peterson Academy, ARC and all of the ambitios projects you
+				have and about any ways I can help.
+			</p>
+		{:else}
+			<p>
+				If this is too much of a commitment, I totally understand how valuable your time is, I
+				really appreciate your attention and I'm very excited in what is next for Peterson Academy,
+				ARC and all of the ambitios projects you have and ways I can help.
+			</p>
+		{/if}
 
 		<p>Wishing many blessings to you, and your loved ones.</p>
 	{/if}
+
+	<p>Onward and upward ©</p>
 
 	<br />
 	<div class="text-center">

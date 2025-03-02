@@ -44,6 +44,7 @@ The choice of "**глаголы**" in this Russian translation likely reflects t
 Would you like to explore how this relates to Orthodox theology or its linguistic roots further?`
 	},
 	{
+		note: 'In a "fresh" base version of ChatGPT at this point the concept of logoi was not mentioned and conversation flow split',
 		author: 'Vlad',
 		type: 'user',
 		text: 'So it’s saying “you have logoi of eternal life”? What does St. Maximus comment on this?'
