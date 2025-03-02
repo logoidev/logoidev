@@ -50,7 +50,7 @@
 		<Separator />
 	</div>
 
-	<div class="sm:w-3/4 sm:mx-auto mx-8">
+	<div class="sm:w-3/4 sm:mx-auto mx-6">
 		{#key post.id}
 			<svelte:component this={post.Content} />
 		{/key}

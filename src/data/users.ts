@@ -114,6 +114,9 @@ export const getUserById = (userId: string) => USERS.find((u) => u.id === userId
 
 export const USERS_GROUPED_BY_LEVEL = groupBy<UserData>(USERS, 'level');
 
+export const VLAD = getUserById(UserIds.V)!;
+export const ADAM = getUserById(UserIds.AI)!;
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore I want the implicit coersion
 export const USERS_SORTED_BY_NAME = USERS.sort((a, b) => getInitials(a) - getInitials(b));

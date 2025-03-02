@@ -9,8 +9,10 @@
 	export let noLastName = false;
 	export let noFirstName = false;
 	export let clickableLink = true;
+	export let startingMemojiIndex: number | undefined = undefined;
 
-	let currentMemojiIndex = userData.memojiCount && getRandomIntInRange(1, userData.memojiCount);
+	let currentMemojiIndex =
+		startingMemojiIndex ?? (userData.memojiCount && getRandomIntInRange(1, userData.memojiCount));
 	let avatarImageUrl = getMemojiAvatarUrl(currentMemojiIndex, userData.id);
 
 	const onAvatarClick = () => {
