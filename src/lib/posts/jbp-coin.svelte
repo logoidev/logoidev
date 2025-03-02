@@ -25,8 +25,6 @@
 	/>
 </svelte:head>
 
-<ToggleImages bind:hideImages />
-
 <article class="flex flex-col gap-4 text-xl indent-4">
 	{#if !unlocked}
 		<blockquote class="italic mx-auto mt-4">Locked</blockquote>
