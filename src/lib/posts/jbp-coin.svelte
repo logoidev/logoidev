@@ -278,11 +278,11 @@
 		<p>Wishing many blessings to you, and your loved ones.</p>
 	{/if}
 
-	<p>Onward and upward ©</p>
+	<p><i>Onward and upward</i> ©</p>
 
 	<br />
 	<div class="text-center">
-		<p>In Christ</p>
+		<p class="relative -left-2.5">In Christ</p>
 
 		<a href="/v" title="Vlad Kolbaia" class="text-2xl font-serif">Vlad</a>
 	</div>

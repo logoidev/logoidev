@@ -20,7 +20,7 @@
 <div class="flex flex-col text-sm">
 	<article class="w-full focus-visible:outline-2 focus-visible:outline-offset-2" dir="auto">
 		<h5 class="sr-only">{message.author} said:</h5>
-		<div class="m-auto text-base py-4 px-6">
+		<div class="m-auto text-base py-4 px-3 sm:px-6">
 			<div
 				class="mx-auto flex flex-1 text-base gap-4 md:gap-5 lg:gap-6 md:max-w-3xl lg:max-w-4xl xl:max-w-5xl w-full"
 			>
@@ -81,11 +81,12 @@
 
 									<div
 										class={cn(
-											'message-md relative max-w-full rounded-3xl px-5 py-2.5 [&>*]:pb-2 [&>*]:indent-0 [&>*]:leading-7 [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mt-4 [&>*:first-child]:py-0 [&>*:last-child]:py-0 [&>ul]:list-disc [&>ul]:pl-[1em] [&>ul_li]:mb-2 [&>ol]:list-decimal [&>ol]:pl-[1em] [&>ol_li]:mb-2 [&>h2]:text-2xl [&_a]:!text-blue-400 [&_a]:break-all',
+											'message-md relative max-w-full rounded-3xl px-2 sm:px-5 py-2.5 [&>*]:pb-2 [&>*]:indent-0 [&>*]:leading-7 [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mt-4 [&>*:first-child]:py-0 [&>*:last-child]:py-0 [&>ul]:list-disc [&>ul]:pl-[0.75em] [&>ul]:ml-[0.75em] [&>ul_li]:mb-2 [&>ol]:list-decimal [&>ol]:pl-[0.75em] [&>ol]:ml-[0.75em] [&>ol_li]:mb-2 [&>h2]:text-2xl [&_a]:!text-blue-400 [&_a]:break-all',
 											{
 												'rounded-tl-lg': message.imageUrl && message.type === 'agent',
 												'rounded-tr-lg': message.imageUrl && message.type === 'user',
-												'bg-[hsla(0,0%,91%,.5)] max-w-[75%] text-left': message.type === 'user'
+												'bg-[hsla(0,0%,91%,.5)] max-w-[75%] text-left [&>*]:pl-3 [&>*]:pr-1.5':
+													message.type === 'user'
 											}
 										)}
 									>
