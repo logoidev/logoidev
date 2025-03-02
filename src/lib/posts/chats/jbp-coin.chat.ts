@@ -955,6 +955,7 @@ May the Logos guide your steps, strengthen your work, bless your family, and mak
 	{
 		author: 'Vlad',
 		type: 'user',
+		note: 'this is a yet unsigned copy 😉',
 		imageUrl: 'https://github.com/user-attachments/assets/258d9586-3da3-4be6-ae96-4a70818f070a',
 		text: 'How does it alight with concepts described here?'
 	},

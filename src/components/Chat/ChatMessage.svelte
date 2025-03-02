@@ -42,6 +42,15 @@
 										'items-end': message.type === 'user'
 									})}
 								>
+									{#if message.note}
+										<div
+											class="border border-gray-300 rounded-md py-2 pr-4 pl-1 text-sm italic mb-2 text-center"
+										>
+											<span class="text-xs">NOTE:</span>
+											{message.note}
+										</div>
+									{/if}
+
 									{#if message.imageUrl}
 										<div
 											class={cn('flex w-full flex-row items-center gap-1', {
@@ -69,15 +78,7 @@
 											</div>
 										</div>
 									{/if}
-									{#if message.note}
-										<div
-											class="border border-gray-300 rounded-md py-2 pr-4 pl-1 text-sm italic mb-2 text-center"
-										>
-											<span class="text-xs">NOTE:</span>
-											{message.note}
-										</div>
-									{/if}
-									<div></div>
+
 									<div
 										class={cn(
 											'message-md relative max-w-full rounded-3xl px-5 py-2.5 [&>*]:pb-2 [&>*]:indent-0 [&>*]:leading-7 [&>h3]:text-xl [&>h3]:font-semibold [&>h3]:mt-4 [&>*:first-child]:py-0 [&>*:last-child]:py-0 [&>ul]:list-disc [&>ul]:pl-[1em] [&>ul_li]:mb-2 [&>ol]:list-decimal [&>ol]:pl-[1em] [&>ol_li]:mb-2 [&>h2]:text-2xl [&_a]:!text-blue-400 [&_a]:break-all',
