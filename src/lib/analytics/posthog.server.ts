@@ -18,10 +18,13 @@ export const getDistinctId = (cookies: Cookies) => {
 	return posthogCookie.distinct_id; // Skipping uuidv7 generation as a fallback for now
 };
 
-type TrackingServerEvent = 'adam_direct_link_visited';
+type TrackingServerEvent = 'adam_direct_link_visited' | 'ref_link_visited';
 
-export function trackServerEvent(eventName: TrackingServerEvent, cookies: Cookies) {
+export function trackServerEvent(
+	eventName: TrackingServerEvent,
+	cookies: Cookies,
+	properties?: Record<string, string>
+) {
 	const distinctId = getDistinctId(cookies) ?? 'fallback-distinct-id';
-	console.log('Tracking', distinctId, eventName);
-	posthog.capture({ distinctId, event: eventName });
+	posthog.capture({ distinctId, event: eventName, properties });
 }
