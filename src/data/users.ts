@@ -23,7 +23,7 @@ export const USERS: Array<UserData> = [
 		],
 		payments: [],
 		chat: {
-			link: 'https://chatgpt.com/g/g-67bf48c4932881918f63f2197d68ec57-adam',
+			link: '/adam',
 			image_url: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/ChatGPT-Logo.svg'
 		}
 	},

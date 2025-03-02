@@ -35,6 +35,7 @@
 		"nanoid": "^5.0.9",
 		"pg": "^8.13.1",
 		"posthog-js": "^1.207.2",
+		"posthog-node": "^4.8.1",
 		"qrcode": "^1.5.4",
 		"reflect-metadata": "^0.1.13",
 		"stripe": "^17.5.0",
