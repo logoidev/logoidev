@@ -66,16 +66,16 @@
 		{/if}
 
 		<p>
-			My name is <a href="/v" target="_blank">Vlad</a> and I'm extremely happy to have met you in person.
-			I hope you have at least heard my name before either from Victor, Jordan or Mikhaila.
+			My name is <a href="/v" target="_blank">Vlad</a> and I'm thrilled to have met you in person. I
+			hope you have at least heard my name before either from Victor, Jordan or Mikhaila.
 		</p>
 
 		<p>
-			I started listening to you in 2017 and, like to many other people, you played the part of the
-			wise father, and I'm extremely grateful for the generosity of your time and to God for giving
-			me the wisdom to listen to your advice - your words definitely influenced my worldview and
-			decision to start a family. Would have never thought a Pinocchio story revisited can lead
-			here.
+			I started listening to you in 2017 and for me, like for many other people, you played the part
+			of the wise father, I’m extremely grateful for the generosity of your time and to God for
+			giving me the wisdom to listen to your advice - your words definitely influenced my worldview
+			and decision to start a family. Would have never thought a Pinocchio story revisited could
+			lead here.
 		</p>
 
 		<p
@@ -105,13 +105,12 @@
 			{hideImages ? '' : '🇬🇪'} Georgian builder and a {hideImages ? '' : '🇷🇺'} Russian-Ukrainian {hideImages
 				? ''
 				: '🇺🇦'} librarian. I also briefly studied in Minnesota {hideImages ? '' : '🇺🇸'} and lived with
-			a host family while in my senior year in high-school. Upon returning to Ukraine I enrolled and
-			eventually got Master's in Computer Science in Kharkiv, while working. In 2018 I got married to
-			Polina - my middle-school sweetheart and my first love. In 2020 our son Mykhail was born, in 2021
-			we moved in to our first apartment and in 2022 we had to flee and leave everything behind because
-			of the war. We eventually (and quite miraculously) found a new home in Kitchener, Ontario {hideImages
-				? ''
-				: '🇨🇦'} for our large family of soon to be 7.
+			a host family while in my senior year in high school. Upon returning to Ukraine I enrolled and
+			eventually got Master's in Computer Science in Kharkiv and started working soonafter. In 2018 I
+			got married to Polina - my middle-school sweetheart and my first love. In 2020 our son Mykhail
+			was born, in 2021 we moved into our first apartment, and in 2022 we had to flee and leave everything
+			behind because of the war. We eventually (and quite miraculously) found a new home in Kitchener,
+			Ontario {hideImages ? '' : '🇨🇦'} for our large family of soon to be 7.
 		</p>
 
 		<p>
@@ -125,7 +124,7 @@
 			src="https://github.com/user-attachments/assets/383d07b6-7b41-4e26-bfe1-4e9d0b560ba1"
 			link="https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive"
 			title="Our hometown that was occupied on day 1, taken back 200 days later and is now very likely to be occupied again."
-			description="By a twist of fate when it started we got separated with our then 1.5 year-old son by a frontline."
+			description="By a twist of fate when it started we got separated from our then 1.5-year-old son by a frontline."
 		/>
 
 		<p>
@@ -147,7 +146,7 @@
 			Job-like fall and subsequent rise. The fact I'm here now and not in a ditch definitely puts
 			things in perspective. I feel held, protected and guided by something I don't fully
 			understand. Blessed is the best word for it I guess. Whatever you call it, me standing in
-			front of you was a result of some pulling force - both you and Jonathan have some sort of
+			front of you is a result of some pulling force - both you and Jonathan have some sort of
 			gravity in my life that I choose to attribute to the works of the <i><b>Spirit.</b></i>
 		</p>
 
@@ -184,7 +183,7 @@
 				{/if}
 			</a>
 			and use my gifts in your vision while doing what I love and am very good at, especially working
-			for the wonderful people, and a family I respect and have learned to care for. Victor is brilliant
+			for wonderful people, and a family I respect and have learned to care for. Victor is brilliant
 			and our weirdly Slavic-bound engineering team is just great. And Jordan... let's just say this
 			man's attention to detail is unlike anything I've seen in my 10 years of coding. Also, on top of
 			intellectual and creative fulfillment, working with you all puts the food on our table and a roof
@@ -192,11 +191,12 @@
 		</p>
 
 		<p>
-			It's quite miraculous, I've had a chance to speak with you and give you this coin in person
-			this time. It's likely that the previous ones fell on the wayside and didn't get to you, but
-			this one did and I hope it will help you in the same manner you have helped me. Something
-			tells me you need it. It's a strange project, but this is what I'm feeling drawn to - the
-			flickering of the golden snitch, as you'd call it.
+			It's quite miraculous, that I've had a chance to speak with you and give you this coin in
+			person this time. It's likely that the previous ones fell on the wayside and didn't get to
+			you, but this one did and I hope it will help you in the same manner you have helped me and
+			shed some light onto the pulling force that is at work. Something tells me you need it. It's
+			an unusual project, but this is what I'm feeling called to do - the flickering of the golden
+			snitch, as <i>someone</i> would say.
 		</p>
 
 		<p>
@@ -210,9 +210,10 @@
 		</p>
 
 		<p>
-			Due to a current limitation of the platform it's not possible to share chat links with images
-			attached, so I had to copy it <i>word for word</i> and recreate OpenAI chat interface. It's unabridged
-			to show the flow of the conversation and surprising depth of understanding shown by this model.
+			Due to a current limitation of the platform, it's not possible to share chat links with images
+			attached, so I had to copy it <i>word for word</i> and recreate the OpenAI chat interface. It's
+			unabridged to show the flow of the conversation and the surprising depth of understanding shown
+			by this model.
 		</p>
 
 		<div class="max-w-md mx-auto">
@@ -236,14 +237,14 @@
 
 		<p>
 			It's quite a long one (about 12000 words), but it's related to Christ, LLMs, your work and
-			life story, so I really hope you will not regret spending this time. This exchange personally
-			surprised me a lot. From the ability to understand and generate images, to the use of bold
-			text, seemingly deep theological understanding, knowledge of the personal life details and
-			ability to relate them to the patters in biblical narratives, and
+			your life story, so I really hope you will not regret spending this time. This exchange
+			personally surprised me a lot. From the ability to understand and generate images, to the
+			curious use of bold text, seemingly deep theological understanding, knowledge of the personal
+			life details and ability to relate them to the patterns in biblical narratives, and
 			<i>definitely</i>
-			due to some of the claims made here. Maybe this is the norm now and it's not that impressive to
-			someone who has had more experience with training and interacting with these models, but to me
-			it was the first time I felt understood by the model.
+			due to some of the claims made there. Maybe this is the norm now and it's not that impressive to
+			someone who has had more experience with training and interacting with these models, but to me,
+			it was the first time I felt understood by and was in awe of the model.
 		</p>
 
 		<p>
@@ -255,7 +256,7 @@
 			I believe it also touches on St. Maximus and things Jonathan often describes, my
 			<i>side</i> project at
 			<a href="/" target="_blank" class="underline">Logoi Development</a>, LLM fine-tuning and
-			alignment efforts you and Victor attempted, and ultimately shows surprising depth of
+			alignment efforts you and Victor attempted and ultimately shows a surprising depth of
 			understanding - so I hope it may help <i>bring the scattered things together.</i>
 		</p>
 
@@ -318,15 +319,15 @@
 			</p>
 
 			<p>
-				In the mean time, I'll contuniue working hard to bring your vision closer to reality as I'm
+				In the meantime, I'll continue working hard to bring your vision closer to reality as I'm
 				very excited in what is next for Peterson Academy, ARC and all of the ambitios projects you
-				have and about any ways I can help.
+				have and about any ways I can help further.
 			</p>
 		{:else}
 			<p>
 				If this is too much of a commitment, I totally understand how valuable your time is, I
 				really appreciate your attention and I'm very excited in what is next for Peterson Academy,
-				ARC and all of the ambitios projects you have and ways I can help.
+				ARC and all of the ambitios projects you have and about any ways I can help further.
 			</p>
 		{/if}
 
