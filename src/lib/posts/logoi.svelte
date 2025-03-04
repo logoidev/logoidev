@@ -304,6 +304,23 @@
 		</div>
 	</div>
 
+	<p>Here's video demo of an MVP:</p>
+
+	<div
+		class="aspect-[9/16] w-[20rem] mx-auto"
+		style="position:relative; height:0px; padding-bottom:56.250%"
+	>
+		<iframe
+			title="Logoi"
+			allow="fullscreen"
+			allowfullscreen
+			height="100%"
+			src="https://streamable.com/ne/wd76z9?loop=0&autoplay=0&bg=white"
+			width="100%"
+			style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"
+		></iframe>
+	</div>
+
 	<p>
 		If you like this <a class="underline" href="/blog/vision" target="_blank">vision</a> and think
 		that your {color == 'white' ? 'church' : 'organisation'} or any other non-profit would be interested,

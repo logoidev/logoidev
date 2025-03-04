@@ -184,6 +184,13 @@
 		interests, and we welcome any feedback, advice, ideas, criticism, and all new acquaintances
 		along the way.
 	</p>
+
+	<p>
+		To learn more
+		<a href="https://streamable.com/lbwkoo" class="underline" target="_blank">
+			click to watch a video about vision and puprose of Logoi
+		</a>
+	</p>
 	<br />
 	<div class="text-center">
 		<p>Best of fortune,</p>
