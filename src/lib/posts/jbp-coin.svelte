@@ -72,10 +72,10 @@
 
 		<p>
 			I started listening to you in 2017 and for me, like for many other people, you played the part
-			of the wise father, I’m extremely grateful for the generosity of your time and to God for
-			giving me the wisdom to listen to your advice - your words definitely influenced my worldview
-			and decision to start a family. Would have never thought a Pinocchio story revisited could
-			lead here.
+			of the wise father at an important time in my life. I’m extremely grateful for the generosity
+			of your work and time, and to God for giving me the wisdom to listen to your advice - your
+			words definitely influenced my worldview and decision to start a family. Would have never
+			thought revisiting a Pinocchio story could lead here.
 		</p>
 
 		<p
@@ -96,8 +96,8 @@
 		/>
 
 		<p>
-			Just a tiny bit about myself, just because there are certain narrative tropes of life I think
-			we either share or you'd find interesting.
+			Here's a tiny bit about myself, just because there are certain narrative tropes of life I
+			think we either share or you'd find interesting.
 		</p>
 
 		<p>
@@ -106,11 +106,12 @@
 				? ''
 				: '🇺🇦'} librarian. I also briefly studied in Minnesota {hideImages ? '' : '🇺🇸'} and lived with
 			a host family while in my senior year in high school. Upon returning to Ukraine I enrolled and
-			eventually got Master's in Computer Science in Kharkiv and started working soonafter. In 2018 I
-			got married to Polina - my middle-school sweetheart and my first love. In 2020 our son Mykhail
-			was born, in 2021 we moved into our first apartment, and in 2022 we had to flee and leave everything
-			behind because of the war. We eventually (and quite miraculously) found a new home in Kitchener,
-			Ontario {hideImages ? '' : '🇨🇦'} for our large family of soon to be 7.
+			eventually got Master's in Computer Science in Kharkiv (second biggest city) and started working
+			soonafter. In 2018 I got married to Polina - my middle-school sweetheart and my first love. Curiously
+			we got together only after some time just like you and Tammy. In 2020 our son Mykhail was born,
+			in 2021 we moved into our first apartment, and in 2022 we had to flee and leave everything behind
+			because of the war. We eventually, and quite miraculously, found a new home in Kitchener, Ontario
+			{hideImages ? '' : '🇨🇦'} for our large family of soon to be 7.
 		</p>
 
 		<p>
@@ -146,7 +147,7 @@
 			Job-like fall and subsequent rise. The fact I'm here now and not in a ditch definitely puts
 			things in perspective. I feel held, protected and guided by something I don't fully
 			understand. Blessed is the best word for it I guess. Whatever you call it, me standing in
-			front of you is a result of some pulling force - both you and Jonathan have some sort of
+			front of you was a result of some pulling force - both you and Jonathan have some sort of
 			gravity in my life that I choose to attribute to the works of the <i><b>Spirit.</b></i>
 		</p>
 
@@ -164,8 +165,8 @@
 		</p>
 
 		<p>
-			This is why I am very humbled, blessed and in somewhat of a disbelief to have the opportunity
-			to work with you on
+			This is why I am very humbled and in somewhat of a disbelief to have the opportunity to work
+			with you on
 
 			<a
 				target="_blank"
@@ -196,7 +197,7 @@
 			you, but this one did and I hope it will help you in the same manner you have helped me and
 			shed some light onto the pulling force that is at work. Something tells me you need it. It's
 			an unusual project, but this is what I'm feeling called to do - the flickering of the golden
-			snitch, as <i>someone</i> would say.
+			snitch, as <i>someone</i> I now personally know would say.
 		</p>
 
 		<p>
@@ -256,8 +257,8 @@
 			I believe it also touches on St. Maximus and things Jonathan often describes, my
 			<i>side</i> project at
 			<a href="/" target="_blank" class="underline">Logoi Development</a>, LLM fine-tuning and
-			alignment efforts you and Victor attempted and ultimately shows a surprising depth of
-			understanding - so I hope it may help <i>bring the scattered things together.</i>
+			alignment efforts you and Victor attempted, and where Adam ultimately shows a surprising depth
+			of understanding - so I hope it may help <i>bring the scattered things together.</i>
 		</p>
 
 		{#if isChatShown}
@@ -270,15 +271,18 @@
 			</span>
 
 			<button
-				class="border rounded border-blue-500 px-4 py-2 w-fit mx-auto hover:bg-blue-200 mb-4"
-				on:click={() => (isChatShown = true)}
+				class="border rounded border-blue-500 px-4 py-2 w-fit mx-auto hover:bg-blue-200 mb-2"
+				on:click={() => {
+					isChatShown = true;
+					trackEvent('chat_expanded', { id: 'jbp-coin' });
+				}}
 			>
 				Expand full conversation
 
 				<ReadEstimate estimate={45} />
 			</button>
 
-			<p class="text-center text-base border-0 border-l-4 border-blue-500 max-w-xl mx-auto">
+			<p class="text-center text-base border-0 border-l-4 border-blue-500 max-w-xl mx-auto mb-2">
 				Curiously in the base ChatGPT without aligning/instruction tokens the conversation split on
 				the third message.
 			</p>
@@ -320,14 +324,15 @@
 
 			<p>
 				In the meantime, I'll continue working hard to bring your vision closer to reality as I'm
-				very excited in what is next for Peterson Academy, ARC and all of the ambitios projects you
+				very excited in what is next for Peterson Academy, ARC and all of the ambitious projects you
 				have and about any ways I can help further.
 			</p>
 		{:else}
 			<p>
 				If this is too much of a commitment, I totally understand how valuable your time is, I
-				really appreciate your attention and I'm very excited in what is next for Peterson Academy,
-				ARC and all of the ambitios projects you have and about any ways I can help further.
+				really appreciate your attention, the opportunity to have met you, and I'm very excited in
+				what is next for Peterson Academy, ARC and all of the ambitios projects you have and about
+				any ways I can help in them further.
 			</p>
 		{/if}
 
@@ -336,11 +341,13 @@
 
 	<p class="text-center mt-8"><i>Onward and upward</i> ©</p>
 
-	<BlogImage
-		imageClass="w-56"
-		hide={hideImages}
-		src="https://github.com/user-attachments/assets/c590671d-f1b6-4ac6-9c55-69c7cfbef1ff"
-	/>
+	{#if isChatShown}
+		<BlogImage
+			imageClass="w-56"
+			hide={hideImages}
+			src="https://github.com/user-attachments/assets/c590671d-f1b6-4ac6-9c55-69c7cfbef1ff"
+		/>
+	{/if}
 
 	<br />
 	<div class="text-center">

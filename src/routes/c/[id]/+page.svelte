@@ -288,6 +288,13 @@
 				<p>Click the icon below and return<br /> to this page once you're there</p>
 				{#if distance}
 					<p class="text-sm">{`~ ${formatMeters(distance)} away`}</p>
+
+					{#if distance > 1500}
+						<p class="text-center mt-4 text-sm">
+							Seems like you're quite far away, the experience currently works only in Boston, MA
+							and we're working on expanding it to other cities.
+						</p>
+					{/if}
 				{/if}
 			{/if}
 
