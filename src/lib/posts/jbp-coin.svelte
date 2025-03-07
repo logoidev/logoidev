@@ -66,13 +66,16 @@
 		{/if}
 
 		<p>
-			My name is <a href="/v" target="_blank">Vlad</a> and I'm thrilled to have met you in person. I
-			hope you have at least heard my name before either from Victor, Jordan or Mikhaila.
+			My name is <a href="/v" target="_blank">Vlad</a> and I'm thrilled to have met you in person. Considering
+			how valuable your time is and how many people seek even a minute of your attention, I prepared
+			this letter, and if you're reading it, I'm beyond grateful. Even though I write much better code
+			than I do English prose, I decided to follow your advice, think through and reflect on my journey
+			and express my deep gratitude.
 		</p>
 
 		<p>
 			I started listening to you in 2017 and for me, like for many other people, you played the part
-			of the wise father at an important time in my life. I’m extremely grateful for the generosity
+			of the wise father at an important time in my life. I’m extremely thankful for the generosity
 			of your work and time, and to God for giving me the wisdom to listen to your advice - your
 			words definitely influenced my worldview and decision to start a family. Would have never
 			thought revisiting a Pinocchio story could lead here.
@@ -148,7 +151,9 @@
 			things in perspective. I feel held, protected and guided by something I don't fully
 			understand. Blessed is the best word for it I guess. Whatever you call it, me standing in
 			front of you was a result of some pulling force - both you and Jonathan have some sort of
-			gravity in my life that I choose to attribute to the works of the <i><b>Spirit.</b></i>
+			gravity in my life that I choose to attribute to the works of the <i
+				><span class="font-semibold"> Spirit. </span></i
+			>
 		</p>
 
 		<BlogImage
@@ -184,11 +189,14 @@
 				{/if}
 			</a>
 			and use my gifts in your vision while doing what I love and am very good at, especially working
-			for wonderful people, and a family I respect and have learned to care for. Victor is brilliant
-			and our weirdly Slavic-bound engineering team is just great. And Jordan... let's just say this
-			man's attention to detail is unlike anything I've seen in my 10 years of coding. Also, on top of
-			intellectual and creative fulfillment, working with you all puts the food on our table and a roof
-			over our heads, so thank you very much!
+			for wonderful people, and a family I respect and have learned to care for. Victor is just brilliant
+			and I choose to believe that him picking my resume out of the hundreds wasn't just a chance. And
+			our weirdly Slavic-bound engineering team is great. I know for a fact every one of them would be
+			absolutely thrilled to see you at some point, and all of them asked me to say hi for them. And
+			Jordan... let's just say this man's attention to detail is unlike anything I've seen in my 10 years
+			of coding and it shows in the quality of the product we're making. Also, on top of the intellectual
+			and creative fulfillment, working with you all puts the food on our table and a roof over our heads,
+			so thank you very much!
 		</p>
 
 		<p>
@@ -233,7 +241,10 @@
 				class="underline text-blue-500"
 				target="_blank"
 				href={ADAM.chat?.link}>start a new conversation</a
-			> and see where it leads.
+			>
+			and see where it leads. It's a custom GPT and it claims to be tuned and align with the
+			<span class="font-semibold">Logos</span>
+			itself, and wouldn't it be good if it was true?
 		</p>
 
 		<p>
@@ -250,7 +261,7 @@
 
 		<p>
 			It started with my bible study of the Gospel of John, and one way or another it led to
-			<b><i>you.</i></b>
+			<span class="font-semibold"><i>you.</i></span>
 		</p>
 
 		<p>
@@ -336,18 +347,70 @@
 			</p>
 		{/if}
 
+		<p>
+			I added these final paragraphs the morning after the lecture, while the rest was written days
+			prior. I'm surprised that what you spoke of touches on some of the points in this letter and
+			on things the AI conversation above led to. It was a fantastic lecture, summarizing these four
+			very deep stories of Jacob, Moses, Abraham and Jonah, cohesively weaving them together and
+			showing how these patterns inevitably map onto our lives was incredible. Once you see these
+			patterns, hear the Voice, and find the wisdom to follow it, the adventure truly begins. And I
+			pray for that wisdom daily.
+		</p>
+
+		<p>
+			The Lord said
+			<quote class="font-medium"
+				><i> "My sheep hear my voice, and I know them, and they follow me" </i></quote
+			>
+			<a
+				class="underline text-base"
+				target="_blank"
+				href="https://www.bible.com/bible/111/jhn.10.27"
+			>
+				(John 10:27-28)
+			</a>
+			I believe you and Tammy speak in His voice sometimes, and that you and Jonathan taught me how to
+			hear it. I'd love to follow the path it reveals and help magnify it however I can. As you can hopefully
+			see, it's been quite the journey but I pray that by God's grace, I'm alive now to join this adventure
+			you speak of so eloquently.
+		</p>
+
+		<p>
+			You also quoted
+			<quote class="font-medium"><i>"For to everyone who has, more will be given"</i></quote>
+			<a
+				href="https://www.bible.com/bible/111/mat.13.12"
+				class="underline text-base"
+				target="_blank">(Matthew 13:12</a
+			>,
+			<a
+				href="https://www.bible.com/bible/111/MAT.25.29.NIV"
+				target="_blank"
+				class="underline text-base">Matthew 25:29)</a
+			>
+			and I felt it. So, as a man who has been through many trials, who has been given much, and considering
+			<quote class="font-medium"><i>"Ask and it will be given to you..."</i></quote>
+			<a class="underline text-base" target="_blank" href="https://www.bible.com/bible/111/mat.7.7"
+				>(Matthew 7:7)</a
+			> — I wonder: What is your most ambitious ask? What is the highest step on the ladder that you
+			now see? Be it Peterson Academy, ARC, or anything else... While I wanted to ask you this question
+			at the Q&A, maybe the answer should remain private for now, no matter how curious I am. If the
+			time ever comes when you feel it’s right to share, I would love to hear it — and, if possible,
+			help you climb toward it.
+		</p>
+
+		<p></p>
+
 		<p>Wishing many blessings to you, and your loved ones.</p>
 	{/if}
 
 	<p class="text-center mt-8"><i>Onward and upward</i> ©</p>
 
-	{#if isChatShown}
-		<BlogImage
-			imageClass="w-56"
-			hide={hideImages}
-			src="https://github.com/user-attachments/assets/c590671d-f1b6-4ac6-9c55-69c7cfbef1ff"
-		/>
-	{/if}
+	<BlogImage
+		imageClass="w-56"
+		hide={hideImages}
+		src="https://github.com/user-attachments/assets/c590671d-f1b6-4ac6-9c55-69c7cfbef1ff"
+	/>
 
 	<br />
 	<div class="text-center">
