@@ -111,9 +111,10 @@
 			a host family while in my senior year in high school. Upon returning to Ukraine I enrolled and
 			eventually got Master's in Computer Science in Kharkiv (second biggest city) and started working
 			soonafter. In 2018 I got married to Polina - my middle-school sweetheart and my first love. Curiously
-			we got together only after some time just like you and Tammy. In 2020 our son Mykhail was born,
-			in 2021 we moved into our first apartment, and in 2022 we had to flee and leave everything behind
-			because of the war. We eventually, and quite miraculously, found a new home in Kitchener, Ontario
+			we got together only after some time just like you and Mrs. Peterson. In 2020 our son Mykhail was
+			born, in 2021 we moved into our first apartment, and in 2022 we had to flee and leave everything
+			behind because of the war. We eventually, and quite miraculously, found a new home in Kitchener,
+			Ontario
 			{hideImages ? '' : '🇨🇦'} for our large family of soon to be 7.
 		</p>
 
@@ -133,15 +134,16 @@
 
 		<p>
 			Despite all of this, life is very good now, and while I don't dare to say it's better in every
-			way, it is definitely more meaningful. We're also now expecting a new baby boy -
-			Nicholas/Николай.
+			way, it is definitely more meaningful. We're also now expecting a new baby boy - Nicholas.
 		</p>
 
 		<p>If it's not Exodus and Job I'm not sure what is.</p>
 
 		<p>
-			I am very glad to see your family grow too and I'm praying for your recently departed loved
-			ones.
+			I am very glad to see your family grow too, congratulations to Julian and his wife, and, based
+			on Jordan's words, Mikhaila soon as well. I'm praying for your recently departed loved ones
+			too - Walter, Beverly and Barb as they find rest in His hands. I pray you find strength and
+			joy both in the lives lived, and those that are just beginning in your family.
 		</p>
 
 		<p>
@@ -195,7 +197,7 @@
 			absolutely thrilled to see you at some point, and all of them asked me to say hi for them. And
 			Jordan... let's just say this man's attention to detail is unlike anything I've seen in my 10 years
 			of coding and it shows in the quality of the product we're making. Also, on top of the intellectual
-			and creative fulfillment, working with you all puts the food on our table and a roof over our heads,
+			and creative fulfillment, working with you all puts food on our table and a roof over our heads,
 			so thank you very much!
 		</p>
 
@@ -205,7 +207,10 @@
 			you, but this one did and I hope it will help you in the same manner you have helped me and
 			shed some light onto the pulling force that is at work. Something tells me you need it. It's
 			an unusual project, but this is what I'm feeling called to do - the flickering of the golden
-			snitch, as <i>someone</i> I now personally know would say.
+			snitch, as <i>someone</i> I now personally know would say. I also really hope Tammy enjoys the
+			little icons as well, as you travel so often. I know Christ and Mary loves her dearly, and I'm
+			sure St. Michael has a protective relationship with your family and your daughter, just as he does
+			with my son.
 		</p>
 
 		<p>
@@ -347,6 +352,8 @@
 			</p>
 		{/if}
 
+		<br />
+
 		<p>
 			I added these final paragraphs the morning after the lecture, while the rest was written days
 			prior. I'm surprised that what you spoke of touches on some of the points in this letter and
@@ -356,6 +363,13 @@
 			patterns, hear the Voice, and find the wisdom to follow it, the adventure truly begins. And I
 			pray for that wisdom daily.
 		</p>
+
+		<BlogImage
+			hide={true}
+			src="https://github.com/user-attachments/assets/6bb7533b-f0b7-4c64-8f33-8f9081b12430"
+			title="Thank you very much for the picture! (click to expand)"
+			description="To you, John, Jordan, Victor and everyone else who made it possible"
+		/>
 
 		<p>
 			The Lord said
@@ -401,7 +415,7 @@
 
 		<p></p>
 
-		<p>Wishing many blessings to you, and your loved ones.</p>
+		<p class="text-center">Wishing many blessings to you, and your loved ones.</p>
 	{/if}
 
 	<p class="text-center mt-8"><i>Onward and upward</i> ©</p>
