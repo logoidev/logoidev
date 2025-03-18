@@ -7,6 +7,8 @@
 	export let role = 'img';
 	export let onClick: undefined | ((e: MouseEvent) => void) = undefined;
 	export let scale = 1;
+	export let width: number | undefined = undefined;
+	export let height: number | undefined = undefined;
 
 	let loaded = false;
 	let failed = false;
@@ -39,6 +41,8 @@
 			{role}
 			{src}
 			{alt}
+			{width}
+			{height}
 			on:click={onClick}
 		/>
 	{/key}

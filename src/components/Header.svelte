@@ -29,10 +29,10 @@
 		{#if loading}
 			<Spinner />
 		{:else if noLink}
-			<Image src={bannerUrl} />
+			<Image src={bannerUrl} width={320} height={120} />
 		{:else}
 			<a href="/">
-				<Image src={bannerUrl} />
+				<Image src={bannerUrl} width={320} height={120} />
 			</a>
 		{/if}
 	</div>
