@@ -31,8 +31,8 @@ export const posts = [
 		id: 'eucharistic-economy',
 		title: 'Eucharistic Economy',
 		published: '2025-04-22T18:00:00.00Z',
-		minutesToRead: 3,
-		gh_discussion_id: 0
+		minutesToRead: 6,
+		gh_discussion_id: 50
 	},
 	{
 		id: 'jbp',

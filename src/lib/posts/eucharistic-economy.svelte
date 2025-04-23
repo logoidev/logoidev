@@ -71,15 +71,14 @@
 
 <article class="flex flex-col gap-4 text-xl indent-4">
 	<p>
-		As I've outlined in the <a class="underline italic" target="_blank" href="/blog/logoi">
-			Logoi blog
-		</a> post, one of the most important and challenging goals I set out is to encourage people to go
-		to church, engage with their communities, participate and express charity.
+		As outlined in the <a class="underline italic" target="_blank" href="/blog/logoi">Logoi blog</a
+		>, one of the most important and challenging goals we set was to encourage people to attend
+		church, engage with their communities, and participate in acts of charity.
 	</p>
 
 	<p>
-		For this year's Lenten project, I helped our parish expand ways to accept donations in an ever
-		so cashless world by designing and installing NFC/QR payment stands.
+		For this year's Lenten project, we helped our parish expand the ways to accept donations in an
+		increasingly cashless world by designing and installing NFC/QR payment stands.
 	</p>
 
 	<BlogImage
@@ -89,55 +88,54 @@
 	/>
 
 	<p>
-		I think it's pretty safe to say that the Orthodox church is among the most resistant to change
-		organisations and adopting new technology is challenging here especially, but to me this proved
-		that when technology is convenient, not disrsuptive and at the proper place, then the path is
-		made clear. And of course this was done with the blessing of our spiritual father and the help
-		and involvement of our treasurer.
+		I think it's safe to say that the Orthodox Church is among the most resistant to change, and
+		adopting new technology here is especially challenging. However, this project proved that when
+		technology is convenient, non-disruptive, and appropriately placed, the path becomes clear. This
+		effort was, of course, undertaken with the blessing of our spiritual father and the help and
+		involvement of our treasurer.
 	</p>
 
 	<p>
-		Right now, as a proof of concept I built this on top of <a
+		As a proof of concept, we built the system on top of <a
 			class="underline italic"
 			target="_blank"
 			href="https://www.zeffy.com/en-CA/referral?referredByOrganizationId=2a09852c-2e51-4614-8726-1acc9ed22afd"
-		>
-			Zeffy
-		</a>, which does all of the heavy lifting and regulatory compliance, as well as covering all
-		transaction fees - so I can't recommend it enough. While there are obvious shortcomings on
-		customization, and UX improvements I have in mind, it's free and it works. There is already
-		interest from other local churches to set up something similar, so Lord willing Logoi will
-		develop a custom solution for churches at some near future.
+			>Zeffy</a
+		>, which handles the heavy lifting and regulatory compliance while covering all transaction
+		fees—I can’t recommend it enough. While there are some shortcomings in customization and UX
+		improvements that I have in mind, it’s free and it works. We've already seen interest from other
+		local churches looking to set up something similar. Lord willing, Logoi will develop a custom
+		solution for churches in the near future.
 	</p>
 
 	<p>
-		We already saw an increase in donations, even given the usual uptick during Easter and our
-		lentent fundraisers.
+		We’ve already seen an increase in donations, beyond the usual uptick during Easter and our
+		Lenten fundraisers.
 	</p>
 
 	<p>
-		If you're interested in setting up something similar, please <a
+		If you’re interested in setting up something similar, please <a
 			class="underline italic"
 			target="_blank"
-			href="mailto:vlad@logoi.dev?subject=Virtual church donation stands">reach out to me</a
-		> and I'll be happy to direct you and help you out.
+			href="mailto:vlad@logoi.dev?subject=Virtual church donation stands">reach out</a
+		>—I’ll be happy to direct you and help you get started.
 	</p>
 
 	<h3 class="font-medium text-2xl text-center">Church finances</h3>
 
 	<p>
-		During this time, naturally I learned more about church governance, treasury, regulatory
-		requirments, donations, reciepts, taxes, and I kept thinking more deeply about it all and ways
-		to make it more efficient. It's interesting that the governments encourage charity and don't tax
-		churches. And I like paying taxes just as much as the next guy, so my mind went back to the
-		Logoi coins.
+		During this time, I naturally learned more about church governance, treasury practices,
+		regulatory requirements, donations, receipts, taxes, and began thinking more deeply about how to
+		make the whole process more efficient. It’s interesting that governments encourage charity and
+		exempt churches from taxation. And while I like paying taxes as much as the next guy, my mind
+		wandered back to the idea of Logoi coins.
 	</p>
 
 	<p>
-		I <a class="underline italic" target="_blank" href="/blog/logoi"> wrote about them here </a>,
-		but the gist of the idea is that the coin value increases as you physically approach the
-		location that calls to you - ideally a church, and then when you reach it, the value is donated
-		to it. And of course you can top it up and hopefully are encouraged to come in and participate.
+		I <a class="underline italic" target="_blank" href="/blog/logoi">wrote about them</a> before, but
+		here’s the core idea: the value of a coin increases as you physically approach the location that
+		calls to you—ideally, a church—and once you reach it, the value is donated to it. You can top it
+		up, and ideally, be encouraged to enter and participate.
 	</p>
 
 	<div
@@ -150,29 +148,17 @@
 	</div>
 
 	<p>
-		Since the coin is a pointer to a database entry, there's no particular requirement or limitation
-		for it to hold only one type of currency, it is a multi-wallet, both for digital fiat and
-		cryptocurrency. You will say what church will accept crypto donations? But I bet as it gets
-		regulated and adopted by more payment processors and banks, churches I'm sure will not care
-		about what currency you use, as it will be neatly abstracted away.
+		Since the coin merely points to a database entry, there’s no technical limitation for it to
+		store only one type of currency. It can be a multi-wallet, holding both digital fiat and
+		cryptocurrency. You may ask, "What church would accept crypto donations?" But as regulation and
+		mainstream adoption expand through banks and payment processors, the underlying currency may not
+		matter—it will be abstracted away.
 	</p>
 
 	<p>
-		So now let's say a <a
-			target="_blank"
-			class="inline-flex flex-row relative top-0.5"
-			href={`${ORIGIN_FOUNDATION}?src_external=logoi-blog`}
-		>
-			<img
-				class="h-8 relative top-1 left-1"
-				alt="Logoi Foundation Logo"
-				src="/images/logoi-foundation.svg"
-			/>
-			<span class={`text-sm text-center mt-4 font-trajan`}>Logoi Foundation</span>
-		</a>
-		gathers and distributes these donations to non-profits and is issuing tax receipts. As long as there's
-		no way for users to withdraw or redeem the value of the coins, it can't be considered a currency
-		or commodity as far as I understand. Moreso, we are commited to
+		So now let's say a gathers and distributes these donations to non-profits and is issuing tax
+		receipts. As long as there's no way for users to withdraw or redeem the value of the coins, it
+		can't be considered a currency or commodity as far as I understand. Moreso, we are committed to
 		<a
 			class="underline italic"
 			target="_blank"
@@ -184,36 +170,58 @@
 	</p>
 
 	<p>
-		Now consider you are able to donate on someone's behalf. Does it change anything? Not really
-		since money still flows one way, and a charity decides how the donations are spent and which
-		projects or causes get funded. But now you can keep a sort of "ballance" of donations you made
-		and donations made on your behalf. You are not a direct beneficiary, you don't get anything in
-		return, but your community does and hopefully the projects it funds are good and trickle down to
-		you.
+		Now imagine there's a local non-profit organisation, such as <a
+			target="_blank"
+			class="inline-flex flex-row relative top-0.5"
+			href={`${ORIGIN_FOUNDATION}?src_external=logoi-blog`}
+		>
+			<img
+				class="h-8 relative top-1 left-1"
+				alt="Logoi Foundation Logo"
+				src="/images/logoi-foundation.svg"
+			/>
+			<span class={`text-sm text-center mt-4 font-trajan`}>Logoi Foundation</span>
+		</a> that gathers and distributes these donations to nonprofits or other church communities, issues
+		tax receipts and funds projects to fulfill the needs of a community. As long as users cannot withdraw
+		or redeem the coins for personal use, it shouldn’t be considered a currency or commodity, to the
+		best of my understanding. Furthermore, we are committed to open source and free non-commercial use.
+		The issuing body could be a different nonprofit, tied to a specific local community or, ideally,
+		a church, using a white-label solution. Do take this with a grain of salt: I am not a financial,
+		crypto, or nonprofit tax expert. At this point, we’re just positing ideas.
 	</p>
 
 	<p>
-		What's curious to me is the next step. If you have a highly cohesive local community based on
-		trust and full faith that the church is distributing funds fairly, funds meals, schools, then
-		there's a big opportunity to forgo direct fiat exchange entirely and for you friend to help you
-		out, and for you to donate to the cause he cares about on his behalf.
+		Now consider this: what if you're able to donate on someone else's behalf? Does it change
+		anything? Not really—money still flows one way, and a charity still decides how the donations
+		are spent and which projects or causes get funded. But now you can start to see a sort of
+		"balance" — of what you’ve given, and what’s been given in your name. You're not a direct
+		beneficiary—you don't receive anything in return, but your community does. And ideally, the
+		projects being funded trickle down to benefit you as well.
 	</p>
 
 	<p>
-		I am well aware that this is starting to sounds like some type of crypto communism, and of
-		course the government will not be happy and will find ways to get into the mix, but as it
-		currently stands, depending on how trusting you are of your community, it might just work.
+		What’s particularly curious is what comes next. If you have a highly cohesive local
+		community—one built on trust and full faith that the Church is distributing funds fairly, with
+		transparency and oversight: funding meals, schools, and services—then there's a significant
+		opportunity to forgo direct fiat exchange entirely. Perhaps your friend helps you out in a time
+		of need, and you in turn donate to a cause he cares about, on his behalf.
 	</p>
 
 	<p>
-		The Eucharistic Economy may be too loud of a term, but to me it does describe how people
-		participate, how value is offered, multiplied, and how the community is fed and recieves back.
+		I’m well aware that this starts to sound like a form of crypto-communism—and of course, the
+		government may eventually take an interest and find ways to intervene. But as it currently
+		stands, depending on how much trust you place in your community, it just might work.
 	</p>
 
 	<p>
-		This is a thought experiment at this stage, as all attempts to create a strong local independent
-		and self-sufficient community, based on trust and love have failed historically and all attempts
-		to scale them have resulted in disaster.
+		"The Eucharistic Economy" may be too bold a term, but to me it describes how people participate,
+		how value is offered and multiplied, and how the community is fed—and, in turn, receives back.
+	</p>
+
+	<p>
+		At this stage, it remains a thought experiment. Historically, all attempts to create strong,
+		local, independent, self-sufficient communities based on trust and love have failed—or worse,
+		been crushed. And all attempts to scale such ideals have led to disaster.
 	</p>
 
 	<p>
@@ -229,12 +237,40 @@
 	</p>
 
 	<BlogImage
-		imageClass="w-80"
+		imageClass="w-52"
 		src="https://github.com/user-attachments/assets/a40000a1-8224-4d6a-8479-5c58d9d86b4e"
 	/>
 
 	<p>
-		Maybe there will be a time where Caesars are no more and among the ruins of what was,
-		Eucharistic communities will flourish? But then if we truly are one body, why keep track at all?
+		Maybe a time will come when Caesars are no more. And among the ruins of what was, Eucharistic
+		communities might flourish. But if we truly are one body in Christ—why keep track at all?
+		Shouldn't the left hand not know what the other is doing?
 	</p>
+
+	<p>
+		This Lent and this project made me think: what does it mean to give? And what does it mean to
+		belong and receive back? Does technology help here or does it create another barrier and
+		increases the distance. Somewhere between an old and rusty quarter, a QR code and a crypto
+		wallet, between a tap at the door and the tap of the phone, between walking past an offering of
+		bread and wine, there’s a thread—a line that runs through the very heart of Church life. It’s
+		not about transactions. It’s about participation.
+	</p>
+
+	<p>
+		Whether or not these ideas go anywhere, or get built, or even make sense outside this page—I’m
+		still convinced the real economy is Eucharistic. And every time someone walks into church,
+		gives, receives, and stays for coffee hour, something of that economy fulfills its purpose and
+		becomes lived. It echoes the liturgy, where value isn’t stored but offered, multiplied, shared,
+		and received.
+	</p>
+
+	<p>
+		Because in the end, all logoi—every intention, purpose, gift, and act of love—are gathered into
+		the one Logos. And in Him, every act of giving becomes more than charity; it becomes communion,
+		not merely economy.
+	</p>
+
+	<div class="text-center">
+		<a href="/v" title="Vlad Kolbaia" class="text-2xl font-serif">V</a>
+	</div>
 </article>
