@@ -28,6 +28,13 @@ export const posts = [
 		gh_discussion_id: 35
 	},
 	{
+		id: 'eucharistic-economy',
+		title: 'Eucharistic Economy',
+		published: '2025-04-22T18:00:00.00Z',
+		minutesToRead: 6,
+		gh_discussion_id: 50
+	},
+	{
 		id: 'jbp',
 		title: 'JBP',
 		published: '2024-03-01T04:00:00.00Z',
@@ -81,5 +88,7 @@ export const getBlogPostComponent = (id: PostId) => {
 			return import('$lib/posts/jbp-coin.svelte');
 		case 'jp':
 			return import('$lib/posts/jp.svelte');
+		case 'eucharistic-economy':
+			return import('$lib/posts/eucharistic-economy.svelte');
 	}
 };
