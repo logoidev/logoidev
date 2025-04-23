@@ -72,12 +72,12 @@
 <article class="flex flex-col gap-4 text-xl indent-4">
 	<p>
 		As outlined in the <a class="underline italic" target="_blank" href="/blog/logoi">Logoi blog</a
-		>, one of the most important and challenging goals we set was to encourage people to attend
+		>, one of the most important and challenging goals I set was to encourage people to attend
 		church, engage with their communities, and participate in acts of charity.
 	</p>
 
 	<p>
-		For this year's Lenten project, we helped our parish expand the ways to accept donations in an
+		For this year's Lenten project, I helped my parish expand the ways to accept donations in an
 		increasingly cashless world by designing and installing NFC/QR payment stands.
 	</p>
 
@@ -96,21 +96,21 @@
 	</p>
 
 	<p>
-		As a proof of concept, we built the system on top of <a
+		As a proof of concept, I built the system on top of <a
 			class="underline italic"
 			target="_blank"
 			href="https://www.zeffy.com/en-CA/referral?referredByOrganizationId=2a09852c-2e51-4614-8726-1acc9ed22afd"
 			>Zeffy</a
 		>, which handles the heavy lifting and regulatory compliance while covering all transaction
 		fees—I can’t recommend it enough. While there are some shortcomings in customization and UX
-		improvements that I have in mind, it’s free and it works. We've already seen interest from other
-		local churches looking to set up something similar. Lord willing, Logoi will develop a custom
-		solution for churches in the near future.
+		improvements that I have in mind, it’s free and it works. I've already seen interest from
+		another local church looking to set up something similar. Lord willing, this proves to be
+		useful, in-demand and Logoi will develop a custom solution for churches in the near future.
 	</p>
 
 	<p>
-		We’ve already seen an increase in donations, beyond the usual uptick during Easter and our
-		Lenten fundraisers.
+		Our parish has already seen an increase in donations, beyond the usual uptick during Easter and
+		our Lenten fundraisers.
 	</p>
 
 	<p>
@@ -152,25 +152,12 @@
 		store only one type of currency. It can be a multi-wallet, holding both digital fiat and
 		cryptocurrency. You may ask, "What church would accept crypto donations?" But as regulation and
 		mainstream adoption expand through banks and payment processors, the underlying currency may not
-		matter—it will be abstracted away.
+		matter—it will be abstracted away, as what's important is what you can do with the currency, not
+		how it looks.
 	</p>
 
 	<p>
-		So now let's say a gathers and distributes these donations to non-profits and is issuing tax
-		receipts. As long as there's no way for users to withdraw or redeem the value of the coins, it
-		can't be considered a currency or commodity as far as I understand. Moreso, we are committed to
-		<a
-			class="underline italic"
-			target="_blank"
-			href="https://github.com/logoidev/logoidev/blob/main/LICENSE.md"
-			>OpenSource and free non-commercial</a
-		>
-		use, so the issuing body can be a different non-profit tied to a specific local community under a
-		white-label solution.
-	</p>
-
-	<p>
-		Now imagine there's a local non-profit organisation, such as <a
+		Let's imagine there's a local non-profit organisation, such as <a
 			target="_blank"
 			class="inline-flex flex-row relative top-0.5"
 			href={`${ORIGIN_FOUNDATION}?src_external=logoi-blog`}
@@ -181,21 +168,29 @@
 				src="/images/logoi-foundation.svg"
 			/>
 			<span class={`text-sm text-center mt-4 font-trajan`}>Logoi Foundation</span>
-		</a> that gathers and distributes these donations to nonprofits or other church communities, issues
-		tax receipts and funds projects to fulfill the needs of a community. As long as users cannot withdraw
+		</a>
+		that gathers and distributes these donations to nonprofits or other church communities, issues tax
+		receipts and funds projects to fulfill the needs of a community. As long as users cannot withdraw
 		or redeem the coins for personal use, it shouldn’t be considered a currency or commodity, to the
-		best of my understanding. Furthermore, we are committed to open source and free non-commercial use.
-		The issuing body could be a different nonprofit, tied to a specific local community or, ideally,
-		a church, using a white-label solution. Do take this with a grain of salt: I am not a financial,
-		crypto, or nonprofit tax expert. At this point, we’re just positing ideas.
+		best of my understanding. Furthermore, we are committed to
+		<a
+			class="underline italic"
+			target="_blank"
+			href="https://github.com/logoidev/logoidev/blob/main/LICENSE.md"
+			>open source and free non-commercial use,</a
+		>
+		so the issuing body could be a different nonprofit, tied to a specific local community or, ideally,
+		a church, using a white-label solution, running it on their own servers and with enough know-how
+		even off-grid on a local network if fiat is not involved. Do take this with a grain of salt: I am
+		not a financial, crypto, or nonprofit tax expert. At this point, we’re just positing ideas.
 	</p>
 
 	<p>
 		Now consider this: what if you're able to donate on someone else's behalf? Does it change
-		anything? Not really—money still flows one way, and a charity still decides how the donations
+		anything? Not really — money still flows one way, and a charity still decides how the donations
 		are spent and which projects or causes get funded. But now you can start to see a sort of
 		"balance" — of what you’ve given, and what’s been given in your name. You're not a direct
-		beneficiary—you don't receive anything in return, but your community does. And ideally, the
+		beneficiary — you don't receive anything in return, but your community does. And ideally, the
 		projects being funded trickle down to benefit you as well.
 	</p>
 
@@ -211,6 +206,17 @@
 		I’m well aware that this starts to sound like a form of crypto-communism—and of course, the
 		government may eventually take an interest and find ways to intervene. But as it currently
 		stands, depending on how much trust you place in your community, it just might work.
+	</p>
+
+	<p class="text-center">
+		<quote class="font-medium"><i> "Thine own of Thine own, we offer unto Thee" </i></quote>
+		<a
+			class="underline text-base"
+			target="_blank"
+			href="https://www.oca.org/orthodoxy/the-orthodox-faith/worship/the-divine-liturgy/eucharistic-canon-anaphora"
+		>
+			(Liturgical Anaphora)
+		</a>
 	</p>
 
 	<p>
