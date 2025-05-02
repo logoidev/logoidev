@@ -9,7 +9,7 @@ export class CoinModel {
 	balance?: number;
 
 	@Column('varchar', { default: 'LGI' })
-	type?: 'LGI';
+	type?: 'LGI' | 'LGU';
 
 	@Column('varchar', { default: 'white' })
 	color?: 'white' | 'black';
