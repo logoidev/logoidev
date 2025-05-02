@@ -3,6 +3,7 @@
 	import Pyramid from './Pyramid.svelte';
 	import { getSvgParams } from './SVG/SVG.utils';
 	import { trackEvent } from 'src/lib/analytics/posthog';
+	import PresenceIndicator from './PresenceIndicator.svelte';
 
 	const SERVICES = ['Web', 'Design', 'Development', 'Spatial Computing', 'Software Engineering'];
 
@@ -22,6 +23,8 @@
 
 	const svgParams = getSvgParams({ width: 250, height: 154 });
 </script>
+
+<PresenceIndicator showCount={isGolden} class="h-0" />
 
 <div
 	role="presentation"

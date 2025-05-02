@@ -11,8 +11,9 @@ let socket: PartySocket;
 export const initializePresenceSocket = (userId: string) => {
 	if (!userId) {
 		console.error('No user id in PartyKit socket');
-		return;
+		return () => {};
 	}
+
 	socket = new PartySocket({
 		host: PARTYKIT_HOST,
 		room: 'default',

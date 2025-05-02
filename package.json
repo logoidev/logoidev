@@ -13,6 +13,7 @@
 		"dev": "concurrently --names 'app,partykit' 'pnpm dev:app' 'pnpm dev:partykit'",
 		"dev:app": "vite dev --host",
 		"dev:partykit": "partykit dev",
+    "deploy:partykit": "partykit deploy",
 		"populate-db": "tsc ./src/scripts/populate-db.ts",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -30,6 +31,7 @@
 		"@stripe/stripe-js": "5.4.0",
 		"@sveltejs/adapter-vercel": "^5.5.3",
 		"@types/qrcode": "^1.5.5",
+		"@types/three": "^0.176.0",
 		"@vercel/postgres": "^0.7.2",
 		"canvg": "^4.0.2",
 		"clsx": "^2.1.1",
@@ -44,6 +46,7 @@
 		"stripe": "^17.5.0",
 		"svelte-stripe": "^1.3.0",
 		"tailwind-merge": "^3.0.2",
+		"three": "^0.176.0",
 		"typeorm": "0.3.20"
 	},
 	"devDependencies": {

@@ -5,7 +5,6 @@
 	import '../shared/fonts/index';
 	import Spinner from 'src/components/Spinner.svelte';
 	import { initializeAnalytics } from 'src/lib/analytics/posthog';
-	import PresenceIndicator from 'src/components/PresenceIndicator.svelte';
 
 	let loaded = false;
 
@@ -20,8 +19,6 @@
 		initializeAnalytics();
 	});
 </script>
-
-<PresenceIndicator />
 
 {#if loaded}
 	<slot />
