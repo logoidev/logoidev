@@ -1,5 +1,6 @@
 import type * as Party from 'partykit/server';
-import { PresenceMessage } from './presence.types';
+import type { PresenceMessage, PresencePayload } from './presence.types';
+import { rateLimit } from './utils/rate-limit';
 
 export default class PresenceServer implements Party.Server {
 	options: Party.ServerOptions = { hibernate: true };
@@ -13,7 +14,7 @@ export default class PresenceServer implements Party.Server {
 	}
 
 	getPresenceMessage(): PresenceMessage {
-		const userIds = new Set<string>();
+		const userIds = new Set<PresencePayload>();
 		for (const connection of this.room.getConnections<string>()) {
 			const userId = connection.state;
 			if (userId) userIds.add(userId);
@@ -25,14 +26,16 @@ export default class PresenceServer implements Party.Server {
 	}
 
 	onMessage(message: string, sender: Party.Connection<string>) {
-		const user = JSON.parse(message) as PresenceMessage;
-		if (user.type === 'add-user') {
-			sender.setState(user.payload);
-			this.updateUsers();
-		} else if (user.type === 'remove-user') {
-			sender.setState(null);
-			this.updateUsers();
-		}
+		return rateLimit(sender, 100, () => {
+			const user = JSON.parse(message) as PresenceMessage;
+			if (user.type === 'add-user') {
+				sender.setState(user.payload);
+				this.updateUsers();
+			} else if (user.type === 'remove-user') {
+				sender.setState(null);
+				this.updateUsers();
+			}
+		});
 	}
 
 	onClose() {

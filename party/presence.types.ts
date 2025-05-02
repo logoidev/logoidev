@@ -1,4 +1,6 @@
+export type PresencePayload = string;
+
 export type PresenceMessage =
-	| { type: 'remove-user'; payload: string }
-	| { type: 'add-user'; payload: string }
-	| { type: 'presence-update'; payload: { userIds: string[] } };
+	| { type: 'remove-user'; payload: PresencePayload }
+	| { type: 'add-user'; payload: PresencePayload }
+	| { type: 'presence-update'; payload: { userIds: PresencePayload[] } };
