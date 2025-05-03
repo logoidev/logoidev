@@ -31,7 +31,6 @@
 		"@stripe/stripe-js": "5.4.0",
 		"@sveltejs/adapter-vercel": "^5.5.3",
 		"@types/qrcode": "^1.5.5",
-		
 		"@vercel/postgres": "^0.7.2",
 		"canvas-confetti": "^1.9.3",
 		"canvg": "^4.0.2",
