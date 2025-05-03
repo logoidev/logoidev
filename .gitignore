@@ -13,3 +13,6 @@ vite.config.ts.timestamp-*
 .turbo
 .vercel
 test-results
+
+# PartyKit sqlite dbs for persistence
+.partykit

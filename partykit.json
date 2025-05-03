@@ -1,0 +1,12 @@
+{
+  "$schema": "https://www.partykit.io/schema.json",
+  "name": "logoi-dev-party",
+  "main": "party/index.ts",
+  "compatibilityDate": "2025-05-02",
+  "parties": {
+    "app": "party/index.ts",
+    "presence": "party/presence.ts",
+    "notifications": "party/notifications.ts"
+  }
+}
+
