@@ -1,5 +1,7 @@
+import { browser } from '$app/environment';
+
 const DEBUG_PARTYKIT_LOGS =
-	import.meta.env.DEV || localStorage.getItem('DEBUG_PARTYKIT_LOGS') === 'true';
+	import.meta.env.DEV || (browser ? localStorage.getItem('DEBUG_PARTYKIT_LOGS') === 'true' : false);
 
 export const makeLog =
 	(prefix: string) =>

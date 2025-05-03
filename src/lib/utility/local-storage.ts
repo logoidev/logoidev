@@ -1,5 +1,6 @@
 import type { Writable } from 'svelte/store';
 import { hasOnlyDigits } from './has-only-digits';
+import { browser } from '$app/environment';
 
 function getLocalStorage() {
 	try {
@@ -86,6 +87,10 @@ export const syncStoreToLocalStorage = <T extends LocalStorageStorableType>(
 	writableStore: Writable<T>,
 	localStorageValue: LocalStorageValue<T>
 ) => {
+	if (!browser || typeof localStorage === 'undefined') {
+		return;
+	}
+
 	writableStore.subscribe((value) => {
 		if (value) {
 			localStorageValue.set(value);
