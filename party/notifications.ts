@@ -26,9 +26,12 @@ export default class NotificationsServer implements Party.Server {
 	onMessage(messageJson: string, sender: Party.Connection<string>) {
 		// TODO: Figure out rate limit affecting state and data consistency
 		// return rateLimit(sender, 100, () => {
+		console.log('GOT message', messageJson);
 		try {
 			const messageFromJson = JSON.parse(messageJson);
 			const message = notificationMessageSchema.parse(messageFromJson);
+
+			console.log('GOT message parsed', message);
 
 			if (message.type === 'notify') {
 				// TODO: Check if user is admin

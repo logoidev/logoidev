@@ -16,12 +16,22 @@ export const liveNotifications = writable<NotificationPayload[]>([]);
 
 let notificationsSocket: PartySocket | null = null;
 
-const DEFAULT_RETURN = {
-	send: () => {},
-	close: () => {}
+type SocketReturnType = {
+	close: () => void;
+	send: (type: NotificationMessage['type'], payload: NotificationMessage['payload']) => void;
+	on: (
+		type: NotificationMessage['type'],
+		listener: (payload: NotificationMessage['payload']) => void
+	) => void;
 };
 
-export const initializeNotificationsSocket = (userId: string) => {
+const DEFAULT_RETURN: SocketReturnType = {
+	send: () => {},
+	close: () => {},
+	on: () => {}
+};
+
+export const initializeNotificationsSocket = (userId: string): SocketReturnType => {
 	if (!WITH_PARTYKIT) {
 		console.warn('PartyKit is disabled, run with `pnpm dev:partykit` to enable');
 		return DEFAULT_RETURN;
@@ -40,6 +50,18 @@ export const initializeNotificationsSocket = (userId: string) => {
 	});
 	log('PartyKit initialized');
 
+	const listeners = new Map<
+		NotificationMessage['type'],
+		Array<(payload: NotificationMessage['payload']) => void>
+	>();
+
+	const onNotification = (notification: NotificationMessage) => {
+		const notificationListeners = listeners.get(notification.type);
+		if (notificationListeners?.length) {
+			notificationListeners.forEach((listener) => listener(notification.payload));
+		}
+	};
+
 	// Send user info when connected
 	notificationsSocket.addEventListener('open', () => {
 		log('Socket open');
@@ -53,6 +75,8 @@ export const initializeNotificationsSocket = (userId: string) => {
 			const messageFromJson = JSON.parse(event.data);
 			const message = notificationMessageSchema.parse(messageFromJson);
 
+			onNotification(message);
+
 			if (message.type === 'notifications-broadcast') {
 				const notification = message.payload;
 				liveNotifications.set([...get(liveNotifications), notification]);
@@ -63,11 +87,12 @@ export const initializeNotificationsSocket = (userId: string) => {
 	});
 
 	return {
-		send: (message: NotificationMessage) => {
+		send: (type: NotificationMessage['type'], payload: NotificationMessage['payload']) => {
 			if (!notificationsSocket) {
-				log('No socket to send message');
 				return;
 			}
+
+			const message: NotificationMessage = { type, payload };
 			notificationsSocket.send(JSON.stringify(message));
 		},
 		close: () => {
@@ -75,8 +100,20 @@ export const initializeNotificationsSocket = (userId: string) => {
 				return;
 			}
 
+			listeners.clear();
 			notificationsSocket.close();
 			notificationsSocket = null;
+		},
+		on: (
+			type: NotificationMessage['type'],
+			listener: (payload: NotificationMessage['payload']) => void
+		) => {
+			const notificationListeners = listeners.get(type);
+			if (notificationListeners) {
+				notificationListeners.push(listener);
+			} else {
+				listeners.set(type, [listener]);
+			}
 		}
 	};
 };

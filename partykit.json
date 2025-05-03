@@ -5,7 +5,8 @@
   "compatibilityDate": "2025-05-02",
   "parties": {
     "app": "party/index.ts",
-    "presence": "party/presence.ts"
+    "presence": "party/presence.ts",
+    "notifications": "party/notifications.ts"
   }
 }
 
