@@ -8,8 +8,6 @@ import packageJson from './package.json';
 
 const commit = execSync('git rev-parse --short HEAD').toString();
 
-console.log('ENV', process.env.WITH_PARTYKIT);
-
 export default defineConfig({
 	plugins: [sveltekit()],
 	resolve: {

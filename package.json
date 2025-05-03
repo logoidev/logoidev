@@ -10,8 +10,8 @@
 	},
 	"scripts": {
 		"start": "pnpm dev",
-		"dev:live": "concurrently --names 'app,partykit' 'pnpm dev' 'pnpm dev:partykit'",
-		"dev": "WITH_PARTYKIT=true vite dev --host",
+		"dev:live": "concurrently --names 'app,partykit' 'WITH_PARTYKIT=true pnpm dev' 'pnpm dev:partykit'",
+		"dev": "vite dev --host",
 		"dev:partykit": "partykit dev",
 		"deploy:partykit": "partykit deploy",
 		"populate-db": "tsc ./src/scripts/populate-db.ts",
