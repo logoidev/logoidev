@@ -31,7 +31,8 @@ export default {
 			}
 		}),
 		alias: {
-			'src/*': './src/*'
+			'src/*': './src/*',
+			'party/*': './party/*'
 		}
 	}
 };

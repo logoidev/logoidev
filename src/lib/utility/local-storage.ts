@@ -1,4 +1,5 @@
 import type { Writable } from 'svelte/store';
+import { hasOnlyDigits } from './has-only-digits';
 
 function getLocalStorage() {
 	try {
@@ -9,17 +10,50 @@ function getLocalStorage() {
 }
 
 const USER_ID_KEY = 'user-id' as const;
+const IS_ADMIN_KEY = 'is-admin' as const;
 
-type LocalStorageKey = typeof USER_ID_KEY;
+type LocalStorageKey = typeof USER_ID_KEY | typeof IS_ADMIN_KEY;
 
-function getFromLocalStorage(key: LocalStorageKey, fallbackValue = null) {
+function getFromLocalStorage<T extends LocalStorageStorableType>(
+	key: LocalStorageKey,
+	fallbackValue = null
+): T | null {
 	const ls = getLocalStorage();
-	return ls?.getItem(key) ?? fallbackValue;
+	const value: LocalStorageStorableType | null = ls?.getItem(key) ?? fallbackValue;
+
+	if (value === null) {
+		return null;
+	}
+
+	return stringToStorableValue(value) as T;
 }
 
-function saveToLocalStorage(key: LocalStorageKey, value: string) {
+function storableValueToString(value: LocalStorageStorableType) {
+	switch (typeof value) {
+		case 'number':
+		case 'boolean':
+			return value.toString();
+		default:
+			return value;
+	}
+}
+
+function stringToStorableValue(value: string): LocalStorageStorableType | null {
+	if (value === 'true' || value === 'false') {
+		return value === 'true';
+	} else if (value === '') {
+		return null;
+	} else if (hasOnlyDigits(value)) {
+		return parseFloat(value);
+	} else {
+		return value;
+	}
+}
+
+function saveToLocalStorage(key: LocalStorageKey, value: LocalStorageStorableType) {
 	const ls = getLocalStorage();
-	ls?.setItem(key, value);
+	const valueString = storableValueToString(value);
+	ls?.setItem(key, valueString);
 }
 
 function clearLocalStorageValue(key: LocalStorageKey) {
@@ -27,25 +61,30 @@ function clearLocalStorageValue(key: LocalStorageKey) {
 	ls?.removeItem(key);
 }
 
-type LocalStorageValue = {
+type LocalStorageStorableType = string | boolean | number;
+
+type LocalStorageValue<T extends LocalStorageStorableType> = {
 	key: LocalStorageKey;
-	get: () => string | null;
-	set: (value: string) => void;
+	get: () => T | null;
+	set: (value: T) => void;
 	clear: () => void;
 };
 
-const getLocalStorageValue = (key: LocalStorageKey): LocalStorageValue => ({
+const getLocalStorageValue = <T extends LocalStorageStorableType>(
+	key: LocalStorageKey
+): LocalStorageValue<T> => ({
 	key,
-	get: () => getFromLocalStorage(key),
-	set: (value: string) => saveToLocalStorage(key, value),
+	get: () => getFromLocalStorage<T>(key),
+	set: (value: LocalStorageStorableType) => saveToLocalStorage(key, value),
 	clear: () => clearLocalStorageValue(key)
 });
 
-export const userLocalStorage = getLocalStorageValue('user-id');
+export const userIdLocalStorage = getLocalStorageValue<string>('user-id');
+export const isAdminLocalStorage = getLocalStorageValue<boolean>('is-admin');
 
-export const syncStoreToLocalStorage = (
-	writableStore: Writable<string>,
-	localStorageValue: LocalStorageValue
+export const syncStoreToLocalStorage = <T extends LocalStorageStorableType>(
+	writableStore: Writable<T>,
+	localStorageValue: LocalStorageValue<T>
 ) => {
 	writableStore.subscribe((value) => {
 		if (value) {

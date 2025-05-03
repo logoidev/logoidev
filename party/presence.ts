@@ -1,6 +1,6 @@
 import type * as Party from 'partykit/server';
-import type { PresenceMessage, PresencePayload } from './presence.types';
-import { rateLimit } from './utils/rate-limit';
+import type { PresenceMessage, PresencePayload } from './presence.schema';
+// import { rateLimit } from './utils/rate-limit';
 
 export default class PresenceServer implements Party.Server {
 	options: Party.ServerOptions = { hibernate: true };
@@ -20,22 +20,25 @@ export default class PresenceServer implements Party.Server {
 			if (userId) userIds.add(userId);
 		}
 		return {
-			type: 'presence-update',
-			payload: { userIds: [...userIds] }
+			type: 'user-sync',
+			payload: [...userIds]
 		} satisfies PresenceMessage;
 	}
 
-	onMessage(message: string, sender: Party.Connection<string>) {
-		return rateLimit(sender, 100, () => {
-			const user = JSON.parse(message) as PresenceMessage;
-			if (user.type === 'add-user') {
-				sender.setState(user.payload);
-				this.updateUsers();
-			} else if (user.type === 'remove-user') {
-				sender.setState(null);
-				this.updateUsers();
-			}
-		});
+	onMessage(messageJson: string, sender: Party.Connection<string>) {
+		// TODO: Figure out rate limit affecting state and data consistency
+		// return rateLimit(sender, 100, () => {
+		const message = JSON.parse(messageJson) as PresenceMessage;
+
+		if (message.type === 'user-add') {
+			const userId = message.payload;
+			sender.setState(userId);
+			this.updateUsers();
+		} else if (message.type === 'user-remove') {
+			sender.setState(null);
+			this.updateUsers();
+		}
+		// });
 	}
 
 	onClose() {
