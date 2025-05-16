@@ -8,6 +8,10 @@
 	export let text = '';
 	export let size: ButtonSize = 'md';
 	export let title = '';
+	export let copyToClipboard = false;
+	export let copiedTimeoutMs = 1000;
+
+	let copied = false;
 
 	const getComponent = (key: string, value: string | number | boolean) =>
 		`${key}=${encodeURIComponent(value)}`;
@@ -22,4 +26,16 @@
 		.join('');
 </script>
 
-<LinkButton class={$$props.class} href={mailto} text={text || email} {size} {title} />
+<LinkButton
+	class={$$props.class}
+	{size}
+	{title}
+	text={copied ? '✅ Copied' : text || email}
+	type={copyToClipboard ? 'button' : 'a'}
+	href={mailto}
+	on:click={() => {
+		navigator.clipboard.writeText(text || email);
+		copied = true;
+		setTimeout(() => (copied = false), copiedTimeoutMs);
+	}}
+/>

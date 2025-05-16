@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CALENDLAR_MAIN_LINK, INTRO_EMAIL } from 'src/data/emails';
+	import { INTRO_EMAIL } from 'src/data/emails';
 	import { USERS } from '../data/users';
 	import EmailButton from './EmailButton.svelte';
 	import IconLink from './IconLink.svelte';
@@ -21,11 +21,16 @@
 		</ul>
 	</div>
 
-	<LinkButton href={CALENDLAR_MAIN_LINK} text="💬 Set up a call" />
+	<LinkButton href="/cal" text="💬 Set up a call" />
 
 	<span class="mt-4">or email</span>
 
-	<EmailButton class="my-4" email={INTRO_EMAIL} subject={`Logoi Development - contact request`} />
+	<EmailButton
+		class="my-4"
+		email={INTRO_EMAIL}
+		subject={`Logoi Development - contact request`}
+		copyToClipboard
+	/>
 {:else}
 	<IconLink
 		type="button"

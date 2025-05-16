@@ -56,10 +56,10 @@
 			{/if}
 
 			<EmailButton
+				copyToClipboard
 				class="border-gray-300 border"
 				size="sm"
 				email={userData.email}
-				subject={`Logoi Development - reaching out to ${userData.first_name}`}
 			/>
 		</div>
 

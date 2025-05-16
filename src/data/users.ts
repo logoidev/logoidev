@@ -40,7 +40,7 @@ export const USERS: Array<UserData> = [
 		unlockImage: '/users/v/unlock.webp',
 		has_resume: false,
 		hourly_rate_usd: 75,
-		calendar_link: CALENDAR_LINK,
+		calendar_link: '/cal',
 		socials: [
 			{
 				type: 'linkedin',
