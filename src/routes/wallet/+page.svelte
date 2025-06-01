@@ -25,6 +25,7 @@
 	let error = '';
 	let storageError = '';
 	let balance = '0';
+	let hasWallet = false;
 
 	function saveToStorage(key: string, value: string) {
 		try {
@@ -44,6 +45,8 @@
 	}
 
 	async function updateBalance() {
+		if (!hasWallet) return;
+
 		try {
 			const bal = await publicClient.getBalance({ address: address as `0x${string}` });
 			balance = (Number(bal) / 1e18).toFixed(4);
@@ -70,6 +73,7 @@
 
 		saveToStorage('wallet_mnemonic', mnemonic);
 		saveToStorage('wallet_address', address);
+		hasWallet = true;
 
 		console.log('Wallet created:', address);
 		await updateBalance();
@@ -79,6 +83,7 @@
 		mnemonic = '';
 		address = '';
 		balance = '0';
+		hasWallet = false;
 		removeFromStorage('wallet_mnemonic');
 		removeFromStorage('wallet_address');
 	}
@@ -102,6 +107,7 @@
 					chain: optimismSepolia,
 					transport: http()
 				});
+				hasWallet = true;
 				console.log('Wallet loaded from storage:', address);
 				await updateBalance();
 			} else {
@@ -185,7 +191,8 @@
 			</button>
 			<button
 				on:click={updateBalance}
-				class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+				disabled={!hasWallet}
+				class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
 			>
 				Refresh Balance
 			</button>
@@ -236,7 +243,7 @@
 
 			<button
 				type="submit"
-				disabled={isSending}
+				disabled={isSending || !hasWallet}
 				class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
 			>
 				{isSending ? 'Sending...' : 'Send Transaction'}
