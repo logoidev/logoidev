@@ -12,6 +12,7 @@
 	} from 'viem';
 	import { optimismSepolia } from 'viem/chains';
 	import { wordlist } from '@scure/bip39/wordlists/english';
+	import CopyableText from 'src/components/CopyableText.svelte';
 
 	let mnemonic = '';
 	let address = '';
@@ -102,8 +103,10 @@
 		if (!hasWallet) return;
 
 		try {
+			console.log('Refreshing balance');
 			const bal = await publicClient.getBalance({ address: address as `0x${string}` });
 			balance = bal.toString();
+			console.log('Balance:', balance);
 			// Re-estimate gas fee after balance update
 			await estimateGasFee();
 		} catch (e) {
@@ -281,53 +284,28 @@
 
 	<div class="mb-6 p-4 bg-gray-50 rounded-lg">
 		<div class="mb-2 flex items-center gap-2">
-			<strong>Mnemonic:</strong>
-			<span class="font-mono">{mnemonic}</span>
+			<strong class="min-w-24">Mnemonic:</strong>
+			<CopyableText text={mnemonic} />
 		</div>
 		<div class="mb-2 flex items-center gap-2">
-			<strong>Address:</strong>
-
-			<button
-				id="copy-address"
-				class="text-xs text-blue-600 relative hover:text-blue-700 font-mono bg-gray-100 px-2 py-1 rounded border border-gray-300 min-w-[200px] text-center"
-				on:click={function () {
-					// Important to be a function declaration, not an arrow function, so that `this` is bound to the button element
-					navigator.clipboard.writeText(address);
-
-					// @ts-ignore
-					const addressElement = this.children[0];
-					// @ts-ignore
-					const copiedIndicatorElement = this.children[1];
-
-					addressElement.classList.add('invisible');
-					copiedIndicatorElement.classList.remove('invisible');
-
-					console.dir(this);
-
-					setTimeout(() => {
-						addressElement.textContent = address;
-						addressElement.classList.remove('invisible');
-						copiedIndicatorElement.classList.add('invisible');
-					}, 2000);
-				}}
-			>
-				<div class="w-full h-full flex items-center justify-center">{address}</div>
-				<div class="invisible absolute top-0 left-0 w-full h-full flex items-center justify-center">
-					Copied
-				</div>
-			</button>
+			<strong class="min-w-24">Address:</strong>
+			<CopyableText text={address} />
 		</div>
-		<p class="mb-2">
-			<strong>Balance:</strong>
-			{balance} wei ({formatEther(BigInt(balance))} ETH)
-		</p>
+		<div class="mb-2 flex items-center gap-2">
+			<strong class="min-w-24">Balance:</strong>
+			<div class="flex items-center gap-1">
+				<span class="font-semibold">{balance} wei</span>
+				<span class="text-xs text-gray-500">({formatEther(BigInt(balance))} ETH)</span>
+			</div>
+		</div>
 		<p class="text-sm text-gray-600 italic mb-4">
 			This wallet is stored in your browser's local storage.
 		</p>
 		<div class="flex gap-2">
 			<button
 				on:click={clearWallet}
-				class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+				disabled={!hasWallet}
+				class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
 			>
 				Clear Wallet
 			</button>
