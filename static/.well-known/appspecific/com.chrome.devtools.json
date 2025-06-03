@@ -1,0 +1,9 @@
+{
+    "name": "Logoi Web",
+    "version": "1.0.0",
+    "description": "Logoi Web Application",
+    "devtools": {
+        "enabled": true,
+        "defaultPanel": "network"
+    }
+}
