@@ -10,7 +10,7 @@
 ---
 
 ### RESOLUTION OF THE BOARD OF DIRECTORS  
-of **Logoi Development Inc.™** (the "Corporation")
+of **Logoi Development Ltd.™** (the "Corporation")
 
 WHEREAS the Corporation recognizes the strategic importance of owning and operating dedicated server infrastructure to support its mission of integrating advanced technology with theological and educational services;
 
@@ -21,7 +21,7 @@ AND WHEREAS the cost of operating comparable infrastructure on major cloud provi
 BE IT RESOLVED THAT:
 
 1. The Corporation **hereby approves** the purchase and assembly of a high-performance computing server known internally as the **Logoi Mainframe©™**;
-2. The total approved expenditure shall not exceed **$9,500 CAD**, inclusive of hardware, taxes, and estimated shipping;
+2. The total approved expenditure shall not exceed **$10,000 CAD**, inclusive of hardware, taxes, and estimated shipping;
 3. The system will be anchored around an **NVIDIA RTX 4090 GPU**, high-core-count CPU, 256GB RAM, NVMe cache drives, and resilient power & cooling infrastructure;
 4. The system shall be used for:
    - Local AI inference and model testing
@@ -29,24 +29,23 @@ BE IT RESOLVED THAT:
    - Kubernetes orchestration and containerized services
    - Redundant backup and secure data processing
    - Mission-critical hosting of internal and client-facing services, including **Logoi Mesh©™**, **Logoi Mainframe©™**, and other future **Logoi Infrastructure©™** initiatives;
-5. The purchase shall prioritize vendors offering **Amazon Prime** or equivalent expedited delivery options;
-6. The Corporation shall maintain ownership of the equipment as a long-term capital asset and record it as such in the corporate ledger;
-7. The Director shall oversee the setup and security configuration to ensure compliance with ethical, operational, and theological commitments under the mission of **Logoi Development Inc.™**
+5. The Corporation shall maintain ownership of the equipment as a long-term capital asset and record it as such in the corporate ledger;
+6. The Director shall oversee the setup and security configuration to ensure compliance with ethical, operational, and theological commitments under the mission of the Corporation.
 
 ---
 
-**IN WITNESS WHEREOF**, the undersigned, being the sole director of **Logoi Development Inc.™**, hereby signs this resolution.
+**IN WITNESS WHEREOF**, the undersigned, being the sole director of the Corporation, hereby signs this resolution.
 
 ---
 
-**Signed:**
+**Signed:** **[VK](#digital-authentication)**
 
 **Vladyslav Kolbaia**  
 Director & Founder  
-_Logoi Development Inc.™_  
+_Logoi Development Ltd.™_  
 🕊️ In service of truth, wisdom, and the Kingdom of God
 
-**Digital Authentication:**  
+### Digital Authentication {#digital-authentication}
 This document is digitally signed and authenticated through a verified Git commit. The commit hash and associated GPG signature shall serve as a legally binding digital signature equivalent to a physical signature.
 
 ---
