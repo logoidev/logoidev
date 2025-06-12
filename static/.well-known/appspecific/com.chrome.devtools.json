@@ -4,6 +4,6 @@
     "description": "Logoi Web Application",
     "devtools": {
         "enabled": true,
-        "defaultPanel": "network"
+        "defaultPanel": "console"
     }
 }
