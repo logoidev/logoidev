@@ -1,6 +1,6 @@
 # Director Resolution  
 ## Approval of Corporate Server Infrastructure Purchase  
-### LOGOI DEVELOPMENT INC.™
+### Logoi Development Ltd.™
 
 ---
 
