@@ -46,6 +46,6 @@ _Logoi Development Ltd.™_
 🕊️ In service of truth, wisdom, and the Kingdom of God
 
 ### Digital Authentication
-This document is digitally signed and authenticated through a verified Git commit. The commit hash and associated GPG signature shall serve as a legally binding digital signature equivalent to a physical signature, which could and should be verified electronically.
+This document is digitally signed and authenticated through a verified git commit with GPG signature. The commit hash and associated cryptographic signature constitute a legally binding digital signature under applicable electronic signature laws, including but not limited to the Electronic Signatures in Global and National Commerce Act (E-SIGN Act) and the Personal Information Protection and Electronic Documents Act (PIPEDA). This digital signature is equivalent to a physical signature and may be verified through standard cryptographic verification methods.
 
 ---
