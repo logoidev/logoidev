@@ -38,7 +38,7 @@ BE IT RESOLVED THAT:
 
 ---
 
-**Signed:** **[VK](#digital-authentication)**
+**Signed:** **[__](#digital-authentication)**
 
 **Vladyslav Kolbaia**  
 Director & Founder  
