@@ -31,7 +31,7 @@
 		<div class="flex flex-col justify-center items-center min-h-[100svh]">
 			<Header noLink greek={isUnlocked} loading={isNewBannerLoading} />
 
-			<p class="text-xl max-w-md text-center px-10 my-4">
+			<p role="heading" aria-level="2" class="text-xl max-w-md text-center px-10 my-4">
 				We bring innovation, advanced technology and solid design to serve the Church, empower her
 				people and glorify God.
 			</p>
@@ -68,7 +68,7 @@
 					animated
 					{rounded}
 					url={getIndexUrl()}
-					imageSrc="/images/qr.svg"
+					qrGraphicSrc="/images/qr.svg"
 					password={[0, 1, 2]}
 					on:click={() => (rounded = !rounded)}
 					on:unlock={() => (isUnlocked = true)}

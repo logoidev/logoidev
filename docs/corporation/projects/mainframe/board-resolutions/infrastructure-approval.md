@@ -1,51 +1,65 @@
-# Director Resolution  
-## Approval of Corporate Server Infrastructure Purchase  
-### Logoi Development Ltd.™
+Director Resolution
 
----
+Approval of Corporate Server Infrastructure Purchase
 
-**Date:** June 12, 2025  
-**Location:** Kitchener, Ontario, Canada  
+Logoi Development Ltd.™
 
----
+⸻
 
-### RESOLUTION OF THE BOARD OF DIRECTORS  
-of **Logoi Development Ltd.™** (the "Corporation")
+Date: June 12, 2025
+Location: Kitchener, Ontario, Canada
+Resolution No.: 2025-06-LOGOI-MAINFRAME
 
-WHEREAS the Corporation recognizes the strategic importance of owning and operating dedicated server infrastructure to support its mission of integrating advanced technology with theological and educational services;
+⸻
 
-AND WHEREAS the Corporation anticipates the need for local AI inference capabilities, offline Kubernetes orchestration, scalable compute resources, and robust dev-ops infrastructure in service of its operational resilience and long-term goals, including but not limited to the **Logoi Mesh©™**, internal development, research, and secure client hosting;
+RESOLUTION OF THE BOARD OF DIRECTORS
 
-AND WHEREAS the cost of operating comparable infrastructure on major cloud providers (e.g., AWS, GCP, Azure) would exceed **$40,000–60,000 CAD per year**, making in-house deployment a significantly more cost-effective and strategically sovereign alternative;
+of Logoi Development Ltd.™ (the “Corporation”)
+
+Pursuant to the bylaws of the Corporation, the Director is authorized to issue this resolution and to act with full authority under its Articles of Incorporation and applicable law.
+
+⸻
+
+WHEREAS the Corporation acknowledges the strategic and theological significance of owning and operating dedicated server infrastructure to fulfill its mission of integrating advanced technology with theological, educational, and ecclesial services;
+
+AND WHEREAS the Corporation requires local capacity for AI inference, offline Kubernetes orchestration, scalable compute infrastructure, and secure DevOps pipelines to support operational resilience, research, and client-facing systems including, but not limited to, the Logoi Mesh©™ and related infrastructure;
+
+AND WHEREAS the cost of equivalent services through commercial cloud providers (e.g., AWS, GCP, Azure) is estimated at $40,000–$60,000 CAD per annum, rendering in-house infrastructure a materially more cost-effective and sovereign alternative;
+
+⸻
 
 BE IT RESOLVED THAT:
+	1.	The Corporation hereby authorizes the acquisition and assembly of a high-performance server, internally designated as the Logoi Mainframe©™;
+	2.	The authorized capital expenditure shall not exceed $10,000 CAD, inclusive of all hardware, taxes, shipping, and ancillary costs;
+	3.	The server configuration shall include:
+	•	One NVIDIA RTX 4090 GPU
+	•	High-core-count CPU suitable for sustained inference and container workloads
+	•	256GB RAM, enterprise-grade
+	•	High-throughput NVMe cache drives
+	•	Robust, redundant power and thermal systems
+	4.	The infrastructure shall be deployed to support:
+	•	Local AI inference, model development, and testing
+	•	Secure development environments and CI/CD pipelines
+	•	Containerized workloads via Kubernetes
+	•	Redundant local backups and secure data processing
+	•	Hosting of critical internal and external services, including the Logoi Mesh©™, Logoi Mainframe©™, and future Logoi Infrastructure©™ initiatives;
+	5.	The Corporation shall record the server as a long-term capital asset and reflect its acquisition in the official ledger accordingly;
+	6.	The Director shall oversee the secure installation, configuration, and maintenance of the system in accordance with the Corporation’s ethical, operational, and theological principles.
 
-1. The Corporation **hereby approves** the purchase and assembly of a high-performance computing server known internally as the **Logoi Mainframe©™**;
-2. The total approved expenditure shall not exceed **$10,000 CAD**, inclusive of hardware, taxes, and estimated shipping;
-3. The system will be anchored around an **NVIDIA RTX 4090 GPU**, high-core-count CPU, 256GB RAM, NVMe cache drives, and resilient power & cooling infrastructure;
-4. The system shall be used for:
-   - Local AI inference and model testing
-   - Secure development and CI/CD pipelines
-   - Kubernetes orchestration and containerized services
-   - Redundant backup and secure data processing
-   - Mission-critical hosting of internal and client-facing services, including **Logoi Mesh©™**, **Logoi Mainframe©™**, and other future **Logoi Infrastructure©™** initiatives;
-5. The Corporation shall maintain ownership of the equipment as a long-term capital asset and record it as such in the corporate ledger;
-6. The Director shall oversee the setup and security configuration to ensure compliance with ethical, operational, and theological commitments under the mission of the Corporation.
+⸻
 
----
+IN WITNESS WHEREOF, the undersigned, being the sole Director of the Corporation, has executed this resolution on the date written above.
 
-**IN WITNESS WHEREOF**, the undersigned, being the sole director of the Corporation, hereby signs this resolution.
+⸻
 
----
-
-**Signed:** **[__](#digital-authentication)**
-
-**Vladyslav Kolbaia**  
-Director & Founder  
-_Logoi Development Ltd.™_  
+Signed: [__](#digital-authentication)
+Vladyslav Kolbaia
+President & Director
+Logoi Development Ltd.™
 🕊️ In service of truth, wisdom, and the Kingdom of God
 
-### Digital Authentication
-This document is digitally signed and authenticated through a verified git commit with GPG signature. The commit hash and associated cryptographic signature constitute a legally binding digital signature under applicable electronic signature laws, including but not limited to the Electronic Signatures in Global and National Commerce Act (E-SIGN Act) and the Personal Information Protection and Electronic Documents Act (PIPEDA). This digital signature is equivalent to a physical signature and may be verified through standard cryptographic verification methods.
+⸻
 
----
+### Digital Authentication
+
+This resolution is executed via a cryptographically signed and timestamped Git commit using a verified GPG key. The signature and commit hash shall serve as a legally binding digital signature in accordance with the Electronic Signatures in Global and National Commerce Act (E-SIGN Act) and the Personal Information Protection and Electronic Documents Act (PIPEDA). This signature is the legal equivalent of a handwritten signature and may be independently verified through standard cryptographic methods.
