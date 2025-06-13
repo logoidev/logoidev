@@ -1,6 +1,6 @@
-# Director Resolution
+## Director Resolution
 
-## Approval of Corporate Server Infrastructure Purchase
+### Approval of Corporate Server Infrastructure Purchase
 
 **Logoi Development Ltd.™**
 
@@ -8,11 +8,11 @@
 
 **Date:** June 12, 2025  
 **Location:** Kitchener, Ontario, Canada  
-**Resolution No.:** 2025-06-LOGOI-MAINFRAME
+**Resolution ID:** logoi-mainframe-infra
 
 ⸻
 
-# RESOLUTION OF THE BOARD OF DIRECTORS
+### RESOLUTION OF THE BOARD OF DIRECTORS
 
 of Logoi Development Ltd.™ (the "Corporation")
 
@@ -28,7 +28,7 @@ Pursuant to the bylaws of the Corporation, the Director is authorized to issue t
 
 ⸻
 
-## BE IT RESOLVED THAT:
+### BE IT RESOLVED THAT:
 
 1. The Corporation hereby authorizes the acquisition and assembly of a high-performance server, internally designated as the Logoi Mainframe©™;
 2. The authorized capital expenditure shall not exceed $10,000 CAD, inclusive of all hardware, taxes, shipping, and ancillary costs;
@@ -49,7 +49,7 @@ Pursuant to the bylaws of the Corporation, the Director is authorized to issue t
 
 ⸻
 
-## IN WITNESS WHEREOF
+### IN WITNESS WHEREOF
 
 the undersigned, being the sole Director of the Corporation, has executed this resolution on the date written above.
 
@@ -64,6 +64,6 @@ the undersigned, being the sole Director of the Corporation, has executed this r
 
 ⸻
 
-## Digital Authentication
+#### Digital Authentication
 
 This resolution is executed via a cryptographically signed and timestamped Git commit using a verified GPG key. The signature and commit hash shall serve as a legally binding digital signature in accordance with the Electronic Signatures in Global and National Commerce Act (E-SIGN Act) and the Personal Information Protection and Electronic Documents Act (PIPEDA). This signature is the legal equivalent of a handwritten signature and may be independently verified through standard cryptographic methods.
