@@ -52,14 +52,15 @@ IN WITNESS WHEREOF, the undersigned, being the sole Director of the Corporation,
 
 ⸻
 
-Signed: [__](#digital-authentication)
-Vladyslav Kolbaia
-President & Director
-Logoi Development Ltd.™
+Signed: [__](#digital-authentication)  
+Vladyslav Kolbaia  
+President & Director  
+Logoi Development Ltd.™  
+  
 🕊️ In service of truth, wisdom, and the Kingdom of God
 
 ⸻
 
-### Digital Authentication
+## Digital Authentication
 
 This resolution is executed via a cryptographically signed and timestamped Git commit using a verified GPG key. The signature and commit hash shall serve as a legally binding digital signature in accordance with the Electronic Signatures in Global and National Commerce Act (E-SIGN Act) and the Personal Information Protection and Electronic Documents Act (PIPEDA). This signature is the legal equivalent of a handwritten signature and may be independently verified through standard cryptographic methods.
