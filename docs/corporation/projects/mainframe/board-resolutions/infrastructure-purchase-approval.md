@@ -40,7 +40,7 @@ Pursuant to the bylaws of the Corporation, the Director is authorized to issue t
 5. The Corporation shall record the server as a long-term capital asset and reflect its acquisition in the official ledger accordingly;
 6. The Director shall oversee the secure installation, configuration, and maintenance of the system in accordance with the Corporation's ethical, operational, and theological principles.
 7. All data stored or processed on the Logoi Mainframe©™ shall adhere to applicable privacy regulations, including but not limited to PIPEDA, and follow strict internal data governance policies established by the Corporation;
-8. The server shall be depreciated in accordance with the Canada Revenue Agency (CRA) guidelines for Class 50 (Computer Hardware) assets, with appropriate entries made in the Corporation’s accounting records;
+8. The server shall be depreciated in accordance with the Canada Revenue Agency (CRA) guidelines for Class 50 (Computer Hardware) assets, with appropriate entries made in the Corporation's accounting records;
 9. The Director shall ensure that the server is physically secured, regularly updated, and monitored in accordance with industry best practices for cybersecurity, including but not limited to endpoint protection, firewalls, access control, and disaster recovery protocols;
 10. Should the costs or scope materially change, the Director is authorized to amend this resolution within a ±15% margin and shall record such amendments via an addendum to this resolution, similarly signed and timestamped;
 
