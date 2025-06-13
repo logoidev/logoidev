@@ -16,3 +16,5 @@ test-results
 
 # PartyKit sqlite dbs for persistence
 .partykit
+
+.private

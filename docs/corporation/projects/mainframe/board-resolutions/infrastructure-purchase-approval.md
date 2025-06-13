@@ -48,7 +48,7 @@ Pursuant to the bylaws of the Corporation, the Director is authorized to issue t
 
 the undersigned, being the sole Director of the Corporation, has executed this resolution on the date written above.
 
-**Signed:** [__](#digital-authentication)  
+**Signed:** [VK](#digital-authentication)  
 **Vladyslav Kolbaia**  
 *President & Director*  
 **Logoi Development Ltd.™**  

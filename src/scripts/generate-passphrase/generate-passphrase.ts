@@ -6,13 +6,15 @@ dotenv.config();
 
 const reverseString = (str: string) => str.split('').reverse().join('');
 
+const SEED = process.env.SECRET_PASSPHRASE_SEED || '';
+
 // Default paddings from environment variables
 const KEY_1 = process.env.SECRET_PASSPHRASE_KEY_1 || '1111';
 const KEY_2 = process.env.SECRET_PASSPHRASE_KEY_2 || '2222';
 const KEY_3 = process.env.SECRET_PASSPHRASE_KEY_3 || '3333';
-const KEY_4 = process.env.SECRET_PASSPHRASE_KEY_4 || reverseString(KEY_1);
+const KEY_4 = process.env.SECRET_PASSPHRASE_KEY_4 || reverseString(KEY_3);
 const KEY_5 = process.env.SECRET_PASSPHRASE_KEY_5 || reverseString(KEY_2);
-const KEY_6 = process.env.SECRET_PASSPHRASE_KEY_6 || reverseString(KEY_3);
+const KEY_6 = process.env.SECRET_PASSPHRASE_KEY_6 || reverseString(KEY_1);
 
 const KEYS = [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6] as const;
 
@@ -30,16 +32,25 @@ export const MIN_INPUT_LENGTH = 4;
 export const MAX_INPUT_LENGTH_WITH_PADDING = MAX_INPUT_LENGTH - KEYS_COMBINED_LENGTH;
 
 export interface PassphraseResult {
+	/** The encryption keys used to generate the passphrase */
 	keys: PassphraseKeys;
+	/** The original input string before padding */
 	originalInput: string;
+	/** The input string with encryption keys inserted at regular intervals */
 	paddedInput: string;
+	/** The length of the padded input string */
 	inputLength: number;
+	/** The length of the generated passphrase */
+	outputLength: number;
+	/** The generated passphrase in hexadecimal format */
 	passphrase: string;
+	/** The generated passphrase in base64 format */
 	base64Passphrase: string;
+	/** The SHA-256 hash of the padded input */
 	hash: string;
 }
 
-export function generatePassphrase(input: string, keys: PassphraseKeys): PassphraseResult {
+export function generatePassphrase(input = SEED, keys: PassphraseKeys = KEYS): PassphraseResult {
 	// Input validation
 	if (typeof input !== 'string') {
 		throw new Error('Input must be a string');
@@ -85,6 +96,7 @@ export function generatePassphrase(input: string, keys: PassphraseKeys): Passphr
 		keys,
 		paddedInput,
 		inputLength: paddedInput.length,
+		outputLength: passphrase.length,
 		passphrase,
 		base64Passphrase,
 		hash
