@@ -65,6 +65,6 @@ This resolution is executed via a cryptographically signed and timestamped Git c
 
 This document was finalized prior to signature. The SHA256 hash of the pre-signature file content is:
 
-`774eb6e7cd40bae7048dfaaf34a9830ca0f509e724a3a1d5ecd2bf1fb136f6fa`
+`8595f169e41a8f9dcd27f0eef3d9da9b7cd0e199761f57059af3ddbb62adc99b`
 
 Any modification after signing renders this resolution invalid unless re-signed and timestamped.
