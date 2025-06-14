@@ -56,7 +56,7 @@ Pursuant to the bylaws of the Corporation, the Director is authorized to issue t
 
 the undersigned, being the sole Director of the Corporation, has executed this resolution on the date written above.
 
-**Signed:** *[__](#digital-authentication)*  
+**Signed:** *[VK](#digital-authentication)*  
 **Vladyslav Kolbaia**  
 *President & Director*  
 **Logoi Development Ltd.™**
@@ -73,6 +73,6 @@ This resolution is executed via a cryptographically signed and timestamped Git c
 
 This document was finalized prior to signature. The SHA256 hash of the pre-signature file content is:
 
-`sha`
+`d74807609015362d11ca96a8293859fb0d245c5ccf8a74f4ea86bd4b867fa9ef`
 
 Any modification after signing renders this resolution invalid unless re-signed and timestamped.
