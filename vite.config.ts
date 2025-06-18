@@ -20,7 +20,8 @@ export default defineConfig({
 		fs: {
 			allow: [
 				// Allow serving files from the project root and party directory
-				path.resolve(__dirname, './party')
+				path.resolve(__dirname, './party'),
+				path.resolve(__dirname, './docs')
 			]
 		}
 	},

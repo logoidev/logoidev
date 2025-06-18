@@ -9,4 +9,18 @@ declare global {
 	}
 }
 
+declare module '*.md' {
+	export const metadata: {
+		title: string;
+		date: string;
+		location: string;
+		resolutionId: string;
+	};
+	export const html: string;
+	export default {
+		metadata,
+		html
+	};
+}
+
 export {};

@@ -33,7 +33,8 @@ type TrackingEvent =
 	| 'blogpost_clicked'
 	| 'found_gold'
 	| 'adam_link_visited'
-	| 'chat_expanded';
+	| 'chat_expanded'
+	| 'resolution_clicked';
 
 export function trackEvent(
 	eventName: TrackingEvent,

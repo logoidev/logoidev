@@ -1,0 +1,10 @@
+{
+    "packageManager": "pnpm",
+    "rules": {
+        "usePackageManager": {
+            "enabled": true,
+            "packageManager": "pnpm",
+            "message": "Always use pnpm for package management"
+        }
+    }
+} 
