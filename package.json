@@ -5,7 +5,8 @@
 	"private": true,
 	"license": "GPL-3.0-only",
 	"packageManager": "pnpm@10.12.1",
-	"engines": {
+	"local-engines": {
+		"---": "TODO: Vercel doesn't like 'engines'",
 		"pnpm": "10.12.1",
 		"node": "22.16.0"
 	},
