@@ -17,7 +17,7 @@
 	</div>
 
 	<div class="p-8 max-w-4xl mx-auto">
-		<article class="dark:prose-invert mx-auto">
+		<article class="prose prose-lg dark:prose-invert mx-auto">
 			<header class="mb-8">
 				<h1 class="text-3xl font-serif mb-4">{metadata?.title || 'Untitled Resolution'}</h1>
 				<div class="text-sm opacity-50 space-y-1">
