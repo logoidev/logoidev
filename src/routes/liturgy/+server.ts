@@ -1,20 +1,20 @@
 import { json } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
 import { liturgySchema, type Liturgy } from './liturgy/liturgy.schema';
 import { clearLiturgyCache } from './liturgy/liturgy';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { isAdminFromUrl, isValidAdminCode } from './utils/admin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 export async function PUT({ request, url }: { request: Request; url: URL }) {
 	try {
-		// Check admin authentication
-		const adminCode = url.searchParams.get('code');
-		if (adminCode !== env.SECRET_ADMIN_CODE) {
+		// Check admin authentication using utility function
+		const isAdmin = isAdminFromUrl(url);
+		if (!isAdmin) {
 			return json({ error: 'Unauthorized' }, { status: 401 });
 		}
 

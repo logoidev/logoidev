@@ -443,17 +443,24 @@
 													<textarea
 														bind:value={paragraph.text}
 														rows="3"
-														class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+														disabled={isLoading}
+														class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 													></textarea>
 												</div>
 												<div class="flex items-center gap-4">
 													<label class="flex items-center gap-2">
-														<input type="checkbox" bind:checked={paragraph.cross} class="rounded" />
+														<input
+															type="checkbox"
+															bind:checked={paragraph.cross}
+															disabled={isLoading}
+															class="rounded disabled:opacity-50 disabled:cursor-not-allowed"
+														/>
 														<span class="text-sm text-gray-700">{t.hasCross}</span>
 													</label>
 													<button
 														on:click={() => deleteParagraph(section, paragraphIndex)}
-														class="px-2 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600"
+														disabled={isLoading}
+														class="px-2 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
 													>
 														🗑️ {t.delete}
 													</button>
@@ -465,7 +472,8 @@
 
 								<button
 									on:click={() => addParagraph(section)}
-									class="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-400 hover:text-gray-800 transition-colors"
+									disabled={isLoading}
+									class="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-400 hover:text-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 								>
 									➕ {t.addParagraph}
 								</button>
@@ -476,7 +484,8 @@
 					<!-- Add New Section -->
 					<button
 						on:click={addSection}
-						class="w-full py-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-400 hover:text-gray-800 transition-colors"
+						disabled={isLoading}
+						class="w-full py-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-400 hover:text-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						➕ {t.addNewSection}
 					</button>
