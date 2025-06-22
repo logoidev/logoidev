@@ -1,9 +1,9 @@
 {
   "language_code": "en",
-  "title": "Divine Liturgy",
+  "title": "Divine Liturgy 2",
   "author": {
     "name": "Saint John Chrysostom",
-    "by": "St. John Chrysostom"
+    "by": "St. John Chrysostom 23 3"
   },
   "date": "397",
   "location": "Roman Church",
@@ -13,16 +13,16 @@
       "name": "Symbol of Faith",
       "content": [
         {
-          "cross": true,
           "type": "paragraph",
           "by": "Faithful",
-          "text": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible."
+          "text": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible.",
+          "cross": true
         },
         {
-          "cross": true,
           "type": "paragraph",
           "by": "Faithful",
-          "text": "And in one Lord Jesus Christ, the only-begotten Son of God, begotten of the Father before all worlds. Light of Light, very God of very God, begotten, not made, being of one substance with the Father, by whom all things were made."
+          "text": "And in one Lord Jesus Christ, the only-begotten Son of God, begotten of the Father before all worlds. Light of Light, very God of very God, begotten, not made, being of one substance with the Father, by whom all things were made.",
+          "cross": true
         },
         {
           "type": "paragraph",
@@ -40,18 +40,18 @@
           "text": "And ascended into heaven, and sitteth on the right hand of the Father. And He shall come again with glory to judge both the quick and the dead, whose kingdom shall have no end."
         },
         {
-          "cross": true,
           "type": "paragraph",
           "by": "Faithful",
-          "text": "And I believe in the Holy Ghost, the Lord and Giver of Life, who proceedeth from the Father, who with the Father and the Son together is worshipped and glorified, who spake by the prophets."
+          "text": "And I believe in the Holy Ghost, the Lord and Giver of Life, who proceedeth from the Father, who with the Father and the Son together is worshipped and glorified, who spake by the prophets.",
+          "cross": true
         },
         {
-          "cross": true,
           "type": "paragraph",
           "by": "Faithful",
-          "text": "And I believe in one holy catholic and apostolic Church. I acknowledge one baptism for the remission of sins. And I look for the resurrection of the dead, and the life of the world to come. Amen."
+          "text": "And I believe in one holy catholic and apostolic Church. I acknowledge one baptism for the remission of sins. And I look for the resurrection of the dead, and the life of the world to come. Amen.",
+          "cross": true
         }
       ]
     }
   ]
-} 
+}

@@ -3,13 +3,14 @@
 	import type { Speaker } from './speaker/speaker';
 	import type { Locale } from './locale/locale.schema';
 	import { LOCALES } from './locale/locale.schema';
-	import type { Translations } from './translations/translations';
 	import { getTranslations } from './translations/translations';
 	import LanguageDropdown from '../../components/LanguageDropdown.svelte';
+	import AlertContainer from '../../components/AlertContainer.svelte';
+	import { alerts } from '../../lib/stores/alert';
 
 	export let data;
 
-	$: ({ liturgy, locale, speakers } = data);
+	$: ({ liturgy, locale, speakers, isAdmin } = data);
 
 	$: console.log(liturgy, locale, speakers);
 
@@ -118,21 +119,37 @@
 		if (!editedLiturgy) return;
 
 		try {
-			// Here you would typically send the data to your server
-			// For now, we'll just update the local state
-			console.log('Saving liturgy changes:', editedLiturgy);
+			// Show loading state
+			isLoading = true;
 
-			// You could add an API call here:
-			// const response = await fetch('/api/liturgy', {
-			//     method: 'PUT',
-			//     headers: { 'Content-Type': 'application/json' },
-			//     body: JSON.stringify(editedLiturgy)
-			// });
+			// Get admin code from URL
+			const url = new URL(window.location.href);
+			const adminCode = url.searchParams.get('code');
 
-			alert('Changes saved successfully!');
+			// Call the API to save changes
+			const response = await fetch(`/liturgy?code=${adminCode}`, {
+				method: 'PUT',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(editedLiturgy)
+			});
+
+			if (!response.ok) {
+				const errorData = await response.json();
+				throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
+			}
+
+			const result = await response.json();
+
+			// Update current liturgy with the saved data
+			currentLiturgy = editedLiturgy;
+
+			// Show success message
+			alerts.success(result.message || 'Changes saved successfully!', 'Success');
 		} catch (error) {
 			console.error('Error saving changes:', error);
-			alert('Error saving changes');
+			alerts.error(error instanceof Error ? error.message : 'Error saving changes', 'Error');
+		} finally {
+			isLoading = false;
 		}
 	}
 
@@ -140,6 +157,7 @@
 	function resetChanges() {
 		if (currentLiturgy) {
 			editedLiturgy = JSON.parse(JSON.stringify(currentLiturgy));
+			alerts.info('Changes have been reset to original values', 'Reset');
 		}
 	}
 
@@ -180,19 +198,25 @@
 	<title>{t.pageTitle} - {currentLiturgy?.title || t.loading}</title>
 </svelte:head>
 
+<!-- Alert Container for notifications -->
+<AlertContainer />
+
 <div class="container mx-auto px-4 py-8 max-w-4xl">
 	<!-- Header with Language Dropdown and Admin Toggle -->
 	<div class="mb-6 flex justify-between items-start gap-4">
 		<div class="flex-1">
 			<LanguageDropdown currentLocale={locale} onLocaleChange={handleLocaleChange} />
 		</div>
-		<button
-			on:click={toggleAdminView}
-			class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"
-			disabled={isLoading}
-		>
-			{isAdminView ? `👁️ ${t.viewMode}` : `⚙️ ${t.adminMode}`}
-		</button>
+		{#if isAdmin}
+			<button
+				title={t.adminMode}
+				on:click={toggleAdminView}
+				class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"
+				disabled={isLoading}
+			>
+				{isAdminView ? `👁️` : `⚙️`}
+			</button>
+		{/if}
 	</div>
 
 	<!-- Loading Indicator -->
@@ -212,13 +236,20 @@
 					<div class="flex gap-2">
 						<button
 							on:click={saveChanges}
-							class="px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700"
+							disabled={isLoading}
+							class="px-3 py-1 bg-green-600 text-white rounded text-sm hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1"
 						>
-							💾 {t.save}
+							{#if isLoading}
+								<div class="animate-spin rounded-full h-3 w-3 border-b-2 border-white"></div>
+							{:else}
+								💾
+							{/if}
+							{isLoading ? 'Saving...' : t.save}
 						</button>
 						<button
 							on:click={resetChanges}
-							class="px-3 py-1 bg-gray-600 text-white rounded text-sm hover:bg-gray-700"
+							disabled={isLoading}
+							class="px-3 py-1 bg-gray-600 text-white rounded text-sm hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
 						>
 							🔄 {t.reset}
 						</button>
@@ -240,28 +271,32 @@
 								<label class="block text-sm font-medium text-gray-700 mb-1">{t.title}</label>
 								<input
 									bind:value={editedLiturgy.title}
-									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+									disabled={isLoading}
+									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 								/>
 							</div>
 							<div>
-								<label class="block text-sm font-medium text-gray-700 mb-1">{t.language}</label>
 								<input
+									title={t.language}
 									bind:value={editedLiturgy.language_code}
-									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+									disabled={isLoading}
+									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 								/>
 							</div>
 							<div>
 								<label class="block text-sm font-medium text-gray-700 mb-1">{t.date}</label>
 								<input
 									bind:value={editedLiturgy.date}
-									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+									disabled={isLoading}
+									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 								/>
 							</div>
 							<div>
 								<label class="block text-sm font-medium text-gray-700 mb-1">{t.location}</label>
 								<input
 									bind:value={editedLiturgy.location}
-									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+									disabled={isLoading}
+									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 								/>
 							</div>
 						</div>
@@ -270,14 +305,16 @@
 							<label class="block text-sm font-medium text-gray-700 mb-1">{t.authorName}</label>
 							<input
 								bind:value={editedLiturgy.author.name}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+								disabled={isLoading}
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 							/>
 						</div>
 						<div class="mt-4">
 							<label class="block text-sm font-medium text-gray-700 mb-1">{t.authorBy}</label>
 							<input
 								bind:value={editedLiturgy.author.by}
-								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+								disabled={isLoading}
+								class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 							/>
 						</div>
 					</section>
@@ -289,7 +326,8 @@
 								<h2 class="text-2xl font-semibold text-gray-800">Section: {section.name}</h2>
 								<button
 									on:click={() => deleteSection(sectionIndex)}
-									class="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700"
+									disabled={isLoading}
+									class="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
 								>
 									🗑️ {t.deleteSection}
 								</button>
@@ -299,7 +337,8 @@
 								<label class="block text-sm font-medium text-gray-700 mb-1">{t.sectionName}</label>
 								<input
 									bind:value={section.name}
-									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+									disabled={isLoading}
+									class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 								/>
 							</div>
 
@@ -314,7 +353,8 @@
 													>
 													<select
 														bind:value={paragraph.by}
-														class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+														disabled={isLoading}
+														class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 													>
 														{#each allSpeakers as speaker}
 															<option value={speaker}>{speaker}</option>
@@ -325,7 +365,8 @@
 														<input
 															bind:value={paragraph.by}
 															placeholder={t.enterCustomSpeaker}
-															class="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+															disabled={isLoading}
+															class="w-full mt-2 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
 														/>
 													{/if}
 
@@ -461,8 +502,7 @@
 			<header class="mb-8">
 				<h1 class="text-3xl font-bold text-gray-900 mb-2">{currentLiturgy.title}</h1>
 				<div class="text-gray-600 space-y-1">
-					<p>
-						<strong>{t.languageLabel}</strong>
+					<p title={t.languageLabel}>
 						{getLocalizedLanguageName(currentLiturgy.language_code)}
 					</p>
 					<p>

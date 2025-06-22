@@ -3,6 +3,8 @@
 	import { LOCALES, DEFAULT_LOCALE } from '../routes/liturgy/locale/locale.schema';
 	import { getTranslations } from '../routes/liturgy/translations/translations';
 
+	export let withLabel: boolean = false;
+
 	export let currentLocale: Locale = DEFAULT_LOCALE;
 	export let onLocaleChange: (locale: Locale) => void = () => {};
 
@@ -21,9 +23,11 @@
 </script>
 
 <div class="min-w-48">
-	<label for="language-select" class="block text-sm font-medium text-gray-700 mb-1">
-		{t.language}
-	</label>
+	{#if withLabel}
+		<label for="language-select" class="block text-sm font-medium text-gray-700 mb-1">
+			{t.language}
+		</label>
+	{/if}
 	<select
 		id="language-select"
 		bind:value={currentLocale.code}
@@ -32,6 +36,7 @@
 	>
 		{#each LOCALES as locale}
 			<option value={locale.code}>
+				{locale.flag}
 				{locale.localName} ({locale.name})
 			</option>
 		{/each}
