@@ -1,0 +1,57 @@
+{
+  "language": "english",
+  "title": "Divine Liturgy",
+  "author": {
+    "name": "Saint John Chrysostom",
+    "by": "St. John Chrysostom"
+  },
+  "date": "397",
+  "location": "Roman Church",
+  "content": [
+    {
+      "type": "section",
+      "name": "Creed",
+      "content": [
+        {
+          "cross": true,
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "I believe in one God, the Father Almighty, Maker of heaven and earth, and of all things visible and invisible."
+        },
+        {
+          "cross": true,
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "And in one Lord Jesus Christ, the only-begotten Son of God, begotten of the Father before all worlds. Light of Light, very God of very God, begotten, not made, being of one substance with the Father, by whom all things were made."
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "Who for us men and for our salvation came down from heaven, and was incarnate by the Holy Ghost of the Virgin Mary, and was made man."
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "And was crucified also for us under Pontius Pilate, and suffered and was buried. And the third day He rose again according to the Scriptures."
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "And ascended into heaven, and sitteth on the right hand of the Father. And He shall come again with glory to judge both the quick and the dead, whose kingdom shall have no end."
+        },
+        {
+          "cross": true,
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "And I believe in the Holy Ghost, the Lord and Giver of Life, who proceedeth from the Father, who with the Father and the Son together is worshipped and glorified, who spake by the prophets."
+        },
+        {
+          "cross": true,
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "And I believe in one holy catholic and apostolic Church. I acknowledge one baptism for the remission of sins. And I look for the resurrection of the dead, and the life of the world to come. Amen."
+        }
+      ]
+    }
+  ]
+} 
