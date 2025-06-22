@@ -1,5 +1,5 @@
 {
-  "language": "english",
+  "language_code": "en",
   "title": "Divine Liturgy",
   "author": {
     "name": "Saint John Chrysostom",
@@ -10,7 +10,7 @@
   "content": [
     {
       "type": "section",
-      "name": "Creed",
+      "name": "Symbol of Faith",
       "content": [
         {
           "cross": true,

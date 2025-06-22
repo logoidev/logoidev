@@ -2,13 +2,19 @@ import { z } from 'zod';
 
 const ukrainianLocale = {
 	name: 'Ukrainian',
+	localName: 'Українська',
 	code: 'uk'
 } as const;
 
 const englishLocale = {
 	name: 'English',
+	localName: 'English',
 	code: 'en'
 } as const;
+
+export const LOCALES = [ukrainianLocale, englishLocale] as const;
+
+export const DEFAULT_LOCALE = englishLocale;
 
 const ukrainianLocaleSchema = z.object({
 	name: z.literal(ukrainianLocale.name),

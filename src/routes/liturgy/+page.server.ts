@@ -1,15 +1,16 @@
 import { getLiturgy } from './liturgy/liturgy';
-import { getLocale, getLocaleFromUrl } from './locale/locale';
+import { getLocaleFromUrl } from './locale/locale';
+import { getSpeakers } from './speaker/speaker';
 
 export const load = async ({ url }: { url: URL }) => {
-	const localeCode = await getLocaleFromUrl(url);
-	const locale = await getLocale(localeCode);
+	const locale = getLocaleFromUrl(url);
 
-	// Validate the liturgy data against the schema
 	const liturgy = await getLiturgy(locale);
+	const speakers = await getSpeakers(locale.code);
 
 	return {
 		liturgy,
-		locale
+		locale,
+		speakers
 	};
 };

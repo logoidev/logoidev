@@ -23,7 +23,7 @@ const authorSchema = z.object({
 
 // Main liturgy schema
 export const liturgySchema = z.object({
-	language: z.string(),
+	language_code: z.string(),
 	title: z.string(),
 	author: authorSchema,
 	date: z.string(),
