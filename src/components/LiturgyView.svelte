@@ -91,7 +91,7 @@
 				on:change={() => updateLiturgyData(displayLiturgy)}
 			/>
 		{:else}
-			<h1 class="text-3xl font-bold text-gray-900 mb-2">{displayLiturgy.title}</h1>
+			<h1 class="text-3xl font-bold text-gray-900 mb-2 text-center">{displayLiturgy.title}</h1>
 		{/if}
 
 		{#if isAdmin && storeState.isAdminView}
