@@ -19,6 +19,7 @@ interface Translations {
 	location: string;
 	authorName: string;
 	authorBy: string;
+	authorByLabel: string;
 	sectionName: string;
 	speaker: string;
 	text: string;
@@ -73,6 +74,7 @@ const enTranslations: Translations = {
 	enterCustomSpeaker: 'Enter custom speaker name',
 	languageLabel: 'Language:',
 	authorLabel: 'Author:',
+	authorByLabel: 'Author By:',
 	dateLabel: 'Date:',
 	locationLabel: 'Location:',
 	viewRawJson: 'View Raw JSON Data',
@@ -98,7 +100,7 @@ const ukTranslations: Translations = {
 	sectionName: 'Назва Розділу',
 	speaker: 'Промовець (від)',
 	text: 'Текст',
-	hasCross: 'Має хрест (✝)',
+	hasCross: 'Знак хреста (☦)',
 	addParagraph: 'Додати Параграф',
 	addNewSection: 'Додати Новий Розділ',
 	deleteSection: 'Видалити Розділ',
@@ -107,6 +109,7 @@ const ukTranslations: Translations = {
 	enterCustomSpeaker: "Введіть ім'я власного промовця",
 	languageLabel: 'Мова:',
 	authorLabel: 'Автор:',
+	authorByLabel: 'Авторa:',
 	dateLabel: 'Дата:',
 	locationLabel: 'Місце:',
 	viewRawJson: 'Переглянути Необроблені JSON Дані',

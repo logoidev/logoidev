@@ -3,7 +3,7 @@
 	import { LOCALES, DEFAULT_LOCALE } from '../routes/liturgy/locale/locale.schema';
 	import { getTranslations } from '../routes/liturgy/translations/translations';
 
-	export let withLabel: boolean = false;
+	export let withLabel: boolean = true;
 
 	export let currentLocale: Locale = DEFAULT_LOCALE;
 	export let onLocaleChange: (locale: Locale) => void = () => {};
