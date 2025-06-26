@@ -6,7 +6,8 @@ export default {
 			sans: ['ui-sans-serif', 'system-ui'],
 			serif: ['ui-serif'],
 			mono: ['ui-monospace', 'SFMono-Regular'],
-			trajan: ['"Trajan Pro"', 'ui-serif']
+			trajan: ['"Trajan Pro"', 'ui-serif'],
+			pomorsky: ['Pomorsky', 'ui-serif']
 		},
 		extend: {}
 	},

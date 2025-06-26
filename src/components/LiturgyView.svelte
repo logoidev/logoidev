@@ -57,7 +57,7 @@
 					{:else}
 						💾
 					{/if}
-					{isLoading ? 'Saving...' : translations.save || 'Save'}
+					{isLoading ? translations.saving : translations.save}
 				</button>
 				{#if onReset}
 					<button
@@ -86,12 +86,16 @@
 				label={translations.titleLabel}
 				bind:value={displayLiturgy.title}
 				disabled={isLoading}
-				class={cn('text-3xl font-bold text-gray-900 mb-2 block text-center')}
+				class={cn(
+					'text-3xl font-bold text-gray-900 mb-2 block text-center font-pomorsky text-red-800'
+				)}
 				placeholder="Enter liturgy title..."
 				on:change={() => updateLiturgyData(displayLiturgy)}
 			/>
 		{:else}
-			<h1 class="text-3xl font-bold text-gray-900 mb-2 text-center">{displayLiturgy.title}</h1>
+			<h1 class="text-3xl font-bold text-gray-900 mb-2 text-center">
+				{displayLiturgy.title}
+			</h1>
 		{/if}
 
 		{#if isAdmin && storeState.isAdminView}
@@ -153,7 +157,7 @@
 					<InlineEditable
 						editable={isAdmin && storeState.isAdminView}
 						id="liturgy-location"
-						label={translations.locationLabel || 'Location'}
+						label={translations.locationLabel}
 						bind:value={displayLiturgy.location}
 						disabled={isLoading}
 						class="inline"
@@ -180,7 +184,7 @@
 							label={translations.sectionNameLabel}
 							bind:value={section.name}
 							disabled={isLoading}
-							class="text-2xl font-semibold text-gray-800 pb-2 block"
+							class="text-2xl font-semibold pb-2 block text-gray-800 font-serif"
 							placeholder="Section name..."
 							on:change={() => updateLiturgyData(displayLiturgy)}
 						/>
@@ -196,7 +200,7 @@
 							disabled={isLoading}
 							class="px-3 py-1 bg-red-600 text-white rounded text-sm hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
 						>
-							🗑️ {translations.deleteSection || 'Delete Section'}
+							🗑️ {translations.deleteSection}
 						</button>
 					{/if}
 				</div>
@@ -209,19 +213,19 @@
 								{#if isAdmin}
 									{#if storeState.isAdminView}
 										<label for="paragraph-speaker-{sectionIndex}-{paragraphIndex}" class="sr-only">
-											{translations.speakerLabel || 'Speaker'}
+											{translations.speakerLabel}
 										</label>
 										<select
 											id="paragraph-speaker-{sectionIndex}-{paragraphIndex}"
 											bind:value={paragraph.by}
 											disabled={isLoading || !(isAdmin && storeState.isAdminView)}
+											on:change={() => updateLiturgyData(displayLiturgy)}
 											class={cn(
 												'text-sm text-gray-500 cursor-pointer font-medium bg-transparent border-none focus:outline-none focus:ring-2 focus:ring-blue-500 rounded px-1',
 												{
 													'cursor-default': isLoading || !(isAdmin && storeState.isAdminView)
 												}
 											)}
-											on:change={() => updateLiturgyData(displayLiturgy)}
 										>
 											{#each allSpeakers as speaker}
 												<option value={speaker}>{speaker}</option>
@@ -318,7 +322,7 @@
 											disabled={isLoading}
 											class="px-2 py-1 bg-red-500 text-white rounded text-xs hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
 										>
-											🗑️ {translations.delete || 'Delete'}
+											🗑️ {translations.delete}
 										</button>
 									{/if}
 								</div>
@@ -332,7 +336,7 @@
 							disabled={isLoading}
 							class="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-400 hover:text-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 						>
-							➕ {translations.addParagraph || 'Add Paragraph'}
+							➕ {translations.addParagraph}
 						</button>
 					{/if}
 				</div>
@@ -346,7 +350,7 @@
 				disabled={isLoading}
 				class="w-full py-4 border-2 border-dashed border-gray-300 rounded-lg text-gray-600 hover:border-gray-400 hover:text-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 			>
-				➕ {translations.addNewSection || 'Add New Section'}
+				➕ {translations.addNewSection}
 			</button>
 		{/if}
 	</main>
