@@ -6,9 +6,13 @@
 	import LanguageDropdown from '../../components/LanguageDropdown.svelte';
 	import AlertContainer from '../../components/AlertContainer.svelte';
 	import LiturgyView from '../../components/LiturgyView.svelte';
+	import ToggleQR from '../../components/ToggleQR.svelte';
 	import { alerts } from '../../lib/stores/alert';
 	import { liturgyStore } from '../../lib/stores/liturgy';
 	import { onMount } from 'svelte';
+	import Copyright from 'src/components/Copyright.svelte';
+	import { getIndexUrl } from 'src/shared/routes';
+	import { page } from '$app/stores';
 
 	export let data;
 
@@ -234,16 +238,18 @@
 				onLocaleChange={handleLocaleChange}
 			/>
 		</div>
-		{#if isAdmin}
-			<button
-				title={t.adminMode}
-				on:click={toggleAdminView}
-				class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"
-				disabled={storeState.isLoading}
-			>
-				{storeState.isAdminView ? `👁️` : `⚙️`}
-			</button>
-		{/if}
+		<div class="flex items-center gap-2">
+			{#if isAdmin}
+				<button
+					title={t.adminMode}
+					on:click={toggleAdminView}
+					class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"
+					disabled={storeState.isLoading}
+				>
+					{storeState.isAdminView ? `👁️` : `⚙️`}
+				</button>
+			{/if}
+		</div>
 	</div>
 
 	<!-- Loading Indicator -->
@@ -277,4 +283,10 @@
 			<div class="text-gray-500 text-lg">{t.loading}</div>
 		</div>
 	{/if}
+</div>
+
+<div class="flex flex-col justify-center items-center font-serif">
+	<ToggleQR url={getIndexUrl($page.url.pathname)} text="☦️" rounded animated />
+
+	<Copyright withUkraine={false} />
 </div>

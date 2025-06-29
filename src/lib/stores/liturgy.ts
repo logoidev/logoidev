@@ -30,14 +30,29 @@ function createLiturgyStore() {
 			...state.liturgy,
 			content: state.liturgy.content.map((section) => ({
 				...section,
-				content: section.content.map((paragraph) => ({
-					...paragraph,
-					by: ''
-				}))
+				content: section.content.reduce(
+					(acc, paragraph, index) => {
+						// If this is the first paragraph, has a different speaker, or has a cross
+						if (index === 0 || paragraph.by !== section.content[index - 1].by || paragraph.cross) {
+							acc.push({
+								...paragraph,
+								by: ''
+							});
+						} else {
+							// Combine with the previous paragraph
+							const lastParagraph = acc[acc.length - 1];
+							lastParagraph.text += ' ' + paragraph.text;
+							// Keep the cross status if either paragraph has it
+							if (paragraph.cross) {
+								lastParagraph.cross = true;
+							}
+						}
+						return acc;
+					},
+					[] as typeof section.content
+				)
 			}))
 		};
-
-		console.log('inlineLiturgy', inlineLiturgy);
 
 		return inlineLiturgy;
 	}

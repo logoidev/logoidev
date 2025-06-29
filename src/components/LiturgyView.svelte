@@ -20,7 +20,7 @@
 	export let getLocalizedLanguageName: ((languageCode: string) => string) | null = null;
 	export let translations: any = {};
 
-	let isInline = false;
+	let isInline = true;
 
 	// Subscribe to store
 	$: storeState = $liturgyStore;
@@ -79,15 +79,15 @@
 			You can click on any text to edit it inline. Changes will be saved when you click "Save".
 		</p>
 	</div>
-{/if}
 
-<button
-	class="text-sm text-gray-500 font-medium border border-gray-300 rounded-md px-2 py-1"
-	on:click={() => (isInline = !isInline)}
-	aria-label="Toggle inline editing"
->
-	{isInline ? 'Prose' : 'Inline'}
-</button>
+	<button
+		class="text-sm text-gray-500 font-medium border border-gray-300 rounded-md px-2 py-1"
+		on:click={() => (isInline = !isInline)}
+		aria-label="Toggle inline editing"
+	>
+		{isInline ? '📝 Prose' : '📖 Inline'}
+	</button>
+{/if}
 
 {#if displayLiturgy}
 	<header class="mb-2">
@@ -181,7 +181,7 @@
 
 	<main class="space-y-8">
 		{#each displayLiturgy.content as section, sectionIndex}
-			<section class="bg-white rounded-lg shadow-md p-6">
+			<section class="bg-white rounded-lg shadow-md px-4 py-6 border border-red-800">
 				<div
 					class={cn('flex items-center justify-center mb-4', {
 						'justify-between': isAdmin && storeState.isAdminView
@@ -272,7 +272,7 @@
 											'text-red-600': paragraph.cross,
 											'text-gray-400': !paragraph.cross
 										})}
-										title={paragraph.cross ? 'Cross is active' : 'Cross is inactive'}
+										title={paragraph.cross ? 'Make the sign of the cross' : 'Read as ususal'}
 										on:click={() => {
 											paragraph.cross = !paragraph.cross;
 											updateLiturgyData(displayLiturgy);
