@@ -23,9 +23,36 @@ function createLiturgyStore() {
 		allSpeakers: []
 	});
 
+	function getInlineLiturgy(state: LiturgyState): Liturgy | null {
+		if (!state.liturgy) return null;
+
+		const inlineLiturgy: Liturgy = {
+			...state.liturgy,
+			content: state.liturgy.content.map((section) => ({
+				...section,
+				content: section.content.map((paragraph) => ({
+					...paragraph,
+					by: ''
+				}))
+			}))
+		};
+
+		console.log('inlineLiturgy', inlineLiturgy);
+
+		return inlineLiturgy;
+	}
+
+	type DisplayLiturgyOptions = {
+		isInline?: boolean;
+	};
+
 	// Helper functions
-	function getDisplayLiturgy(state: LiturgyState): Liturgy | null {
-		return state.isAdminView ? state.editedLiturgy : state.liturgy;
+	function getDisplayLiturgy(
+		state: LiturgyState,
+		{ isInline = false }: DisplayLiturgyOptions = {}
+	): Liturgy | null {
+		const savedLiturgy = isInline ? getInlineLiturgy(state) : state.liturgy;
+		return state.isAdminView ? state.editedLiturgy : savedLiturgy;
 	}
 
 	function getTargetLiturgy(state: LiturgyState): Liturgy | null {

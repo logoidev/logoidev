@@ -20,9 +20,13 @@
 	export let getLocalizedLanguageName: ((languageCode: string) => string) | null = null;
 	export let translations: any = {};
 
+	let isInline = false;
+
 	// Subscribe to store
 	$: storeState = $liturgyStore;
-	$: displayLiturgy = liturgyStore.getDisplayLiturgy(storeState);
+	$: displayLiturgy = liturgyStore.getDisplayLiturgy(storeState, {
+		isInline
+	});
 
 	// Helper function to get speaker info
 	function getSpeaker(speakerName: string): Speaker | undefined {
@@ -77,6 +81,14 @@
 	</div>
 {/if}
 
+<button
+	class="text-sm text-gray-500 font-medium border border-gray-300 rounded-md px-2 py-1"
+	on:click={() => (isInline = !isInline)}
+	aria-label="Toggle inline editing"
+>
+	{isInline ? 'Prose' : 'Inline'}
+</button>
+
 {#if displayLiturgy}
 	<header class="mb-2">
 		{#if isAdmin}
@@ -86,9 +98,7 @@
 				label={translations.titleLabel}
 				bind:value={displayLiturgy.title}
 				disabled={isLoading}
-				class={cn(
-					'text-3xl font-bold text-gray-900 mb-2 block text-center font-pomorsky text-red-800'
-				)}
+				class={cn('text-3xl font-bold mb-2 block text-center font-pomorsky text-red-800')}
 				placeholder="Enter liturgy title..."
 				on:change={() => updateLiturgyData(displayLiturgy)}
 			/>
@@ -232,12 +242,12 @@
 											{/each}
 											<option value="">-- {translations.customSpeaker} --</option>
 										</select>
-									{:else}
+									{:else if paragraph.by !== ''}
 										<span class="text-sm text-gray-500 font-medium">
 											{paragraph.by}:
 										</span>
 									{/if}
-									{#if paragraph.by === ''}
+									{#if paragraph.by === '' && isAdmin && storeState.isAdminView}
 										<InlineEditable
 											id="paragraph-custom-speaker-{sectionIndex}-{paragraphIndex}"
 											editable={isAdmin && storeState.isAdminView}
