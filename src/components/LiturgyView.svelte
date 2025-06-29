@@ -103,7 +103,7 @@
 				on:change={() => updateLiturgyData(displayLiturgy)}
 			/>
 		{:else}
-			<h1 class="text-3xl font-bold text-gray-900 mb-2 text-center">
+			<h1 class="text-3xl font-bold mb-2 text-center font-pomorsky text-red-800">
 				{displayLiturgy.title}
 			</h1>
 		{/if}
@@ -259,7 +259,7 @@
 											on:change={() => updateLiturgyData(displayLiturgy)}
 										/>
 									{/if}
-								{:else}
+								{:else if paragraph.by !== ''}
 									<span class="text-sm text-gray-500 font-medium">
 										{paragraph.by}:
 									</span>
