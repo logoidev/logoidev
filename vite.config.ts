@@ -3,14 +3,13 @@ import { defineConfig } from 'vitest/config';
 import { execSync } from 'child_process';
 import path from 'path';
 import 'dotenv/config';
-import tsconfigPaths from 'vite-tsconfig-paths';
 
 import packageJson from './package.json';
 
 const commit = execSync('git rev-parse --short HEAD').toString();
 
 export default defineConfig({
-	plugins: [tsconfigPaths(), sveltekit()],
+	plugins: [sveltekit()],
 	resolve: {
 		alias: {
 			'@src': path.resolve(__dirname, './src')

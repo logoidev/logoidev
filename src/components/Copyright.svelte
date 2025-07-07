@@ -11,6 +11,7 @@
 	export let withLink = false;
 	export let fixed: boolean = false;
 	export let coinId = '';
+	export let withUkraine = true;
 
 	export let companyName = COMPANY_LEGAL_NAME;
 	export let startYear = 2022;
@@ -22,7 +23,9 @@
 	const year = startYear === endYear ? startYear : `${startYear} - ${endYear}`;
 </script>
 
-<Ukraine />
+{#if withUkraine}
+	<Ukraine />
+{/if}
 
 <div
 	class={clsx(
