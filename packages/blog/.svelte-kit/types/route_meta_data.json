@@ -1,0 +1,69 @@
+{
+	"/": [
+		"src/routes/+page.ts"
+	],
+	"/adam": [
+		"src/routes/adam/+page.server.ts"
+	],
+	"/adam/chat": [],
+	"/blog": [],
+	"/blog/[post]": [
+		"src/routes/blog/[post]/+page.ts"
+	],
+	"/blog/[post]/p": [],
+	"/cal": [
+		"src/routes/cal/+page.server.ts"
+	],
+	"/c": [
+		"src/routes/c/+server.ts"
+	],
+	"/c/b": [
+		"src/routes/c/b/+server.ts"
+	],
+	"/c/b/p": [
+		"src/routes/c/b/p/+server.ts"
+	],
+	"/c/p": [
+		"src/routes/c/p/+server.ts"
+	],
+	"/c/[id]": [
+		"src/routes/c/[id]/+server.ts"
+	],
+	"/c/[id]/locations": [
+		"src/routes/c/[id]/locations/+server.ts"
+	],
+	"/c/[id]/p": [],
+	"/foundation": [],
+	"/payment": [
+		"src/routes/payment/+server.ts"
+	],
+	"/p": [],
+	"/ref/pa": [
+		"src/routes/ref/pa/+page.server.ts"
+	],
+	"/ref/sophia": [
+		"src/routes/ref/sophia/+page.server.ts"
+	],
+	"/ref/sophia/c": [
+		"src/routes/ref/sophia/c/+page.server.ts"
+	],
+	"/ref/sophia/k": [
+		"src/routes/ref/sophia/k/+page.server.ts"
+	],
+	"/ref/sophia/ua": [
+		"src/routes/ref/sophia/ua/+page.server.ts"
+	],
+	"/resolutions": [
+		"src/routes/resolutions/+page.server.ts"
+	],
+	"/resolutions/[id]": [
+		"src/routes/resolutions/[id]/+page.server.ts"
+	],
+	"/ukraine": [],
+	"/[user]": [
+		"src/routes/[user]/+page.ts"
+	],
+	"/[user]/p": [
+		"src/routes/[user]/p/+page.ts"
+	]
+}

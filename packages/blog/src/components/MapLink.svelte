@@ -7,4 +7,4 @@
 	export let title = 'Map';
 </script>
 
-<IconLink href={url} {title} iconName="pin" scale={1.2} class="mt-0" />
+<IconLink {title} text={title} href={url} iconName="pin" scale={1.2} class="mt-0" />

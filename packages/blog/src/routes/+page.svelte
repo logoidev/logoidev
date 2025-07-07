@@ -49,6 +49,7 @@
 
 			<IconLink
 				href="blog"
+				text="Blog"
 				target="_blank"
 				title="Go to Blog"
 				iconName="blog"
