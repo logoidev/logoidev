@@ -12,7 +12,7 @@ type EnsureDefined<T> = T extends null | undefined ? {} : T;
 type OptionalUnion<U extends Record<string, any>, A extends keyof U = U extends U ? keyof U : never> = U extends unknown ? { [P in Exclude<A, keyof U>]?: never } & U : never;
 export type Snapshot<T = any> = Kit.Snapshot<T>;
 type PageParentData = EnsureDefined<LayoutData>;
-type LayoutRouteId = RouteId | "/" | "/[user]" | "/[user]/p" | "/adam" | "/adam/chat" | "/blog" | "/blog/[post]" | "/blog/[post]/p" | "/c" | "/c/[id]" | "/c/[id]/p" | "/cal" | "/foundation" | "/p" | "/ref/pa" | "/ref/sophia" | "/ref/sophia/c" | "/ref/sophia/k" | "/ref/sophia/ua" | "/resolutions" | "/resolutions/[id]" | "/ukraine" | null
+type LayoutRouteId = RouteId | "/" | "/[user]" | "/[user]/p" | "/adam" | "/adam/chat" | "/blog" | "/blog/[post]" | "/blog/[post]/p" | "/c" | "/c/[id]" | "/c/[id]/p" | "/cal" | "/foundation" | "/liturgy" | "/p" | "/ref/pa" | "/ref/sophia" | "/ref/sophia/c" | "/ref/sophia/k" | "/ref/sophia/ua" | "/resolutions" | "/resolutions/[id]" | "/ukraine" | null
 type LayoutParams = RouteParams & { user?: string; post?: string; id?: string }
 type LayoutParentData = EnsureDefined<{}>;
 

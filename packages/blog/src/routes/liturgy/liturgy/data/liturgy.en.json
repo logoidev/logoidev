@@ -1,0 +1,57 @@
+{
+  "language_code": "en",
+  "title": "Divine Liturgy",
+  "author": {
+    "name": "Saint John Chrysostom",
+    "by": "St. John Chrysostom"
+  },
+  "date": "397",
+  "location": "Roman Church",
+  "content": [
+    {
+      "type": "section",
+      "name": "Symbol of Faith",
+      "content": [
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "I believe in one God, the Father Almighty, Creator of heaven and earth, and of all things visible and invisible;",
+          "cross": true
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "And in one Lord, Jesus Christ, the Only-begotten Son of God, begotten of the Father before all ages; Light of Light, true God of true God, begotten, not created, being of one essence with the Father, by whom all things were made;",
+          "cross": true
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "Who for us men and for our salvation came down from heavens, and was incarnate by the Holy Spirit and the Virgin Mary, and became man;"
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "Who was crucified for us under Pontius Pilate, and suffered and was buried; and He rose on the third day according to the Scriptures;"
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "and ascended into heaven, and sits at the right hand of the Father; and He will come again with glory to judge the living and the dead, and His kingdom will have no end;"
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "And in the Holy Spirit, the Lord, the Giver of Life, who proceeds from the Father, who together with the Father and the Son is worshipped and glorified, who spoke through the Prophets;",
+          "cross": true
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "And in One, Holy, Catholic and Apostolic Church; I acknowledge one baptism for the remission of sins; I await the resurrection of the dead, and the life of the age to come. Amen.",
+          "cross": true
+        }
+      ]
+    }
+  ]
+}

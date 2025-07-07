@@ -34,6 +34,10 @@
 	],
 	"/c/[id]/p": [],
 	"/foundation": [],
+	"/liturgy": [
+		"src/routes/liturgy/+page.server.ts",
+		"src/routes/liturgy/+server.ts"
+	],
 	"/payment": [
 		"src/routes/payment/+server.ts"
 	],

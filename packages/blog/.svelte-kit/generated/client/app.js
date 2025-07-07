@@ -24,7 +24,8 @@ export const nodes = [
 	() => import('./nodes/20'),
 	() => import('./nodes/21'),
 	() => import('./nodes/22'),
-	() => import('./nodes/23')
+	() => import('./nodes/23'),
+	() => import('./nodes/24')
 ];
 
 export const server_loads = [];
@@ -41,15 +42,16 @@ export const dictionary = {
 		"/c/[id]": [11],
 		"/c/[id]/p": [12],
 		"/foundation": [14],
-		"/p": [15],
-		"/ref/pa": [~16],
-		"/ref/sophia": [~17],
-		"/ref/sophia/c": [~18],
-		"/ref/sophia/k": [~19],
-		"/ref/sophia/ua": [~20],
-		"/resolutions": [~21],
-		"/resolutions/[id]": [~22],
-		"/ukraine": [23],
+		"/liturgy": [~15],
+		"/p": [16],
+		"/ref/pa": [~17],
+		"/ref/sophia": [~18],
+		"/ref/sophia/c": [~19],
+		"/ref/sophia/k": [~20],
+		"/ref/sophia/ua": [~21],
+		"/resolutions": [~22],
+		"/resolutions/[id]": [~23],
+		"/ukraine": [24],
 		"/[user]": [3],
 		"/[user]/p": [4]
 	};

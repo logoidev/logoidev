@@ -1,0 +1,82 @@
+[
+	{
+		"id": "priest-1",
+		"name": "Priest",
+		"title": "Reverend",
+		"organization": "Orthodox Church",
+		"biography": {
+			"short": "Ordained priest serving the Orthodox community",
+			"long": "Experienced priest with over 20 years of service in the Orthodox Church, specializing in liturgical services and pastoral care.",
+			"education": ["Theological Seminary", "Divinity School"],
+			"experience": ["Parish Priest", "Liturgical Instructor", "Spiritual Counselor"]
+		},
+		"languages": ["English", "Ukrainian", "Greek"],
+		"topics": ["Liturgy", "Spirituality", "Pastoral Care"],
+		"createdAt": "2024-01-01T00:00:00.000Z",
+		"updatedAt": "2024-01-01T00:00:00.000Z"
+	},
+	{
+		"id": "deacon-1",
+		"name": "Deacon",
+		"title": "Deacon",
+		"organization": "Orthodox Church",
+		"biography": {
+			"short": "Ordained deacon assisting in liturgical services",
+			"long": "Dedicated deacon with extensive experience in liturgical assistance and community service.",
+			"education": ["Diaconal Training Program"],
+			"experience": ["Liturgical Assistant", "Community Outreach"]
+		},
+		"languages": ["English", "Ukrainian"],
+		"topics": ["Liturgy", "Community Service"],
+		"createdAt": "2024-01-01T00:00:00.000Z",
+		"updatedAt": "2024-01-01T00:00:00.000Z"
+	},
+	{
+		"id": "reader-1",
+		"name": "Reader",
+		"title": "Lector",
+		"organization": "Orthodox Church",
+		"biography": {
+			"short": "Trained reader for liturgical services",
+			"long": "Experienced reader with proper training in liturgical reading and chanting.",
+			"education": ["Reader Training Program"],
+			"experience": ["Liturgical Reader", "Choir Member"]
+		},
+		"languages": ["English", "Ukrainian"],
+		"topics": ["Liturgical Reading", "Chanting"],
+		"createdAt": "2024-01-01T00:00:00.000Z",
+		"updatedAt": "2024-01-01T00:00:00.000Z"
+	},
+	{
+		"id": "choir-1",
+		"name": "Choir",
+		"title": "Choir Director",
+		"organization": "Orthodox Church",
+		"biography": {
+			"short": "Church choir providing liturgical music",
+			"long": "Dedicated choir with extensive repertoire of Orthodox liturgical music and hymns.",
+			"education": ["Music Education", "Liturgical Music Training"],
+			"experience": ["Choir Director", "Liturgical Musician"]
+		},
+		"languages": ["English", "Ukrainian", "Greek", "Church Slavonic"],
+		"topics": ["Liturgical Music", "Chanting", "Hymns"],
+		"createdAt": "2024-01-01T00:00:00.000Z",
+		"updatedAt": "2024-01-01T00:00:00.000Z"
+	},
+	{
+		"id": "faithful-1",
+		"name": "Faithful",
+		"title": "Congregation",
+		"organization": "Orthodox Church",
+		"biography": {
+			"short": "Members of the faithful congregation",
+			"long": "The gathered faithful participating in the liturgical service.",
+			"education": [],
+			"experience": ["Liturgical Participation"]
+		},
+		"languages": ["English", "Ukrainian"],
+		"topics": ["Liturgical Participation", "Prayer"],
+		"createdAt": "2024-01-01T00:00:00.000Z",
+		"updatedAt": "2024-01-01T00:00:00.000Z"
+	}
+] 
