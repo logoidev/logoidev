@@ -1,11 +1,14 @@
 <a href="https://logoi.dev?source=ghb">
-    <img width="333" alt="Logo Banner" src="/packages/blog/static/images/banners/banner.png" />
+    <img width="333" alt="Logo Banner" src="/static/images/banners/banner.png" />
 </a>
 
-We bring innovation, advanced technology and solid design to serve the Church, empower her people and glorify God.
+We are a web design agency specialising in Software Engineering, UI/UX and AR/VR/XR applications.
+We create metaobjects - things that exist in the metaverse.
+We help people interact with a new layer of reality, full of creative freedom and full contol of the privacy.
+We help create experiences that can be enjoyed by people from around the world, individually and collectively.
 
 <a href="https://logoi.dev?source=ghqr">
-    <img width="333" alt="QR logo" src="/packages/blog/static/images/qr.svg" />
+    <img width="333" alt="QR logo" src="/static/images/qr.svg" />
 </a>
 
 We are building in public, so all of the code is open source and free for you to browse and contribute. However commercial use of this code is <u>forbidden</u> under our [license](/LICENSE.md), so please reach out to <a href="mailto:hi@logoi.dev?subject=License Code">hi@logoi.dev</a> to request a commercial-use version.

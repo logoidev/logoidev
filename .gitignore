@@ -1,22 +1,32 @@
-.DS_Store
+# Dependencies
 node_modules
+
+# Build artifacts
 /build
 /.svelte-kit
 /package
-.env
-.yarn
-.env.*
-!.env.base
-vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
-
 .turbo
 .vercel
+
+# Logs
+logs
+*.log
+
+# Environment variables
+.env
+.env.*
+!.env.base
+
+# OS-generated files
+.DS_Store
+
+# Test results
 test-results
 
-# PartyKit sqlite dbs for persistence
+# PartyKit
 .partykit
 
+# Private files
 .private
-.cursor/*
+.cursor
 .cursorrc
