@@ -1,6 +1,11 @@
 {
   "name": "logoi-monorepo",
-  "private": true,
+  "private": true, 
+  "packageManager": "pnpm@10.12.4",
+  "engines": {
+    "node": "^24.0.2",
+    "pnpm": "10.12.4"
+  },
   "scripts": {
     "blog": "pnpm --filter @logoi/blog",
     "dev": "pnpm --filter @logoi/blog dev",
