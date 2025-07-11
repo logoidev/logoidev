@@ -28,7 +28,7 @@
 
 <div
 	role="presentation"
-	class={clsx('button relative mt-12 mb-6 flex items-center justify-center', [
+	class={clsx('button relative mt-10 mb-6 flex items-center justify-center', [
 		isShown ? 'shown' : 'h-8',
 		isGolden ? 'golden' : ''
 	])}
