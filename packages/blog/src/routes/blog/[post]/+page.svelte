@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import BookMeeting from 'src/components/BookMeeting.svelte';
 	import EmailButton from 'src/components/EmailButton.svelte';
+	import { COMPANY_NAME } from 'src/data/consts';
 	import { INTRO_EMAIL } from 'src/data/emails';
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
 	import CodeOnGithub from 'src/components/CodeOnGithub.svelte';
@@ -36,7 +37,7 @@
 <div>
 	<div class="flex justify-center items-center mb-4">
 		<a href="/blog" class="flex flex-col items-center">
-			<span class="text-2xl text-center font-serif mt-4">Design & Development</span>
+			<span class="text-2xl text-center font-serif mt-4">{COMPANY_NAME}</span>
 			<Image class="w-44" src="/images/blog.svg" />
 		</a>
 	</div>

@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, type Locale, type LocaleCode, LOCALES } from './locale.schema';
+import { DEFAULT_LOCALE, type LocaleCode, LOCALES } from './locale.schema';
 
 export function getLocale(code: LocaleCode) {
 	return LOCALES.find((locale) => locale.code === code) ?? DEFAULT_LOCALE;

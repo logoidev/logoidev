@@ -29,9 +29,14 @@
 {:else}
 	<div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-4">
 		<div class="flex flex-col justify-center items-center min-h-[100svh]">
-			<Header noLink greek={isUnlocked} loading={isNewBannerLoading} />
+			<Header
+				noLink
+				greek={isUnlocked}
+				loading={isNewBannerLoading}
+				class="flex-col-reverse mt-0"
+			/>
 
-			<p role="heading" aria-level="2" class="text-xl max-w-md text-center px-10 my-4">
+			<p role="heading" aria-level="2" class="text-xl max-w-md text-center px-10 mb-4 mt-6">
 				We bring innovation, advanced technology and solid design to serve the Church, empower her
 				people and glorify God.
 			</p>

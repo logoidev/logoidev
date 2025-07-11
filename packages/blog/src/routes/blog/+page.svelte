@@ -11,6 +11,7 @@
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
 	import BlogMeta from 'src/components/BlogMeta.svelte';
 	import { trackEvent } from 'src/lib/analytics/posthog';
+	import { COMPANY_NAME } from 'src/data/consts';
 
 	let rounded = true;
 </script>
@@ -20,7 +21,7 @@
 <div class="flex flex-col justify-between min-h-[100svh]">
 	<div class="flex justify-center items-center">
 		<a href="/" class="flex flex-col items-center">
-			<span class="text-2xl text-center font-serif mt-4">Design & Development</span>
+			<span class="text-2xl text-center font-serif mt-4">{COMPANY_NAME}</span>
 			<Image class="w-44" src="./images/blog.svg" />
 		</a>
 	</div>

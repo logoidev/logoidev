@@ -11,3 +11,5 @@ export const getFullMainUrl = (referrer: LinkReferrer, coinId?: string) => {
 	return `${ORIGIN}?${SEARCH_TERM}=${referrer}`;
 };
 export const COMPANY_LEGAL_NAME = 'Logoi Development Ltd.';
+
+export const COMPANY_NAME = 'Logoi Development';
