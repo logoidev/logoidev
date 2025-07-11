@@ -1,6 +1,7 @@
 import { capitalizeFirst } from '../shared/utils';
 
 export type SocialLinkType =
+	| 'x'
 	| 'twitter'
 	| 'linkedin'
 	| 'snap'

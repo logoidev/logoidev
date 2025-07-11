@@ -11,6 +11,7 @@
 	export let withSeparators = true;
 	export let withToggle = false;
 	export let withTitle = false;
+	export let withLabels = false;
 
 	let isOpen = !withToggle;
 </script>
@@ -36,6 +37,7 @@
 			<ul class="text-2xl flex flex-wrap items-center justify-center max-w-md mx-10 my-2 px-1">
 				{#each socials as social, index}
 					<SocialLinkElement
+						withLabel={withLabels}
 						class={clsx('social-link-element', {
 							'social-link-element-last-odd-child':
 								index === socials.length - 1 && socials.length % 2 === 1

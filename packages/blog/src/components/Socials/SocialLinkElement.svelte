@@ -2,10 +2,11 @@
 	import { capitalizeFirst } from 'src/shared/utils';
 	import { getFullSocialLink, type FullSocialLink, type SocialLink } from 'src/types/social-link';
 	import Image from '../Image.svelte';
+	import { cn } from 'src/lib/utility/cn';
 
-	let className = '';
-	export { className as class };
 	export let social: SocialLink;
+	export let withLabel = true;
+
 	let fullSocial = getFullSocialLink(social);
 
 	let isQrModalOpen = false;
@@ -27,9 +28,9 @@
 	};
 </script>
 
-<li class={`my-2 flex justify ${className}`}>
+<li class={cn(`my-2 flex justify`, $$props.class)} title={fullSocial.name}>
 	<a
-		class="flex pr-2 justify justify-center items-center"
+		class="flex mx-1 justify justify-center items-center"
 		href={fullSocial.url}
 		target="__blank"
 		on:click={(e) => onClick(e, fullSocial)}
@@ -37,7 +38,9 @@
 		{#if fullSocial.image}
 			<Image class="w-6 m-2" alt={fullSocial.alt} src={fullSocial.image} />
 		{/if}
-		<span>{fullSocial.name || capitalizeFirst(fullSocial.type)}</span>
+		{#if withLabel}
+			<span>{fullSocial.name || capitalizeFirst(fullSocial.type)}</span>
+		{/if}
 	</a>
 </li>
 

@@ -69,7 +69,7 @@
 		{/if}
 
 		<br />
-		<Socials socials={userData.socials} />
+		<Socials socials={userData.socials} withLabels />
 
 		{#if userData.has_resume}
 			<ResumeLink id={userData.id} />

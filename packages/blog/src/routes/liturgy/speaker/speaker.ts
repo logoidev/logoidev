@@ -9,7 +9,7 @@ const contactSchema = z.object({
 
 // Schema for speaker social media
 const socialMediaSchema = z.object({
-	twitter: z.string().optional(),
+	x: z.string().optional(),
 	linkedin: z.string().optional(),
 	github: z.string().optional(),
 	instagram: z.string().optional()

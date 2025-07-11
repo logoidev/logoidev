@@ -7,8 +7,8 @@ export const SOCIALS: Array<SocialLink> = [
 		url: 'https://www.linkedin.com/company/logoidev/'
 	},
 	{
-		type: 'twitter',
-		url: 'https://twitter.com/logoidev'
+		type: 'x',
+		url: 'https://x.com/logoidev'
 	},
 	{
 		type: 'github',

@@ -29,12 +29,7 @@
 {:else}
 	<div class="flex flex-col touch-manipulation scroll-smooth font-serif mt-4">
 		<div class="flex flex-col justify-center items-center min-h-[100svh]">
-			<Header
-				noLink
-				greek={isUnlocked}
-				loading={isNewBannerLoading}
-				class="flex-col-reverse mt-0"
-			/>
+			<Header noLink greek={isUnlocked} loading={isNewBannerLoading} />
 
 			<p role="heading" aria-level="2" class="text-xl max-w-md text-center px-10 mb-4 mt-6">
 				We bring innovation, advanced technology and solid design to serve the Church, empower her
@@ -50,7 +45,7 @@
 
 			<Projects />
 
-			<Socials withToggle withTitle />
+			<Socials withToggle withTitle withLabels={false} />
 
 			<IconLink
 				href="blog"

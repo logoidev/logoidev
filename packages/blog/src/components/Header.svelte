@@ -16,10 +16,10 @@
 	$: bannerUrl = greek ? '/images/banners/logos-greek.svg' : '/images/logo-big.svg';
 </script>
 
-<div class={cn('flex flex-col items-center', $$props.class)} style={`scale: ${scale}`}>
+<div class={cn('flex flex-col-reverse items-center mt-0', $$props.class)} style={`scale: ${scale}`}>
 	{#if withTitle}
 		<button
-			class={cn('text-2xl text-center mt-4 font-trajan', $$props.class)}
+			class={cn('text-2xl text-center font-trajan', $$props.class)}
 			on:click={() => dispatch('title-click')}
 		>
 			{title}
