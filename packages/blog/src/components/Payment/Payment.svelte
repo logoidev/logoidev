@@ -17,7 +17,6 @@
 	export let cta = '';
 	export let give = false;
 	export let coinId: string | null = null;
-	const reward = $$props.$$slots?.reward;
 
 	type StripeElements = unknown;
 
@@ -132,10 +131,6 @@
 			<div>
 				<div class="text-green-700">Thank you! ❤️</div>
 				<div class="text-gray-500 mt-2">${donatedAmount} received</div>
-
-				{#if reward}
-					<slot name="reward" />
-				{/if}
 			</div>
 		{:else if thankYouShown}
 			<div class="flex flex-col gap-2">
