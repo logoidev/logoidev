@@ -52,13 +52,7 @@
 	<div class="flex flex-col justify-center items-center font-serif">
 		<Socials withToggle />
 
-		<ToggleQr
-			animated
-			{rounded}
-			url={getIndexUrl('/blog')}
-			imageSrc="/images/qr.svg"
-			on:click={() => (rounded = !rounded)}
-		/>
+		<ToggleQr animated {rounded} url={getIndexUrl('/blog')} on:click={() => (rounded = !rounded)} />
 
 		<Copyright />
 	</div>

@@ -58,7 +58,6 @@
 			animated
 			{rounded}
 			url={getIndexUrl('/resolutions')}
-			qrGraphicSrc="/images/qr.svg"
 			on:click={() => (rounded = !rounded)}
 		/>
 

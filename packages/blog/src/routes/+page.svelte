@@ -69,7 +69,6 @@
 					animated
 					{rounded}
 					url={getIndexUrl()}
-					qrGraphicSrc="/images/qr.svg"
 					password={[0, 1, 2]}
 					on:click={() => (rounded = !rounded)}
 					on:unlock={() => (isUnlocked = true)}

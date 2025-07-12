@@ -38,7 +38,6 @@
 			animated
 			{rounded}
 			url={getIndexUrl($page.url.pathname)}
-			qrGraphicSrc="/images/qr.svg"
 			on:click={() => (rounded = !rounded)}
 		/>
 

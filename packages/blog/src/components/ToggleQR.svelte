@@ -9,9 +9,6 @@
 
 	const dispatch = createEventDispatcher();
 
-	let className = '';
-	export { className as class };
-
 	export let shown = false;
 	export let url: string;
 	export let qrGraphicSrc: string | undefined = undefined;
@@ -59,7 +56,7 @@
 {#if isQrShown}
 	<div
 		bind:this={qrWrapperElement}
-		class={clsx('w-2/3 max-w-xs flex justify-center relative rounded-lg', className)}
+		class={clsx('w-2/3 max-w-xs flex justify-center relative rounded-lg', $$props.class)}
 	>
 		{#if isUnlocked && unlockImageSrc}
 			<Image class="mt-4" src={unlockImageSrc} />

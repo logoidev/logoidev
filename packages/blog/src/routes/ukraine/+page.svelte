@@ -173,7 +173,6 @@
 				animated
 				{rounded}
 				url={getIndexUrl('/ukraine')}
-				imageSrc="/images/qr.svg"
 				password={[0, 1, 2]}
 				on:click={() => (rounded = !rounded)}
 				on:unlock={() => (isUnlocked = true)}

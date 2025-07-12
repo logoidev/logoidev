@@ -4,35 +4,40 @@ export const posts = [
 		title: 'Logoi and our Vision',
 		published: '2023-11-01T14:44:44.444Z',
 		minutesToRead: 8,
-		gh_discussion_id: 19
+		gh_discussion_id: 19,
+		hidden: false
 	},
 	{
 		id: 'arc',
 		title: 'Six important questions before building an ARC',
 		published: '2023-11-06T19:11:11.00Z',
 		minutesToRead: 6,
-		gh_discussion_id: 25
+		gh_discussion_id: 25,
+		hidden: false
 	},
 	{
 		id: 'yazan',
 		title: 'Enacting Yazan',
 		published: '2023-11-18T15:00:00.00Z',
 		minutesToRead: 7,
-		gh_discussion_id: 32
+		gh_discussion_id: 32,
+		hidden: false
 	},
 	{
 		id: 'logoi',
 		title: 'Logoi - the guiding locus of Value',
 		published: '2024-02-11T18:00:00.00Z',
 		minutesToRead: 3,
-		gh_discussion_id: 35
+		gh_discussion_id: 35,
+		hidden: false
 	},
 	{
 		id: 'eucharistic-economy',
 		title: 'Eucharistic Economy',
 		published: '2025-04-22T18:00:00.00Z',
 		minutesToRead: 5,
-		gh_discussion_id: 50
+		gh_discussion_id: 50,
+		hidden: false
 	},
 	{
 		id: 'jbp',
@@ -67,6 +72,7 @@ type PostWithoutId = {
 	minutesToRead: number;
 	gh_discussion_id: number;
 	Content: ConstructorOfATypedSvelteComponent;
+	hidden?: boolean;
 };
 export type Post = PostWithoutId & { id: PostId };
 

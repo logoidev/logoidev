@@ -19,9 +19,7 @@
 
 	import Image from 'src/components/Image.svelte';
 
-	export let data: Post | null;
-
-	const post = data!;
+	export let data;
 
 	let minutesToRead = 0;
 	let rounded = true;
@@ -32,7 +30,7 @@
 	});
 </script>
 
-<BlogMeta title={post.title} type="article" url={`/blog/${post.id}`} previewImageUrl="" />
+<BlogMeta title={data.title} type="article" url={`/blog/${data.id}`} previewImageUrl="" />
 
 <div>
 	<div class="flex justify-center items-center mb-4">
@@ -43,7 +41,7 @@
 	</div>
 
 	<div class="flex flex-col justify-center items-center gap-2 mb-4 relative">
-		<h2 class="text-3xl font-serif text-center">{post.title}</h2>
+		<h2 class="text-3xl font-serif text-center">{data.title}</h2>
 
 		{#if minutesToRead}
 			<ReadEstimate estimate={minutesToRead} />
@@ -52,25 +50,25 @@
 	</div>
 
 	<div class="sm:w-3/4 sm:mx-auto mx-6">
-		{#key post.id}
-			<svelte:component this={post.Content} />
+		{#key data.id}
+			<svelte:component this={data.Content} />
 		{/key}
-		{#if !post.hidden}
-			<CodeOnGithub path={`lib/posts/${post.id}.svelte`} />
+		{#if !data.hidden}
+			<CodeOnGithub path={`lib/posts/${data.id}.svelte`} />
 		{/if}
 	</div>
 
 	<div class="flex flex-col justify-center items-center gap-2 mt-4">
 		<Separator />
-		<time title={`Published at ${new Date(post.published).toLocaleTimeString()}`}>
-			{new Date(post.published).toLocaleDateString()}
+		<time title={`Published at ${new Date(data.published).toLocaleTimeString()}`}>
+			{new Date(data.published).toLocaleDateString()}
 		</time>
 	</div>
 
 	<div class="flex flex-col items-center mt-12 gap-2">
-		{#if post.gh_discussion_id}
+		{#if data.gh_discussion_id}
 			<LinkButton
-				href={`https://github.com/logoidev/logoidev/discussions/${post.gh_discussion_id}`}
+				href={`https://github.com/logoidev/logoidev/discussions/${data.gh_discussion_id}`}
 				text="Discuss on GitHub"
 				title="Public discussion where all commenters are welcome"
 			/>
@@ -78,7 +76,7 @@
 
 			<EmailButton
 				email={INTRO_EMAIL}
-				subject={`Logoi Blog - "${post.title}"`}
+				subject={`Logoi Blog - "${data.title}"`}
 				title="Email us with comments privately"
 			/>
 			<span>or</span>
@@ -92,8 +90,7 @@
 		<ToggleQr
 			animated
 			{rounded}
-			url={getIndexUrl(post ? `/blog/${post.id}` : '/blog')}
-			imageSrc="/images/qr.svg"
+			url={getIndexUrl(data ? `/blog/${data.id}` : '/blog')}
 			on:click={() => (rounded = !rounded)}
 		/>
 
