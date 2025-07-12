@@ -5,7 +5,7 @@ import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import { isAdminFromUrl, isValidAdminCode } from './utils/admin';
+import { isAdminFromUrl } from './utils/admin';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

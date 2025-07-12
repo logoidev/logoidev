@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { LOCALES_CODES } from '../locale/locale.schema';
 
 // Schema for paragraph content
 const paragraphSchema = z.object({
@@ -23,7 +24,7 @@ const authorSchema = z.object({
 
 // Main liturgy schema
 export const liturgySchema = z.object({
-	language_code: z.string(),
+	language_code: z.enum(LOCALES_CODES),
 	title: z.string(),
 	author: authorSchema,
 	date: z.string(),

@@ -13,6 +13,7 @@
 	import Copyright from 'src/components/Copyright.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
 	import { page } from '$app/stores';
+	import Header from 'src/components/Header.svelte';
 
 	export let data;
 
@@ -224,6 +225,10 @@
 <svelte:head>
 	<title>{t.pageTitle} - {displayLiturgy?.title || t.loading}</title>
 </svelte:head>
+
+<div class="flex w-full mt-6 items-center justify-center text-center">
+	<Header class="w-48 text-base" />
+</div>
 
 <!-- Alert Container for notifications -->
 <AlertContainer />

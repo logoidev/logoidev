@@ -32,24 +32,54 @@
         {
           "type": "paragraph",
           "by": "Faithful",
-          "text": "Who was crucified for us under Pontius Pilate, and suffered and was buried; and He rose on the third day according to the Scriptures;"
+          "text": "Who was crucified for us under Pontius Pilate, and suffered and was buried;"
         },
         {
           "type": "paragraph",
           "by": "Faithful",
-          "text": "and ascended into heaven, and sits at the right hand of the Father; and He will come again with glory to judge the living and the dead, and His kingdom will have no end;"
+          "text": "and He rose on the third day according to the Scriptures;"
         },
         {
           "type": "paragraph",
           "by": "Faithful",
+          "text": "and ascended into heaven, and sits at the right hand of the Father;",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "and He will come again with glory to judge the living and the dead, and His kingdom will have no end;",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "All",
           "text": "And in the Holy Spirit, the Lord, the Giver of Life, who proceeds from the Father, who together with the Father and the Son is worshipped and glorified, who spoke through the Prophets;",
           "cross": true
         },
         {
           "type": "paragraph",
-          "by": "Faithful",
-          "text": "And in One, Holy, Catholic and Apostolic Church; I acknowledge one baptism for the remission of sins; I await the resurrection of the dead, and the life of the age to come. Amen.",
+          "by": "All",
+          "text": "And in One, Holy, Catholic and Apostolic Church;",
           "cross": true
+        },
+        {
+          "type": "paragraph",
+          "by": "All",
+          "text": " I acknowledge one baptism for the remission of sins;",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "All",
+          "text": "I await the resurrection of the dead,",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "All",
+          "text": "and the life of the age to come. Amen.",
+          "cross": false
         }
       ]
     }

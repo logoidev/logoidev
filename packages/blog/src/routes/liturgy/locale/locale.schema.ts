@@ -1,12 +1,5 @@
 import { z } from 'zod';
 
-const ukrainianLocale = {
-	name: 'Ukrainian',
-	localName: 'Українська',
-	code: 'uk',
-	flag: '🇺🇦'
-} as const;
-
 const englishLocale = {
 	name: 'English',
 	localName: 'English',
@@ -14,15 +7,29 @@ const englishLocale = {
 	flag: '🇺🇸'
 } as const;
 
-export const LOCALES = [ukrainianLocale, englishLocale] as const;
+const ukrainianLocale = {
+	name: 'Ukrainian',
+	localName: 'Українська',
+	code: 'uk',
+	flag: '🇺🇦'
+} as const;
+
+const russianLocale = {
+	name: 'Russian',
+	localName: 'Русский',
+	code: 'ru',
+	flag: '🇷🇺'
+} as const;
+
+export const LOCALES = [englishLocale, ukrainianLocale, russianLocale] as const;
+
+export const LOCALES_CODES = [
+	englishLocale.code,
+	ukrainianLocale.code,
+	russianLocale.code
+] as const;
 
 export const DEFAULT_LOCALE = englishLocale;
-
-const ukrainianLocaleSchema = z.object({
-	name: z.literal(ukrainianLocale.name),
-	code: z.literal(ukrainianLocale.code),
-	flag: z.literal(ukrainianLocale.flag)
-});
 
 const englishLocaleSchema = z.object({
 	name: z.literal(englishLocale.name),
@@ -30,9 +37,22 @@ const englishLocaleSchema = z.object({
 	flag: z.literal(englishLocale.flag)
 });
 
+const ukrainianLocaleSchema = z.object({
+	name: z.literal(ukrainianLocale.name),
+	code: z.literal(ukrainianLocale.code),
+	flag: z.literal(ukrainianLocale.flag)
+});
+
+const russianLocaleSchema = z.object({
+	name: z.literal(russianLocale.name),
+	code: z.literal(russianLocale.code),
+	flag: z.literal(russianLocale.flag)
+});
+
 export const localeSchema = z.discriminatedUnion('code', [
+	englishLocaleSchema,
 	ukrainianLocaleSchema,
-	englishLocaleSchema
+	russianLocaleSchema
 ]);
 
 export type Locale = z.infer<typeof localeSchema>;
