@@ -21,12 +21,25 @@ const russianLocale = {
 	flag: '🇷🇺'
 } as const;
 
-export const LOCALES = [englishLocale, ukrainianLocale, russianLocale] as const;
+const churchSlavonicLocale = {
+	name: 'Church Slavonic',
+	localName: 'Церковнославянский',
+	code: 'cu',
+	flag: '📜'
+} as const;
+
+export const LOCALES = [
+	englishLocale,
+	ukrainianLocale,
+	russianLocale,
+	churchSlavonicLocale
+] as const;
 
 export const LOCALES_CODES = [
 	englishLocale.code,
 	ukrainianLocale.code,
-	russianLocale.code
+	russianLocale.code,
+	churchSlavonicLocale.code
 ] as const;
 
 export const DEFAULT_LOCALE = englishLocale;
@@ -49,10 +62,17 @@ const russianLocaleSchema = z.object({
 	flag: z.literal(russianLocale.flag)
 });
 
+const churchSlavonicLocaleSchema = z.object({
+	name: z.literal(churchSlavonicLocale.name),
+	code: z.literal(churchSlavonicLocale.code),
+	flag: z.literal(churchSlavonicLocale.flag)
+});
+
 export const localeSchema = z.discriminatedUnion('code', [
 	englishLocaleSchema,
 	ukrainianLocaleSchema,
-	russianLocaleSchema
+	russianLocaleSchema,
+	churchSlavonicLocaleSchema
 ]);
 
 export type Locale = z.infer<typeof localeSchema>;
