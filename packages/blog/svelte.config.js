@@ -26,7 +26,6 @@ export default {
 					'sqlite',
 					'sqlite3',
 					'stripe',
-					'svelte-stripe',
 					'typeorm'
 				]
 			}
