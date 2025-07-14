@@ -117,10 +117,46 @@ const ukTranslations: Translations = {
 	loading: 'Завантаження даних літургії...'
 };
 
+const ruTranslations: Translations = {
+	pageTitle: 'Литургия',
+	adminMode: 'Режим администратора',
+	viewMode: 'Режим просмотра',
+	adminModeDescription:
+		'Вы находитесь в режиме администратора. Вы можете редактировать содержимое ниже. Изменения будут сохранены при нажатии "Сохранить".',
+	save: 'Сохранить',
+	reset: 'Сбросить',
+	title: 'Заголовок',
+	language: 'Язык',
+	date: 'Дата',
+	location: 'Место',
+	authorName: 'Имя автора',
+	authorBy: 'Автор',
+	sectionName: 'Название раздела',
+	speaker: 'Проповедник (от)',
+	text: 'Текст',
+	hasCross: 'Знак креста (✝)',
+	addParagraph: 'Добавить абзац',
+	addNewSection: 'Добавить новый раздел',
+	deleteSection: 'Удалить раздел',
+	delete: 'Удалить',
+	customSpeaker: 'Особый чтец',
+	enterCustomSpeaker: 'Введите имя чтеца',
+	languageLabel: 'Язык',
+	authorLabel: 'Автор',
+	authorByLabel: 'Автор',
+	dateLabel: 'Дата',
+	locationLabel: 'Место',
+	viewRawJson: 'Просмотреть не обработанные JSON данные',
+	viewRawJsonAdmin: 'Просмотреть не обработанные JSON данные (только для администраторов)',
+	loading: 'Загрузка данных литургии...'
+};
+
 // Translation map
 const translations: Record<LocaleCode, Translations> = {
 	en: enTranslations,
-	uk: ukTranslations
+	uk: ukTranslations,
+	ru: ruTranslations,
+	cu: ukTranslations
 };
 
 // Function to get translations for a locale
