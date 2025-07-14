@@ -1,10 +1,20 @@
 import { join } from 'path';
 import { writeFile, mkdir } from 'fs/promises';
 import { type Liturgy, liturgySchema } from './liturgy.schema';
-import type { Locale } from '../locale/locale.schema';
+import type { Locale, LocaleCode } from '../locale/locale.schema';
 
-const DATA_DIR = join(process.cwd(), 'src', 'data');
-const SYMBOL_DIR = join(DATA_DIR, 'texts', 'symbol');
+const LEVELS_TO_ROOT = 4;
+
+const DIRECTORIES_TO_ROOT = Array.from({ length: LEVELS_TO_ROOT })
+	.map(() => '..')
+	.join('/');
+
+// Get the directory path relative to the current file
+const packageRoot = join(import.meta.dirname, DIRECTORIES_TO_ROOT);
+
+const SYMBOL_DIR = join(packageRoot, 'src/data/texts/symbol');
+
+const getSymbolFileName = (localeCode: LocaleCode) => `symbol.${localeCode}.json`;
 
 // Cache for different locales
 const liturgyCache = new Map<string, Liturgy>();
@@ -18,11 +28,10 @@ export async function getLiturgyData(locale: Locale): Promise<Liturgy | null> {
 	}
 
 	try {
-		// TODO: Make more dynamic
-
-		// Dynamically import the liturgy data for the specific locale
-		const liturgyFilePath = join(SYMBOL_DIR, `symbol.${locale.code}.json`);
-		const liturgyData = await import(/* @vite-ignore */ liturgyFilePath);
+		// Dynamically import the liturgy data for the specific locale using $lib alias
+		const symbolFilePath = join(SYMBOL_DIR, getSymbolFileName(locale.code));
+		console.log('importing symbolFilePath', symbolFilePath);
+		const liturgyData = await import(/* @vite-ignore */ symbolFilePath);
 
 		// Validate the data against our schema
 		const parsedLiturgy = liturgySchema.safeParse(liturgyData.default);
@@ -48,7 +57,7 @@ export async function getLiturgyData(locale: Locale): Promise<Liturgy | null> {
 
 export async function writeLiturgyData(liturgy: Liturgy): Promise<void> {
 	// Determine file path based on language code
-	const fileName = `symbol.${liturgy.language_code}.json`;
+	const fileName = getSymbolFileName(liturgy.language_code as LocaleCode);
 	const filePath = join(SYMBOL_DIR, fileName);
 
 	// Ensure data directory exists
