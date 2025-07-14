@@ -1,31 +1,33 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { alerts } from 'src/lib/stores/alert';
+	import LanguageDropdown from 'src/components/LanguageDropdown.svelte';
+	import AlertContainer from 'src/components/AlertContainer.svelte';
+	import LiturgyView from 'src/components/LiturgyView.svelte';
+	import ToggleQR from 'src/components/ToggleQR.svelte';
+	import Copyright from 'src/components/Copyright.svelte';
+	import Header from 'src/components/Header.svelte';
+	import { getIndexUrl } from 'src/shared/routes';
+	import { liturgyStore, type LiturgyState } from 'src/lib/stores/liturgy';
 	import type { Speaker } from './speaker/speaker';
 	import type { Locale } from './locale/locale.schema';
 	import { LOCALES } from './locale/locale.schema';
 	import { getTranslations } from './translations/translations';
-	import LanguageDropdown from '../../components/LanguageDropdown.svelte';
-	import AlertContainer from '../../components/AlertContainer.svelte';
-	import LiturgyView from '../../components/LiturgyView.svelte';
-	import ToggleQR from '../../components/ToggleQR.svelte';
-	import { alerts } from '../../lib/stores/alert';
-	import { liturgyStore } from '../../lib/stores/liturgy';
-	import { onMount } from 'svelte';
-	import Copyright from 'src/components/Copyright.svelte';
-	import { getIndexUrl } from 'src/shared/routes';
-	import { page } from '$app/stores';
-	import Header from 'src/components/Header.svelte';
+	import type { AppData } from './types';
 
-	export let data;
+	export let data: AppData;
 
 	$: ({ liturgy, locale, speakers, isAdmin } = data);
 
-	$: console.log(liturgy, locale, speakers);
+	$: console.log('$liturgyStore', data);
 
 	// Get translations for current locale
 	$: t = getTranslations(locale.code);
 
 	// Subscribe to store
-	$: storeState = $liturgyStore;
+	// TODO: Fix typescript issue with app being built
+	$: storeState = $liturgyStore as LiturgyState;
 	$: console.log('Store state:', storeState);
 
 	// Initialize store with data
@@ -53,7 +55,7 @@
 
 	// Get speaker info by name
 	function getSpeakerInfo(speakerName: string): Speaker | undefined {
-		return storeState.speakers.find((speaker) => speaker.name === speakerName);
+		return (storeState.speakers ?? []).find((speaker) => speaker.name === speakerName);
 	}
 
 	// Get localized language name
@@ -80,7 +82,7 @@
 
 			const newData = await response.json();
 
-			// Update store with new data
+			// Reinitialize store with new data
 			liturgyStore.initialize(newData.liturgy, newData.speakers, isAdmin);
 		} catch (error) {
 			console.error('Error fetching liturgy data:', error);
@@ -267,6 +269,7 @@
 		</div>
 	{:else if displayLiturgy}
 		<!-- Regular View with Inline Editing for Admins -->
+
 		<LiturgyView
 			liturgy={displayLiturgy}
 			speakers={storeState.speakers}

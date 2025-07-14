@@ -2,7 +2,7 @@
 	import type { Liturgy } from '../routes/liturgy/liturgy/liturgy.schema';
 	import type { Speaker } from '../routes/liturgy/speaker/speaker';
 	import InlineEditable from './InlineEditable.svelte';
-	import { liturgyStore } from '../lib/stores/liturgy';
+	import { liturgyStore, type LiturgyState } from '../lib/stores/liturgy';
 	import { cn } from 'src/lib/utility/cn';
 
 	export let liturgy: Liturgy;
@@ -23,7 +23,7 @@
 	let isInline = true;
 
 	// Subscribe to store
-	$: storeState = $liturgyStore;
+	$: storeState = $liturgyStore as LiturgyState;
 	$: displayLiturgy = liturgyStore.getDisplayLiturgy(storeState, {
 		isInline
 	});

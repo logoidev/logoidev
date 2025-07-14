@@ -13,7 +13,7 @@ export interface LiturgyState {
 }
 
 function createLiturgyStore() {
-	const { subscribe, set, update } = writable<LiturgyState>({
+	const liturgyStore = writable<LiturgyState>({
 		liturgy: null,
 		speakers: [],
 		isLoading: false,
@@ -22,6 +22,8 @@ function createLiturgyStore() {
 		editedLiturgy: null,
 		allSpeakers: []
 	});
+
+	const { subscribe, set, update } = liturgyStore;
 
 	function getInlineLiturgy(state: LiturgyState): Liturgy | null {
 		if (!state.liturgy) return null;
