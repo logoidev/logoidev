@@ -1,0 +1,37 @@
+import type { Translations } from '../translations.types';
+
+// TODO: Revisit with Jackson
+export default {
+	pageTitle: 'Литоургия',
+	adminMode: 'Настройки',
+	viewMode: 'Преглед',
+	adminModeDescription: 'Вие сте в зоната на настройките на литургията.',
+	save: 'Запази',
+	reset: 'Възстановяване',
+	title: 'Заглавие',
+	language: 'Език',
+	date: 'Дата',
+	location: 'Местоположение',
+	authorName: 'Име на автора',
+	authorBy: 'Автор',
+	sectionName: 'Заглавие на секция',
+	speaker: 'Проповедник',
+	text: 'Текст',
+	hasCross: 'Използване на знак (✝)',
+	addParagraph: 'Добавяне на параграф',
+	addNewSection: 'Добавяне на нова секция',
+	deleteSection: 'Изтриване на секция',
+	delete: 'Изтриване',
+	customSpeaker: 'Персонализиран проповедник',
+	enterCustomSpeaker: 'Въведете името на персонализирания проповедник',
+	languageLabel: 'Език',
+	authorLabel: 'Автор',
+	authorByLabel: 'Автор',
+	dateLabel: 'Дата',
+	locationLabel: 'Местоположение',
+	viewRawJson: 'Преглед на JSON',
+	viewRawJsonAdmin: 'Преглед на JSON (само за администратори)',
+	loading: 'Зареждане на литургията...',
+	error: 'Грешка',
+	tryAgain: 'Опитайте отново'
+} satisfies Translations;

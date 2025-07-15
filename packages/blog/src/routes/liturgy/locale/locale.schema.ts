@@ -42,6 +42,13 @@ const greekLocale = {
 	flag: '🇬🇷'
 } as const satisfies GenericLocale;
 
+const bulgarianLocale = {
+	name: 'Bulgarian',
+	localName: 'Български',
+	code: 'bg',
+	flag: '🇧🇬'
+} as const satisfies GenericLocale;
+
 export const DEFAULT_LOCALE = englishLocale;
 
 export const LOCALES = [
@@ -49,7 +56,8 @@ export const LOCALES = [
 	ukrainianLocale,
 	russianLocale,
 	churchSlavonicLocale,
-	greekLocale
+	greekLocale,
+	bulgarianLocale
 ] as const;
 
 export const LOCALES_CODES = LOCALES.map((locale) => locale.code) as LocaleCode[];
@@ -59,7 +67,8 @@ export const localeSchema = z.discriminatedUnion('code', [
 	toLanguageLocaleSchema(ukrainianLocale),
 	toLanguageLocaleSchema(russianLocale),
 	toLanguageLocaleSchema(churchSlavonicLocale),
-	toLanguageLocaleSchema(greekLocale)
+	toLanguageLocaleSchema(greekLocale),
+	toLanguageLocaleSchema(bulgarianLocale)
 ]);
 
 export const localeCodeSchema = localeSchema
