@@ -1,8 +1,6 @@
 import { MongoClient } from 'mongodb';
 
-// const MONGODB_URI = process.env.SECRET_MONGODB_URI;
-const MONGODB_URI =
-	'mongodb+srv://vlad:sjsO5ptYebfZvxy3@logoi-blog.saqcovm.mongodb.net/?retryWrites=true&w=majority&appName=logoi-blog';
+const MONGODB_URI = process.env.SECRET_MONGODB_URI;
 const DB_NAME = 'logoi';
 
 let client: MongoClient | null = null;
@@ -15,10 +13,7 @@ export const getMongoClient = async (): Promise<MongoClient> => {
 			}
 
 			console.log('Connecting to MongoDB:', MONGODB_URI);
-			client = new MongoClient(MONGODB_URI, {
-				serverSelectionTimeoutMS: 5000,
-				connectTimeoutMS: 5000
-			});
+			client = new MongoClient(MONGODB_URI);
 			await client.connect();
 			console.log('MongoDB connected successfully');
 		} catch (error) {
