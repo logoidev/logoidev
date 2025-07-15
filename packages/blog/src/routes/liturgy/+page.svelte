@@ -271,9 +271,8 @@
 		<!-- Regular View with Inline Editing for Admins -->
 
 		<LiturgyView
-			liturgy={displayLiturgy}
-			speakers={storeState.speakers}
 			{isAdmin}
+			speakers={storeState.speakers}
 			isLoading={storeState.isLoading}
 			allSpeakers={storeState.allSpeakers}
 			onSave={isAdmin ? saveChanges : null}

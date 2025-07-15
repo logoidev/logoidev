@@ -5,7 +5,6 @@
 	import { liturgyStore, type LiturgyState } from '../lib/stores/liturgy';
 	import { cn } from 'src/lib/utility/cn';
 
-	export let liturgy: Liturgy;
 	export let speakers: Speaker[];
 	export let isAdmin: boolean = false;
 	export let isLoading: boolean = false;

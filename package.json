@@ -10,6 +10,7 @@
     "blog": "pnpm --filter @logoi/blog",
     "dev": "pnpm --filter @logoi/blog dev",
     "build": "pnpm --filter @logoi/blog build",
+    "preview": "pnpm --filter @logoi/blog preview",
     "test": "pnpm --filter @logoi/blog test",
     "lint": "pnpm --filter @logoi/blog lint",
     "format": "pnpm --filter @logoi/blog format"

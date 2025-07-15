@@ -1,5 +1,5 @@
 import { join } from 'path';
-import { writeFile, mkdir } from 'fs/promises';
+import { writeFile, mkdir, readFile } from 'fs/promises';
 import { type Liturgy, liturgySchema } from './liturgy.schema';
 import type { Locale, LocaleCode } from '../locale/locale.schema';
 
@@ -28,20 +28,22 @@ export async function getLiturgyData(locale: Locale): Promise<Liturgy | null> {
 	}
 
 	try {
-		// Dynamically import the liturgy data for the specific locale using $lib alias
 		const symbolFilePath = join(SYMBOL_DIR, getSymbolFileName(locale.code));
-		console.log('importing symbolFilePath', symbolFilePath);
-		const liturgyData = await import(/* @vite-ignore */ symbolFilePath);
+		console.log('Reading liturgy file:', symbolFilePath);
+
+		// Read the JSON file directly
+		const fileContent = await readFile(symbolFilePath, 'utf-8');
+		const liturgyData = JSON.parse(fileContent);
 
 		// Validate the data against our schema
-		const parsedLiturgy = liturgySchema.safeParse(liturgyData.default);
+		const parsedLiturgy = liturgySchema.safeParse(liturgyData);
 
 		if (!parsedLiturgy.success) {
 			console.error(
 				`Liturgy data validation failed for locale ${locale.code}:`,
 				parsedLiturgy.error
 			);
-			console.error(`Raw data that failed validation:`, liturgyData.default);
+			console.error(`Raw data that failed validation:`, liturgyData);
 			return null;
 		}
 
