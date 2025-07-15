@@ -1,20 +1,15 @@
-import { join } from 'path';
-import { writeFile, mkdir, readFile } from 'fs/promises';
 import { type Liturgy, liturgySchema } from './liturgy.schema';
 import type { Locale, LocaleCode } from '../locale/locale.schema';
+import { getMongoClient } from 'src/db/mongodb';
+import { z } from 'zod';
 
-const LEVELS_TO_ROOT = 4;
+const genericMongoFieldsSchema = z.object({
+	_id: z.object({}),
+	created_at: z.date(),
+	updated_at: z.date()
+});
 
-const DIRECTORIES_TO_ROOT = Array.from({ length: LEVELS_TO_ROOT })
-	.map(() => '..')
-	.join('/');
-
-// Get the directory path relative to the current file
-const packageRoot = join(import.meta.dirname, DIRECTORIES_TO_ROOT);
-
-const SYMBOL_DIR = join(packageRoot, 'src/data/texts/symbol');
-
-const getSymbolFileName = (localeCode: LocaleCode) => `symbol.${localeCode}.json`;
+const liturgySchemaWithGenericFields = liturgySchema.extend(genericMongoFieldsSchema.shape);
 
 // Cache for different locales
 const liturgyCache = new Map<string, Liturgy>();
@@ -28,15 +23,19 @@ export async function getLiturgyData(locale: Locale): Promise<Liturgy | null> {
 	}
 
 	try {
-		const symbolFilePath = join(SYMBOL_DIR, getSymbolFileName(locale.code));
-		console.log('Reading liturgy file:', symbolFilePath);
+		const client = await getMongoClient();
+		const collection = client.db('logoi').collection('liturgies');
 
-		// Read the JSON file directly
-		const fileContent = await readFile(symbolFilePath, 'utf-8');
-		const liturgyData = JSON.parse(fileContent);
+		// Read from MongoDB with projection to get JSON directly
+		const liturgyData = await collection.findOne({ language_code: locale.code });
+
+		if (!liturgyData) {
+			console.error(`No liturgy data found for locale ${locale.code}`);
+			return null;
+		}
 
 		// Validate the data against our schema
-		const parsedLiturgy = liturgySchema.safeParse(liturgyData);
+		const parsedLiturgy = liturgySchemaWithGenericFields.safeParse(liturgyData);
 
 		if (!parsedLiturgy.success) {
 			console.error(
@@ -52,21 +51,30 @@ export async function getLiturgyData(locale: Locale): Promise<Liturgy | null> {
 
 		return parsedLiturgy.data;
 	} catch (error) {
+		clearLiturgyCache();
 		console.error(`Failed to load liturgy data for locale ${locale.code}:`, error);
-		return null;
+		throw error;
 	}
 }
 
 export async function writeLiturgyData(liturgy: Liturgy): Promise<void> {
-	// Determine file path based on language code
-	const fileName = getSymbolFileName(liturgy.language_code as LocaleCode);
-	const filePath = join(SYMBOL_DIR, fileName);
+	try {
+		const client = await getMongoClient();
+		const collection = client.db('logoi').collection('liturgies');
 
-	// Ensure data directory exists
-	await mkdir(SYMBOL_DIR, { recursive: true });
+		// Upsert the liturgy data
+		await collection.updateOne(
+			{ language_code: liturgy.language_code },
+			{ $set: liturgy },
+			{ upsert: true }
+		);
 
-	// Write the updated liturgy data to file
-	await writeFile(filePath, JSON.stringify(liturgy, null, 2), 'utf-8');
+		// Clear the cache for this locale
+		liturgyCache.delete(liturgy.language_code as LocaleCode);
+	} catch (error) {
+		console.error('Failed to write liturgy data:', error);
+		throw error;
+	}
 }
 
 // Function to clear cache (useful for development or when data changes)

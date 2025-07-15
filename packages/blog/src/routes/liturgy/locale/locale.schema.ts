@@ -52,7 +52,7 @@ export const LOCALES = [
 	greekLocale
 ] as const;
 
-export const LOCALES_CODES = LOCALES.map((locale) => locale.code);
+export const LOCALES_CODES = LOCALES.map((locale) => locale.code) as LocaleCode[];
 
 export const localeSchema = z.discriminatedUnion('code', [
 	toLanguageLocaleSchema(englishLocale),
@@ -61,6 +61,12 @@ export const localeSchema = z.discriminatedUnion('code', [
 	toLanguageLocaleSchema(churchSlavonicLocale),
 	toLanguageLocaleSchema(greekLocale)
 ]);
+
+export const localeCodeSchema = localeSchema
+	.transform((schema) => schema.code)
+	.refine((code) => LOCALES_CODES.includes(code as LocaleCode), {
+		message: 'Invalid locale code'
+	});
 
 export type Locale = (typeof LOCALES)[number];
 export type LocaleName = Locale['name'];

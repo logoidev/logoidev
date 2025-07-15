@@ -18,9 +18,9 @@
 
 	export let data: AppData;
 
-	$: ({ liturgy, locale, speakers, isAdmin } = data);
+	$: ({ liturgy, locale, speakers, isAdmin, error } = data);
 
-	$: console.log('$liturgyStore', data);
+	$: hasError = error !== null;
 
 	// Get translations for current locale
 	$: t = getTranslations(locale.code);
@@ -259,8 +259,36 @@
 		</div>
 	</div>
 
-	<!-- Loading Indicator -->
-	{#if storeState.isLoading || (!displayLiturgy && !liturgy)}
+	<!-- Error View -->
+	{#if hasError}
+		<div class="text-center py-8">
+			<div class="bg-red-50 border-l-4 border-red-500 p-4 rounded">
+				<div class="flex items-center mb-2">
+					<svg
+						class="h-6 w-6 text-red-500 mr-2"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+						/>
+					</svg>
+					<h3 class="text-lg font-medium text-red-700">{t.error || 'Error'}</h3>
+				</div>
+				<p class="text-red-700">{error}</p>
+				<button
+					class="mt-4 px-4 py-2 bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
+					on:click={() => window.location.reload()}
+				>
+					{t.tryAgain || 'Try Again'}
+				</button>
+			</div>
+		</div>
+	{:else if storeState.isLoading || (!displayLiturgy && !liturgy)}
 		<div class="text-center py-8">
 			<div class="inline-flex items-center gap-2 text-gray-600">
 				<div class="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600"></div>

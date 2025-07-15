@@ -6,10 +6,15 @@ import { getLocaleFromUrl } from './locale/locale';
 import { getSpeakers } from './speaker/speaker';
 
 export async function GET({ url }: { url: URL }) {
-	const locale = getLocaleFromUrl(url);
-	const liturgy = await getLiturgyData(locale);
-	const speakers = await getSpeakers(locale.code);
-	return json({ liturgy, speakers });
+	try {
+		const locale = getLocaleFromUrl(url);
+		const liturgy = await getLiturgyData(locale);
+		const speakers = await getSpeakers(locale.code);
+		return json({ liturgy, speakers });
+	} catch (error) {
+		console.error('Error getting liturgy:', error);
+		return json({ error: 'Internal server error' }, { status: 500 });
+	}
 }
 
 export async function PUT({ request, url }: { request: Request; url: URL }) {
