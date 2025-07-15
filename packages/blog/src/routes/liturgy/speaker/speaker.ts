@@ -1,4 +1,19 @@
+import { join } from 'path';
+import { readFile } from 'fs/promises';
 import { z } from 'zod';
+
+const LEVELS_TO_ROOT = 4;
+
+const DIRECTORIES_TO_ROOT = Array.from({ length: LEVELS_TO_ROOT })
+	.map(() => '..')
+	.join('/');
+
+// Get the directory path relative to the current file
+const packageRoot = join(import.meta.dirname, DIRECTORIES_TO_ROOT);
+
+const SPEAKERS_DIR = join(packageRoot, 'src/data/texts/speakers');
+
+const getSpeakerFileName = (localeCode: string) => `speakers.${localeCode}.json`;
 
 // Schema for speaker contact information
 const contactSchema = z.object({
@@ -155,13 +170,24 @@ export const getSpeakers = async (localeCode?: string): Promise<Speaker[]> => {
 		// Try to load locale-specific speaker data
 		if (localeCode) {
 			try {
-				const speakersData = await import(`./data/speakers.${localeCode}.json`);
-				const parsedSpeakers = z.array(speakerSchema).safeParse(speakersData.default);
+				const speakerFilePath = join(SPEAKERS_DIR, getSpeakerFileName(localeCode));
+
+				// Read the JSON file directly
+				const fileContent = await readFile(speakerFilePath, 'utf-8');
+				const speakersData = JSON.parse(fileContent);
+
+				const parsedSpeakers = z.array(speakerSchema).safeParse(speakersData);
 
 				if (parsedSpeakers.success) {
 					speakersCache.set(cacheKey, parsedSpeakers.data);
 					return parsedSpeakers.data;
 				}
+
+				console.error(
+					`Speakers data validation failed for locale ${localeCode}:`,
+					parsedSpeakers.error
+				);
+				console.error(`Raw data that failed validation:`, speakersData);
 			} catch (error) {
 				// If locale-specific data doesn't exist, fall back to default
 				console.log(`No locale-specific speakers found for ${localeCode}, using default`);

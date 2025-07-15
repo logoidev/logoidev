@@ -1,0 +1,37 @@
+import type { Translations } from '../translations.types';
+
+// TODO: Revisit with Jackson
+export default {
+	pageTitle: 'Λιτουργία',
+	adminMode: 'Ρυθμίσεις',
+	viewMode: 'Προβολή',
+	adminModeDescription: 'Έχετε εισέλθει στην περιοχή των ρυθμίσεων της λιτουργίας.',
+	save: 'Αποθήκευση',
+	reset: 'Επαναφορά',
+	title: 'Τίτλος',
+	language: 'Γλώσσα',
+	date: 'Ημερομηνία',
+	location: 'Τοπος',
+	authorName: 'Όνομα Εκδότη',
+	authorBy: 'Εκδότης',
+	sectionName: 'Τίτλος Ενότητας',
+	speaker: 'Προφήτης',
+	text: 'Κείμενο',
+	hasCross: 'Χρήση σημείου (✝)',
+	addParagraph: 'Προσθήκη παραγράφου',
+	addNewSection: 'Προσθήκη νέας ενότητας',
+	deleteSection: 'Διαγραφή ενότητας',
+	delete: 'Διαγραφή',
+	customSpeaker: 'Προσαρμοσμένος προφήτης',
+	enterCustomSpeaker: 'Εισάγετε το όνομα του προσαρμοσμένου προφήτη',
+	languageLabel: 'Γλώσσα',
+	authorLabel: 'Εκδότης',
+	authorByLabel: 'Εκδότης',
+	dateLabel: 'Ημερομηνία',
+	locationLabel: 'Τοπος',
+	viewRawJson: 'Προβολή απευθείας JSON',
+	viewRawJsonAdmin: 'Προβολή απευθείας JSON (μόνο για διαχειριστές)',
+	loading: 'Γίνεται φόρτωση δεδομένων λιτουργίας...',
+	error: 'Σφάλμα',
+	tryAgain: 'Προσπαθήστε ξανά'
+} satisfies Translations;

@@ -1,80 +1,89 @@
 import { z } from 'zod';
 
+type GenericLocale = {
+	name: string;
+	localName: string;
+	code: string;
+	flag: string;
+};
+
 const englishLocale = {
 	name: 'English',
 	localName: 'English',
 	code: 'en',
 	flag: '🇺🇸'
-} as const;
+} as const satisfies GenericLocale;
 
 const ukrainianLocale = {
 	name: 'Ukrainian',
 	localName: 'Українська',
 	code: 'uk',
 	flag: '🇺🇦'
-} as const;
+} as const satisfies GenericLocale;
 
 const russianLocale = {
 	name: 'Russian',
 	localName: 'Русский',
 	code: 'ru',
 	flag: '🇷🇺'
-} as const;
+} as const satisfies GenericLocale;
 
 const churchSlavonicLocale = {
 	name: 'Church Slavonic',
 	localName: 'Церковнославянский',
 	code: 'cu',
 	flag: '📜'
-} as const;
+} as const satisfies GenericLocale;
+
+const greekLocale = {
+	name: 'Greek',
+	localName: 'Ελληνική',
+	code: 'gr',
+	flag: '🇬🇷'
+} as const satisfies GenericLocale;
+
+export const DEFAULT_LOCALE = englishLocale;
 
 export const LOCALES = [
 	englishLocale,
 	ukrainianLocale,
 	russianLocale,
-	churchSlavonicLocale
+	churchSlavonicLocale,
+	greekLocale
 ] as const;
 
-export const LOCALES_CODES = [
-	englishLocale.code,
-	ukrainianLocale.code,
-	russianLocale.code,
-	churchSlavonicLocale.code
-] as const;
-
-export const DEFAULT_LOCALE = englishLocale;
-
-const englishLocaleSchema = z.object({
-	name: z.literal(englishLocale.name),
-	code: z.literal(englishLocale.code),
-	flag: z.literal(englishLocale.flag)
-});
-
-const ukrainianLocaleSchema = z.object({
-	name: z.literal(ukrainianLocale.name),
-	code: z.literal(ukrainianLocale.code),
-	flag: z.literal(ukrainianLocale.flag)
-});
-
-const russianLocaleSchema = z.object({
-	name: z.literal(russianLocale.name),
-	code: z.literal(russianLocale.code),
-	flag: z.literal(russianLocale.flag)
-});
-
-const churchSlavonicLocaleSchema = z.object({
-	name: z.literal(churchSlavonicLocale.name),
-	code: z.literal(churchSlavonicLocale.code),
-	flag: z.literal(churchSlavonicLocale.flag)
-});
+export const LOCALES_CODES = LOCALES.map((locale) => locale.code) as LocaleCode[];
 
 export const localeSchema = z.discriminatedUnion('code', [
-	englishLocaleSchema,
-	ukrainianLocaleSchema,
-	russianLocaleSchema,
-	churchSlavonicLocaleSchema
+	toLanguageLocaleSchema(englishLocale),
+	toLanguageLocaleSchema(ukrainianLocale),
+	toLanguageLocaleSchema(russianLocale),
+	toLanguageLocaleSchema(churchSlavonicLocale),
+	toLanguageLocaleSchema(greekLocale)
 ]);
 
-export type Locale = z.infer<typeof localeSchema>;
+export const localeCodeSchema = localeSchema
+	.transform((schema) => schema.code)
+	.refine((code) => LOCALES_CODES.includes(code as LocaleCode), {
+		message: 'Invalid locale code'
+	});
+
+export type Locale = (typeof LOCALES)[number];
 export type LocaleName = Locale['name'];
 export type LocaleCode = Locale['code'];
+
+function toLanguageLocaleSchema<T extends GenericLocale>(
+	locale: T
+): z.ZodObject<{
+	name: z.ZodLiteral<T['name']>;
+	localName: z.ZodLiteral<T['localName']>;
+	code: z.ZodLiteral<T['code']>;
+	flag: z.ZodLiteral<T['flag']>;
+}> {
+	return z.object({
+		name: z.literal(locale.name),
+		localName: z.literal(locale.localName),
+		code: z.literal(locale.code),
+		flag: z.literal(locale.flag)
+	});
+}

@@ -7,4 +7,5 @@ export interface AppData {
 	locale: Locale;
 	speakers: Speaker[];
 	isAdmin: boolean;
+	error: string | null;
 }

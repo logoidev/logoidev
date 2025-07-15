@@ -1,126 +1,17 @@
+import type { Translations } from './translations.types';
 import type { LocaleCode } from '../locale/locale.schema';
 
-// Translation interface
-interface Translations {
-	// Page titles and headers
-	pageTitle: string;
-	adminMode: string;
-	viewMode: string;
+import enTranslations from './ui/ui.en';
+import ukTranslations from './ui/ui.uk';
+import ruTranslations from './ui/ui.ru';
+import grTranslations from './ui/ui.gr';
 
-	// Admin interface
-	adminModeDescription: string;
-	save: string;
-	reset: string;
-
-	// Form labels
-	title: string;
-	language: string;
-	date: string;
-	location: string;
-	authorName: string;
-	authorBy: string;
-	authorByLabel: string;
-	sectionName: string;
-	speaker: string;
-	text: string;
-	hasCross: string;
-
-	// Actions
-	addParagraph: string;
-	addNewSection: string;
-	deleteSection: string;
-	delete: string;
-	customSpeaker: string;
-	enterCustomSpeaker: string;
-
-	// Display labels
-	languageLabel: string;
-	authorLabel: string;
-	dateLabel: string;
-	locationLabel: string;
-
-	// Raw JSON
-	viewRawJson: string;
-	viewRawJsonAdmin: string;
-
-	// Loading
-	loading: string;
-}
-
-// English translations
-const enTranslations: Translations = {
-	pageTitle: 'Liturgy',
-	adminMode: 'Admin Mode',
-	viewMode: 'View Mode',
-	adminModeDescription:
-		'You are in admin mode. You can edit the liturgy content below. Changes will be saved when you click "Save".',
-	save: 'Save',
-	reset: 'Reset',
-	title: 'Title',
-	language: 'Language',
-	date: 'Date',
-	location: 'Location',
-	authorName: 'Author Name',
-	authorBy: 'Author By',
-	sectionName: 'Section Name',
-	speaker: 'Speaker (by)',
-	text: 'Text',
-	hasCross: 'Has cross (✝)',
-	addParagraph: 'Add Paragraph',
-	addNewSection: 'Add New Section',
-	deleteSection: 'Delete Section',
-	delete: 'Delete',
-	customSpeaker: 'Custom Speaker',
-	enterCustomSpeaker: 'Enter custom speaker name',
-	languageLabel: 'Language:',
-	authorLabel: 'Author:',
-	authorByLabel: 'Author By:',
-	dateLabel: 'Date:',
-	locationLabel: 'Location:',
-	viewRawJson: 'View Raw JSON Data',
-	viewRawJsonAdmin: 'View Raw JSON Data (Admin Only)',
-	loading: 'Loading liturgy data...'
-};
-
-// Ukrainian translations
-const ukTranslations: Translations = {
-	pageTitle: 'Літургія',
-	adminMode: 'Режим Адміністратора',
-	viewMode: 'Режим Перегляду',
-	adminModeDescription:
-		'Ви знаходитесь в режимі адміністратора. Ви можете редагувати вміст літургії нижче. Зміни будуть збережені, коли ви натиснете "Зберегти".',
-	save: 'Зберегти',
-	reset: 'Скинути',
-	title: 'Заголовок',
-	language: 'Мова',
-	date: 'Дата',
-	location: 'Місце',
-	authorName: "Ім'я Автора",
-	authorBy: 'Автор',
-	sectionName: 'Назва Розділу',
-	speaker: 'Промовець (від)',
-	text: 'Текст',
-	hasCross: 'Знак хреста (☦)',
-	addParagraph: 'Додати Параграф',
-	addNewSection: 'Додати Новий Розділ',
-	deleteSection: 'Видалити Розділ',
-	delete: 'Видалити',
-	customSpeaker: 'Власний Промовець',
-	enterCustomSpeaker: "Введіть ім'я власного промовця",
-	languageLabel: 'Мова:',
-	authorLabel: 'Автор:',
-	authorByLabel: 'Авторa:',
-	dateLabel: 'Дата:',
-	locationLabel: 'Місце:',
-	viewRawJson: 'Переглянути Необроблені JSON Дані',
-	viewRawJsonAdmin: 'Переглянути Необроблені JSON Дані (Тільки для Адміністраторів)',
-	loading: 'Завантаження даних літургії...'
-};
-
-// Translation map
 const translations: Record<LocaleCode, Translations> = {
 	en: enTranslations,
-	uk: ukTranslations
+	uk: ukTranslations,
+	ru: ruTranslations,
+	cu: ukTranslations,
+	gr: grTranslations
 };
 
 // Function to get translations for a locale
