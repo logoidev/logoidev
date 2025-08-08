@@ -5,13 +5,15 @@ import enTranslations from './ui/ui.en';
 import ukTranslations from './ui/ui.uk';
 import ruTranslations from './ui/ui.ru';
 import grTranslations from './ui/ui.gr';
+import bgTranslations from './ui/ui.bg';
 
 const translations: Record<LocaleCode, Translations> = {
 	en: enTranslations,
 	uk: ukTranslations,
 	ru: ruTranslations,
 	cu: ukTranslations,
-	gr: grTranslations
+	gr: grTranslations,
+	bg: bgTranslations
 };
 
 // Function to get translations for a locale
