@@ -1,0 +1,118 @@
+{
+  "language_code": "en",
+  "title": "Daily Readings",
+  "author": {
+    "name": "Holy Scripture",
+    "by": "Divine Inspiration"
+  },
+  "date": "2025-01-16",
+  "location": "Universal Church",
+  "content": [
+    {
+      "type": "section",
+      "name": "Apostle Reading",
+      "content": [
+        {
+          "type": "paragraph",
+          "by": "Reader",
+          "text": "The reading is from the Epistle of the Holy Apostle Paul to the Ephesians.",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Reader",
+          "text": "Brethren, I therefore, a prisoner for the Lord, urge you to walk in a manner worthy of the calling to which you have been called, with all humility and gentleness, with patience, bearing with one another in love, eager to maintain the unity of the Spirit in the bond of peace.",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Reader",
+          "text": "There is one body and one Spirit—just as you were called to the one hope that belongs to your call—one Lord, one faith, one baptism, one God and Father of all, who is over all and through all and in all.",
+          "cross": false
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "name": "Gospel Reading",
+      "content": [
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "The reading is from the Holy Gospel according to Matthew.",
+          "cross": true
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "Glory to You, O Lord, glory to You!",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "At that time, when Jesus came into the district of Caesarea Philippi, he asked his disciples,",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "\"Who do people say that the Son of Man is?\"",
+          "cross": false,
+          "lordsSpeech": true
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "And they said, \"Some say John the Baptist, others say Elijah, and others Jeremiah or one of the prophets.\"",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "He said to them,",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "\"But who do you say that I am?\"",
+          "cross": false,
+          "lordsSpeech": true
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "Simon Peter replied, \"You are the Christ, the Son of the living God.\"",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "And Jesus answered him,",
+          "cross": false
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "\"Blessed are you, Simon Bar-Jonah! For flesh and blood has not revealed this to you, but my Father who is in heaven.\"",
+          "cross": false,
+          "lordsSpeech": true
+        },
+        {
+          "type": "paragraph",
+          "by": "Priest",
+          "text": "\"And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it. I will give you the keys of the kingdom of heaven, and whatever you bind on earth shall be bound in heaven, and whatever you loose on earth shall be loosed in heaven.\"",
+          "cross": false,
+          "lordsSpeech": true
+        },
+        {
+          "type": "paragraph",
+          "by": "Faithful",
+          "text": "Glory to You, O Lord, glory to You!",
+          "cross": false
+        }
+      ]
+    }
+  ]
+} 
