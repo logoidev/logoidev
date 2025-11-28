@@ -21,7 +21,7 @@ export const posts = [
 		published: '2023-11-18T15:00:00.00Z',
 		minutesToRead: 7,
 		gh_discussion_id: 32,
-		hidden: false
+		hidden: true
 	},
 	{
 		id: 'logoi',
