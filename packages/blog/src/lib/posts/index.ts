@@ -1,4 +1,4 @@
-export const posts = [
+const postsData = [
 	{
 		id: 'vision',
 		title: 'Logoi and our Vision',
@@ -65,7 +65,12 @@ export const posts = [
 	}
 ] as const;
 
-export type PostId = (typeof posts)[number]['id'];
+// Sort posts by published date (oldest first)
+export const posts = [...postsData].sort(
+	(a, b) => new Date(a.published).getTime() - new Date(b.published).getTime()
+);
+
+export type PostId = (typeof postsData)[number]['id'];
 type PostWithoutId = {
 	title: string;
 	published: string;

@@ -28,23 +28,21 @@
 
 	<div class="p-8">
 		<ul class="flex flex-col gap-2 text-center">
-			{#each posts as post, idx}
-				{#if !post.hidden}
-					<li class="group text-2xl font-serif relative">
-						<a
-							href={`/blog/${post.id}`}
-							on:click={() => trackEvent('blogpost_clicked', { post_id: post.id })}
+			{#each posts.filter((p) => !p.hidden) as post, idx}
+				<li class="group text-2xl font-serif relative">
+					<a
+						href={`/blog/${post.id}`}
+						on:click={() => trackEvent('blogpost_clicked', { post_id: post.id })}
+					>
+						<span
+							class="text-base opacity-50 group-hover:opacity-95"
+							title={`Published on ${new Date(post.published).toLocaleDateString()}`}
+							>#{idx + 1}</span
 						>
-							<span
-								class="text-base opacity-50 group-hover:opacity-95"
-								title={`Published on ${new Date(post.published).toLocaleDateString()}`}
-								>#{idx + 1}</span
-							>
-							<span>{post.title}</span>
-							<ReadEstimate estimate={post.minutesToRead} />
-						</a>
-					</li>
-				{/if}
+						<span>{post.title}</span>
+						<ReadEstimate estimate={post.minutesToRead} />
+					</a>
+				</li>
 			{/each}
 		</ul>
 	</div>
