@@ -11,7 +11,7 @@ const getLastCoinLocation = async (coinId: string) => {
 		where: { type: 'coin-path', coin_id: coinId }
 	});
 	const lastCoinLocationsSorted = lastCoinLocations.sort(
-		(a: LocationModel, b: LocationModel) => a.timestamp - b.timestamp
+		(a: LocationModel, b: LocationModel) => (a.timestamp ?? 0) - (b.timestamp ?? 0)
 	);
 
 	return lastCoinLocationsSorted[lastCoinLocationsSorted.length - 1];

@@ -323,5 +323,5 @@
 <div class="flex flex-col justify-center items-center font-serif">
 	<ToggleQR url={getIndexUrl($page.url.pathname)} text="☦️" rounded animated />
 
-	<Copyright withUkraine={false} />
+	<Copyright />
 </div>

@@ -192,7 +192,9 @@
 		return `${value}${metric}`;
 	};
 
-	fetchCoin(coinId).catch((e) => console.error(e));
+	if (coinId) {
+		fetchCoin(coinId).catch((e) => console.error(e));
+	}
 </script>
 
 <div class="flex flex-col touch-manipulation items-center min-w-fit font-serif mt-6">
@@ -435,7 +437,7 @@
 		</button>
 	{/if}
 
-	<div class="mt-8" />
+	<div class="mt-8"></div>
 	<Socials withToggle />
 
 	<Copyright />

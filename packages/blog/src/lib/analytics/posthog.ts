@@ -34,7 +34,15 @@ type TrackingEvent =
 	| 'found_gold'
 	| 'adam_link_visited'
 	| 'chat_expanded'
-	| 'resolution_clicked';
+	| 'resolution_clicked'
+	| 'map_link_clicked'
+	| 'donation_balance_increased'
+	| 'location_point_updated'
+	| 'color_flipped'
+	| 'reward_clicked'
+	| 'star_clicked'
+	| 'coin_flipped'
+	| 'black_coin_requested';
 
 export function trackEvent(
 	eventName: TrackingEvent,

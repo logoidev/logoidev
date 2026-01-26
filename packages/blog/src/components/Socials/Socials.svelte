@@ -48,7 +48,7 @@
 			</ul>
 
 			{#if withSeparators}
-				<Separator bottom={2} />
+				<Separator bottom={2} widthPercentage={20} />
 			{/if}
 		{/if}
 	</div>

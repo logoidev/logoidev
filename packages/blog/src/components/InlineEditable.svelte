@@ -78,7 +78,7 @@
 			on:blur={handleBlur}
 			rows="3"
 			class="w-full px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed {$$props.class}"
-		/>
+		></textarea>
 	{:else}
 		<input
 			bind:this={inputElement}

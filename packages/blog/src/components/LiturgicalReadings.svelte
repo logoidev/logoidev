@@ -240,7 +240,7 @@
 <div class="flex flex-col justify-center items-center font-serif">
 	<ToggleQR url={getIndexUrl('/calendar')} text="☦️" rounded animated />
 
-	<Copyright withUkraine={false} />
+	<Copyright />
 </div>
 
 <style>

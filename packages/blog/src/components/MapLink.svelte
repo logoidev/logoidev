@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import IconLink from './IconLink.svelte';
 
 	const GOOGLE_MAPS_URL = 'https://goo.gl/maps/H6f9J869J49DB83XA';

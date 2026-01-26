@@ -83,7 +83,7 @@
 			shown={!userData.socials.length}
 			text={userData.id.toUpperCase()}
 			unlockImageSrc={userData.unlockImage}
-			on:png-data-url={(dataUrl) => (qrPngDataUrl = dataUrl)}
+			on:png-data-url={(event) => (qrPngDataUrl = event.detail)}
 			on:click={async () => {
 				rounded = !rounded;
 				if (qrPngDataUrl) {

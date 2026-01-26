@@ -36,12 +36,13 @@
 
 <button
 	{id}
+	aria-label="QR code button"
 	class={`${centerAllFlex} ${buttonClass}`}
 	style={stylesArrayToInline([`width:${sizeCss}`, `height:${sizeCss}`])}
 	on:click={onClick}
 >
 	<div id="border" class={`${centerAllFlex} pointer-events-none`}>
-		<div id="inside" class="pointer-events-none" />
+		<div id="inside" class="pointer-events-none"></div>
 	</div>
 </button>
 

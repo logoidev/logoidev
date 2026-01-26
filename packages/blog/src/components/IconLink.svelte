@@ -50,7 +50,7 @@
 			`--static-url: url(${getIconPath(false)})`,
 			`--dynamic-url: url(${getIconPath(true)})`
 		])}
-	/>
+	></div>
 	{#if text}
 		<span class="ml-1">{text}</span>
 	{/if}

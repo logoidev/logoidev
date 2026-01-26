@@ -58,103 +58,133 @@
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
+	/* These CSS selectors target dynamically generated HTML content from markdown.
+	 * The content is injected via {@html resolutionContent}, so Svelte cannot detect
+	 * these selectors as "used" during compilation. They are intentionally kept for
+	 * styling the resolution content. */
+
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content) {
 		@apply max-w-4xl mx-auto px-4;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content h1) {
 		@apply text-2xl font-semibold my-4 pb-2 border-b border-gray-200 dark:border-gray-700;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content h2) {
 		@apply text-xl font-semibold my-4 pb-2 border-b border-gray-200 dark:border-gray-700;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content h3) {
 		@apply text-lg font-semibold mt-6 mb-3;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content p) {
 		@apply my-4 leading-7;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content ul) {
 		@apply list-disc list-inside my-4 space-y-1;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content ol) {
 		@apply list-decimal list-inside my-4 space-y-1;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content li) {
 		@apply my-1;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content li > p) {
 		@apply my-1;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content a) {
 		@apply text-blue-600 dark:text-blue-400 hover:underline;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content blockquote) {
 		@apply border-l-4 border-gray-300 dark:border-gray-700 pl-4 italic my-4 text-gray-600 dark:text-gray-400;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content code) {
 		@apply bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded text-sm font-mono;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content pre) {
 		@apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4 overflow-x-auto;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content pre code) {
 		@apply bg-transparent p-0 text-sm font-mono;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content img) {
 		@apply rounded-lg my-4 max-w-full;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content hr) {
 		@apply my-8 border-gray-200 dark:border-gray-700;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content table) {
 		@apply w-full my-4 border-collapse;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content th) {
 		@apply border border-gray-300 dark:border-gray-700 px-4 py-2 bg-gray-100 dark:bg-gray-800 font-semibold;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content td) {
 		@apply border border-gray-300 dark:border-gray-700 px-4 py-2;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content strong) {
 		@apply font-semibold;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content em) {
 		@apply italic;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content br) {
 		@apply my-1;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content .prose .anchor) {
 		@apply float-left -ml-6 pr-1 opacity-0 hover:opacity-100;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content .prose .heading-element) {
 		@apply relative;
 	}
 
+	/* svelte-ignore unused-selector */
 	:global(.resolution-content.prose .heading-element:hover .anchor) {
 		@apply opacity-100;
 	}

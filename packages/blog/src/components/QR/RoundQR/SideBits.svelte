@@ -4,7 +4,7 @@
 
 <div class="bit-container">
 	{#each bits as bit}
-		<div class="bit" style={`background-color: ${bit ? 'black' : 'transparent'}`} />
+		<div class="bit" style={`background-color: ${bit ? 'black' : 'transparent'}`}></div>
 	{/each}
 </div>
 

@@ -12,12 +12,12 @@
 	})}
 >
 	<div class="container">
-		<div class="side left" />
-		<div class="side front" />
-		<div class="side right" />
-		<div class="side back" />
+		<div class="side left"></div>
+		<div class="side front"></div>
+		<div class="side right"></div>
+		<div class="side back"></div>
 
-		<div class="shadow" />
+		<div class="shadow"></div>
 	</div>
 </div>
 

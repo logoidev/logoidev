@@ -4,7 +4,7 @@
 
 	export let coin: CoinModel | null;
 
-	export let coinUrl: string;
+	export let coinUrl: string | undefined = undefined;
 
 	if (!coinUrl) {
 		coinUrl = getComputedUrl();

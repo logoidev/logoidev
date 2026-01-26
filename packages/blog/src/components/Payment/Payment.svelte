@@ -17,15 +17,15 @@
 	export let cta = '';
 	export let give = false;
 	export let coinId: string | null = null;
-	const reward = $$props.$$slots?.reward;
+	const reward = $$slots?.reward;
 
 	type StripeElements = unknown;
 
-	let stripe: Stripe | undefined;
+	let stripe: any | undefined; // TODO: Fix stripe typing - Stripe
 	let paymentIntentId: string | null;
 	let error: string | undefined;
 	let success: boolean = false;
-	let elements: StripeElements | undefined;
+	let elements: any | undefined; // TODO: Fix stripe typing - StripeElements
 	let processing = false;
 	let isCustomAmountShown = false;
 	let amount = 1;
