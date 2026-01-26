@@ -1,6 +1,7 @@
 import { json } from '@sveltejs/kit';
-import { SECRET_RESEND_API_KEY } from '$env/static/private';
 import { INTRO_EMAIL } from 'src/data/emails';
+// import { SECRET_RESEND_API_KEY } from '$env/static/private';
+const SECRET_RESEND_API_KEY = '';
 
 export const prerender = false;
 
