@@ -5,6 +5,8 @@
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import Copyright from 'src/components/Copyright.svelte';
 	import Foundation from './foundation/+page.svelte';
+	import ContactButton from 'src/components/ContactButton.svelte';
+	import ContactForm from 'src/components/ContactForm.svelte';
 
 	import { getIndexUrl } from '../shared/routes';
 	import IconLink from 'src/components/IconLink.svelte';
@@ -18,6 +20,22 @@
 	let isUnlocked = false;
 	let isNewBannerLoading = false;
 	let rounded = false;
+	let isContactFormExpanded = false;
+	let wasExpanded = false;
+
+	// Scroll contact button into view when form collapses
+	$: {
+		if (wasExpanded && !isContactFormExpanded) {
+			// Form just collapsed, scroll button into view
+			setTimeout(() => {
+				const button = document.getElementById('contact-button');
+				if (button) {
+					button.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				}
+			}, 400);
+		}
+		wasExpanded = isContactFormExpanded;
+	}
 </script>
 
 {#if IS_FOUNDATION}
@@ -31,9 +49,23 @@
 				We bring innovation, advanced technology and solid design to serve the Church, empower her
 				people and glorify God.
 			</p>
+
+			<ContactButton
+				class="mt-4"
+				linkClass="border border-slate-300 py-2 px-4 rounded hover:bg-slate-200"
+				buttonText="Contact"
+				isExpanded={isContactFormExpanded}
+				on:click={() => (isContactFormExpanded = true)}
+			/>
 		</div>
 		<div class="flex flex-col justify-center items-center">
 			<Separator widthPercentage={40} />
+
+			<ContactForm
+				class="mt-4"
+				isExpanded={isContactFormExpanded}
+				on:collapse={() => (isContactFormExpanded = false)}
+			/>
 
 			<IconLink
 				href="blog"
