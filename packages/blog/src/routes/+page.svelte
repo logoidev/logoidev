@@ -34,9 +34,18 @@
 				on:title-click={() => (showPresenceIndicator = !showPresenceIndicator)}
 			/>
 
-			<p role="heading" aria-level="2" class="text-xl max-w-md text-center px-10 mb-4 mt-6">
-				We bring innovation, advanced technology and solid design to serve the Church, empower her
-				people and glorify God.
+			<a href="/v" title="">
+				<div
+					class="mt-6 p-4 hover:rotate-180 transition-transform duration-500 text-xl hover:cursor-pointer"
+				>
+					Λ
+				</div>
+			</a>
+
+			<h3 class="text-2xl font-serif text-center mt-6">Purpose-Driven Engineering</h3>
+
+			<p role="heading" aria-level="2" class="text-xl max-w-md text-center px-10 mb-4 mt-4">
+				Turning complex requirements into scalable, polished web platforms
 			</p>
 
 			<ContactButton
@@ -48,17 +57,16 @@
 		<div class="flex flex-col justify-center items-center">
 			<Separator widthPercentage={40} />
 
+			<Socials withToggle withTitle withLabels={false} />
+
 			<IconLink
 				href="blog"
-				text="Blog"
 				target="_blank"
 				title="Go to Blog"
 				iconName="blog"
 				scale={1.2}
 				class="mt-2"
 			/>
-
-			<Socials withToggle withTitle withLabels={false} />
 
 			<a class="flex flex-col mt-4" href={`${ORIGIN_FOUNDATION}?src_external=development`}>
 				<img class="h-16" alt="Logoi Foundation Logo" src="/images/logoi-foundation.svg" />

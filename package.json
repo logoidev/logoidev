@@ -19,8 +19,5 @@
   "devDependencies": {
     "prettier": "^3.4.2",
     "typescript": "^5.7.3"
-  },
-  "dependencies": {
-    "svelte-stripe": "^1.4.0"
   }
 }

@@ -33,7 +33,7 @@ export const USERS: Array<UserData> = [
 		last_name: 'Kolbaia',
 		memojiCount: 10,
 		email: 'vlad@logoi.dev',
-		titles: ['Senior Software Engineer | Founder'],
+		titles: ['Senior Product Engineer | Founder'],
 		level: Level.S,
 		// TODO: [6] Rename field to "patterns", add ability to trigger different actions
 		password: [0, 1, 2, 0, 1, 2],

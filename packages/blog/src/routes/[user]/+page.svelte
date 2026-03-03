@@ -15,6 +15,7 @@
 	import ResumeLink from 'src/components/ResumeLink.svelte';
 	import BlogImage from 'src/components/BlogImage.svelte';
 	import { trackEvent } from 'src/lib/analytics/posthog';
+	import Wave from 'src/components/Wave.svelte';
 
 	export let data;
 	const userData: UserData = data;
@@ -65,7 +66,9 @@
 
 		{#if userData.calendar_link}
 			<span class="text-xl my-2">or</span>
-			<LinkButton href={userData.calendar_link} size="lg" text="👋" />
+			<LinkButton href={userData.calendar_link} size="lg" class="border-opacity-50">
+				<Wave>👋</Wave>
+			</LinkButton>
 		{/if}
 
 		<br />
