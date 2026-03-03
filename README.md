@@ -3,9 +3,9 @@
     <img width="333" alt="Logo Banner" src="/packages/blog/static/images/banners/banner.png" />
 </a>
 
-<div>
-We bring innovation, advanced technology and solid design to serve the Church, empower her people and glorify God.
-</div>
+<h3>Purpose-Driven Engineering</h3>
+
+<p>Turning complex requirements into scalable, polished web platforms</p>
 
 ---
 
@@ -15,7 +15,8 @@ We bring innovation, advanced technology and solid design to serve the Church, e
 
 ---
 
-We are building in public, so all of the code is open source and free for you to browse and contribute. However commercial use of this code is <u>forbidden</u> under our [license](/LICENSE.md), so please reach out to <a href="mailto:hi@logoi.dev?subject=License Code">hi@logoi.dev</a> to request a commercial-use version.
+Logoi is built in public, so all of the code is open source and free for you to study and contribute.<br/>
+However commercial use of this code is <u>prohibited</u> under the [license](/LICENSE.md).
 
 [Email](mailto:hi@logoi.dev) [X](https://x.com/logoidev) [LinkedIn](https://www.linkedin.com/company/logoidev)
 </div>
