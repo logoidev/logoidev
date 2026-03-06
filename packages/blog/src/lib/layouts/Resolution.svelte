@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Socials from 'src/components/Socials/Socials.svelte';
 	import Copyright from 'src/components/Copyright.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
+	import GitHubLink from 'src/components/Socials/GitHubLink.svelte';
+
+	export let metadata;
 
 	let rounded = true;
-	export let metadata;
 </script>
 
 <div class="flex flex-col justify-between min-h-[100svh]">
@@ -32,7 +33,7 @@
 	</div>
 
 	<div class="flex flex-col justify-center items-center font-serif">
-		<Socials withToggle />
+		<GitHubLink />
 
 		<ToggleQr
 			animated

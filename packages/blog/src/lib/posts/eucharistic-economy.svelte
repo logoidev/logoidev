@@ -160,7 +160,7 @@
 		Let's imagine there's a local non-profit organisation, such as <a
 			target="_blank"
 			class="inline-flex flex-row relative top-0.5"
-			href={`${ORIGIN_FOUNDATION}?src_external=logoi-blog`}
+			href={`${$ORIGIN_FOUNDATION}?src_external=logoi-blog`}
 		>
 			<img
 				class="h-8 relative top-1 left-1"

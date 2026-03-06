@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tick } from 'svelte';
 	import LinkButton from './LinkButton/LinkButton.svelte';
 	import type { ButtonSize } from './LinkButton/LinkButton.types';
 	import { cn } from 'src/lib/utility/cn';
@@ -8,6 +9,7 @@
 	export let linkClass = '';
 
 	const CONTACT_EMAIL = 'hi@logoi.dev';
+
 	let copied = false;
 	let messageTimeout: ReturnType<typeof setTimeout>;
 	let displayText = buttonText;
@@ -19,13 +21,22 @@
 		try {
 			await navigator.clipboard.writeText(CONTACT_EMAIL);
 			copied = true;
-			copiedOnce = true;
-			// Clear any existing timeout
+
+			if (!copiedOnce) {
+				if ('startViewTransition' in document) {
+					document.startViewTransition(async () => {
+						await tick();
+						copiedOnce = true;
+					});
+				} else {
+					copiedOnce = true;
+				}
+			}
+
 			if (messageTimeout) {
 				clearTimeout(messageTimeout);
 			}
 
-			// Hide message after 2 seconds
 			messageTimeout = setTimeout(() => {
 				copied = false;
 			}, 2000);
@@ -42,7 +53,7 @@
 		text={displayText}
 		title="Copy contact email to clipboard"
 		on:click={handleClick}
-		class={linkClass}
+		class={cn(linkClass, 'contact-btn')}
 	/>
 	<div
 		class="copied-message text-slate-700 text-center px-3 py-2 bg-slate-50 rounded border border-slate-300 mt-4"
@@ -71,5 +82,29 @@
 	.copied-message.visible {
 		opacity: 1;
 		visibility: visible;
+	}
+
+	.contact-btn {
+		view-transition-name: contact-button;
+	}
+
+	@keyframes -global-contact-btn-out {
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes -global-contact-btn-in {
+		from {
+			opacity: 0;
+		}
+	}
+
+	:global(::view-transition-old(contact-button)) {
+		animation: contact-btn-out 0.2s ease-in forwards;
+	}
+
+	:global(::view-transition-new(contact-button)) {
+		animation: contact-btn-in 0.2s ease-out forwards;
 	}
 </style>

@@ -1,8 +1,9 @@
 import { dev } from '$app/environment';
+import { writable } from 'svelte/store';
 
-export const ORIGIN = dev ? 'http://localhost:5173' : 'https://logoi.dev';
+export const ORIGIN = writable('https://logoi.dev');
 
-export const ORIGIN_FOUNDATION = dev ? `${ORIGIN}/foundation` : 'https://logoi.foundation';
+export const ORIGIN_FOUNDATION = writable('https://logoi.foundation');
 
 export const CALENDAR_LINK = 'https://cal.com/logoi-v';
 

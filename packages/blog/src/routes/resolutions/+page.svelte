@@ -1,6 +1,4 @@
 <script lang="ts">
-	import Image from 'src/components/Image.svelte';
-	import Socials from 'src/components/Socials/Socials.svelte';
 	import Copyright from 'src/components/Copyright.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import Header from 'src/components/Header.svelte';
@@ -11,8 +9,6 @@
 	let rounded = true;
 
 	export let data;
-
-	$: console.log('Data', data);
 </script>
 
 <div class="flex flex-col justify-between min-h-[100svh]">
@@ -52,8 +48,6 @@
 	</div>
 
 	<div class="flex flex-col justify-center items-center font-serif">
-		<Socials withToggle />
-
 		<ToggleQr
 			animated
 			{rounded}

@@ -211,9 +211,9 @@
 
 	<div class="bg-white flex flex-col items-center text-center mt-4 text-base">
 		<p>You need to get to</p>
-		<button class="text-xl"
-			>{color === 'white' ? 'St. Mary Orthodox Church' : 'Isabella Stewart Gardner Museum'}</button
-		>
+		<button class="text-xl">
+			{color === 'white' ? 'St. Mary Orthodox Church' : 'Isabella Stewart Gardner Museum'}
+		</button>
 
 		<p>Click the icon below and return<br /> to this page once you're there</p>
 
@@ -285,7 +285,7 @@
 	<p>
 		<a
 			class="inline-flex flex-row relative top-0.5"
-			href={`${ORIGIN_FOUNDATION}?src_external=logoi-blog`}
+			href={`${$ORIGIN_FOUNDATION}?src_external=logoi-blog`}
 		>
 			<img
 				class="h-8 relative top-1 left-1"

@@ -11,12 +11,10 @@
 	import LinkButton from 'src/components/LinkButton/LinkButton.svelte';
 	import BlogMeta from 'src/components/BlogMeta.svelte';
 	import { estimateMinutesToRead } from 'src/utils/estimate-time-to-read';
-	import type { Post } from '$lib/posts';
-	import Socials from 'src/components/Socials/Socials.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes.js';
 	import Copyright from 'src/components/Copyright.svelte';
-
+	import GitHubLink from 'src/components/Socials/GitHubLink.svelte';
 	import Image from 'src/components/Image.svelte';
 
 	export let data;
@@ -85,7 +83,7 @@
 	</div>
 
 	<div class="flex flex-col justify-center items-center font-serif">
-		<Socials withToggle />
+		<GitHubLink />
 
 		<ToggleQr
 			animated

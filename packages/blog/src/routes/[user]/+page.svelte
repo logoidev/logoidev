@@ -22,7 +22,9 @@
 	let rounded = true;
 </script>
 
-<div class="flex flex-col touch-manipulation items-center min-w-fit font-serif h-screen mt-12">
+<div
+	class="flex flex-col touch-manipulation items-center min-w-fit font-serif h-screen mt-12 sm:justify-center sm:-mt-12"
+>
 	<Header />
 	{#if !userData}
 		<Spinner />
@@ -71,13 +73,14 @@
 		{/if}
 
 		<br />
-		<Socials socials={userData.socials} withLabels />
+		<Socials socials={userData.socials} withLabels withToggle withTitle class="flex-col gap-1" />
 
 		{#if userData.has_resume}
 			<ResumeLink id={userData.id} />
 		{/if}
 
 		<ToggleQr
+			animated
 			{rounded}
 			textOffset="1rem"
 			shown={!userData.socials.length}

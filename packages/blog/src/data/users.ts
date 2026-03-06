@@ -1,7 +1,6 @@
 import { Level } from 'src/components/StarsRating/types';
 import { groupBy } from '../utils/lodash';
 import { type UserData, UserIds } from '../types/user';
-import { CALENDAR_LINK } from 'src/shared/constants';
 
 export const USERS: Array<UserData> = [
 	{
@@ -51,16 +50,6 @@ export const USERS: Array<UserData> = [
 				type: 'github',
 				url: 'https://github.com/v1adko',
 				name: 'GitHub'
-			},
-			{
-				type: 'stack',
-				alt: 'StackOverflow Logo',
-				url: 'https://stackoverflow.com/users/6426334/vlad-kolbaia'
-			},
-			{
-				type: 'telegram',
-				url: 'https://t.me/logoi_v',
-				qrImgUrl: '/users/v/qr-telegram-v.webp'
 			}
 		],
 		// TODO: Add square

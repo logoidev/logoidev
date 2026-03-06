@@ -1,17 +1,14 @@
 <script lang="ts">
 	import Image from 'src/components/Image.svelte';
-
-	import Socials from 'src/components/Socials/Socials.svelte';
-
+	import GitHubLink from 'src/components/Socials/GitHubLink.svelte';
 	import Copyright from 'src/components/Copyright.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
-	import { posts } from '$lib/posts';
-
 	import ReadEstimate from 'src/components/ReadEstimate.svelte';
 	import BlogMeta from 'src/components/BlogMeta.svelte';
 	import { trackEvent } from 'src/lib/analytics/posthog';
 	import { COMPANY_NAME } from 'src/data/consts';
+	import { posts } from '$lib/posts';
 
 	let rounded = true;
 </script>
@@ -48,9 +45,9 @@
 	</div>
 
 	<div class="flex flex-col justify-center items-center font-serif">
-		<Socials withToggle />
-
 		<ToggleQr animated {rounded} url={getIndexUrl('/blog')} on:click={() => (rounded = !rounded)} />
+
+		<GitHubLink />
 
 		<Copyright />
 	</div>

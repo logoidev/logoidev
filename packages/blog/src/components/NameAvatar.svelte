@@ -4,6 +4,7 @@
 	import type { UserData } from '../types/user';
 	import Image from './Image.svelte';
 	import clsx from 'clsx';
+	import { fade } from 'svelte/transition';
 
 	export let userData: UserData;
 	export let noLastName = false;
@@ -31,8 +32,12 @@
 
 <div class="text-3xl flex flex-col items-center mb-2 w-32">
 	{#if avatarImageUrl}
-		<div class="mx-4 my-2 w-32 h-32">
-			<Image src={avatarImageUrl} alt="Avatar" onClick={onAvatarClick} />
+		<div class="mx-4 my-2 w-32 h-32 relative">
+			{#key avatarImageUrl}
+				<div transition:fade={{ duration: 125 }} class="absolute inset-0">
+					<Image src={avatarImageUrl} alt="Avatar" onClick={onAvatarClick} selectable={false} />
+				</div>
+			{/key}
 		</div>
 	{/if}
 

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Header from 'src/components/Header.svelte';
 	import Separator from 'src/components/Separator.svelte';
-	import Socials from 'src/components/Socials/Socials.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import Copyright from 'src/components/Copyright.svelte';
 	import Foundation from './foundation/+page.svelte';
 	import ContactButton from 'src/components/ContactButton.svelte';
+	import GitHubLink from 'src/components/Socials/GitHubLink.svelte';
 	import { getIndexUrl } from '../shared/routes';
 	import IconLink from 'src/components/IconLink.svelte';
 	import Payment from 'src/components/Payment/Payment.svelte';
@@ -14,7 +14,7 @@
 
 	export let data = { origin: '' };
 
-	$: IS_FOUNDATION = data.origin === ORIGIN_FOUNDATION;
+	$: IS_FOUNDATION = data.origin === $ORIGIN_FOUNDATION;
 
 	let isUnlocked = false;
 	let isNewBannerLoading = false;
@@ -36,7 +36,7 @@
 
 			<a href="/v" title="">
 				<div
-					class="mt-6 p-4 hover:rotate-180 transition-transform duration-500 text-xl hover:cursor-pointer"
+					class="mt-6 p-4 hover:rotate-180 transition-transform hover:scale-110 duration-500 text-2xl hover:cursor-pointer"
 				>
 					Λ
 				</div>
@@ -57,8 +57,6 @@
 		<div class="flex flex-col justify-center items-center">
 			<Separator widthPercentage={40} />
 
-			<Socials withToggle withTitle withLabels={false} />
-
 			<IconLink
 				href="blog"
 				target="_blank"
@@ -68,7 +66,7 @@
 				class="mt-2"
 			/>
 
-			<a class="flex flex-col mt-4" href={`${ORIGIN_FOUNDATION}?src_external=development`}>
+			<a class="flex flex-col mt-4" href={`${$ORIGIN_FOUNDATION}?src_external=development`}>
 				<img class="h-16" alt="Logoi Foundation Logo" src="/images/logoi-foundation.svg" />
 				<span class={`text-sm text-center mt-4 font-trajan`}>Foundation</span>
 			</a>
@@ -85,6 +83,8 @@
 			{:else}
 				<Payment />
 			{/if}
+
+			<GitHubLink />
 
 			<Copyright />
 		</div>

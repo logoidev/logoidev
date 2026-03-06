@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Socials from 'src/components/Socials/Socials.svelte';
 	import Copyright from 'src/components/Copyright.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
@@ -45,8 +44,6 @@
 	</div>
 
 	<div class="flex flex-col justify-center items-center font-serif">
-		<Socials withToggle />
-
 		<ToggleQr
 			animated
 			{rounded}

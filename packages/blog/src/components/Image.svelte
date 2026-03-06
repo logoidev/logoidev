@@ -9,6 +9,7 @@
 	export let scale = 1;
 	export let width: number | undefined = undefined;
 	export let height: number | undefined = undefined;
+	export let selectable = true;
 
 	let loaded = false;
 	let failed = false;
@@ -36,8 +37,8 @@
 {#if loaded}
 	{#key src}
 		<img
-			class={cn([onClick && 'clickable', $$props.class])}
-			style="scale: {scale};"
+			class={cn([onClick && 'clickable', !selectable && 'select-none', $$props.class])}
+			style="scale: {scale}; {!selectable ? '-webkit-user-drag: none;' : ''}"
 			{role}
 			{src}
 			{alt}

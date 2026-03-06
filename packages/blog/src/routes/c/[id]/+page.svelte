@@ -10,7 +10,7 @@
 	import { page } from '$app/stores';
 	import Payment from 'src/components/Payment/Payment.svelte';
 
-	import Socials from 'src/components/Socials/Socials.svelte';
+	import GitHubLink from 'src/components/Socials/GitHubLink.svelte';
 	import clsx from 'clsx';
 	import MapLink from 'src/components/MapLink.svelte';
 	import Spinner from 'src/components/Spinner.svelte';
@@ -423,7 +423,7 @@
 			</a>
 
 			<div class="my-8 opacity-60 font-sans text-sm">Donations powered by</div>
-			<a class="flex flex-col" href={`${ORIGIN_FOUNDATION}?src_external=development`}>
+			<a class="flex flex-col" href={`${$ORIGIN_FOUNDATION}?src_external=development`}>
 				<img class="h-16" alt="Logoi Foundation Logo" src="/images/logoi-foundation.svg" />
 				<span class={`text-sm text-center mt-4 font-trajan`}>Foundation</span>
 			</a>
@@ -438,7 +438,7 @@
 	{/if}
 
 	<div class="mt-8"></div>
-	<Socials withToggle />
+	<GitHubLink />
 
 	<Copyright />
 

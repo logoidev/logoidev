@@ -11,6 +11,7 @@
 
 	import { ORIGIN, ORIGIN_FOUNDATION } from 'src/shared/constants';
 	import { trackEvent } from 'src/lib/analytics/posthog';
+	import ContactButton from 'src/components/ContactButton.svelte';
 
 	let isUnlocked = false;
 	let rounded = Boolean(getRandomIntInRange(0, 1));
@@ -18,8 +19,6 @@
 
 	const EMOJIS = [
 		'♥️',
-		'⚔️',
-		'🗡',
 		'🎓',
 		'🧠',
 		'👍',
@@ -38,12 +37,10 @@
 		'🔥',
 		'🍎',
 		'🥇',
-		'🎼',
 		'💻',
 		'📱',
 		'💵',
 		'💰',
-		'🪙',
 		'🪄',
 		'🎉',
 		'❤️',
@@ -68,12 +65,12 @@
 	<title>Logoi Foundation</title>
 	<meta
 		name="description"
-		content="We are a non-profit organisation dedicated to helping people get better access to digital
+		content="A non-profit organisation dedicated to helping people get better access to digital
 		technology and information"
 	/>
 	<meta property="og:title" content="Logoi Foundation" />
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content={ORIGIN_FOUNDATION} />
+	<meta property="og:url" content={$ORIGIN_FOUNDATION} />
 	<meta property="og:image" content="/images/logoi-foundation.svg" />
 </svelte:head>
 
@@ -96,15 +93,14 @@
 		<span class={`text-3xl text-center mt-4 font-trajan`}>Logoi Foundation</span>
 
 		<p class="text-xl max-w-md text-center px-10 my-4">
-			We are a non-profit organisation dedicated to helping people get better access to digital
-			technology and information
+			A non-profit organisation dedicated to helping people get better access to digital technology
+			and information
 		</p>
 
-		<EmailButton
-			class="my-4 -ml-1.5"
-			text="Email 👋"
-			email={INTRO_EMAIL}
-			subject={`Logoi Foundation - Saying hi 👋`}
+		<ContactButton
+			class="mt-4"
+			linkClass="border border-slate-300 py-2 px-4 rounded hover:bg-slate-200"
+			buttonText="Contact"
 		/>
 
 		{#if !isUnlocked}
@@ -126,7 +122,7 @@
 				</span>
 				{` with ${emoji} by `}
 			</span>
-			<a class="underline" href={`${ORIGIN}?src_external=foundation`}>Logoi Development</a>
+			<a class="underline" href={`${$ORIGIN}?src_external=foundation`}>Logoi Development</a>
 		</div>
 	</div>
 </div>

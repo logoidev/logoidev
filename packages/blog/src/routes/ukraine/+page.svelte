@@ -2,10 +2,9 @@
 	import Header from 'src/components/Header.svelte';
 	import EmailButton from 'src/components/EmailButton.svelte';
 	import Separator from 'src/components/Separator.svelte';
-	import Socials from 'src/components/Socials/Socials.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
 	import Copyright from 'src/components/Copyright.svelte';
-
+	import GitHubLink from 'src/components/Socials/GitHubLink.svelte';
 	import { getIndexUrl } from 'src/shared/routes';
 	import { INTRO_EMAIL } from 'src/data/emails';
 	import IconLink from 'src/components/IconLink.svelte';
@@ -163,7 +162,7 @@
 
 		<IconLink href="blog" target="" title="Blog" iconName="blog" scale={1.2} class="mt-0" />
 
-		<Socials withToggle />
+		<GitHubLink />
 
 		{#if !isUnlocked}
 			<ToggleQr
