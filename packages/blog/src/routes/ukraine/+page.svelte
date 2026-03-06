@@ -4,7 +4,6 @@
 	import Separator from 'src/components/Separator.svelte';
 	import Socials from 'src/components/Socials/Socials.svelte';
 	import ToggleQr from 'src/components/ToggleQR.svelte';
-	import MapLink from 'src/components/MapLink.svelte';
 	import Copyright from 'src/components/Copyright.svelte';
 
 	import { getIndexUrl } from 'src/shared/routes';
@@ -165,8 +164,6 @@
 		<IconLink href="blog" target="" title="Blog" iconName="blog" scale={1.2} class="mt-0" />
 
 		<Socials withToggle />
-
-		<MapLink />
 
 		{#if !isUnlocked}
 			<ToggleQr

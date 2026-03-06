@@ -6,7 +6,6 @@
 	import NameAvatar from '../../components/NameAvatar.svelte';
 	import Copyright from '../../components/Copyright.svelte';
 	import Spinner from '../../components/Spinner.svelte';
-	import MapLink from 'src/components/MapLink.svelte';
 	import LinkButton from '../../components/LinkButton/LinkButton.svelte';
 
 	import { getUserUrl } from '../../shared/routes';
@@ -77,8 +76,6 @@
 		{#if userData.has_resume}
 			<ResumeLink id={userData.id} />
 		{/if}
-
-		<MapLink />
 
 		<ToggleQr
 			{rounded}
