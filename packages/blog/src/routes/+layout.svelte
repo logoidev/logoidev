@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
 	import '../app.css';
 	import '../shared/fonts/index';
@@ -8,6 +9,8 @@
 	import { initializeAnalytics } from 'src/lib/analytics/posthog';
 	import { dev } from '$app/environment';
 	import { ORIGIN, ORIGIN_FOUNDATION } from 'src/shared/constants';
+
+	injectSpeedInsights();
 
 	let loaded = false;
 
