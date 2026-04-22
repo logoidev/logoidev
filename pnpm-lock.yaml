@@ -29,6 +29,9 @@ importers:
       '@vercel/postgres':
         specifier: ^0.7.2
         version: 0.7.2
+      '@vercel/speed-insights':
+        specifier: ^2.0.0
+        version: 2.0.0(@sveltejs/kit@2.22.2(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@20.19.7)))(svelte@4.2.20)(vite@5.4.19(@types/node@20.19.7)))(svelte@4.2.20)
       canvas-confetti:
         specifier: ^1.9.3
         version: 1.9.3
@@ -1029,6 +1032,32 @@ packages:
     resolution: {integrity: sha512-IqR/ZAvoPGcPaXl9eWWB5KaA+w/81RzZa/18P4izQRHpNBkTGt9HwGfYi9+wut5UgxNq4QSX9A7HIQR6QDvX2Q==}
     engines: {node: '>=14.6'}
     deprecated: '@vercel/postgres is deprecated. You can either choose an alternate storage solution from the Vercel Marketplace if you want to set up a new database. Or you can follow this guide to migrate your existing Vercel Postgres db: https://neon.com/docs/guides/vercel-postgres-transition-guide'
+
+  '@vercel/speed-insights@2.0.0':
+    resolution: {integrity: sha512-jwkNcrTeafWxjmWq4AHBaptSqZiJkYU5adLC9QBSqeim0GcqDMgN5Ievh8OG1rJ6W3A4l1oiP7qr9CWxGuzu3w==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      nuxt: '>= 3'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      nuxt:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@vitest/expect@1.6.1':
     resolution: {integrity: sha512-jXL+9+ZNIJKruofqXuuTClf44eSpcHlgj3CiuNihUF3Ioujtmc0zIa3UJOW5RjDK1YLBJZnWBlPuqhYycLioog==}
@@ -3831,6 +3860,11 @@ snapshots:
       bufferutil: 4.0.8
       utf-8-validate: 6.0.3
       ws: 8.14.2(bufferutil@4.0.8)(utf-8-validate@6.0.3)
+
+  '@vercel/speed-insights@2.0.0(@sveltejs/kit@2.22.2(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@20.19.7)))(svelte@4.2.20)(vite@5.4.19(@types/node@20.19.7)))(svelte@4.2.20)':
+    optionalDependencies:
+      '@sveltejs/kit': 2.22.2(@sveltejs/vite-plugin-svelte@3.1.2(svelte@4.2.20)(vite@5.4.19(@types/node@20.19.7)))(svelte@4.2.20)(vite@5.4.19(@types/node@20.19.7))
+      svelte: 4.2.20
 
   '@vitest/expect@1.6.1':
     dependencies:
