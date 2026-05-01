@@ -11,6 +11,18 @@ export type Verse = {
   sectionMarker?: string;
 };
 
+export type BiblePageData = {
+  rangeLabel: string;
+  title: string;
+  pageNumber: number;
+  verses: Verse[];
+};
+
+export type BibleSpreadData = {
+  leftPage: BiblePageData;
+  rightPage: BiblePageData;
+};
+
 export type PassageSpread = {
   reference: 'Matthew 4:7-21';
   translation: 'Russian Synodal';
@@ -123,4 +135,114 @@ export const matthew4RussianSynodal: PassageSpread = {
 
 export function getMatthew4RussianSynodalSpread() {
   return matthew4RussianSynodal;
+}
+
+const title = 'ЕВАНГЕЛИЕ ОТ МАТФЕЯ';
+
+export const matthewRussianSynodalSpreads: BibleSpreadData[] = [
+  {
+    leftPage: {
+      rangeLabel: '4, 7–4, 14',
+      title,
+      pageNumber: 14,
+      verses: matthew4RussianSynodal.leftVerses,
+    },
+    rightPage: {
+      rangeLabel: '4, 15–4, 21',
+      title,
+      pageNumber: 15,
+      verses: matthew4RussianSynodal.rightVerses,
+    },
+  },
+  {
+    leftPage: {
+      rangeLabel: '4, 22–4, 25',
+      title,
+      pageNumber: 16,
+      verses: [
+        {
+          number: 22,
+          segments: [black('И они тотчас, оставив лодку и отца своего, последовали за Ним.')],
+        },
+        {
+          number: 23,
+          segments: [
+            black('И ходил Иисус по всей Галилее, уча в синагогах их и проповедуя Евангелие Царствия, и исцеляя всякую болезнь и всякую немощь в людях.'),
+          ],
+        },
+        {
+          number: 24,
+          segments: [
+            black('И прошел о Нем слух по всей Сирии; и приводили к Нему всех немощных, одержимых различными болезнями и припадками, и бесноватых, и лунатиков, и расслабленных, и Он исцелял их.'),
+          ],
+        },
+        {
+          number: 25,
+          segments: [
+            black('И следовало за Ним множество народа из Галилеи и Десятиградия, и Иерусалима, и Иудеи, и из-за Иордана.'),
+          ],
+        },
+      ],
+    },
+    rightPage: {
+      rangeLabel: '5, 1–5, 12',
+      title,
+      pageNumber: 17,
+      verses: [
+        {
+          number: 1,
+          sectionMarker: '(Зач. 10)',
+          segments: [black('Увидев народ, Он взошел на гору; и, когда сел, приступили к Нему ученики Его.')],
+        },
+        {
+          number: 2,
+          segments: [black('И Он, отверзши уста Свои, учил их, говоря:')],
+        },
+        {
+          number: 3,
+          segments: [red('Блаженны нищие духом, ибо их есть Царство Небесное.')],
+        },
+        {
+          number: 4,
+          segments: [red('Блаженны плачущие, ибо они утешатся.')],
+        },
+        {
+          number: 5,
+          segments: [red('Блаженны кроткие, ибо они наследуют землю.')],
+        },
+        {
+          number: 6,
+          segments: [red('Блаженны алчущие и жаждущие правды, ибо они насытятся.')],
+        },
+        {
+          number: 7,
+          segments: [red('Блаженны милостивые, ибо они помилованы будут.')],
+        },
+        {
+          number: 8,
+          segments: [red('Блаженны чистые сердцем, ибо они Бога узрят.')],
+        },
+        {
+          number: 9,
+          segments: [red('Блаженны миротворцы, ибо они будут наречены сынами Божиими.')],
+        },
+        {
+          number: 10,
+          segments: [red('Блаженны изгнанные за правду, ибо их есть Царство Небесное.')],
+        },
+        {
+          number: 11,
+          segments: [red('Блаженны вы, когда будут поносить вас и гнать и всячески неправедно злословить за Меня.')],
+        },
+        {
+          number: 12,
+          segments: [red('Радуйтесь и веселитесь, ибо велика ваша награда на небесах: так гнали и пророков, бывших прежде вас.')],
+        },
+      ],
+    },
+  },
+];
+
+export function getMatthewRussianSynodalSpreads() {
+  return matthewRussianSynodalSpreads;
 }

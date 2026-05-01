@@ -3,7 +3,7 @@ import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } fr
 
 import { BibleSpread } from '@/components/bible/BibleSpread';
 import type { TextLayoutMode } from '@/components/bible/BibleTextFlow';
-import { getMatthew4RussianSynodalSpread } from '@/data/matthew4RussianSynodal';
+import { getMatthewRussianSynodalSpreads } from '@/data/matthew4RussianSynodal';
 import { tokens } from '@/theme/bookTokens';
 
 const layoutOptions: Array<{ label: string; mode: TextLayoutMode; description: string }> = [
@@ -21,13 +21,27 @@ const layoutOptions: Array<{ label: string; mode: TextLayoutMode; description: s
 
 export function BibleSpreadScreen() {
   const { width, height } = useWindowDimensions();
-  const passage = useMemo(getMatthew4RussianSynodalSpread, []);
+  const spreads = useMemo(getMatthewRussianSynodalSpreads, []);
+  const [spreadIndex, setSpreadIndex] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [textLayoutMode, setTextLayoutMode] = useState<TextLayoutMode>('verse');
   const availableWidth = Math.max(320, width);
   const availableHeight = Math.max(320, height);
   const stageWidth = Math.min(availableWidth, availableHeight * tokens.layout.stageRatio, tokens.layout.designWidth);
   const stageHeight = stageWidth / tokens.layout.stageRatio;
+  const activeSpread = spreads[spreadIndex] ?? spreads[0];
+  const canGoPrevious = spreadIndex > 0;
+  const canGoNext = spreadIndex < spreads.length - 1;
+
+  const goPrevious = () => {
+    setSettingsOpen(false);
+    setSpreadIndex((index) => Math.max(0, index - 1));
+  };
+
+  const goNext = () => {
+    setSettingsOpen(false);
+    setSpreadIndex((index) => Math.min(spreads.length - 1, index + 1));
+  };
 
   return (
     <ScrollView
@@ -36,11 +50,15 @@ export function BibleSpreadScreen() {
       bounces={false}>
       <View style={[styles.mainColumn, { width: stageWidth }]}>
         <BibleSpread
-          leftVerses={passage.leftVerses}
-          rightVerses={passage.rightVerses}
+          leftPage={activeSpread.leftPage}
+          rightPage={activeSpread.rightPage}
           width={stageWidth}
           height={stageHeight}
           textLayoutMode={textLayoutMode}
+          canGoNext={canGoNext}
+          canGoPrevious={canGoPrevious}
+          onNext={goNext}
+          onPrevious={goPrevious}
         />
       </View>
 

@@ -1,27 +1,35 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { BiblePage } from '@/components/bible/BiblePage';
 import type { TextLayoutMode } from '@/components/bible/BibleTextFlow';
 import { CenterCrease } from '@/components/bible/CenterCrease';
-import type { Verse } from '@/data/matthew4RussianSynodal';
+import type { BiblePageData } from '@/data/matthew4RussianSynodal';
 import { tokens } from '@/theme/bookTokens';
 
 type BibleSpreadProps = {
-  leftVerses: Verse[];
-  rightVerses: Verse[];
+  leftPage: BiblePageData;
+  rightPage: BiblePageData;
   width: number;
   height: number;
   textLayoutMode: TextLayoutMode;
+  canGoNext?: boolean;
+  canGoPrevious?: boolean;
+  onNext?: () => void;
+  onPrevious?: () => void;
   showAnnotations?: boolean;
 };
 
 export function BibleSpread({
-  leftVerses,
-  rightVerses,
+  leftPage,
+  rightPage,
   width,
   height,
   textLayoutMode,
+  canGoNext,
+  canGoPrevious,
+  onNext,
+  onPrevious,
   showAnnotations,
 }: BibleSpreadProps) {
   const scale = width / tokens.layout.designWidth;
@@ -36,10 +44,10 @@ export function BibleSpread({
       <View style={[styles.spread, { width: spreadWidth, height: spreadHeight }]}>
         <BiblePage
           side="left"
-          rangeLabel="4, 7–4, 14"
-          title="ЕВАНГЕЛИЕ ОТ МАТФЕЯ"
-          verses={leftVerses}
-          pageNumber={14}
+          rangeLabel={leftPage.rangeLabel}
+          title={leftPage.title}
+          verses={leftPage.verses}
+          pageNumber={leftPage.pageNumber}
           width={pageWidth}
           height={spreadHeight}
           scale={scale}
@@ -49,10 +57,10 @@ export function BibleSpread({
         <CenterCrease width={gutterWidth} height={spreadHeight} />
         <BiblePage
           side="right"
-          rangeLabel="4, 15–4, 21"
-          title="ЕВАНГЕЛИЕ ОТ МАТФЕЯ"
-          verses={rightVerses}
-          pageNumber={15}
+          rangeLabel={rightPage.rangeLabel}
+          title={rightPage.title}
+          verses={rightPage.verses}
+          pageNumber={rightPage.pageNumber}
           width={pageWidth}
           height={spreadHeight}
           scale={scale}
@@ -60,6 +68,36 @@ export function BibleSpread({
           textFitStep={textFitStep}
         />
       </View>
+
+      <Pressable
+        accessibilityLabel="Previous spread"
+        accessibilityRole="button"
+        disabled={!canGoPrevious}
+        onPress={onPrevious}
+        style={({ pressed }) => [
+          styles.edgeHotspot,
+          styles.leftHotspot,
+          pressed && canGoPrevious && styles.edgePressed,
+          !canGoPrevious && styles.edgeDisabled,
+          { width: Math.max(72, width * 0.14) },
+        ]}>
+        {canGoPrevious ? <Text style={[styles.edgeArrow, styles.leftArrow]}>‹</Text> : null}
+      </Pressable>
+
+      <Pressable
+        accessibilityLabel="Next spread"
+        accessibilityRole="button"
+        disabled={!canGoNext}
+        onPress={onNext}
+        style={({ pressed }) => [
+          styles.edgeHotspot,
+          styles.rightHotspot,
+          pressed && canGoNext && styles.edgePressed,
+          !canGoNext && styles.edgeDisabled,
+          { width: Math.max(72, width * 0.14) },
+        ]}>
+        {canGoNext ? <Text style={[styles.edgeArrow, styles.rightArrow]}>›</Text> : null}
+      </Pressable>
 
       {showAnnotations ? (
         <>
@@ -82,6 +120,42 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     flexDirection: 'row',
     overflow: 'hidden',
+  },
+  edgeHotspot: {
+    alignItems: 'center',
+    bottom: 0,
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    zIndex: 5,
+  },
+  leftHotspot: {
+    left: 0,
+  },
+  rightHotspot: {
+    right: 0,
+  },
+  edgePressed: {
+    backgroundColor: 'rgba(0, 0, 0, 0.035)',
+  },
+  edgeDisabled: {
+    pointerEvents: 'none',
+  },
+  edgeArrow: {
+    color: 'rgba(123, 96, 62, 0.92)',
+    fontFamily: 'Georgia',
+    fontSize: 64,
+    fontWeight: '200',
+    lineHeight: 70,
+    textShadowColor: 'rgba(255, 249, 232, 0.8)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  leftArrow: {
+    transform: [{ translateX: -40 }, { scaleX: 0.62 }],
+  },
+  rightArrow: {
+    transform: [{ translateX: 40 }, { scaleX: 0.62 }],
   },
   annotationLine: {
     backgroundColor: tokens.colors.annotation,
