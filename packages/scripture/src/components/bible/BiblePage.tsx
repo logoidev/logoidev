@@ -95,6 +95,7 @@ export function BiblePage({ side, rangeLabel, title, verses, pageNumber, width, 
           },
         ]}>
         <BibleTextFlow
+          key={`${pageNumber}-${textLayoutMode}-${textFitStep}`}
           verses={verses}
           width={textWidth}
           height={textHeight}

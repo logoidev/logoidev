@@ -1,0 +1,11 @@
+{
+  "workbench.statusBar.visible": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#ffffff",
+    "statusBar.foreground": "#000000",
+    "statusBar.noFolderBackground": "#ffffff",
+    "statusBar.noFolderForeground": "#000000",
+    "statusBar.debuggingBackground": "#ffffff",
+    "statusBar.debuggingForeground": "#000000"
+  }
+}

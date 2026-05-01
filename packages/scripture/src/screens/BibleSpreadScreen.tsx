@@ -1,9 +1,17 @@
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 import { BibleSpread } from '@/components/bible/BibleSpread';
 import type { TextLayoutMode } from '@/components/bible/BibleTextFlow';
-import { getMatthewRussianSynodalSpreads } from '@/data/matthew4RussianSynodal';
+import {
+  findSpreadIndexByReference,
+  getMatthewRussianSynodalSpreads,
+  getSpreadReference,
+  normalizeGospelId,
+  type BibleSpreadData,
+  type VerseReference,
+} from '@/data/matthew4RussianSynodal';
 import { tokens } from '@/theme/bookTokens';
 
 const layoutOptions: Array<{ label: string; mode: TextLayoutMode; description: string }> = [
@@ -19,12 +27,43 @@ const layoutOptions: Array<{ label: string; mode: TextLayoutMode; description: s
   },
 ];
 
+function getParamValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+function positiveIntParam(value: string | string[] | undefined, fallback: number) {
+  const parsed = Number.parseInt(getParamValue(value) ?? '', 10);
+
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function referenceFromParams(params: Record<string, string | string[] | undefined>): VerseReference {
+  return {
+    gospel: normalizeGospelId(getParamValue(params.gospel ?? params.book)),
+    chapter: positiveIntParam(params.chapter, 4),
+    verse: positiveIntParam(params.verse, 7),
+  };
+}
+
+function paramsForSpread(spread: BibleSpreadData) {
+  const reference = getSpreadReference(spread);
+
+  return {
+    gospel: reference.gospel,
+    chapter: String(reference.chapter),
+    verse: String(reference.verse),
+  };
+}
+
 export function BibleSpreadScreen() {
+  const router = useRouter();
+  const params = useLocalSearchParams();
   const { width, height } = useWindowDimensions();
   const spreads = useMemo(getMatthewRussianSynodalSpreads, []);
-  const [spreadIndex, setSpreadIndex] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [textLayoutMode, setTextLayoutMode] = useState<TextLayoutMode>('verse');
+  const requestedReference = referenceFromParams(params);
+  const spreadIndex = findSpreadIndexByReference(requestedReference);
   const availableWidth = Math.max(320, width);
   const availableHeight = Math.max(320, height);
   const stageWidth = Math.min(availableWidth, availableHeight * tokens.layout.stageRatio, tokens.layout.designWidth);
@@ -33,14 +72,23 @@ export function BibleSpreadScreen() {
   const canGoPrevious = spreadIndex > 0;
   const canGoNext = spreadIndex < spreads.length - 1;
 
+  const navigateToSpread = (index: number) => {
+    const nextSpread = spreads[index];
+    if (!nextSpread) {
+      return;
+    }
+
+    router.setParams(paramsForSpread(nextSpread));
+  };
+
   const goPrevious = () => {
     setSettingsOpen(false);
-    setSpreadIndex((index) => Math.max(0, index - 1));
+    navigateToSpread(Math.max(0, spreadIndex - 1));
   };
 
   const goNext = () => {
     setSettingsOpen(false);
-    setSpreadIndex((index) => Math.min(spreads.length - 1, index + 1));
+    navigateToSpread(Math.min(spreads.length - 1, spreadIndex + 1));
   };
 
   return (
@@ -50,6 +98,7 @@ export function BibleSpreadScreen() {
       bounces={false}>
       <View style={[styles.mainColumn, { width: stageWidth }]}>
         <BibleSpread
+          key={`${activeSpread.leftPage.pageNumber}-${activeSpread.rightPage.pageNumber}`}
           leftPage={activeSpread.leftPage}
           rightPage={activeSpread.rightPage}
           width={stageWidth}

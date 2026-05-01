@@ -11,7 +11,17 @@ export type Verse = {
   sectionMarker?: string;
 };
 
+export type GospelId = 'matthew';
+
+export type VerseReference = {
+  gospel: GospelId;
+  chapter: number;
+  verse: number;
+};
+
 export type BiblePageData = {
+  reference: VerseReference;
+  endReference: VerseReference;
   rangeLabel: string;
   title: string;
   pageNumber: number;
@@ -34,6 +44,32 @@ export type PassageSpread = {
 const black = (text: string): VerseSegment => ({ text });
 const red = (text: string): VerseSegment => ({ text, color: 'red' });
 const italic = (text: string): VerseSegment => ({ text, italic: true });
+
+const gospelAliases: Record<string, GospelId> = {
+  matthew: 'matthew',
+  mat: 'matthew',
+  mt: 'matthew',
+};
+
+function ref(chapter: number, verse: number): VerseReference {
+  return { gospel: 'matthew', chapter, verse };
+}
+
+function compareReferences(left: VerseReference, right: VerseReference) {
+  if (left.chapter !== right.chapter) {
+    return left.chapter - right.chapter;
+  }
+
+  return left.verse - right.verse;
+}
+
+function pageContainsReference(page: BiblePageData, reference: VerseReference) {
+  return (
+    reference.gospel === page.reference.gospel &&
+    compareReferences(reference, page.reference) >= 0 &&
+    compareReferences(reference, page.endReference) <= 0
+  );
+}
 
 export const matthew4RussianSynodal: PassageSpread = {
   reference: 'Matthew 4:7-21',
@@ -142,12 +178,16 @@ const title = 'ЕВАНГЕЛИЕ ОТ МАТФЕЯ';
 export const matthewRussianSynodalSpreads: BibleSpreadData[] = [
   {
     leftPage: {
+      reference: ref(4, 7),
+      endReference: ref(4, 14),
       rangeLabel: '4, 7–4, 14',
       title,
       pageNumber: 14,
       verses: matthew4RussianSynodal.leftVerses,
     },
     rightPage: {
+      reference: ref(4, 15),
+      endReference: ref(4, 21),
       rangeLabel: '4, 15–4, 21',
       title,
       pageNumber: 15,
@@ -156,6 +196,8 @@ export const matthewRussianSynodalSpreads: BibleSpreadData[] = [
   },
   {
     leftPage: {
+      reference: ref(4, 22),
+      endReference: ref(4, 25),
       rangeLabel: '4, 22–4, 25',
       title,
       pageNumber: 16,
@@ -185,6 +227,8 @@ export const matthewRussianSynodalSpreads: BibleSpreadData[] = [
       ],
     },
     rightPage: {
+      reference: ref(5, 1),
+      endReference: ref(5, 12),
       rangeLabel: '5, 1–5, 12',
       title,
       pageNumber: 17,
@@ -245,4 +289,22 @@ export const matthewRussianSynodalSpreads: BibleSpreadData[] = [
 
 export function getMatthewRussianSynodalSpreads() {
   return matthewRussianSynodalSpreads;
+}
+
+export function normalizeGospelId(value: string | undefined): GospelId {
+  return gospelAliases[value?.trim().toLowerCase() ?? ''] ?? 'matthew';
+}
+
+export function findSpreadIndexByReference(reference: VerseReference) {
+  const index = matthewRussianSynodalSpreads.findIndex(
+    (spread) =>
+      pageContainsReference(spread.leftPage, reference) ||
+      pageContainsReference(spread.rightPage, reference),
+  );
+
+  return index === -1 ? 0 : index;
+}
+
+export function getSpreadReference(spread: BibleSpreadData) {
+  return spread.leftPage.reference;
 }
