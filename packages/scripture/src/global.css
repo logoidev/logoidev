@@ -1,0 +1,18 @@
+:root {
+  --background: #f8f6f1;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+}
+
+* {
+  box-sizing: border-box;
+}

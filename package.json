@@ -8,6 +8,11 @@
   },
   "scripts": {
     "blog": "pnpm --filter @logoi/blog",
+    "scripture": "pnpm --filter @logoi/scripture",
+    "scripture:start": "pnpm --filter @logoi/scripture start",
+    "scripture:web": "pnpm --filter @logoi/scripture web",
+    "scripture:build:web": "pnpm --filter @logoi/scripture build:web",
+    "scripture:check": "pnpm --filter @logoi/scripture check",
     "dev": "pnpm --filter @logoi/blog dev",
     "build": "pnpm --filter @logoi/blog build",
     "preview": "pnpm --filter @logoi/blog preview",
