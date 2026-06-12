@@ -5,12 +5,22 @@ import {
   type PreparedTextWithSegments,
 } from '@chenglou/pretext';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, type TextStyle } from 'react-native';
+import { Platform, ScrollView, StyleSheet, Text, View, type TextStyle } from 'react-native';
 
-import type { Verse } from '@/data/matthew4RussianSynodal';
+import { VerseText } from '@/components/bible/VerseText';
+import type { Verse, VerseSegment } from '@/data/scripture/verseDisplay';
 import { tokens } from '@/theme/bookTokens';
 
-type RunKind = 'body' | 'red' | 'italic' | 'bold' | 'section' | 'verseNumber';
+type RunKind =
+  | 'body'
+  | 'christ'
+  | 'speaker'
+  | 'italic'
+  | 'christItalic'
+  | 'speakerItalic'
+  | 'bold'
+  | 'section'
+  | 'verseNumber';
 
 type GraphemeUnit = {
   text: string;
@@ -84,7 +94,37 @@ function buildVerseUnits(verse: Verse) {
 
   verse.segments.forEach((segment) => {
     const text = normalizeBibleText(segment.text);
-    const kind = segment.color === 'red' ? 'red' : segment.italic ? 'italic' : segment.bold ? 'bold' : 'body';
+    const kind: RunKind = (() => {
+      if (segment.bold) {
+        return 'bold';
+      }
+
+      const christ = segment.color === 'red';
+      const speaker = segment.color === 'blue';
+
+      if (christ && segment.italic) {
+        return 'christItalic';
+      }
+
+      if (speaker && segment.italic) {
+        return 'speakerItalic';
+      }
+
+      if (christ) {
+        return 'christ';
+      }
+
+      if (speaker) {
+        return 'speaker';
+      }
+
+      if (segment.italic) {
+        return 'italic';
+      }
+
+      return 'body';
+    })();
+
     pushUnits(units, text, kind);
   });
 
@@ -247,7 +287,8 @@ function layoutProjection(verses: Verse[], width: number, height: number, scale:
   const font = `${bodySize}px ${FONT_FAMILY}`;
   const emptyProjection = { bodySize, lineHeight, lines: [] };
 
-  if (typeof document === 'undefined') {
+  // Pretext measures via the DOM; only available on web.
+  if (Platform.OS !== 'web' || typeof document === 'undefined') {
     return emptyProjection;
   }
 
@@ -259,7 +300,96 @@ function layoutProjection(verses: Verse[], width: number, height: number, scale:
   return { bodySize, lineHeight, lines: result.lines };
 }
 
-export function BibleTextFlow({ verses, width, height, scale, layoutMode, fitStep }: BibleTextFlowProps) {
+function segmentStyle(segment: VerseSegment, bodySize: number, lineHeight: number): TextStyle {
+  let color = tokens.colors.text;
+  let fontWeight: TextStyle['fontWeight'] = '400';
+
+  if (segment.color === 'red') {
+    color = tokens.colors.red;
+    fontWeight = '500';
+  } else if (segment.color === 'blue') {
+    color = tokens.colors.speaker;
+  }
+
+  if (segment.bold) {
+    fontWeight = '700';
+  }
+
+  return {
+    color,
+    fontFamily: 'Georgia',
+    fontSize: bodySize,
+    lineHeight,
+    fontWeight,
+    fontStyle: segment.italic ? 'italic' : 'normal',
+    includeFontPadding: false,
+  };
+}
+
+function NativeContinuousText({
+  verses,
+  scale,
+  fitStep,
+}: {
+  verses: Verse[];
+  scale: number;
+  fitStep: number;
+}) {
+  const bodySize = tokens.typography.bodySize * scale * fitStep;
+  const lineHeight = tokens.typography.lineHeight * scale * fitStep;
+
+  return (
+    <Text style={[styles.nativeFlowRoot, { fontSize: bodySize, lineHeight }]}>
+      {verses.map((verse, verseIndex) => (
+        <React.Fragment key={verse.number}>
+          {verseIndex > 0 ? ' ' : null}
+          {verse.sectionMarker ? (
+            <Text style={[styles.nativeSection, { fontSize: bodySize, lineHeight }]}>{verse.sectionMarker} </Text>
+          ) : null}
+          <Text
+            style={[
+              styles.nativeVerseNum,
+              {
+                fontSize: bodySize * 0.48,
+                lineHeight,
+                transform: [{ translateY: -bodySize * 0.34 }],
+              },
+            ]}>
+            {verse.number}
+          </Text>
+          <Text> </Text>
+          {verse.segments.map((segment, index) => (
+            <Text key={`${verse.number}-${index}`} style={segmentStyle(segment, bodySize, lineHeight)}>
+              {segment.text}
+            </Text>
+          ))}
+        </React.Fragment>
+      ))}
+    </Text>
+  );
+}
+
+function BibleTextFlowNative({ verses, width, height, scale, layoutMode, fitStep }: BibleTextFlowProps) {
+  const verseScale = scale * fitStep;
+
+  return (
+    <View style={[styles.container, { width, height }]}>
+      <ScrollView
+        style={{ width, height }}
+        contentContainerStyle={styles.nativeScrollContent}
+        nestedScrollEnabled
+        showsVerticalScrollIndicator={false}>
+        {layoutMode === 'verse' ? (
+          verses.map((verse) => <VerseText key={verse.number} verse={verse} scale={verseScale} />)
+        ) : (
+          <NativeContinuousText verses={verses} scale={scale} fitStep={fitStep} />
+        )}
+      </ScrollView>
+    </View>
+  );
+}
+
+function BibleTextFlowWeb({ verses, width, height, scale, layoutMode, fitStep }: BibleTextFlowProps) {
   const [projection, setProjection] = useState<TextProjection>(() => ({
     bodySize: tokens.typography.bodySize * scale * fitStep,
     lineHeight: tokens.typography.lineHeight * scale * fitStep,
@@ -293,8 +423,10 @@ export function BibleTextFlow({ verses, width, height, scale, layoutMode, fitSte
               key={`${lineIndex}-${runIndex}`}
               style={[
                 styles.run,
-                run.kind === 'red' && styles.red,
-                run.kind === 'italic' && styles.italic,
+                (run.kind === 'christ' || run.kind === 'christItalic') && styles.red,
+                (run.kind === 'speaker' || run.kind === 'speakerItalic') && styles.speaker,
+                (run.kind === 'italic' || run.kind === 'christItalic' || run.kind === 'speakerItalic') &&
+                  styles.italic,
                 run.kind === 'bold' && styles.bold,
                 run.kind === 'section' && styles.section,
                 run.kind === 'verseNumber' && {
@@ -312,7 +444,38 @@ export function BibleTextFlow({ verses, width, height, scale, layoutMode, fitSte
   );
 }
 
+export function BibleTextFlow(props: BibleTextFlowProps) {
+  if (Platform.OS !== 'web') {
+    return <BibleTextFlowNative {...props} />;
+  }
+
+  return <BibleTextFlowWeb {...props} />;
+}
+
 const styles = StyleSheet.create({
+  nativeFlowRoot: {
+    color: tokens.colors.text,
+    fontFamily: 'Georgia',
+    fontWeight: '400',
+    includeFontPadding: false,
+    textAlign: 'left',
+  },
+  nativeSection: {
+    color: tokens.colors.red,
+    fontFamily: 'Georgia',
+    fontWeight: '800',
+    includeFontPadding: false,
+  },
+  nativeVerseNum: {
+    color: tokens.colors.text,
+    fontFamily: 'Georgia',
+    fontWeight: '400',
+    includeFontPadding: false,
+  },
+  nativeScrollContent: {
+    flexGrow: 1,
+    paddingBottom: 4,
+  },
   container: {
     overflow: 'hidden',
   },
@@ -332,6 +495,9 @@ const styles = StyleSheet.create({
   },
   red: {
     color: tokens.colors.red,
+  },
+  speaker: {
+    color: tokens.colors.speaker,
   },
   italic: {
     fontStyle: 'italic',

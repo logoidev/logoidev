@@ -4,7 +4,7 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { BiblePage } from '@/components/bible/BiblePage';
 import type { TextLayoutMode } from '@/components/bible/BibleTextFlow';
 import { CenterCrease } from '@/components/bible/CenterCrease';
-import type { BiblePageData } from '@/data/matthew4RussianSynodal';
+import type { BiblePageData } from '@/data/scripture/verseDisplay';
 import { tokens } from '@/theme/bookTokens';
 
 type BibleSpreadProps = {

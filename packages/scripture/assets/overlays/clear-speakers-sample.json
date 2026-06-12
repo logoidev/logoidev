@@ -1,0 +1,18 @@
+{
+  "translationId": "eng-web",
+  "bookId": "MAT",
+  "alignmentNotes": "Sample validation fixture",
+  "spans": [
+    {
+      "bookId": "MAT",
+      "chapter": 4,
+      "verse": 15,
+      "start": 0,
+      "end": 12,
+      "speakerId": "ISA",
+      "speakerGroup": "prophet",
+      "confidence": 0.7,
+      "source": "clear-bible"
+    }
+  ]
+}

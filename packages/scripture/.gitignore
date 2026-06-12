@@ -3,6 +3,9 @@
 # dependencies
 node_modules/
 
+# Importer cache (USFM zips / extracts)
+.cache/
+
 # Expo
 .expo/
 dist/

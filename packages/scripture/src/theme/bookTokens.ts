@@ -13,6 +13,7 @@ export const tokens = {
     panelBorder: '#e0ddd6',
     panelText: '#2f3440',
     annotation: '#4f35ff',
+    speaker: '#1c4f82',
   },
   typography: {
     bodySize: 26,

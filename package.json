@@ -13,6 +13,7 @@
     "scripture:web": "pnpm --filter @logoi/scripture web",
     "scripture:build:web": "pnpm --filter @logoi/scripture build:web",
     "scripture:check": "pnpm --filter @logoi/scripture check",
+    "scripture:test": "pnpm --filter @logoi/scripture test",
     "dev": "pnpm --filter @logoi/blog dev",
     "build": "pnpm --filter @logoi/blog build",
     "preview": "pnpm --filter @logoi/blog preview",

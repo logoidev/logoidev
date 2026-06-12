@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { BibleTextFlow, type TextLayoutMode } from '@/components/bible/BibleTextFlow';
-import type { Verse } from '@/data/matthew4RussianSynodal';
+import type { Verse } from '@/data/scripture/verseDisplay';
 import { tokens } from '@/theme/bookTokens';
 
 type BiblePageProps = {
@@ -10,7 +10,7 @@ type BiblePageProps = {
   rangeLabel: string;
   title: string;
   verses: Verse[];
-  pageNumber: number;
+  pageNumber: number | string;
   width: number;
   height: number;
   scale: number;

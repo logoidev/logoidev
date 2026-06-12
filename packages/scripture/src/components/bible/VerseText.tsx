@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 
-import type { Verse } from '@/data/matthew4RussianSynodal';
+import type { Verse } from '@/data/scripture/verseDisplay';
 import { tokens } from '@/theme/bookTokens';
 
 type VerseTextProps = {
